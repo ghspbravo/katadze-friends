@@ -66,85 +66,33 @@
 .d-input {
   width: 45%;
 }
-body {
-  overflow-x: hidden;
+#faq-main {
+  padding-top: 15%;
+  padding-bottom: 5%;
+  background-image: url("../resourses/FAQ/header-image.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
-p,
-a {
-  font-family: 'OpenSans', sans-serif;
-  color: #000;
-}
-a {
-  text-decoration: none;
-}
-a:hover {
-  color: #41bfef;
-}
-section {
-  position: relative;
-  margin: auto !important;
-  padding: 100px 0 !important;
-}
-section p {
+.question {
   font-family: OpenSans;
   font-weight: lighter;
-  font-size: 25px;
-  line-height: 34px;
-}
-section h1 {
-  font-family: OpenSans;
-  font-weight: normal;
   font-size: 38px;
   line-height: 52px;
-  margin: 50px 0;
-}
-section h1 span {
-  color: #41bfef;
-}
-.header {
+  margin: 100px 0 40px 0;
   text-align: center;
+  border-radius: 10px;
+  color: #fff;
 }
-.header p {
-  font-family: OpenSans;
-  font-weight: normal;
-  font-size: 38px;
-  line-height: 52px;
+.question-wrapper:nth-child(odd) .question {
+  background-color: #41bfef;
 }
-span.lead {
-  border-bottom: 2px solid #fb0;
-  padding-bottom: 10px;
-  color: #000;
+.question-wrapper:nth-child(even) .question {
+  background-color: #fb0;
 }
-form input {
+.answer p {
   font-family: OpenSans;
   font-weight: lighter;
   font-size: 18px;
   line-height: 25px;
-  width: 100%;
-  padding-top: 20px;
-  color: #9b9b9b;
-  border: none;
-  border-bottom: 1px solid #9b9b9b;
-  background-color: transparent;
-  margin: 10px 0;
-}
-form input:focus,
-form button:focus {
-  outline: none;
-}
-form input:focus::placeholder {
-  color: transparent;
-}
-form button {
-  font-family: OpenSans;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 25px;
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid #fb0;
-  padding: 10px 0;
-  text-transform: uppercase;
-  margin-top: 50px;
-  cursor: pointer;
 }

@@ -1,6 +1,9 @@
 // sudo stylus --watch  stylus --out ./
 @import 'Vars'
 
+body 
+    overflow-x: hidden
+
 p, a
     font-family: 'OpenSans', sans-serif
     color: black
@@ -9,3 +12,53 @@ a
     text-decoration none
     &:hover
         color: acsent
+
+section 
+    position relative
+    margin auto !important
+    padding: 100px 0 !important
+    & p  
+        OpenH1LightAlt()
+    & h1 
+        OpenH1()
+        margin 50px 0
+        & span 
+            color: acsent
+
+.header 
+    text-align center
+    & p
+        OpenH1()
+
+span.lead 
+    border-bottom: 2px solid acsentAlt;
+    padding-bottom: 10px
+    color: black
+
+form input
+    OpenH4Light()
+    width: 100%;
+    padding-top: 20px;
+    color: secondaryDark
+    border: none;
+    border-bottom: 1px solid secondaryDark;
+    background-color: transparent;
+    margin: 10px 0;
+
+form input:focus,
+form button:focus
+    outline: none;
+
+form input:focus::placeholder
+    color: transparent;
+
+form button
+    OpenH4()
+    background-color transparent
+    border: none;
+    border-bottom: 2px solid acsentAlt;
+    padding: 10px 0;
+    text-transform: uppercase;
+    margin-top: 50px;
+    cursor: pointer;
+    

@@ -6,6 +6,8 @@
   transition: all 1s ease-out;
 }
 .z-logo {
+  font-family: 'BebasNeue';
+  font-weight: bold;
   position: absolute;
   top: 50%;
   left: 50%;

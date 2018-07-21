@@ -149,7 +149,8 @@ export default class Menu extends Component {
                                 </div>
                             </div>
                         </a>
-                        <a id="about" href="#" className="project-card-wrapper">
+                        {/* <a id="about" href="#" className="project-card-wrapper"> */}
+                        <Link to="/about" id="about" className="project-card-wrapper">
                             <div className="project-card">
                                 <h2 className="project-title">
                                     <span>О нас</span>
@@ -168,7 +169,7 @@ export default class Menu extends Component {
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, quaerat.</p>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

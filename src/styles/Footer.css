@@ -54,6 +54,18 @@
 .vh-50 {
   height: 50vh;
 }
+.upper {
+  text-transform: uppercase;
+}
+.secondary {
+  color: #c4c4c4;
+}
+.section-light-bg {
+  background-color: #e6edf1;
+}
+.d-input {
+  width: 45%;
+}
 .footer {
   font-family: BebasNeue;
   font-weight: bold;

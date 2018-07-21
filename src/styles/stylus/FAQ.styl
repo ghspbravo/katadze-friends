@@ -1,0 +1,25 @@
+@import 'Vars'
+
+#faq-main
+    padding-top: 15%;
+    padding-bottom: 5%;
+    background-image: url(../resourses/FAQ/header-image.png);
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+.question
+    OpenH1Light()
+    margin: 100px 0 40px 0
+    text-align center
+    border-radius: 10px
+    color: white
+
+.question-wrapper
+    &:nth-child(odd) .question
+        background-color acsent
+    &:nth-child(even) .question
+        background-color acsentAlt 
+
+.answer p
+    OpenH4Light()
