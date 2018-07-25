@@ -2,7 +2,7 @@
   "name": "katadze-friends",
   "homepage": "http://ghspbravo.github.io/katadze-friends",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "history": "^4.7.2",
     "react": "^16.4.1",

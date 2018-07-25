@@ -1,33 +1,41 @@
 // sudo stylus --watch  stylus --out ./
+
 body 
     overflow-x: hidden
 
-p, a
-    font-family: 'OpenSans', sans-serif
-    color: black
+h1  
+    OpenH1()
+    margin: 15px 0
+    &.lead
+        OpenH1ExtraBold()
+        color: #464646
+span 
+    color: acsent
 
-a 
+p
+    OpenH1LightAlt()
+    color: black
+    &.lead
+        OpenH1Light()
+    &.small
+        OpenH4Light()
+a
+    OpenH1LightAlt()
     text-decoration none
+    color: black
     &:hover
         color: acsent
+li  
+    OpenH1LightAlt()
 
 section 
     position relative
     margin auto !important
-    padding-top: 100px!important
-    padding-bottom 100px !important
-    & p  
-        OpenH1LightAlt()
-    & h1 
-        OpenH1()
-        margin 50px 0
-        & span 
-            color: acsent
+    padding-top: 100px
+    padding-bottom 100px 
 
 .header 
     text-align center
-    & p
-        OpenH1()
 
 span.lead 
     border-bottom: 2px solid acsentAlt;

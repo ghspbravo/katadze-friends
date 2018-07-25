@@ -7,10 +7,10 @@ export default class About extends Component {
     render() {
         return (
             <div>
-                <section id="about-main" className="row container">
-                    <div className="col-lg-6">
-                        <h1>О проекте:
-                            <br /><span>Намного больше
+                <section id="about-main" className="row vh-50">
+                    <div className="offset-lg-2 col-lg-4">
+                        <h1 className="lead">О проекте:</h1>
+                            <h1><span>Намного больше
                             <br />Чем ты думаешь</span></h1>
                         <div className="read-more">
                             <a href="#aboutus">Читать дальше</a>
@@ -35,12 +35,16 @@ export default class About extends Component {
                 </section>
                 <section id="howitworks" className="row container">
                     <div className="row">
-                        <div className="col-lg-6">
-                            <div className="process-wrapper">
-
+                        <div className="col-lg-7">
+                            <div className="acsent-box">
+                                <ul className="todo-list">
+                                    <li>Создай профиль гида</li>
+                                    <li>Покажи места, которые знаешь</li>
+                                    <li>Заработай денег</li>
+                                </ul>
                             </div>
                         </div>
-                        <div className="col-lg-6 align-center">
+                        <div className="col-lg-5 align-center">
                             <div className="header">
                                 <h1 className="upper">Как это
                         <span> работает </span>?</h1>

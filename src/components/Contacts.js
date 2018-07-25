@@ -6,23 +6,25 @@ export default class Contacts extends Component {
     render() {
         return (
             <div>
-                <section id="contacts-main" className="container">
-                    <h1>У тебя остался вопрос?
-                <br /><span>Свяжись с нами</span></h1>
-                    <div className="col-lg-6 contact-form">
-                        <form className="justify-space-between" action="">
-                            <input type="text" placeholder="Меня интересует" name="theme" id="theme" />
-                            <input className="d-input" type="text" placeholder="Имя" name="name" id="name" />
-                            <input className="d-input" type="email" placeholder="Электронная почта" name="email" id="email" />
-                            <input type="text" placeholder="Ваш вопрос (желательно)" name="question" id="question" />
-                            <button type="submit">Отправить</button>
-                        </form>
+                <section id="contacts-main" className="row vh-50">
+                    <div className="offset-lg-2 col-lg-4">
+                        <h1 className="lead">У тебя остался вопрос?</h1>
+                        <h1><span>Свяжись с нами</span></h1>
+                        <div className="col-lg-12 contact-form">
+                            <form className="justify-space-between" action="">
+                                <input type="text" placeholder="Меня интересует" name="theme" id="theme" />
+                                <input className="d-input" type="text" placeholder="Имя" name="name" id="name" />
+                                <input className="d-input" type="email" placeholder="Электронная почта" name="email" id="email" />
+                                <input type="text" placeholder="Ваш вопрос (желательно)" name="question" id="question" />
+                                <button type="submit">Отправить</button>
+                            </form>
+                        </div>
                     </div>
                 </section>
                 <section id="writeus" className="section-light-bg">
                     <div className="row justify-center align-center vh-50">
-                        <p className="secondary write-label">Напишите нам
-            <br /><span className="mail">info@katadze.com</span></p>
+                        <p className="secondary lead col-12 text-center">Напишите нам</p>
+                        <h1 className="col-12 text-center">info@katadze.com</h1>
                     </div>
                 </section>
                 <section id="adress" className="container">

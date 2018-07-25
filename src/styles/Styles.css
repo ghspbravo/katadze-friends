@@ -23,6 +23,14 @@
   font-weight: bold;
   src: url("../fonts/OpenSansBold.ttf");
 }
+@font-face {
+  font-family: OpenSans;
+  font-weight: 900;
+  src: url("../fonts/OpenSansExtraBold.ttf");
+}
+.text-center {
+  text-align: center;
+}
 .justify-space-around {
   display: flex;
   flex-wrap: wrap;
@@ -49,10 +57,12 @@
   align-items: center;
 }
 .vh-100 {
-  height: 100vh;
+  padding-top: 50vh;
+  padding-bottom: 50vh;
 }
 .vh-50 {
-  height: 50vh;
+  padding-top: 25vh;
+  padding-bottom: 25vh;
 }
 .upper {
   text-transform: uppercase;
@@ -66,50 +76,106 @@
 .d-input {
   width: 45%;
 }
+.acsent-box {
+  padding: 100px 50px;
+  background-color: #41bfef;
+}
+.acsent-box li {
+  color: #fff;
+}
+.todo-list {
+  counter-reset: item;
+  list-style-type: none;
+}
+.todo-list > li:before {
+  content: counter(item);
+  counter-increment: item;
+  border-radius: 50%;
+  height: 85px;
+  width: 85px;
+  margin-right: 40px;
+  margin-bottom: 80px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.12);
+}
+.todo-list > li:nth-child(1):before {
+  background-color: #cad5fd;
+}
+.todo-list > li:nth-child(2):before {
+  background-color: #fb0;
+}
+.todo-list > li:nth-child(3):before {
+  background-color: #00ffa3;
+}
+.todo-list > li:nth-child(4):before {
+  background-color: #41bfef;
+}
 body {
   overflow-x: hidden;
 }
-p,
-a {
-  font-family: 'OpenSans', sans-serif;
+h1 {
+  font-family: OpenSans;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 52px;
+  margin: 15px 0;
+}
+h1.lead {
+  font-family: OpenSans;
+  font-weight: 900;
+  font-size: 45px;
+  line-height: 61px;
+  color: #464646;
+}
+span {
+  color: #41bfef;
+}
+p {
+  font-family: OpenSans;
+  font-weight: lighter;
+  font-size: 25px;
+  line-height: 34px;
   color: #000;
 }
+p.lead {
+  font-family: OpenSans;
+  font-weight: lighter;
+  font-size: 38px;
+  line-height: 52px;
+}
+p.small {
+  font-family: OpenSans;
+  font-weight: lighter;
+  font-size: 18px;
+  line-height: 25px;
+}
 a {
+  font-family: OpenSans;
+  font-weight: lighter;
+  font-size: 25px;
+  line-height: 34px;
   text-decoration: none;
+  color: #000;
 }
 a:hover {
   color: #41bfef;
 }
-section {
-  position: relative;
-  margin: auto !important;
-  padding-top: 100px !important;
-  padding-bottom: 100px !important;
-}
-section p {
+li {
   font-family: OpenSans;
   font-weight: lighter;
   font-size: 25px;
   line-height: 34px;
 }
-section h1 {
-  font-family: OpenSans;
-  font-weight: normal;
-  font-size: 38px;
-  line-height: 52px;
-  margin: 50px 0;
-}
-section h1 span {
-  color: #41bfef;
+section {
+  position: relative;
+  margin: auto !important;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .header {
   text-align: center;
-}
-.header p {
-  font-family: OpenSans;
-  font-weight: normal;
-  font-size: 38px;
-  line-height: 52px;
 }
 span.lead {
   border-bottom: 2px solid #fb0;
@@ -288,16 +354,18 @@ h2.project-title {
 }
 .navbar {
   padding: 30px 0;
-  font-family: BebasNeue;
-  font-weight: lighter;
-  font-size: 25px;
-  line-height: 29px;
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 10;
   background-color: #fff;
+}
+.navbar a {
+  font-family: BebasNeue;
+  font-weight: lighter;
+  font-size: 25px;
+  line-height: 29px;
 }
 .logo {
   height: 120px;
@@ -307,12 +375,14 @@ h2.project-title {
   color: #41bfef;
 }
 .footer {
+  padding: 30px 0;
+  margin-top: 13rem;
+}
+.footer a {
   font-family: BebasNeue;
   font-weight: bold;
   font-size: 25px;
   line-height: 29px;
-  padding: 30px 0;
-  margin-top: 13rem;
 }
 .read-more {
   font-family: OpenSans;
@@ -323,10 +393,8 @@ h2.project-title {
   margin-top: 60px;
 }
 #about-main {
-  padding-top: 15%;
-  padding-bottom: 5%;
   background-image: url("../resourses/About/header-image.png");
-  background-position: top right;
+  background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -385,35 +453,18 @@ h2.project-title {
   line-height: 52px;
   color: #41bfef;
 }
-.process-wrapper {
-  background-color: #41bfef;
-  padding: 300px 70px;
-}
 #contacts-main {
-  padding-top: 15%;
-  padding-bottom: 5%;
   background-image: url("../resourses/Contacts/header-image.png");
-  background-position: top right;
+  background-position: right;
   background-repeat: no-repeat;
-  background-size: 550px;
+  background-size: contain;
 }
 .contact-form {
   margin-top: 100px;
 }
 .write-label {
-  font-family: OpenSans;
-  font-weight: lighter;
-  font-size: 38px;
-  line-height: 52px;
   text-align: center;
   width: 100%;
-}
-.mail {
-  font-family: OpenSans;
-  font-weight: normal;
-  font-size: 38px;
-  line-height: 52px;
-  color: #000;
 }
 #writeus {
   background-image: url("../resourses/LogoBlack.png");
@@ -437,21 +488,17 @@ h2.project-title {
   line-height: 3;
 }
 #faq-main {
-  padding-top: 15%;
-  padding-bottom: 5%;
   background-image: url("../resourses/FAQ/header-image.png");
-  background-position: top right;
+  background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
 }
 .question {
-  font-family: OpenSans;
-  font-weight: lighter;
-  font-size: 38px;
-  line-height: 52px;
   margin: 100px 0 40px 0;
   text-align: center;
   border-radius: 10px;
+}
+.question h1 {
   color: #fff;
 }
 .question-wrapper:nth-child(odd) .question {
