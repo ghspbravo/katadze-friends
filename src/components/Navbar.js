@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
-import '../styles/Navbar.css'
-
 import logo from '../resourses/LogoBlackLabel.png'
 
 export default () => {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import '../styles/FAQ.css'
-
 export default class FAQ extends Component {
     render() {
         return (

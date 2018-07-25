@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import '../styles/About.css'
 import teamMember from '../resourses/About/team-member.png'
 import achieveIcon from '../resourses/LogoBlack.png'
 

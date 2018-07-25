@@ -5,7 +5,7 @@ import {
     Switch
 } from 'react-router-dom'
 
-import '../styles/App.css';
+import '../styles/Styles.css';
 import '../bootstrap-grid.min.css';
 import '../reset.css';
 

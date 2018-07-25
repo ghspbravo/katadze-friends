@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import '../styles/Contacts.css'
 import cityImage from '../resourses/Contacts/pass.png'
 
 export default class Contacts extends Component {
