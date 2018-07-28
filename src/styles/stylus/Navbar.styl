@@ -1,17 +1,38 @@
 .navbar 
     padding: 30px 0
-    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 10;
-    background-color: white;
     & a
         BebasH5Book()
 
+.navbar-light
+    position: sticky;
+    background-color: white;
+    & a  
+        color: black
+    & .logo
+        background-image url('../resourses/LogoBlackLabel.png')
+    & svg .burger-line
+        stroke: black
+
+.navbar-dark 
+    position: fixed;
+    background-color transparent
+    & a 
+        color: white
+    & .logo
+        background-image url('../resourses/LogoWhiteLabel.png')
+    & svg .burger-line
+        stroke: white
+
+
 .logo
     height 120px
-    width 80px
+    background-size: contain
+    background-position: center
+    background-repeat no-repeat
 
-.active-nav
+a.active-nav
     color: acsent

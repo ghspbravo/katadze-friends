@@ -102,9 +102,6 @@ export default class Menu extends Component {
                                         <rect id="base" x="0" y="0" width="100%" height="100%" mask="url(#mask1)" />
                                     </svg>
                                 </h2>
-                                <div className="project-description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, tempora.</p>
-                                </div>
                             </div>
                         </a>
                         <a id="events" href="#" className="project-card-wrapper">
@@ -122,12 +119,10 @@ export default class Menu extends Component {
                                         <rect id="base" x="0" y="0" width="100%" height="100%" mask="url(#mask2)" />
                                     </svg>
                                 </h2>
-                                <div className="project-description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, mollitia!</p>
-                                </div>
                             </div>
                         </a>
-                        <a id="partners" href="#" className="project-card-wrapper">
+                        {/* <a id="partners" href="#" className="project-card-wrapper"> */}
+                        <Link to="/partners" id="partners" className="project-card-wrapper">
                             <div className="project-card">
                                 <h2 className="project-title">
                                     <span>Партнеры</span>
@@ -142,11 +137,8 @@ export default class Menu extends Component {
                                         <rect id="base" x="0" y="0" width="100%" height="100%" mask="url(#mask3)" />
                                     </svg>
                                 </h2>
-                                <div className="project-description">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, placeat.</p>
-                                </div>
                             </div>
-                        </a>
+                        </Link>
                         {/* <a id="about" href="#" className="project-card-wrapper"> */}
                         <Link to="/about" id="about" className="project-card-wrapper">
                             <div className="project-card">
@@ -163,9 +155,6 @@ export default class Menu extends Component {
                                         <rect id="base" x="0" y="0" width="100%" height="100%" mask="url(#mask4)" />
                                     </svg>
                                 </h2>
-                                <div className="project-description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, quaerat.</p>
-                                </div>
                             </div>
                         </Link>
                     </div>
