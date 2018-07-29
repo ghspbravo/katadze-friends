@@ -16,9 +16,6 @@ export default class Events extends Component {
                 <section id="events-header" className="vh-50 col-12 text-center">
                     <h2>Мероприятия</h2>
                 </section>
-                <section className="container row justify-center">
-                    <button onClick={() => console.log(this.props)}><h1 className="upper underline"><span>Стать партнером</span></h1></button>
-                </section>
                 <section className="container">
                     {
                         this.props.events && this.props.events.results

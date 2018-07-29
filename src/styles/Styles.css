@@ -653,19 +653,21 @@ a.active-nav {
 section.eventSection:nth-child(even) {
   background-color: #e6edf1;
 }
-section.eventSection:nth-child(even) .section-id {
+section.idSection:nth-child(even) .section-id {
   transform: translateX(-30%);
 }
-section.eventSection:nth-child(odd) .section-id {
+section.idSection:nth-child(odd) .section-id {
+  right: 0;
   transform: translateX(10%);
 }
-section.eventSection .section-id {
+section.idSection .section-id {
   font-family: BebasNeue;
   font-weight: bold;
   font-size: 750px;
   line-height: 879px;
   position: absolute;
   color: #41bfef;
+  top: 10%;
 }
 .steps li {
   font-family: OpenSans;
@@ -684,7 +686,7 @@ section.eventSection .section-id {
   margin-right: 100px;
 }
 .tarif-selector button {
-  margin-top: 60px;
+  margin: 30px 0;
   background-color: #41bfef;
   border-radius: 25px 25px 0px 25px;
 }
@@ -693,4 +695,34 @@ section.eventSection .section-id {
 }
 .tarif-selector button p {
   color: #fff;
+}
+.tarif-description {
+  background-color: #fb0;
+  border-radius: 30px 30px 30px 30px;
+  padding: 10px 50px;
+}
+.tarif-description p {
+  font-family: OpenSans;
+  font-weight: lighter;
+  font-size: 18px;
+  line-height: 25px;
+  color: #fff;
+}
+.tarif-price {
+  border-radius: 25px 25px 25px 25px;
+  border: 2px #41bfef solid;
+  padding: 10px 40px;
+}
+.tarif-price p {
+  color: #41bfef;
+  text-transform: uppercase;
+}
+.tarif-button {
+  background-color: #41bfef;
+  border-radius: 25px 25px 25px 25px;
+  padding: 10px 40px;
+}
+.tarif-button p {
+  color: #fff;
+  text-transform: uppercase;
 }

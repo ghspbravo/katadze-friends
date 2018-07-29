@@ -6,15 +6,20 @@
 section.eventSection
     &:nth-child(even)
         background-color secondaryLight
+
+section.idSection
+    &:nth-child(even)
         & .section-id
             transform: translateX(-30%)
     &:nth-child(odd)
         & .section-id
+            right: 0
             transform: translateX(10%)
     & .section-id
         BebasH1()
         position: absolute
         color: acsent
+        top: 10%
 
 .steps
     & li
@@ -28,10 +33,32 @@ section.eventSection
 
 .tarif-selector
     & button
-        margin-top: 60px    
+        margin: 30px 0   
         background-color acsent
         border-radius: 25px 25px 0px 25px;
         &.active 
             background-color acsentAlt 
         & p  
             color: white
+.tarif-description
+    background-color acsentAlt
+    border-radius: 30px 30px 30px 30px;
+    padding: 10px 50px
+    & p  
+        OpenH4Light()
+        color: white
+.tarif-price
+    & p  
+        color: acsent
+        text-transform uppercase
+    border-radius: 25px 25px 25px 25px;
+    border: 2px acsent solid
+    padding: 10px 40px
+
+.tarif-button
+    & p  
+        color: white
+        text-transform uppercase
+    background-color acsent
+    border-radius: 25px 25px 25px 25px;
+    padding: 10px 40px

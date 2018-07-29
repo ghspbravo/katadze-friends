@@ -17,7 +17,7 @@ import Contacts from './Contacts';
 import FAQ from './FAQ';
 import PartnersContainer from '../containers/PartnersContainer';
 import EventsContainer from '../containers/EventsContainer'
-import EventInfo from './EventInfo'
+import InfoEventContainer from '../containers/InfoEventContainer';
 
 export default class Layout extends Component {
     render() {
@@ -35,7 +35,7 @@ export default class Layout extends Component {
                     <Route exact path='/' component={Menu} />
                     <Route exact path='/partners' component={PartnersContainer} />
                     <Route exact path='/events' component={EventsContainer} />
-                    <Route path='/events/:id' component={EventInfo} />
+                    <Route path='/events/:id' component={InfoEventContainer} />
 
                     <Route path='/about' component={About} />
                     <Route path='/contacts' component={Contacts} />

@@ -87,19 +87,19 @@ export default {
                         {
                             "id": 1,
                             "title": "Main Stage",
-                            "content": "AFROJACK, ALY&FILA, ALESSO, DVBBS, GOIMG DEEPER, KREWELLA, KSHMR, STEVE AOKI, TIESTO, VINI VICI, YELLOW CLAW",
+                            "content": "AFROJACK ALY&FILA ALESSO DVBBS GOIMG DEEPER KREWELLA KSHMR STEVE AOKI TIESTO VINI VICI YELLOW CLAW",
                             "order_num": 0
                         },
                         {
                             "id": 2,
                             "title": "Bass Stage",
-                            "content": "FLUX PAVILION, FONAREV, HEADHUNTERZ, MODESTEP, NOISECONTROLLERS, RUDIMENTAL DJ SET, SLANDER, SLUSHII, STROGONOV, SUBFOCUS, ДЕЛЬФИН",
+                            "content": "FLUX PAVILION FONAREV HEADHUNTERZ MODESTEP NOISECONTROLLERS RUDIMENTAL DJ SET SLANDER SLUSHII STROGONOV SUBFOCUS ДЕЛЬФИН",
                             "order_num": 0
                         },
                         {
                             "id": 3,
                             "title": "Miller Future Music",
-                            "content": "ATOM, BEN KLOCK, BOYZ NOIZE, JAN BLOMQVIST",
+                            "content": "ATOM BEN KLOCK BOYZ NOIZE JAN BLOMQVIST",
                             "order_num": 0
                         }
                     ]

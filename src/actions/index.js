@@ -5,9 +5,18 @@ export const fetchPartnersCategories = partnersCategories => ({
 
 export const fetchEvents = events => ({
     type: 'FETCH_EVENTS',
-    items: events
+    events: events
 })
 
+export const fetchEvent = event => ({
+    type: 'FETCH_EVENT',
+    event: event
+})
+
+export const changeTariff = id => ({
+    type: 'TARIFF_CHANGE',
+    tariffId: id
+})
 
 // export default function fetchPartners() {
 //     return dispatch => {
