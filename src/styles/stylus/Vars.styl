@@ -177,17 +177,48 @@ BebasH5()
 	color: secondary
 }
 
-.section-light-bg
+.light-bg
     background-color secondaryLight
+
+.acsent-alt-bg 
+	background-color acsentAlt
 
 .d-input
     width: 45%
+
+.row-box-3>div
+	margin-right: 1px
 
 .acsent-box
 	padding: 100px 50px
 	background-color acsent
 	& li
 		color: white
+
+.acsent-box-small
+	padding: 50px 30px
+	background-color acsent
+	& h1 
+		text-transform uppercase
+	& li, h1
+		color: white
+
+.list-card
+	margin-top: 100px
+	margin-bottom: 100px
+
+.list-card-pic
+    height 300px
+
+button.more-button
+    OpenH4()
+    border-bottom: 2px solid acsentAlt;
+    padding: 10px 0;
+    text-transform: uppercase;
+    margin-top: 50px;
+
+.list-card:nth-child(odd) button.more-button
+    border-bottom-color: acsent
 
 .todo-list
     counter-reset: item;
@@ -212,3 +243,15 @@ BebasH5()
 	background-color #00FFA3
 .todo-list > li:nth-child(4):before
 	background-color #41BFEF
+
+.one-page
+	height 100vh
+	display flex
+	align-items: center
+
+.v-offset-small
+	margin-top: 30px
+.v-offset-mid
+	margin-top 100px
+.v-offset-large
+	margin-top: 200px

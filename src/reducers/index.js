@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import PartnersReducer from './PartnersReducer'
+import partnersCategories from './PartnersReducer'
+import events from './EventsReducer'
 
-const mainReducer = combineReducers({
+const rootReducer = combineReducers({
     router: routerReducer,
-    partners: PartnersReducer
+    partnersCategories,
+    events
 })
 
-export default mainReducer
+export default rootReducer

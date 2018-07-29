@@ -12,6 +12,8 @@ h1
     &.lead
         OpenH1ExtraBold()
         color: #464646
+    &.super
+        BebasH2()
 span 
     color: acsent
 
@@ -31,6 +33,9 @@ a
 li  
     OpenH1LightAlt()
 
+img 
+    width 100%
+
 section 
     position relative
     margin auto !important
@@ -39,6 +44,11 @@ section
 
 .header 
     text-align center
+    background-size: cover
+    background-position-y: center
+    & h2 
+        color: white
+        text-shadow: -1px -1px 0 secondaryDark, 1px -1px 0 secondaryDark, -1px 1px 0 secondaryDark, 1px 1px 0 secondaryDark;
 
 span.lead 
     border-bottom: 2px solid acsentAlt;

@@ -1,0 +1,37 @@
+#events-header
+    background-image url('../resourses/Events/header-image.jpg')
+    & h2
+        color: white
+
+section.eventSection
+    &:nth-child(even)
+        background-color secondaryLight
+        & .section-id
+            transform: translateX(-30%)
+    &:nth-child(odd)
+        & .section-id
+            transform: translateX(10%)
+    & .section-id
+        BebasH1()
+        position: absolute
+        color: acsent
+
+.steps
+    & li
+        OpenH1()
+        color: acsentAlt
+        text-transform uppercase
+    & span 
+        BebasH3()
+        color: acsentAlt 
+        margin-right: 100px
+
+.tarif-selector
+    & button
+        margin-top: 60px    
+        background-color acsent
+        border-radius: 25px 25px 0px 25px;
+        &.active 
+            background-color acsentAlt 
+        & p  
+            color: white

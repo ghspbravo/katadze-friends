@@ -73,11 +73,17 @@
 .secondary {
   color: #c4c4c4;
 }
-.section-light-bg {
+.light-bg {
   background-color: #e6edf1;
+}
+.acsent-alt-bg {
+  background-color: #fb0;
 }
 .d-input {
   width: 45%;
+}
+.row-box-3>div {
+  margin-right: 1px;
 }
 .acsent-box {
   padding: 100px 50px;
@@ -85,6 +91,37 @@
 }
 .acsent-box li {
   color: #fff;
+}
+.acsent-box-small {
+  padding: 50px 30px;
+  background-color: #41bfef;
+}
+.acsent-box-small h1 {
+  text-transform: uppercase;
+}
+.acsent-box-small li,
+.acsent-box-small h1 {
+  color: #fff;
+}
+.list-card {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.list-card-pic {
+  height: 300px;
+}
+button.more-button {
+  font-family: OpenSans;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  border-bottom: 2px solid #fb0;
+  padding: 10px 0;
+  text-transform: uppercase;
+  margin-top: 50px;
+}
+.list-card:nth-child(odd) button.more-button {
+  border-bottom-color: #41bfef;
 }
 .todo-list {
   counter-reset: item;
@@ -115,6 +152,20 @@
 .todo-list > li:nth-child(4):before {
   background-color: #41bfef;
 }
+.one-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.v-offset-small {
+  margin-top: 30px;
+}
+.v-offset-mid {
+  margin-top: 100px;
+}
+.v-offset-large {
+  margin-top: 200px;
+}
 body {
   overflow-x: hidden;
 }
@@ -138,6 +189,12 @@ h1.lead {
   font-size: 45px;
   line-height: 61px;
   color: #464646;
+}
+h1.super {
+  font-family: BebasNeue;
+  font-weight: bold;
+  font-size: 288px;
+  line-height: 338px;
 }
 span {
   color: #41bfef;
@@ -178,6 +235,9 @@ li {
   font-size: 25px;
   line-height: 34px;
 }
+img {
+  width: 100%;
+}
 section {
   position: relative;
   margin: auto !important;
@@ -186,6 +246,12 @@ section {
 }
 .header {
   text-align: center;
+  background-size: cover;
+  background-position-y: center;
+}
+.header h2 {
+  color: #fff;
+  text-shadow: -1px -1px 0 #9b9b9b, 1px -1px 0 #9b9b9b, -1px 1px 0 #9b9b9b, 1px 1px 0 #9b9b9b;
 }
 span.lead {
   border-bottom: 2px solid #fb0;
@@ -400,13 +466,13 @@ h2.project-title {
   background-color: transparent;
 }
 .navbar-dark a {
-  color: #fff;
+  color: #000;
 }
 .navbar-dark .logo {
-  background-image: url("../resourses/LogoWhiteLabel.png");
+  background-image: url("../resourses/LogoBlackLabel.png");
 }
 .navbar-dark svg .burger-line {
-  stroke: #fff;
+  stroke: #000;
 }
 .logo {
   height: 120px;
@@ -562,35 +628,69 @@ a.active-nav {
 #partners-header h2 {
   color: #fff;
 }
-.category-name {
-  text-align: center;
-  margin-bottom: 100px;
-}
 .category-name p {
   text-transform: uppercase;
 }
 .category-name :after {
   content: ' ';
+  display: inline-block;
+  border: #9b9b9b 1px solid;
+  border-style: inset;
+  margin-left: 20px;
+  width: 100%;
+  position: absolute;
+  top: 45%;
 }
 .category-delimiter hr {
   border-color: #9b9b9b;
 }
-.tags {
-  margin-top: 30px;
+#events-header {
+  background-image: url("../resourses/Events/header-image.jpg");
 }
-.project-pic {
-  width: 100%;
+#events-header h2 {
+  color: #fff;
 }
-button.more-button {
+section.eventSection:nth-child(even) {
+  background-color: #e6edf1;
+}
+section.eventSection:nth-child(even) .section-id {
+  transform: translateX(-30%);
+}
+section.eventSection:nth-child(odd) .section-id {
+  transform: translateX(10%);
+}
+section.eventSection .section-id {
+  font-family: BebasNeue;
+  font-weight: bold;
+  font-size: 750px;
+  line-height: 879px;
+  position: absolute;
+  color: #41bfef;
+}
+.steps li {
   font-family: OpenSans;
   font-weight: normal;
-  font-size: 18px;
-  line-height: 25px;
-  border-bottom: 2px solid #fb0;
-  padding: 10px 0;
+  font-size: 38px;
+  line-height: 52px;
+  color: #fb0;
   text-transform: uppercase;
-  margin-top: 50px;
 }
-.list-card:nth-child(even) button.more-button {
-  border-bottom-color: #41bfef;
+.steps span {
+  font-family: BebasNeue;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  color: #fb0;
+  margin-right: 100px;
+}
+.tarif-selector button {
+  margin-top: 60px;
+  background-color: #41bfef;
+  border-radius: 25px 25px 0px 25px;
+}
+.tarif-selector button.active {
+  background-color: #fb0;
+}
+.tarif-selector button p {
+  color: #fff;
 }

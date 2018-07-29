@@ -6,7 +6,6 @@ const App = ({ store }) => (
 	<Provider store={store}>
 		<Layout />
 	</Provider>
-
 );
 
 export default App;

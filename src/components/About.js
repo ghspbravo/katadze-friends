@@ -86,28 +86,36 @@ export default class About extends Component {
                     <div className="row">
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
-                                <img src={teamMember} alt="member" />
+                                <div className="col-lg-8">
+                                    <img src={teamMember} alt="member" />
+                                </div>
                             </div>
                             <div className="member-name">Имя Фамилия</div>
                             <div className="member-status">должность, название</div>
                         </div>
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
-                                <img src={teamMember} alt="member" />
+                                <div className="col-lg-8">
+                                    <img src={teamMember} alt="member" />
+                                </div>
                             </div>
                             <div className="member-name">Имя Фамилия</div>
                             <div className="member-status">должность, название</div>
                         </div>
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
-                                <img src={teamMember} alt="member" />
+                                <div className="col-lg-8">
+                                    <img src={teamMember} alt="member" />
+                                </div>
                             </div>
                             <div className="member-name">Имя Фамилия</div>
                             <div className="member-status">должность, название</div>
                         </div>
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
-                                <img src={teamMember} alt="member" />
+                                <div className="col-lg-8">
+                                    <img src={teamMember} alt="member" />
+                                </div>
                             </div>
                             <div className="member-name">Имя Фамилия</div>
                             <div className="member-status">должность, название</div>

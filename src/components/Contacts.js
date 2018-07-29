@@ -21,7 +21,7 @@ export default class Contacts extends Component {
                         </div>
                     </div>
                 </section>
-                <section id="writeus" className="section-light-bg">
+                <section id="writeus" className="light-bg">
                     <div className="row justify-center align-center vh-50">
                         <p className="secondary lead col-12 text-center">Напишите нам</p>
                         <h1 className="col-12 text-center">info@katadze.com</h1>

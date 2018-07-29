@@ -1,23 +1,8 @@
-{
+export default {
     "count": 3,
     "next": null,
     "previous": null,
     "results": [
-        {
-            "id": 1,
-            "name": "category test",
-            "partners": [
-                {
-                    "id": 1,
-                    "category": 1,
-                    "title": "partner test",
-                    "description": "",
-                    "img": "http://188.93.210.198:8000/media/media/upload/partner_img/catpix.png",
-                    "tags": "comma,separated,values",
-                    "content": "<p>partner&nbsp;full desc test</p>"
-                }
-            ]
-        },
         {
             "id": 2,
             "name": "Развлечения",

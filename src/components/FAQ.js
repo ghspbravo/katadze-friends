@@ -10,7 +10,7 @@ export default class FAQ extends Component {
                         <h1><span>И не только</span></h1>
                     </div>
                 </section>
-                <section className="section-light-bg">
+                <section className="light-bg">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6 question-wrapper">

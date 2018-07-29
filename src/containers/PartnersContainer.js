@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
 import Partners from '../components/Partners'
-import fetchPartners from '../actions/PartnersAction'
+import { fetchPartnersCategories } from '../actions/index'
+
+// import fetchPartners from '../actions/PartnersAction'
 
 // const mapStateToProps = state => ({
 //     partners: state.partners.items,
@@ -9,9 +11,11 @@ import fetchPartners from '../actions/PartnersAction'
 // });
 
 const mapStateToProps = state => ({
-    partners: state.partners.items,
-    loading: state.partners.loading,
-    error: state.partners.error
+    partners: state.partnersCategories,
+});
+
+const mapDispatchToProps = dispatch => ({
+    fetchPartnersCategories: partnersCategoriesApi => dispatch(fetchPartnersCategories(partnersCategoriesApi))
 })
 
-export default connect(mapStateToProps, fetchPartners)(Partners)
+export default connect(mapStateToProps, mapDispatchToProps)(Partners)

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { connect } from "react-redux";
-import fetchPartners from "../actions/PartnersAction";
+import partnersCategories from '../fakeServer/PartnersCategories'
+
 
 export default class Partners extends Component {
 
     componentDidMount() {
-        // this.props.dispatch(fetchPartners());
-        console.log(this.props)
+        this.props.fetchPartnersCategories(partnersCategories)
     }
 
     render() {
@@ -17,35 +16,37 @@ export default class Partners extends Component {
                     <h2>Партнеры</h2>
                 </section>
                 <section className="container row justify-center">
-                    <button><h1 className="upper underline"><span>Стать партнером</span></h1></button>
+                    <button onClick={() => console.log(this.props.partners)}><h1 className="upper underline"><span>Стать партнером</span></h1></button>
                 </section>
-                <section className="container">
-                    <div className="row">
-                        <div className="category-name col-lg-2">
-                            <p className="small">{this.props.partners.count}</p>
-                        </div>
-                        <div className="col-lg-10 category-delimiter"><hr /></div>
-                    </div>
-                    <div className="row list-card">
-                        <div className="col-lg-6">
-                            <h1>Название проекта</h1>
-                            <p className="secondary">Sed ut perspiciatis, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias.</p>
-                            <p className="secondary small tags">тэги, тэги, тэги</p>
-                            <button className="more-button">Подробнее</button>
-                        </div>
-                        <div className="col-lg-6 justify-center align-center">
-                            <img className="project-pic" src="" alt="project-pic" />
-                        </div>
-                    </div>
-                </section>
+                {
+                    this.props.partners && this.props.partners.results
+                        ? this.props.partners.results.map(category =>
+                            <section key={category.id} className="container">
+                                <div className="row">
+                                    <div className="category-name col-12">
+                                        <p className="small">{category.name}</p>
+                                    </div>
+                                </div>
+                                {
+                                    category.partners.map(partner =>
+                                        <div key={partner.id} className="row list-card">
+                                            <div className="col-lg-6">
+                                                <h1>{partner.title}</h1>
+                                                <p className="secondary">{partner.description}</p>
+                                                <p className="secondary small v-offset-small">{partner.tags}</p>
+                                                <button className="more-button">Подробнее</button>
+                                            </div>
+                                            <div className="col-lg-6 justify-center align-center">
+                                                <img className="list-card-pic" src={partner.img} alt="project-pic" />
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            </section>
+                        )
+                        : <h1>Loading, please wait...</h1>
+                }
             </div>
         )
     }
 }
-// const mapStateToProps = state => ({
-//     partners: state.partners.items,
-//     loading: state.partners.loading,
-//     error: state.partners.error
-// });
-
-// export default connect(mapStateToProps)(Partners);
