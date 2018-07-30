@@ -11,11 +11,11 @@ export default class Contacts extends Component {
                         <h1 className="lead">У тебя остался вопрос?</h1>
                         <h1><span>Свяжись с нами</span></h1>
                         <div className="col-lg-12 contact-form">
-                            <form className="justify-space-between" action="">
-                                <input type="text" placeholder="Меня интересует" name="theme" id="theme" />
-                                <input className="d-input" type="text" placeholder="Имя" name="name" id="name" />
-                                <input className="d-input" type="email" placeholder="Электронная почта" name="email" id="email" />
-                                <input type="text" placeholder="Ваш вопрос (желательно)" name="question" id="question" />
+                            <form className="justify-space-between row" action="">
+                                <input className="col-12" type="text" placeholder="Меня интересует" name="theme" id="theme" />
+                                <input className="col-12 col-lg-5" type="text" placeholder="Имя" name="name" id="name" />
+                                <input className="col-12 offset-lg-1 col-lg-6" type="email" placeholder="Электронная почта" name="email" id="email" />
+                                <input className="col-12" type="text" placeholder="Ваш вопрос (желательно)" name="question" id="question" />
                                 <button type="submit">Отправить</button>
                             </form>
                         </div>

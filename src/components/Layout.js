@@ -20,16 +20,17 @@ import EventsContainer from '../containers/EventsContainer'
 import InfoEventContainer from '../containers/InfoEventContainer';
 
 export default class Layout extends Component {
+
     render() {
         return (
             <Router>
                 <div className="app-container">
                     <Switch>
                         <Route exact path="/" render={() => true} />
-                        <Route path="/partners" render={() => Navbar('dark')} />
-                        <Route path="/events" render={() => Navbar('dark')} />
+                        <Route path="/partners" render={() => <Navbar type='dark' />} />
+                        <Route path="/events" render={() => <Navbar type='dark' />} />
 
-                        <Route render={() => Navbar('light')} />
+                        <Route render={() => <Navbar type='light' />} />
                     </Switch>
 
                     <Route exact path='/' component={Menu} />
