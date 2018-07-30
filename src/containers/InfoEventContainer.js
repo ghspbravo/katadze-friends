@@ -3,7 +3,7 @@ import { fetchEvent, changeTariff } from '../actions/index'
 import EventInfo from '../components/EventInfo';
 
 const mapStateToProps = state => ({
-    eventInfo: state.events,
+    eventInfo: state.eventsReducer,
 });
 
 const mapDispatchToProps = dispatch => ({

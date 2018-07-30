@@ -116,7 +116,7 @@ export default class EventInfo extends Component {
                                                 `${this.props.eventInfo.tariffs[this.props.eventInfo.tariffId].price} рублей`
                                             }
                                         </p></div>
-                                        <button className="offset-lg-4 col-lg-4 tarif-button"><p className="small">
+                                        <button onClick={() => console.log(this.props)} className="offset-lg-4 col-lg-4 tarif-button"><p className="small">
                                             Поехали!
                                     </p></button>
                                     </div>

@@ -1,8 +1,13 @@
 import { connect } from 'react-redux'
 import Navbar from '../components/Navbar'
+import { changeNavType } from '../actions/index'
 
 const mapStateToProps = state => ({
-    ...state
+    navState: state.navReducer.navType
 });
 
-export default connect(mapStateToProps)(Navbar)
+const mapDispatchToProps = dispatch => ({
+    changeNavType: navType => dispatch(changeNavType(navType))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

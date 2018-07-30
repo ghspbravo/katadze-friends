@@ -18,6 +18,18 @@ export const changeTariff = id => ({
     tariffId: id
 })
 
+export const changeNavType = navType => ({
+    type: 'NAVTYPE_CHANGE',
+    navType: navType
+})
+
+export const NavbarTypes = {
+    BG_LARGE: 'bg-large',
+    BG_SMALL: 'bg-small',
+    TRANSPARENT_WHITE_LARGE: 'white-large',
+    TRANSPARENT_BLACK_LARGE: 'black-large',
+}
+
 // export default function fetchPartners() {
 //     return dispatch => {
 //         dispatch(fetchPartnersBegin());

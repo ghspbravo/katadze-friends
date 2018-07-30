@@ -438,6 +438,7 @@ h2.project-title {
   left: 0;
   width: 100%;
   z-index: 10;
+  transition: 0.5s all;
 }
 .navbar a {
   font-family: BebasNeue;
@@ -445,34 +446,62 @@ h2.project-title {
   font-size: 25px;
   line-height: 29px;
 }
-.navbar-light {
+.navbar-bg-large {
   position: sticky;
   background-color: #fff;
 }
-.navbar-light a {
+.navbar-bg-large a {
   color: #000;
 }
-.navbar-light .logo {
+.navbar-bg-large .logo {
+  height: 120px;
   background-image: url("../resourses/LogoBlackLabel.png");
 }
-.navbar-light svg .burger-line {
+.navbar-bg-large svg .burger-line {
   stroke: #000;
 }
-.navbar-dark {
+.navbar-bg-small {
+  position: fixed;
+  background-color: #fff;
+}
+.navbar-bg-small a {
+  color: #000;
+}
+.navbar-bg-small .logo {
+  height: 40px;
+  background-image: url("../resourses/LabelBlack.png");
+}
+.navbar-bg-small svg .burger-line {
+  stroke: #000;
+}
+.navbar-black-large {
   position: fixed;
   background-color: transparent;
 }
-.navbar-dark a {
+.navbar-black-large a {
   color: #000;
 }
-.navbar-dark .logo {
+.navbar-black-large .logo {
   background-image: url("../resourses/LogoBlackLabel.png");
 }
-.navbar-dark svg .burger-line {
+.navbar-black-large svg .burger-line {
   stroke: #000;
 }
-.logo {
+.navbar-white-large {
+  position: fixed;
+  background-color: transparent;
+}
+.navbar-white-large a {
+  color: #fff;
+}
+.navbar-white-large .logo {
   height: 120px;
+  background-image: url("../resourses/LogoWhiteLabel.png");
+}
+.navbar-white-large svg .burger-line {
+  stroke: #fff;
+}
+.logo {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

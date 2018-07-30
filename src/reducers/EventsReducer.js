@@ -1,4 +1,4 @@
-const events = (state = {tariffId: 0}, action) => {
+const eventsReducer = (state = {tariffId: 0}, action) => {
     switch (action.type) {
 
         case 'FETCH_EVENTS':
@@ -25,4 +25,4 @@ const events = (state = {tariffId: 0}, action) => {
     }
 }
 
-export default events
+export default eventsReducer

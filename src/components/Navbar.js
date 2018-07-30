@@ -1,11 +1,35 @@
 import React, { Component } from 'react'
 import { Switch, Route, Link, NavLink } from 'react-router-dom'
 
+import { NavbarTypes } from '../actions/index'
+
 
 export default class Navbar extends Component {
+
+    selectNav = location => {
+        switch (location.split('/')[1]) {
+            case "partners":
+            case "events":
+                this.props.changeNavType(NavbarTypes.TRANSPARENT_WHITE_LARGE)
+                break
+
+            default:
+                this.props.changeNavType(NavbarTypes.BG_LARGE)
+                break;
+        }
+    }
+
+    componentDidMount() {
+        this.selectNav(this.props.location.pathname)
+        window.onwheel = e => {
+            if (window.pageYOffset / window.innerHeight > 0.5) {if (this.props.navState !== NavbarTypes.BG_SMALL) this.props.changeNavType(NavbarTypes.BG_SMALL)}
+            else if (this.props.navState === NavbarTypes.BG_SMALL) this.selectNav(this.props.location.pathname)    
+        }
+    }
+
     render() {
         return (
-            <div className={`navbar navbar-${this.props.type}`}>
+            <div className={`navbar navbar-${this.props.navState}`}>
                 <div className="row align-center">
                     <Link to="/" className="offset-lg-1 col-lg-1 logo" />
                     <div className="col-lg-8">
@@ -41,13 +65,13 @@ export default class Navbar extends Component {
                         </ul>
                     </div>
                     <div className="col-lg-1 row justify-space-around">
-                        <Link to="/">
+                        <button onClick={() => console.log(this.props)} to="/">
                             <svg width="30" height="30">
                                 <line className="burger-line" x1="0" y1="5" x2="30" y2="5" style={{ strokeWidth: 1 }} />
                                 <line className="burger-line" x1="0" y1="15" x2="30" y2="15" style={{ strokeWidth: 1 }} />
                                 <line className="burger-line" x1="0" y1="25" x2="30" y2="25" style={{ strokeWidth: 1 }} />
                             </svg>
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>

@@ -4,20 +4,33 @@
     left: 0;
     width: 100%;
     z-index: 10;
+    transition: 0.5s all
     & a
         BebasH5Book()
 
-.navbar-light
+.navbar-bg-large
     position: sticky;
     background-color: white;
     & a  
         color: black
     & .logo
+        height 120px
         background-image url('../resourses/LogoBlackLabel.png')
     & svg .burger-line
         stroke: black
 
-.navbar-dark 
+.navbar-bg-small
+    position: fixed;
+    background-color: white;
+    & a  
+        color: black
+    & .logo
+        height 40px
+        background-image url('../resourses/LabelBlack.png')
+    & svg .burger-line
+        stroke: black
+
+.navbar-black-large 
     position: fixed;
     background-color transparent
     & a 
@@ -26,10 +39,19 @@
         background-image url('../resourses/LogoBlackLabel.png')
     & svg .burger-line
         stroke: black
+.navbar-white-large 
+    position: fixed;
+    background-color transparent
+    & a 
+        color: white
+    & .logo
+        height 120px
+        background-image url('../resourses/LogoWhiteLabel.png')
+    & svg .burger-line
+        stroke: white
 
 
 .logo
-    height 120px
     background-size: contain
     background-position: center
     background-repeat no-repeat

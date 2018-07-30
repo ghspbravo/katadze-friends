@@ -11,7 +11,7 @@ import { fetchPartnersCategories } from '../actions/index'
 // });
 
 const mapStateToProps = state => ({
-    partners: state.partnersCategories,
+    partners: state.partnersReducer,
 });
 
 const mapDispatchToProps = dispatch => ({

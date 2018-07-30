@@ -10,7 +10,7 @@
 //     // error: null
 //   };
 
-const partnersCategories = (state = {}, action) => {
+const partnersReducer = (state = {}, action) => {
     switch (action.type) {
         case 'FETCH_PARTNERS_CATEGORIES':
             console.log('FETCH_PARTNERS_CATEGORIES')
@@ -24,7 +24,7 @@ const partnersCategories = (state = {}, action) => {
     }
 }
 
-export default partnersCategories
+export default partnersReducer
 
 //   export default function productReducer(state = initialState, action) {
 //     switch(action.type) {

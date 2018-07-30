@@ -3,7 +3,7 @@ import { fetchEvents } from '../actions/index'
 import Events from '../components/Events';
 
 const mapStateToProps = state => ({
-    events: state.events,
+    events: state.eventsReducer,
 });
 
 const mapDispatchToProps = dispatch => ({
