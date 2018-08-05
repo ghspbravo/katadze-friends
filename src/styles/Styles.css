@@ -57,8 +57,8 @@
   align-items: center;
 }
 .vh-100 {
-  padding-top: 50vh;
-  padding-bottom: 50vh;
+  padding-top: 35vh;
+  padding-bottom: 35vh;
 }
 .vh-50 {
   padding-top: 25vh;
@@ -66,6 +66,9 @@
 }
 .upper {
   text-transform: uppercase;
+}
+.bold {
+  font-weight: bold;
 }
 .underline {
   border-bottom: #41bfef 1px solid;
@@ -125,6 +128,7 @@ button.more-button {
   list-style-type: none;
 }
 .todo-list > li:before {
+  color: #fff;
   content: counter(item);
   counter-increment: item;
   border-radius: 50%;
@@ -201,6 +205,7 @@ p {
   font-weight: lighter;
   font-size: 25px;
   line-height: 34px;
+  margin-bottom: 5px;
   color: #000;
 }
 p.lead {
@@ -241,6 +246,9 @@ section {
   padding-top: 100px;
   padding-bottom: 100px;
 }
+section[id$=header] {
+  box-shadow: inset 0 1500px 0 rgba(0,0,0,0.3);
+}
 .header {
   text-align: center;
   background-size: cover;
@@ -261,7 +269,7 @@ form input {
   font-size: 18px;
   line-height: 25px;
   width: 100%;
-  padding-top: 20px;
+  padding: 20px 0 0 0 !important;
   color: #9b9b9b;
   border: none;
   border-bottom: 1px solid #9b9b9b;
@@ -294,6 +302,18 @@ button {
   border: none;
   cursor: pointer;
   outline: none;
+}
+button.lead {
+  font-family: OpenSans;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  color: #fff;
+  background-color: #41bfef;
+  border-radius: 22.5px;
+  padding: 10px;
+  width: 100%;
+  margin: 30px 0;
 }
 .loader {
   position: absolute;
@@ -472,6 +492,20 @@ h2.project-title {
   background-image: url("../resourses/LabelBlack.png");
 }
 .navbar-bg-small svg .burger-line {
+  stroke: #000;
+}
+.navbar-bg-alt-small {
+  position: fixed;
+  background-color: #e8effc;
+}
+.navbar-bg-alt-small a {
+  color: #000;
+}
+.navbar-bg-alt-small .logo {
+  height: 40px;
+  background-image: url("../resourses/LabelBlack.png");
+}
+.navbar-bg-alt-small svg .burger-line {
   stroke: #000;
 }
 .navbar-black-large {
@@ -751,4 +785,43 @@ section.idSection .section-id {
 .tarif-button p {
   color: #fff;
   text-transform: uppercase;
+}
+#gids-header {
+  background-image: url("../resourses/Gids/header-image.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#gids-header h1,
+#gids-header p,
+#gids-header button {
+  color: #fff;
+}
+.searchBox > div {
+  padding: 0;
+}
+.searchBox input {
+  padding: 15px 10px;
+  width: 100%;
+  font-family: OpenSans;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+}
+.searchBox button {
+  padding: 15px 20px;
+  height: 100%;
+  background-color: #41bfef;
+}
+.gid-card {
+  background-color: #fff;
+  margin: 20px;
+}
+.gid-card div {
+  padding-left: 0;
+  padding-right: 0;
+}
+.gid-card .gid-description {
+  padding: 40px 0;
+  border-bottom: 1px #c4c4c4 solid;
+  border-top: 1px #c4c4c4 solid;
 }

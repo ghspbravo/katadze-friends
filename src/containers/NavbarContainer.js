@@ -3,7 +3,8 @@ import Navbar from '../components/Navbar'
 import { changeNavType } from '../actions/index'
 
 const mapStateToProps = state => ({
-    navState: state.navReducer.navType
+    navState: state.navReducer.navType,
+    appState: state
 });
 
 const mapDispatchToProps = dispatch => ({

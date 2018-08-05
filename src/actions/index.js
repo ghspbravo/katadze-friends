@@ -3,6 +3,11 @@ export const fetchPartnersCategories = partnersCategories => ({
     items: partnersCategories
 })
 
+export const fetchPartner = partner => ({
+    type: 'FETCH_PARTNER',
+    items: partner
+})
+
 export const fetchEvents = events => ({
     type: 'FETCH_EVENTS',
     events: events
@@ -13,11 +18,6 @@ export const fetchEvent = event => ({
     event: event
 })
 
-export const changeTariff = id => ({
-    type: 'TARIFF_CHANGE',
-    tariffId: id
-})
-
 export const changeNavType = navType => ({
     type: 'NAVTYPE_CHANGE',
     navType: navType
@@ -26,21 +26,7 @@ export const changeNavType = navType => ({
 export const NavbarTypes = {
     BG_LARGE: 'bg-large',
     BG_SMALL: 'bg-small',
+    BG_ALT_SMALL: 'bg-alt-small',
     TRANSPARENT_WHITE_LARGE: 'white-large',
     TRANSPARENT_BLACK_LARGE: 'black-large',
 }
-
-// export default function fetchPartners() {
-//     return dispatch => {
-//         dispatch(fetchPartnersBegin());
-//         return fetch("http://188.93.210.198:8000/api/partner_categories/?format=json")
-//             .then(handleErrors)
-//             .then(json => {
-//                 console.log('fetchResult:')
-//                 console.log(json)
-//                 dispatch(fetchPartnersSuccess(json));
-//                 return json;
-//             })
-//             .catch(error => dispatch(fetchPartnersFailure(error)));
-//     };
-// }

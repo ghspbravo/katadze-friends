@@ -6,16 +6,16 @@ export default () => {
             <div className="col-lg-6">
                 <ul className="row justify-space-around">
                     <li>
-                        <a href="#">Facebook</a>
+                        <a href="link" target="blank">Facebook</a>
                     </li>
                     <li>
-                        <a href="#">Vkontakte</a>
+                        <a href="link" target="blank">Vkontakte</a>
                     </li>
                     <li>
-                        <a href="#">Youtube</a>
+                        <a href="link" target="blank">Youtube</a>
                     </li>
                     <li>
-                        <a href="#">Telegram</a>
+                        <a href="link" target="blank">Telegram</a>
                     </li>
                 </ul>
             </div>

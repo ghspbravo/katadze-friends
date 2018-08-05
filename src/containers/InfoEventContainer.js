@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchEvent, changeTariff } from '../actions/index'
+import { fetchEvent } from '../actions/index'
 import EventInfo from '../components/EventInfo';
 
 const mapStateToProps = state => ({
@@ -8,7 +8,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchEvent: eventApi => dispatch(fetchEvent(eventApi)),
-    changeTariff: id => dispatch(changeTariff(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventInfo)

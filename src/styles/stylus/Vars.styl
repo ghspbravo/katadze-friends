@@ -157,8 +157,8 @@ BebasH5()
 }
 
 .vh-100 {
-  	padding-top: 50vh;
-  	padding-bottom: 50vh;
+  	padding-top: 35vh;
+  	padding-bottom: 35vh;
 }
 
 .vh-50 {
@@ -169,6 +169,9 @@ BebasH5()
 .upper {
 	text-transform uppercase
 }
+
+.bold
+	font-weight: bold
 
 .underline
 	border-bottom: acsent 1px solid
@@ -221,6 +224,7 @@ button.more-button
     counter-reset: item;
     list-style-type: none;
 .todo-list > li:before
+	color: white
 	content: counter(item);
 	counter-increment: item;
 	border-radius: 50%;

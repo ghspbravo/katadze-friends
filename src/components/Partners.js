@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import partnersCategories from '../fakeServer/PartnersCategories'
-
+import BecomePartner from './BecomePartner';
+import { Link } from 'react-router-dom'
 
 export default class Partners extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            becomePartner: false
+        }
+    }
+
 
     componentDidMount() {
         this.props.fetchPartnersCategories(partnersCategories)
@@ -16,7 +25,10 @@ export default class Partners extends Component {
                     <h2>Партнеры</h2>
                 </section>
                 <section className="container row justify-center">
-                    <button onClick={() => console.log(this.props.partners)}><h1 className="upper underline"><span>Стать партнером</span></h1></button>
+                    {this.state.becomePartner
+                        ? BecomePartner()
+                        : <button onClick={() => this.setState({becomePartner: true})}><h1 className="upper underline"><span>Стать партнером</span></h1></button>
+                    }
                 </section>
                 {
                     this.props.partners && this.props.partners.results
@@ -34,7 +46,7 @@ export default class Partners extends Component {
                                                 <h1>{partner.title}</h1>
                                                 <p className="secondary">{partner.description}</p>
                                                 <p className="secondary small v-offset-small">{partner.tags}</p>
-                                                <button className="more-button">Подробнее</button>
+                                                <button className="more-button"><Link to={`/partners/${partner.id}`}>Подробнее</Link></button>
                                             </div>
                                             <div className="col-lg-6 justify-center align-center">
                                                 <img className="list-card-pic" src={partner.img} alt="project-pic" />

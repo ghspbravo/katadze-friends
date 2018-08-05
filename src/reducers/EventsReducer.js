@@ -1,4 +1,4 @@
-const eventsReducer = (state = {tariffId: 0}, action) => {
+const eventsReducer = (state = {}, action) => {
     switch (action.type) {
 
         case 'FETCH_EVENTS':
@@ -12,12 +12,6 @@ const eventsReducer = (state = {tariffId: 0}, action) => {
             return {
                 ...state,
                 ...action.event,
-            }
-        case 'TARIFF_CHANGE':
-            console.log('TARIFF_CHANGE')
-            return {
-                ...state,
-                tariffId: action.tariffId - 1,
             }
 
         default:

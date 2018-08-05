@@ -4,6 +4,14 @@ import EventsList from '../fakeServer/EventsList';
 import LogoWhite from '../resourses/LogoWhite.png'
 
 export default class EventInfo extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            tariff: 0
+        }
+    }
+
 
     componentDidMount() {
         let eventId = this.props.match.params.id
@@ -72,7 +80,7 @@ export default class EventInfo extends Component {
                                             </div>
                                             <div className="offset-lg-2 col-lg-3 one-page justify-center acsent-alt-bg">
                                                 <div className="col-lg-10">
-                                                    <img src={LogoWhite} />
+                                                    <img src={LogoWhite} alt="logo" />
                                                 </div></div>
                                         </section>
                                     case 4:
@@ -87,7 +95,7 @@ export default class EventInfo extends Component {
                                         </section>
 
                                     default:
-                                        break;
+                                        return true
                                 }
                             })
                         }
@@ -99,21 +107,21 @@ export default class EventInfo extends Component {
                                 <div className="col-lg-3 text-center tarif-selector">
                                     {
                                         this.props.eventInfo.tariffs.map(tariff => <button
-                                            onClick={() => this.props.changeTariff(tariff.id)}
-                                            className={this.props.eventInfo.tariffId === tariff.id - 1 ? "col-12 active" : "col-12"}
+                                            onClick={() => this.setState({tariff: tariff.id - 1})}
+                                            className={this.state.tariff === tariff.id - 1 ? "col-12 active" : "col-12"}
                                             key={tariff.id}><p className="lead">{tariff.name}</p></button>)
                                     }
                                 </div>
                                 <div className="offset-lg-2 col-lg-7">
                                     <div className="col-12 tarif-description"><p>
                                         {
-                                            this.props.eventInfo.tariffs[this.props.eventInfo.tariffId].description
+                                            this.props.eventInfo.tariffs[this.state.tariff].description
                                         }
                                     </p></div>
                                     <div className="row v-offset-small">
                                         <div className="col-lg-4 tarif-price"><p className="small">
                                             {
-                                                `${this.props.eventInfo.tariffs[this.props.eventInfo.tariffId].price} рублей`
+                                                `${this.props.eventInfo.tariffs[this.state.tariff].price} рублей`
                                             }
                                         </p></div>
                                         <button onClick={() => console.log(this.props)} className="offset-lg-4 col-lg-4 tarif-button"><p className="small">

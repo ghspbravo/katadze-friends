@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Route,
     Switch
 } from 'react-router-dom'
@@ -18,6 +18,11 @@ import PartnersContainer from '../containers/PartnersContainer';
 import EventsContainer from '../containers/EventsContainer'
 import InfoEventContainer from '../containers/InfoEventContainer';
 import NavbarContainer from '../containers/NavbarContainer';
+import PartnerInfo from './PartnerInfo';
+import GidsContainer from '../containers/GidsContainer';
+import SearchGid from './SearchGid';
+import TourInfo from './TourInfo'
+import GidInfo from './GidInfo'
 
 export default class Layout extends Component {
 
@@ -30,10 +35,17 @@ export default class Layout extends Component {
                         <Route component={NavbarContainer} />
                     </Switch>
 
+                    <Route render={() => {window.scrollTo(0, 0); return true}} />
                     <Route exact path='/' component={Menu} />
                     <Route exact path='/partners' component={PartnersContainer} />
                     <Route exact path='/events' component={EventsContainer} />
+                    <Route exact path='/gids' component={GidsContainer} />
+
                     <Route path='/events/:id' component={InfoEventContainer} />
+                    <Route path='/partners/:id' component={PartnerInfo} />
+                    <Route path='/gids/search=:search' component={SearchGid} />
+                    <Route path='/gids/id=:search' component={GidInfo} />
+                    <Route path='/tours/:id' component={TourInfo} />
 
                     <Route path='/about' component={About} />
                     <Route path='/contacts' component={Contacts} />

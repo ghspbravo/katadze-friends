@@ -87,7 +87,8 @@ export default class Menu extends Component {
                         <div id="z4" className="z-logo">Z</div>
                     </div>
                     <div className="menu">
-                        <a id="gids" href="#" className="project-card-wrapper">
+                        {/* <a id="gids" href="#" className="project-card-wrapper"> */}
+                        <Link to="/gids" id="gids" className="project-card-wrapper">
                             <div className="project-card">
                                 <h2 className="project-title">
                                     <span>Гиды</span>
@@ -103,7 +104,7 @@ export default class Menu extends Component {
                                     </svg>
                                 </h2>
                             </div>
-                        </a>
+                        </Link>
                         {/* <a id="events" href="#" className="project-card-wrapper"> */}
                         <Link to="/events" id="events" className="project-card-wrapper">
                             <div className="project-card">
