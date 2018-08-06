@@ -50,7 +50,7 @@ export default class Navbar extends Component {
             }
             else if (this.props.navState === NavbarTypes.BG_SMALL
             && this.state.prevLocation.split('/')[1] !== "tours"
-            && this.state.prevLocation.split('/')[1] === "profile") this.selectNav(this.props.location.pathname)
+            && this.state.prevLocation.split('/')[1] !== "profile") this.selectNav(this.props.location.pathname)
         }
     }
 
@@ -70,6 +70,8 @@ export default class Navbar extends Component {
                                     <Route path="/partners" render={() => <NavLink to="/partners" activeClassName="active-nav">Партнеры</NavLink>} />
                                     <Route path="/events" render={() => <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>} />
                                     <Route path="/gids" render={() => <NavLink to="/gids" activeClassName="active-nav">Гиды</NavLink>} />
+                                    <Route path="/tours" render={() => <NavLink to="/gids" activeClassName="active-nav">Гиды</NavLink>} />
+
 
                                     <Route render={() => <NavLink to="/">Главная</NavLink>} />
                                 </Switch>

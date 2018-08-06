@@ -21,7 +21,7 @@ import NavbarContainer from '../containers/NavbarContainer';
 import PartnerInfo from './PartnerInfo';
 import GidsContainer from '../containers/GidsContainer';
 import SearchGid from './SearchGid';
-import TourInfo from './TourInfo'
+import TourContainer from '../containers/TourContainer'
 import GidInfo from './GidInfo'
 
 export default class Layout extends Component {
@@ -45,7 +45,7 @@ export default class Layout extends Component {
                     <Route path='/partners/:id' component={PartnerInfo} />
                     <Route path='/gids/search=:search' component={SearchGid} />
                     <Route path='/gids/id=:search' component={GidInfo} />
-                    <Route path='/tours/:id' component={TourInfo} />
+                    <Route path='/tours/:id' component={TourContainer} />
 
                     <Route path='/about' component={About} />
                     <Route path='/contacts' component={Contacts} />

@@ -167,6 +167,13 @@ button.more-button {
 .v-offset-large {
   margin-top: 200px;
 }
+.l-offset-small {
+  margin-left: 40px;
+}
+.sticky {
+  position: sticky;
+  top: 100px;
+}
 body {
   overflow-x: hidden;
 }
@@ -199,6 +206,13 @@ h1.super {
 }
 span {
   color: #41bfef;
+}
+span.small {
+  color: inherit;
+  font-size: 14px;
+}
+hr {
+  border-color: #000;
 }
 p {
   font-family: OpenSans;
@@ -238,7 +252,11 @@ li {
   line-height: 34px;
 }
 img {
-  width: 100%;
+  max-width: 100%;
+}
+div[class^=col-] .row {
+  margin-left: 0;
+  margin-right: 0;
 }
 section {
   position: relative;
@@ -314,6 +332,33 @@ button.lead {
   padding: 10px;
   width: 100%;
   margin: 30px 0;
+}
+.stars .star {
+  float: left;
+}
+.stars .star polygon {
+  fill: #d8d8d8;
+}
+.stars[data-stars] .star polygon {
+  fill: #ffd055;
+}
+.stars[data-stars="1"] .star:nth-child(1) ~ .star polygon {
+  fill: #d8d8d8;
+}
+.stars[data-stars="2"] .star:nth-child(2) ~ .star polygon {
+  fill: #d8d8d8;
+}
+.stars[data-stars="3"] .star:nth-child(3) ~ .star polygon {
+  fill: #d8d8d8;
+}
+.stars[data-stars="4"] .star:nth-child(4) ~ .star polygon {
+  fill: #d8d8d8;
+}
+.stars[data-stars="5"] .star:nth-child(5) ~ .star polygon {
+  fill: #d8d8d8;
+}
+.comment {
+  text-align: justify;
 }
 .loader {
   position: absolute;
@@ -792,6 +837,7 @@ section.idSection .section-id {
   background-size: cover;
 }
 #gids-header h1,
+#gids-header h2,
 #gids-header p,
 #gids-header button {
   color: #fff;
@@ -815,6 +861,7 @@ section.idSection .section-id {
 .gid-card {
   background-color: #fff;
   margin: 20px;
+  padding: 0;
 }
 .gid-card div {
   padding-left: 0;
@@ -824,4 +871,30 @@ section.idSection .section-id {
   padding: 40px 0;
   border-bottom: 1px #c4c4c4 solid;
   border-top: 1px #c4c4c4 solid;
+}
+.border-box {
+  border: 1px solid #000;
+  padding: 20px;
+}
+.border-box .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.data-box {
+  padding: 5px 15px;
+  border: 1px solid #000;
+}
+.reviews > div {
+  border-bottom: 1px #c4c4c4 solid;
+  padding: 40px 0;
+}
+.reviews > div:last-child {
+  border: none;
+}
+.profile-image-small {
+  width: 80px;
+  height: 80px;
+}
+.profile-image-small img {
+  border-radius: 50%;
 }

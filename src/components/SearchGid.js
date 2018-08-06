@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Stars from './Stars';
 
 export default class SearchGid extends Component {
     componentDidMount() {
@@ -40,9 +41,9 @@ export default class SearchGid extends Component {
                                                 <div className="col-5"><p className="small secondary">Отзывы</p>
                                                     <p className="small secondary">0</p>
                                                 </div>
-                                                <div className="col-7">
-                                                    <p className="small secondary">Рейтинг</p>
-                                                    <p className="small secondary">5</p>
+                                                <div className="col-7 row justify-center">
+                                                    <p className="small secondary col-12">Рейтинг</p>
+                                                    {Stars(5)}
                                                 </div>
                                             </div>
                                         </div>
