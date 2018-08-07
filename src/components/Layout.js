@@ -23,6 +23,7 @@ import GidsContainer from '../containers/GidsContainer';
 import SearchGid from './SearchGid';
 import TourContainer from '../containers/TourContainer'
 import GidInfo from './GidInfo'
+import Profile from './Profile';
 
 export default class Layout extends Component {
 
@@ -40,6 +41,7 @@ export default class Layout extends Component {
                     <Route exact path='/partners' component={PartnersContainer} />
                     <Route exact path='/events' component={EventsContainer} />
                     <Route exact path='/gids' component={GidsContainer} />
+                    <Route exact path='/profile' component={Profile} />
 
                     <Route path='/events/:id' component={InfoEventContainer} />
                     <Route path='/partners/:id' component={PartnerInfo} />

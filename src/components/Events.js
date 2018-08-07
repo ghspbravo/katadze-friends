@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export default class Events extends Component {
 
     componentDidMount() {
-        this.props.fetchEvents(eventsList)
+        this.props.fetchEvents('')
     }
 
     render() {
@@ -30,7 +30,9 @@ export default class Events extends Component {
                                     </div>
                                 </div>
                             )
-                            : <h1>Loading, please wait...</h1>
+                            : <button onClick={() => console.log(this.props)}><h1>
+                                Loading, please wait...
+                            </h1></button>
                     }
                 </section>
             </div>

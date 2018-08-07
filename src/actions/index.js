@@ -10,7 +10,7 @@ export const fetchPartner = partner => ({
 
 export const fetchEvents = events => ({
     type: 'FETCH_EVENTS',
-    events: events
+    events: fetch(events)
 })
 
 export const fetchEvent = event => ({

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Stars from './Stars';
+import {Link} from 'react-router-dom'
 
 export default class TourInfo extends Component {
 
@@ -16,12 +17,12 @@ export default class TourInfo extends Component {
                         <div className="col-md-7">
                             <div className="row">
                                 <h1 className="col-10">Название тура</h1>
-                                <div className="col-2">
+                                <Link to='/gids/id=1' className="col-2">
                                     <div className="profile-image-small">
                                         <img src="http://via.placeholder.com/80x80" alt="gidImage" />
                                     </div>
                                     <p className="text-center v-offset-small">Имя</p>
-                                </div>
+                                </Link>
                             </div>
                             <div className="border-box v-offset-small">
                                 <p className="bold">Описание тура</p>
@@ -48,7 +49,7 @@ export default class TourInfo extends Component {
                             <div className="v-offset-small">
                                 <img src="http://via.placeholder.com/700x400" alt="video" />
                             </div>
-                            <div className="tour-rating">
+                            <div className="tour-rating v-offset-small">
                                 <div className="row">
                                     <p className="bold">100 Отзывов</p>
                                     <div className="l-offset-small align-center">

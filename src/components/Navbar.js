@@ -24,14 +24,20 @@ export default class Navbar extends Component {
                 }
             case "gids":
                 if (typeof pathList[2] !== 'undefined') {
-                    this.props.changeNavType(NavbarTypes.BG_ALT_SMALL)
-                    break;
+                    if (pathList[2].match(/^search=/)) {
+                        this.props.changeNavType(NavbarTypes.BG_ALT_SMALL)
+                            break;
+                    }
+                    if (pathList[2].match(/^id=/)) {
+                        this.props.changeNavType(NavbarTypes.BG_SMALL)
+                            break;
+                    }
                 }
             case "events":
                 this.props.changeNavType(NavbarTypes.TRANSPARENT_WHITE_LARGE)
                 break
             case "tours":
-                this.props.changeNavType(NavbarTypes.BG_SMALL)                
+                this.props.changeNavType(NavbarTypes.BG_SMALL)
                 break;
 
             default:
@@ -49,8 +55,8 @@ export default class Navbar extends Component {
                     && this.props.navState !== NavbarTypes.BG_ALT_SMALL) this.props.changeNavType(NavbarTypes.BG_SMALL)
             }
             else if (this.props.navState === NavbarTypes.BG_SMALL
-            && this.state.prevLocation.split('/')[1] !== "tours"
-            && this.state.prevLocation.split('/')[1] !== "profile") this.selectNav(this.props.location.pathname)
+                && this.state.prevLocation.split('/')[1] !== "tours"
+                && this.state.prevLocation.split('/')[1] !== "profile") this.selectNav(this.props.location.pathname)
         }
     }
 
@@ -92,7 +98,7 @@ export default class Navbar extends Component {
                         </NavLink>
                             </li>
                             <li>
-                                <NavLink to="#" activeClassName="active-nav">
+                                <NavLink to="/profile" activeClassName="active-nav">
                                     Личный кабинет
                         </NavLink>
                             </li>
