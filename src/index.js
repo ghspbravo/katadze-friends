@@ -9,7 +9,16 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux'
 import RootReducer from './reducers/index'
 
-const store = createStore(RootReducer)
+import createHistory from 'history/createBrowserHistory'
+import { ConnectedRouter } from 'react-router-redux'
 
-ReactDOM.render(<App store={store} />, document.getElementById('root'));
+import configureStore from './store';
+
+
+const history = createHistory();
+
+const store = configureStore(history);
+// const store = createStore(RootReducer)
+
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import eventsList from '../fakeServer/EventsList'
 import { Link } from 'react-router-dom'
 
 
 export default class Events extends Component {
 
     componentDidMount() {
-        this.props.fetchEvents('')
+        this.props.fetchEventList()
     }
 
     render() {

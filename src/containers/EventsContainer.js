@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
-import { fetchEvents } from '../actions/index'
+import { list } from '../actions/event'
 import Events from '../components/Events';
 
 const mapStateToProps = state => ({
-    events: state.eventsReducer,
+    events: state.event,
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchEvents: eventsApi => dispatch(fetchEvents(eventsApi))
+    fetchEventList: page => dispatch(list(page))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Events)

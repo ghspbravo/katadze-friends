@@ -8,10 +8,10 @@ export const fetchPartner = partner => ({
     items: partner
 })
 
-export const fetchEvents = events => ({
-    type: 'FETCH_EVENTS',
-    events: fetch(events)
-})
+export const fetchEvents = eventList => ({
+        type: 'FETCH_EVENTS',
+        events: eventList
+    })
 
 export const fetchEvent = event => ({
     type: 'FETCH_EVENT',

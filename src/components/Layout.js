@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {
-    HashRouter as Router,
     Route,
     Switch
-} from 'react-router-dom'
+} from 'react-router'
 
 import '../bootstrap-grid.min.css';
 import '../reset.css';
@@ -24,41 +23,45 @@ import SearchGid from './SearchGid';
 import TourContainer from '../containers/TourContainer'
 import GidInfo from './GidInfo'
 import Profile from './Profile';
+import EventInfo from './EventInfo';
+import rest from '../containers/rest'
+import Login from './Login'
 
 export default class Layout extends Component {
 
     render() {
         return (
-            <Router>
-                <div className="app-container">
-                    <Switch>
-                        <Route exact path="/" render={() => true} />
-                        <Route component={NavbarContainer} />
-                    </Switch>
+            <div className="app-container">
+                <Switch>
+                    <Route exact path="/" render={() => true} />
+                    <Route component={NavbarContainer} />
+                </Switch>
+                <Route path='/POST' component={rest} />
 
-                    <Route render={() => {window.scrollTo(0, 0); return true}} />
-                    <Route exact path='/' component={Menu} />
-                    <Route exact path='/partners' component={PartnersContainer} />
-                    <Route exact path='/events' component={EventsContainer} />
-                    <Route exact path='/gids' component={GidsContainer} />
-                    <Route exact path='/profile' component={Profile} />
+                <Route render={() => { window.scrollTo(0, 0); return true }} />
+                <Route exact path='/' component={Menu} />
+                <Route exact path='/partners' component={PartnersContainer} />
+                <Route exact path='/events' component={EventsContainer} />
+                <Route exact path='/gids' component={GidsContainer} />
+                <Route exact path='/profile' component={Profile} />
+                <Route exact path='/login' component={Login} />
 
-                    <Route path='/events/:id' component={InfoEventContainer} />
-                    <Route path='/partners/:id' component={PartnerInfo} />
-                    <Route path='/gids/search=:search' component={SearchGid} />
-                    <Route path='/gids/id=:search' component={GidInfo} />
-                    <Route path='/tours/:id' component={TourContainer} />
+                <Route path='/events/:id' component={EventInfo} />
+                <Route path='/partners/:id' component={PartnerInfo} />
+                <Route path='/gids/search=:search' component={SearchGid} />
+                <Route path='/gids/id=:search' component={GidInfo} />
+                <Route path='/tours/:id' component={TourContainer} />
 
-                    <Route path='/about' component={About} />
-                    <Route path='/contacts' component={Contacts} />
-                    <Route path='/FAQ' component={FAQ} />
+                <Route path='/about' component={About} />
+                <Route path='/contacts' component={Contacts} />
+                <Route path='/FAQ' component={FAQ} />
 
-                    <Switch>
-                        <Route exact path="/" render={() => true} />
-                        <Route component={Footer} />
-                    </Switch>
-                </div>
-            </Router>
+
+                <Switch>
+                    <Route exact path="/" render={() => true} />
+                    <Route component={Footer} />
+                </Switch>
+            </div>
         );
     }
 }
