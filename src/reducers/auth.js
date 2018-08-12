@@ -52,12 +52,6 @@ export default (state = initialState, action) => {
     }
 }
 
-export function userId(state) {
-    if (state.access) {
-        return state.access.user_id
-    }
-}
-
 export function accessToken(state) {
     if (state.access) {
         return state.access.token

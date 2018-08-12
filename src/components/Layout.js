@@ -45,6 +45,8 @@ export default class Layout extends Component {
                 <Route exact path='/gids' component={GidsContainer} />
                 <Route exact path='/profile' component={Profile} />
                 <Route exact path='/login' component={Login} />
+                <Route exact path='/registration' component={Login} />
+                <Route exact path='/reset-password' component={Login} />
 
                 <Route path='/events/:id' component={EventInfo} />
                 <Route path='/partners/:id' component={PartnerInfo} />

@@ -5,23 +5,16 @@ import GidsList from '../fakeServer/GidsList'
 import Stars from './Stars';
 
 export default class Gids extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            search: ""
-        }
-    }
 
     handleSearch = () => {
-        this.state.search === ""
+        let searchString = document.querySelector('#searchGid').value
+        searchString === ""
             ? false
-            : this.props.history.push(`/gids/search=${this.state.search}`)
+            : this.props.history.push(`/gids/search=${searchString}`)
     }
 
     componentDidMount() {
         document.querySelector('#searchGid').onkeydown = e => {
-            this.setState({ search: document.querySelector('#searchGid').value })
             if (e.key === 'Enter') this.handleSearch()
         }
         document.querySelector('#searchButton').onclick = this.handleSearch

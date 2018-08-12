@@ -1,26 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { userId } from '../reducers/auth';
-
-
+import { isAuthenticated } from '../reducers'
+import { Redirect } from 'react-router'
 
 class Profile extends Component {
 	render() {
 		return (
-			<div>
-				<div className="container">
-					<h1>
-						Hello,user {this.props.userId}
+			this.props.isAuthenticated
+				? <div>
+					<div className="container">
+						<h1>
+							Hello,user
 					</h1>
+					</div>
 				</div>
-			</div>
+				: <Redirect to='/login' />
 		)
 	}
 }
 
 
 const mapStateToProps = (state) => ({
-	userId: userId(state)
+	isAuthenticated: isAuthenticated(state)
 });
 
 
