@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Switch, Route, Link, NavLink } from 'react-router-dom'
+import { Route } from 'react-router'
+import { Switch, Link, NavLink } from 'react-router-dom'
 
 import { NavbarTypes } from '../actions/index'
 
@@ -26,11 +27,11 @@ export default class Navbar extends Component {
                 if (typeof pathList[2] !== 'undefined') {
                     if (pathList[2].match(/^search=/)) {
                         this.props.changeNavType(NavbarTypes.BG_ALT_SMALL)
-                            break;
+                        break;
                     }
                     if (pathList[2].match(/^id=/)) {
                         this.props.changeNavType(NavbarTypes.BG_SMALL)
-                            break;
+                        break;
                     }
                 }
             case "events":

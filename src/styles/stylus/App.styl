@@ -56,6 +56,19 @@ section
     &[id$=header]
         box-shadow: inset 0 1500px 0 rgba(0,0,0,0.3)
 
+section.jumbotron 
+    padding: 0 10px
+    border: 1px solid secondaryDark
+    & > div:first-child
+        background-color: secondary;
+        margin: 0 -10px;
+        padding: 10px 20px;
+    & input
+        border: 1px solid secondary
+        padding: 10px !important
+        &::placeholder
+            color: black
+
 .header 
     text-align center
     background-size: cover

@@ -11,7 +11,6 @@ export default (state = initialState, action) => {
     console.log(action.type)
     switch (action.type) {
         case auth.LOGIN_SUCCESS:
-            console.log(auth.LOGIN_SUCCESS)
             return {
                 access: {
                     token: action.payload.access,
@@ -24,7 +23,6 @@ export default (state = initialState, action) => {
                 errors: {}
             }
         case auth.TOKEN_RECEIVED:
-            console.log(auth.TOKEN_RECEIVED)
             return {
                 ...state,
                 access: {
@@ -34,14 +32,12 @@ export default (state = initialState, action) => {
             }
         case auth.LOGIN_FAILURE:
         case auth.TOKEN_FAILURE:
-            console.log(auth.LOGIN_FAILURE)
             return {
                 access: undefined,
                 refresh: undefined,
                 errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
             }
         case auth.LOGOUT_SUCCESS:
-            console.log(auth.LOGOUT_SUCCESS)
             return {
                 access: undefined,
                 refresh: undefined,

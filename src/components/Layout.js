@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
     Route,
-    Switch
+    Switch,
+    Redirect
 } from 'react-router'
 
 import '../bootstrap-grid.min.css';
@@ -22,7 +23,7 @@ import GidsContainer from '../containers/GidsContainer';
 import SearchGid from './SearchGid';
 import TourContainer from '../containers/TourContainer'
 import GidInfo from './GidInfo'
-import Profile from './Profile';
+import Profile from '../containers/Profile';
 import EventInfo from './EventInfo';
 import rest from '../containers/rest'
 import Login from './Login'
@@ -43,11 +44,13 @@ export default class Layout extends Component {
                 <Route exact path='/partners' component={PartnersContainer} />
                 <Route exact path='/events' component={EventsContainer} />
                 <Route exact path='/gids' component={GidsContainer} />
-                <Route exact path='/profile' component={Profile} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/registration' component={Login} />
                 <Route exact path='/reset-password' component={Login} />
+                
+                <Route path='/api/user/activate/:userId/:userToken/' render={() => <Redirect to='/login' />} />
 
+                <Route path='/Profile' component={Profile} />
                 <Route path='/events/:id' component={EventInfo} />
                 <Route path='/partners/:id' component={PartnerInfo} />
                 <Route path='/gids/search=:search' component={SearchGid} />
