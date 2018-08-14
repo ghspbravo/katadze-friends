@@ -22,7 +22,7 @@ span.small
     font-size 14px
 
 hr   
-    border-color: black
+    border-color: secondary
 
 p
     OpenH1LightAlt()
@@ -44,13 +44,15 @@ li
 img 
     max-width 100%
 
-div[class^=col-] .row
+div[class^=col-] .row,
     margin-left: 0
     margin-right: 0
 
+object 
+    margin: 10px
+
 section 
     position relative
-    margin auto !important
     padding-top: 100px
     padding-bottom 100px 
     &[id$=header]
@@ -58,16 +60,29 @@ section
 
 section.jumbotron 
     padding: 0 10px
+    margin-bottom: 70px
     border: 1px solid secondaryDark
-    & > div:first-child
+    & div.row 
+        margin-left: 0
+        margin-right: 0
+    & > div.head
         background-color: secondary;
         margin: 0 -10px;
         padding: 10px 20px;
-    & input
+    & > div.content 
+        padding: 50px 0;
+        & > div
+            margin-top: 15px
+            margin-bottom 15px
+    & input, select, textarea
         border: 1px solid secondary
         padding: 10px !important
+        color: black
         &::placeholder
-            color: black
+            color: secondary
+    & button 
+        border-bottom: none 
+        margin-top 0
 
 .header 
     text-align center
@@ -82,7 +97,9 @@ span.lead
     padding-bottom: 10px
     color: black
 
-form input
+form input,
+form select,
+form textarea
     OpenH4Light()
     width: 100%;
     padding: 20px 0 0 0 !important
@@ -90,10 +107,21 @@ form input
     border: none;
     border-bottom: 1px solid secondaryDark;
     background-color: transparent;
-    margin: 10px 0;
+
+form > input
+    margin 10px 0
+
+form select
+    height 50px
+
+form textarea
+    resize: vertical
+    min-height: 50px !important
 
 form input:focus,
-form button:focus
+form button:focus,
+form select:focus,
+form textarea:focus
     outline: none;
 
 form input:focus::placeholder
@@ -115,15 +143,15 @@ button
     border: none;
     cursor: pointer;
     outline: none
-
-button.lead 
-    OpenH4()
-    color white
-    background-color acsent
-    border-radius: 22.5px
-    padding: 10px
-    width 100%
-    margin: 30px 0
+    &.lead
+        OpenH4()
+        color white
+        background-color acsent
+        border-bottom: none
+        border-radius: 22.5px
+        padding: 10px
+        width 100%
+        margin: 30px 0
 
 .stars .star {
   float: left;

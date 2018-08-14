@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import partnersReducer from './PartnersReducer'
 import event from './event'
-import navReducer from './navReducer'
-import gidsReducer from './GidsReducer'
-import tourReducer from './TourReducer'
+import partner from './partner'
+import navbar from './navbar'
 import auth, * as fromAuth from './auth.js'
 import registration, * as fromReg from './registration'
 import resetPassword, * as fromReset from './resetPassword'
@@ -13,11 +11,9 @@ import resetPassword, * as fromReset from './resetPassword'
 const rootReducer = combineReducers({
     router: routerReducer,
     auth,
-    partnersReducer,
+    partner,
     event,
-    navReducer,
-    gidsReducer,
-    tourReducer,
+    navbar,
     registration,
     resetPassword
 })

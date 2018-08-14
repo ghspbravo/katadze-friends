@@ -17,7 +17,7 @@ export default class About extends Component {
                         </div>
                     </div>
                 </section>
-                <section id="aboutus" className="row container">
+                <section id="aboutus" className="container">
                     <div className="row">
                         <div className="col-lg-6 align-center">
                             <h1 className="upper">
@@ -33,7 +33,7 @@ export default class About extends Component {
                         </div>
                     </div>
                 </section>
-                <section id="howitworks" className="row container">
+                <section id="howitworks" className="container">
                     <div className="row">
                         <div className="col-lg-7">
                             <div className="acsent-box">
@@ -82,7 +82,7 @@ export default class About extends Component {
                         </div>
                     </div>
                 </section>
-                <section id="team" className="row container">
+                <section id="team" className="container">
                     <div className="row">
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
@@ -122,9 +122,9 @@ export default class About extends Component {
                         </div>
                     </div>
                 </section>
-                <section id="social" className="row justify-center container">
+                <section id="social" className="container">
                     <div>
-                        <h1 className="secondary">
+                        <h1 className="secondary text-center">
                             <span className="lead">Хочу</span> пообщаться</h1>
                     </div>
                 </section>

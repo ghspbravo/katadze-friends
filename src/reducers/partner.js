@@ -1,13 +1,13 @@
-import * as event from '../actions/event'
+import * as partner from '../actions/partner'
 
 export default (state = {}, action) => {
     switch (action.type) {
 
-        case event.LIST_SUCCESS:
+        case partner.LIST_SUCCESS:
             return {
                 ...action.payload
             }
-        case event.EVENT_SUCCESS:
+        case partner.PARTNER_SUCCESS:
             return {
                 ...action.payload,
             }

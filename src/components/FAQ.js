@@ -64,9 +64,9 @@ export default class FAQ extends Component {
                         </div>
                     </div>
                 </section>
-                <section className="row justify-center container">
+                <section className="container">
                     <div>
-                        <h1 className="secondary">Не нашел <span className="lead">ответ</span></h1>
+                        <h1 className="secondary text-center">Не нашел <span className="lead">ответ</span></h1>
                     </div>
                 </section>
             </div>

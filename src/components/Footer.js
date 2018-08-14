@@ -2,7 +2,7 @@ import React from 'react'
 
 export default () => {
     return (
-        <div className="row justify-center footer">
+        <div className="row justify-center footer no-select">
             <div className="col-lg-6">
                 <ul className="row justify-space-around">
                     <li>
