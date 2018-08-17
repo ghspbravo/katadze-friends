@@ -434,6 +434,64 @@ button.lead {
 .comment {
   text-align: justify;
 }
+@media (max-width: 1200px) {
+  [id$=-main] {
+    background-size: 50% !important;
+  }
+  .acsent-box {
+    padding: 30px 50px;
+  }
+  .acsent-box .todo-list > li:before {
+    margin-bottom: 40px;
+  }
+  .order-fix {
+    order: 2;
+  }
+}
+@media (max-width: 992px) {
+  .navbar {
+    padding-bottom: 0 !important;
+  }
+}
+@media (max-width: 576px) {
+  h1 {
+    font-size: 24px;
+  }
+  h1.lead {
+    font-size: 35px;
+  }
+  p {
+    font-size: 18px;
+  }
+  li {
+    font-size: 18px;
+  }
+  section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .footer {
+    margin-top: 3rem !important;
+  }
+  .footer a {
+    font-size: 18px !important;
+  }
+  [id$=-main] {
+    background: none !important;
+  }
+  .vh-50 {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+  }
+  .acsent-box {
+    padding: 20px;
+  }
+  .acsent-box .todo-list > li:before {
+    height: 45px;
+    width: 45px;
+    margin-right: 20px;
+  }
+}
 .menu {
   display: flex;
   overflow: hidden;
@@ -565,6 +623,12 @@ h2.project-title {
   font-size: 25px;
   line-height: 29px;
 }
+.mobile-nav {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  height: 0;
+  overflow: hidden;
+}
 .navbar-bg-large {
   position: sticky;
   background-color: #fff;
@@ -647,6 +711,21 @@ h2.project-title {
 }
 .navbar-white-large svg .burger-line {
   stroke: #fff;
+}
+.navbar-mobile {
+  position: sticky;
+  background-color: #fff;
+}
+.navbar-mobile a {
+  color: #000;
+  font-size: 18px;
+}
+.navbar-mobile .logo {
+  height: 80px;
+  background-image: url("../resourses/LabelBlack.png");
+}
+.navbar-mobile svg .burger-line {
+  stroke: #000;
 }
 .logo {
   background-size: contain;

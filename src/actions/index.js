@@ -10,4 +10,5 @@ export const NavbarTypes = {
     BG_ALT_SMALL: 'bg-alt-small',
     TRANSPARENT_WHITE_LARGE: 'white-large',
     TRANSPARENT_BLACK_LARGE: 'black-large',
+    MOBILE: 'mobile'
 }

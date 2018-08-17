@@ -5,7 +5,7 @@ export default class FAQ extends Component {
         return (
             <div>
                 <section id="faq-main" className="row vh-50">
-                    <div className="offset-lg-2 col-lg-4">
+                    <div className="offset-1 offset-lg-2 col-lg-4">
                         <h1 className="lead">Ответы на все твои вопросы</h1>
                         <h1><span>И не только</span></h1>
                     </div>

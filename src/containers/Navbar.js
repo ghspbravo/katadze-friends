@@ -49,6 +49,10 @@ class Navbar extends Component {
     }
 
     componentDidMount() {
+        if (window.outerWidth < 992) {
+            this.props.changeNavType(NavbarTypes.MOBILE)
+            return   
+        }
         this.selectNav(this.props.location.pathname)
         window.onwheel = e => {
             if (window.pageYOffset / window.innerHeight > 0.5) {
@@ -61,6 +65,7 @@ class Navbar extends Component {
     }
 
     componentDidUpdate() {
+        if (window.outerWidth < 992) return
         if (this.props.location.pathname !== this.state.prevLocation) this.selectNav(this.props.location.pathname)
     }
 

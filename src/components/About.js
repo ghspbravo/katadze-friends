@@ -8,7 +8,7 @@ export default class About extends Component {
         return (
             <div>
                 <section id="about-main" className="row vh-50">
-                    <div className="offset-lg-2 col-lg-4">
+                    <div className="offset-lg-2 offset-1 col-lg-4">
                         <h1 className="lead">О проекте:</h1>
                             <h1><span>Намного больше
                             <br />Чем ты думаешь</span></h1>
@@ -35,7 +35,7 @@ export default class About extends Component {
                 </section>
                 <section id="howitworks" className="container">
                     <div className="row">
-                        <div className="col-lg-7">
+                        <div className="col-lg-7 order-fix">
                             <div className="acsent-box">
                                 <ul className="todo-list">
                                     <li>Создай профиль гида</li>
@@ -90,8 +90,8 @@ export default class About extends Component {
                                     <img src={teamMember} alt="member" />
                                 </div>
                             </div>
-                            <div className="member-name">Имя Фамилия</div>
-                            <div className="member-status">должность, название</div>
+                            <div className="member-name"><h1>Имя Фамилия</h1></div>
+                            <div className="member-status"><p>должность, название</p></div>
                         </div>
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
@@ -99,8 +99,8 @@ export default class About extends Component {
                                     <img src={teamMember} alt="member" />
                                 </div>
                             </div>
-                            <div className="member-name">Имя Фамилия</div>
-                            <div className="member-status">должность, название</div>
+                            <div className="member-name"><h1>Имя Фамилия</h1></div>
+                            <div className="member-status"><p>должность, название</p></div>
                         </div>
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
@@ -108,8 +108,8 @@ export default class About extends Component {
                                     <img src={teamMember} alt="member" />
                                 </div>
                             </div>
-                            <div className="member-name">Имя Фамилия</div>
-                            <div className="member-status">должность, название</div>
+                            <div className="member-name"><h1>Имя Фамилия</h1></div>
+                            <div className="member-status"><p>должность, название</p></div>
                         </div>
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
@@ -117,8 +117,8 @@ export default class About extends Component {
                                     <img src={teamMember} alt="member" />
                                 </div>
                             </div>
-                            <div className="member-name">Имя Фамилия</div>
-                            <div className="member-status">должность, название</div>
+                            <div className="member-name"><h1>Имя Фамилия</h1></div>
+                            <div className="member-status"><p>должность, название</p></div>
                         </div>
                     </div>
                 </section>
