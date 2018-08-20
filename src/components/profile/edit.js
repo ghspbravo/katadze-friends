@@ -38,7 +38,7 @@ export default () => {
 						<section className="jumbotron">
 							<div className="row head"><p className='small'>Удостоверение личности гос. образца</p></div>
 							<label className="row align-center" htmlFor="passport">
-								<object type="image/svg+xml" data={addIcon} width="25" height="25" />
+								<object aria-label="add" type="image/svg+xml" data={addIcon} width="25" height="25" />
 								<p className="small">Отправить фото на модерацию</p></label>
 							<input id="passport" type="file" accept=".jpg, .jpeg, .png" />
 						</section>

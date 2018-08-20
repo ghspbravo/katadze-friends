@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { connect } from 'react-redux'
 import { changeNavType } from '../actions/index'
 import { NavbarTypes } from '../actions/index'

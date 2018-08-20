@@ -29,11 +29,9 @@ class Gids extends Component {
         });
     };
 
-    handleSearch = () => {
-        this.state.search === ""
-            ? false
-            : this.props.history.push(`/gids/search=${this.state.search}`)
-    }
+    handleSearch = () => this.state.search === ""
+        ? null
+        : this.props.history.push(`/gids/search=${this.state.search}`)
 
     componentWillUnmount() {
         document.body.style.backgroundColor = "white"

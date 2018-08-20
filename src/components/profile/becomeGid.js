@@ -17,7 +17,7 @@ export default () => {
 <br /><br /> Расскажите им о себе: какие у вас жизненные принципы?</p></div>
 
                     <div className="col-3 row align-center justify-right">
-                        <object type="image/svg+xml" data={question} width="35" height="35" />
+                        <object aria-label="question" type="image/svg+xml" data={question} width="35" height="35" />
                         <label htmlFor='language'>
                             <p className="small">Языки</p></label></div>
                     <div className="offset-1 col-8">

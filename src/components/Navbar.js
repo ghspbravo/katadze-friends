@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router'
 import { Switch, Link, NavLink } from 'react-router-dom'
 
-export default (currentState, appState) => {
+export default (currentState) => {
     return (
         <div className={`navbar navbar-${currentState} no-select`}>
             <div className="row align-center">

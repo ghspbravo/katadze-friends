@@ -68,14 +68,14 @@ export default () => {
                 <div className="head"><p>Фото тура</p></div>
                 <div className="content">
                     <div className="row">
-                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="photo" /></div>
-                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="photo" /></div>
-                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="photo" /></div>
-                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="photo" /></div>
-                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="photo" /></div>
-                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="photo" /></div>
-                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="photo" /></div>
-                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="photo" /></div>
+                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="tour" /></div>
+                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="tour" /></div>
+                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="tour" /></div>
+                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="tour" /></div>
+                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="tour" /></div>
+                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="tour" /></div>
+                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="tour" /></div>
+                        <div className="l-offset-mid col-2 v-offset-small"><img src="http://via.placeholder.com/130x130" alt="tour" /></div>
                     </div>
                     <label htmlFor="tourPhotos"><p className="small">Загрузить файл со своего компьютера</p></label>
                     <input id="tourPhotos" type="file" accept=".jpg, .jpeg, .png" multiple />

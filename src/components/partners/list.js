@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 export default (partners, showPartnerForm, showPartnerFormHandler) => {
     return (
         <div>
-            <section id="partners-header" className="vh-50 col-12 text-center">
+            <section id="partners-header" className="vh-100 col-12 text-center">
                 <h2>Партнеры</h2>
             </section>
             <section className="container justify-center">
                 {showPartnerForm
                     ? becomePartner()
-                    : <button onClick={() => showPartnerFormHandler}><h1 className="upper underline"><span>Стать партнером</span></h1></button>
+                    : <button onClick={() => showPartnerFormHandler()}><h1 className="upper underline"><span>Стать партнером</span></h1></button>
                 }
             </section>
             {
@@ -26,7 +26,7 @@ export default (partners, showPartnerForm, showPartnerFormHandler) => {
                             {
                                 category.partners.map(partner =>
                                     <div key={partner.id} className="row list-card">
-                                        <div className="col-lg-6">
+                                        <div className="col-lg-6 order-fix">
                                             <h1>{partner.title}</h1>
                                             <p className="secondary">{partner.description}</p>
                                             <p className="secondary small v-offset-small">{partner.tags}</p>

@@ -12,7 +12,7 @@ export default () => {
                 <input autoComplete="name" type="text" placeholder="Имя" className="col-12"/>
                 <input autoComplete="organisation" type="text" placeholder="Организация" className="col-12"/>
                 <input  autoComplete="email" type="email" placeholder="Почта" className="col-12"/>
-                <input autoComplete="comment" type="text" placeholder="Комментарий" className="col-12"/>
+                <textarea  placeholder="Комментарий" className="col-12"/>
             </div>
         </form>
     )
