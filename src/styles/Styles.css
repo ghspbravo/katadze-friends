@@ -451,6 +451,27 @@ button.lead {
     order: 2;
   }
 }
+@media (max-width: 992px) {
+  .homepage-item-inner {
+    position: relative !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .background {
+    min-height: 100vh !important;
+  }
+  .brand {
+    font-size: 8rem !important;
+    opacity: 1 !important;
+  }
+  .homepage-item-image {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    position: absolute !important;
+    z-index: 0 !important;
+  }
+}
 @media (max-width: 576px) {
   h1 {
     font-size: 24px;
@@ -496,6 +517,12 @@ button.lead {
   .mobile-nav ul {
     flex-direction: column;
     align-items: center;
+  }
+  .brand {
+    font-size: 3rem !important;
+  }
+  .homepage-item-inner-title {
+    font-size: 55px !important;
   }
 }
 .homepage {
@@ -586,7 +613,7 @@ button.lead {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.homepage-item .homepage-item-image {
+.homepage-item-image {
   position: fixed;
   left: 0;
   top: 0;
@@ -603,7 +630,7 @@ button.lead {
   transform: scale(1.05);
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.homepage-item .homepage-item-inner {
+.homepage-item-inner {
   position: absolute;
   left: 0;
   top: 0;
@@ -613,7 +640,7 @@ button.lead {
   visibility: hidden;
   z-index: 1;
 }
-.homepage-item .homepage-item-inner .homepage-item-inner-title {
+.homepage-item-inner-title {
   font-family: OpenSans;
   font-weight: 900;
   font-size: 45px;
@@ -631,8 +658,9 @@ button.lead {
   transform: translate(-50%, -50%);
   width: 100%;
   text-transform: uppercase;
+  text-shadow: 1px 1px #000, -1px -1px #000;
 }
-.homepage-item .homepage-item-inner .homepage-item-inner-subtext {
+.homepage-item-inner-subtext {
   text-align: center;
   position: absolute;
   left: 50%;
@@ -641,7 +669,7 @@ button.lead {
   transform: translate(-50%, -50%);
   width: 100%;
 }
-.homepage-item .homepage-item-inner .homepage-item-inner-subtext .homepage-item-inner-subtext-subtitle {
+.homepage-item-inner-subtext-subtitle {
   margin: 0 auto 3em;
   z-index: 1;
   letter-spacing: 0.03em;
@@ -649,11 +677,11 @@ button.lead {
   width: 100%;
   max-width: 350px;
 }
-.homepage-item .homepage-item-inner .homepage-item-inner-subtext .homepage-item-inner-subtext-subtitle p {
+.homepage-item-inner-subtext-subtitle p {
   color: #fff;
   font-size: 14px;
 }
-.homepage-item .homepage-item-inner .homepage-item-inner-subtext a.homepage-item-inner-subtext-link {
+a.homepage-item-inner-subtext-link {
   font-size: 18px;
   display: inline-block;
   padding: 0.8em 3em 0.5em;
@@ -693,6 +721,31 @@ button.lead {
 .homepage-item:hover .homepage-item-inner {
   opacity: 1;
   visibility: visible;
+}
+.scroll-to {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  text-transform: uppercase;
+  z-index: 5;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  transform: rotate(-90deg);
+  transform-origin: left;
+  color: #fff;
+  text-decoration: none;
+}
+.scroll-to span {
+  display: inline-block;
+  width: 94px;
+  height: 1px;
+  background: #fff;
+  margin-right: 20px;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: right;
+}
+.scroll-to:hover span {
+  transform: scaleX(0.3);
 }
 .navbar {
   padding: 30px 0;

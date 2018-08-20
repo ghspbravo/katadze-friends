@@ -67,75 +67,76 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
-    & .homepage-item-image
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-        background-size: cover;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        opacity: 0;
-        visibility: hidden;
-        transform-origin: left top;
-        transform: scale(1.05);
-        transition: all .5s cubic-bezier(.25,.46,.45,.94);
-    & .homepage-item-inner
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1;
-        & .homepage-item-inner-title
-            OpenH1ExtraBold()
-            font-size 75px
-            color: white;
-            margin: 0;
-            top: 48%;
-            z-index: 1;
-            text-align: center;
-            pointer-events: none;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%,-50%);
-            width: 100%;
-            text-transform uppercase
-        & .homepage-item-inner-subtext
-            text-align center
-            position: absolute;
-            left: 50%;
-            top: 80%;
-            z-index: 8;
-            transform: translate(-50%,-50%);
-            width: 100%;
-            & .homepage-item-inner-subtext-subtitle
-                margin: 0 auto 3em;
-                z-index: 1;
-                letter-spacing: .03em;
-                text-align: center;
-                width: 100%;
-                max-width: 350px;
-                & p  
-                    color: white;
-                    font-size 14px
-            & a.homepage-item-inner-subtext-link
-                font-size 18px
-                display: inline-block;
-                padding: .8em 3em .5em;
-                text-transform: uppercase;
-                border: 1px solid #fff;
-                position: relative;
-                overflow: hidden;
-                letter-spacing: .05em;
-                white-space: nowrap;
-                color: white;
+.homepage-item-image
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: left top;
+    transform: scale(1.05);
+    transition: all .5s cubic-bezier(.25,.46,.45,.94);
+.homepage-item-inner
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+.homepage-item-inner-title
+    OpenH1ExtraBold()
+    font-size 75px
+    color: white;
+    margin: 0;
+    top: 48%;
+    z-index: 1;
+    text-align: center;
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    text-transform uppercase
+    text-shadow: 1px 1px black, -1px -1px black;
+.homepage-item-inner-subtext
+    text-align center
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    z-index: 8;
+    transform: translate(-50%,-50%);
+    width: 100%;
+.homepage-item-inner-subtext-subtitle
+    margin: 0 auto 3em;
+    z-index: 1;
+    letter-spacing: .03em;
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    & p  
+        color: white;
+        font-size 14px
+a.homepage-item-inner-subtext-link
+    font-size 18px
+    display: inline-block;
+    padding: .8em 3em .5em;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: .05em;
+    white-space: nowrap;
+    color: white;
 .homepage-mask-wrapper
     height: 100vh;
     position: relative;
@@ -159,3 +160,26 @@
     & .homepage-item-inner
         opacity 1
         visibility visible
+
+.scroll-to
+    position: absolute
+    bottom: 0
+    left: 10%
+    text-transform: uppercase
+    z-index: 5
+    font-size: 11px
+    letter-spacing: 0.1em
+    transform: rotate(-90deg)
+    transform-origin: left
+    color: white
+    text-decoration: none
+    & span
+        display: inline-block
+        width: 94px
+        height: 1px
+        background: white
+        margin-right: 20px
+        transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        transform-origin: right
+    &:hover span
+        transform: scaleX(0.3)

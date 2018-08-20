@@ -8,8 +8,23 @@
     .order-fix
         order: 2
     
-// @media (max-width: 992px)
-    
+@media (max-width: 992px)
+    .homepage-item-inner
+        position: relative !important
+        opacity: 1 !important
+        visibility: visible !important
+    .background
+        min-height: 100vh !important 
+    .brand
+        font-size 8rem !important
+        opacity 1 !important
+    .homepage-item-image
+        opacity: 1 !important
+        visibility: visible !important
+        transform: none !important
+        position: absolute !important 
+        z-index: 0 !important
+        
 
 @media (max-width: 576px)
     h1  
@@ -45,3 +60,7 @@
         & ul
             flex-direction: column;
             align-items: center;
+    .brand
+        font-size 3rem !important
+    .homepage-item-inner-title
+        font-size 55px !important
