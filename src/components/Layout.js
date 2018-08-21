@@ -23,6 +23,10 @@ import Navbar from '../containers/Navbar';
 
 export default class Layout extends Component {
 
+    componentWillMount() {
+        if (typeof sessionStorage.getItem('isFirstVisit') === 'undefined') sessionStorage.setItem('isFirstVisit', true);
+    }
+
     render() {
         return (
             <div className="app-container">

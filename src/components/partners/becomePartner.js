@@ -3,7 +3,7 @@ import React from 'react'
 export default () => {
     return (
         <form autoComplete="off" className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 order-fix">
                 <h1>Стать партнером</h1>
                 <p className="secondary">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas iure magni eaque, atque, corrupti accusantium fuga a ea voluptatem inventore repellendus? Laboriosam in commodi possimus ratione mollitia sint reiciendis consectetur.</p>
                 <button type="submit">cтать партнером</button>

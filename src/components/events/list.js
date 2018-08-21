@@ -12,7 +12,7 @@ export default events => {
                     events && events.results
                         ? events.results.map(event =>
                             <div key={event.id} className="row list-card">
-                                <div className="col-lg-6">
+                                <div className="col-lg-6 order-fix">
                                     <h1>{event.name}</h1>
                                     <button className="more-button"><Link to={`/events/${event.id}`}>Подробнее</Link></button>
                                 </div>

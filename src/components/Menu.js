@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import TimelineMax from 'gsap/TimelineMax'
-import attr from 'gsap/AttrPlugin'
 import { Expo } from 'gsap/EasePack'
 
 import main from '../resourses/Menu/main.jpg'
@@ -10,34 +9,74 @@ import gids from '../resourses/Menu/gids.jpg'
 import events from '../resourses/Menu/events.jpg'
 
 export default class Menu extends Component {
-
-    handleItemHover = target => {
+    handleItemHover = (target, scene) => {
         let id = target.id
-        let hoverTimeLine = new TimelineMax()
 
-        hoverTimeLine.to(`#${id} .knockout-text-bg`, 2, { attr: { y: '0' }, ease: Expo.easeOut })
-        // .from(`#${id} .homepage-item-inner-title`, 1, { opacity: '0' })
+        scene.add('start')
+            .set(`#${id} .homepage-item-inner`, { opacity: '1' })
+            .set(`#${id} .homepage-item-image`, { opacity: '1' })
+            .set('.background', { opacity: '0' })
+            .to(`#${id} .homepage-item-image`, 0.5, { transform: 'scale(1)' })
+            .to(`#${id} .knockout-text-bg`, 2, { attr: { y: '0' }, ease: Expo.easeOut }, 'start')
+            .to(`#${id} .homepage-item-inner-title`, 0.2, { opacity: '1' }, 'start+=1')
+            .to(`#${id} .homepage-item-inner-subtext-subtitle`, 0.2, { opacity: '1' }, 'start+=1.2')
+            .to(`#${id} .homepage-item-inner-subtext-link`, 0.2, { opacity: '1' }, 'start+=1.4')
     }
 
-    handleItemLeft = target => {
+    handleItemLeft = (target, scene) => {
         let id = target.id
-        let leaveTimeLine = new TimelineMax()
+        scene.clear()
 
-        leaveTimeLine.set(`#${id} .knockout-text-bg`, { attr: { y: `-${window.innerHeight}` } })
-        // .set(`#${id} .homepage-item-inner-title`, { opacity: '0' })
+        scene.set(`#${id} .knockout-text-bg`, { attr: { y: `-${window.innerHeight}` } })
+            .set(`#${id} .homepage-item-image`, { transform: 'scale(1.05)' })
+            .set(`#${id} .homepage-item-image`, { opacity: '0' })
+            .set(`#${id} .homepage-item-inner`, { opacity: '0' })
+            .set(`#${id} .homepage-item-inner-title`, { opacity: '0' })
+            .set(`#${id} .homepage-item-inner-subtext-subtitle`, { opacity: '0' })
+            .set(`#${id} .homepage-item-inner-subtext-link`, { opacity: '0' })
+            .set('.background', { opacity: '1' })
     }
 
     componentDidMount() {
-        document.querySelectorAll('.homepage-item').forEach(item => {
-            item.onmouseenter = () => this.handleItemHover(item)
-            item.onmouseleave = () => this.handleItemLeft(item)
-        })
+        if (sessionStorage.getItem('isFirstVisit') === 'false') {
+            document.querySelector('.preloader').style.display = 'none'
+            document.querySelectorAll('.homepage-item').forEach(item => {
+                let hoverScene = new TimelineMax()
+
+                item.onmouseenter = () => this.handleItemHover(item, hoverScene)
+                item.onmouseleave = () => this.handleItemLeft(item, hoverScene)
+            })
+        }
+        else {
+            let loaderScene = new TimelineMax({
+                onComplete: () => {
+                    sessionStorage.setItem('isFirstVisit', 'false');
+                    document.querySelectorAll('.homepage-item').forEach(item => {
+                        let hoverScene = new TimelineMax()
+
+                        item.onmouseenter = () => this.handleItemHover(item, hoverScene)
+                        item.onmouseleave = () => this.handleItemLeft(item, hoverScene)
+                    })
+                }
+            })
+
+            loaderScene.add('start')
+                .staggerFrom('.preloader .logo span', 0.5, { opacity: '0' }, 0.2, '+=1.5')
+                .to('#loader-part-1', 1.5, { y: `-${window.innerHeight}`, ease: Expo.easeIn })
+                .to('#loader-part-2', 1.2, { y: `-${window.innerHeight}`, ease: Expo.easeIn }, '-=1')
+                .to('#loader-part-3', 1, { y: `-${window.innerHeight}`, ease: Expo.easeIn }, '-=0.8')
+                .from('.background', 0.3, { transform: 'scale(1.1)' }, '-=1')
+                .to('.preloader .logo', 1, { opacity: '0' })
+                .from('.brand', 1, { opacity: '0' },  '-=1')
+                .staggerFrom('.homepage-item .title', 0.3, { opacity: '0' }, 0.2)
+                .set('.preloader .logo', { display: 'none' })
+        }
 
         document.querySelector('a.scroll-to').onclick = e => {
             e.preventDefault()
             let target = e.target.hash
             document.querySelector(target).scrollIntoView({
-            behavior: "smooth"
+                behavior: "smooth"
             })
         }
     }
@@ -45,6 +84,22 @@ export default class Menu extends Component {
     render() {
         return (
             <div>
+                <div className="preloader">
+                    <div className="preloader-inner">
+                        <span id="loader-part-1"></span>
+                        <span id="loader-part-2"></span>
+                        <span id="loader-part-3"></span>
+                    </div>
+                    <div className="logo">
+                        <span>K</span>
+                        <span>A</span>
+                        <span>T</span>
+                        <span>A</span>
+                        <span>D</span>
+                        <span>Z</span>
+                        <span>E</span>
+                    </div>
+                </div>
                 <div className="d-none d-lg-block homepage">
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}>
@@ -80,7 +135,7 @@ export default class Menu extends Component {
                                     <div className="homepage-item-inner-subtext-subtitle">
                                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
                                     </div>
-                                    <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
+                                    <Link className="homepage-item-inner-subtext-link" to="/gids">Перейти</Link>
                                 </div>
                                 <div className="homepage-mask-wrapper">
                                     <svg width="100%" height="100%"> <defs> <mask id="knockout-text-1" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">❖</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-1)"></rect> </svg>
@@ -98,7 +153,7 @@ export default class Menu extends Component {
                                     <div className="homepage-item-inner-subtext-subtitle">
                                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
                                     </div>
-                                    <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
+                                    <Link className="homepage-item-inner-subtext-link" to="/events">Перейти</Link>
                                 </div>
                                 <div className="homepage-mask-wrapper">
                                     <svg width="100%" height="100%"> <defs> <mask id="knockout-text-3" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-3)"></rect> </svg>
@@ -108,7 +163,7 @@ export default class Menu extends Component {
                     </div>
                 </div>
                 <div className="d-block d-lg-none mobile-homepage">
-                    <a href="#content" class="scroll-to"><span></span>SCROLL</a>
+                    <a href="#content" className="scroll-to"><span></span>SCROLL</a>
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}></div>
                     <div id="content" className="homepage-item-inner">
@@ -131,7 +186,7 @@ export default class Menu extends Component {
                             <div className="homepage-item-inner-subtext-subtitle">
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
                             </div>
-                            <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
+                            <Link className="homepage-item-inner-subtext-link" to="/gids">Перейти</Link>
                         </div>
                         <div className="homepage-mask-wrapper">
                             <svg width="100%" height="100%"> <defs> <mask id="knockout-text-5" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">❖</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-5)"></rect> </svg>
@@ -144,7 +199,7 @@ export default class Menu extends Component {
                             <div className="homepage-item-inner-subtext-subtitle">
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
                             </div>
-                            <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
+                            <Link className="homepage-item-inner-subtext-link" to="/events">Перейти</Link>
                         </div>
                         <div className="homepage-mask-wrapper">
                             <svg width="100%" height="100%"> <defs> <mask id="knockout-text-6" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-6)"></rect> </svg>

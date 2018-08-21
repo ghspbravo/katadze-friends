@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     z-index: 10;
-    transition: 0.5s all
+    transition: opacity 0.5s
     & a
         BebasH5Book()
         
@@ -74,7 +74,7 @@
 
 .navbar-mobile
     padding: 0
-    position: sticky;
+    position: sticky
     background-color: white;
     & a  
         color: black
@@ -93,3 +93,13 @@
 
 a.active-nav
     color: acsent
+
+.mobile-nav
+    display none
+    position: absolute;
+    top: -200px;
+    background-color: white;
+    transition: none
+    z-index 1
+    & li  
+        opacity 0

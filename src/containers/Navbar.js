@@ -2,6 +2,9 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import { changeNavType } from '../actions/index'
 import { NavbarTypes } from '../actions/index'
+import TimeLineMax from 'gsap/TimelineMax'
+import TweenMax from 'gsap/TweenMax'
+import { Expo } from 'gsap/EasePack'
 
 import desktopNavbar from '../components/Navbar'
 
@@ -10,8 +13,42 @@ class Navbar extends Component {
         super(props)
 
         this.state = {
-            prevLocation: props.location.pathname
+            prevLocation: props.location.pathname,
+            isNavOpen: false,
+            isDrawing: false
         }
+    }
+
+    handleNavToggle = () => {
+        if (this.state.isDrawing) return
+        this.setState({isDrawing: true})
+        this.state.isNavOpen
+        ? this.handleNavClose()
+        : this.handleNavOpen()
+    }
+
+
+    handleNavOpen = () => {
+        TweenMax.to('#top-line', 0.5, {attr: {y2: '25'}})
+        TweenMax.to('#bot-line', 0.5, {attr: {y2: '5'}})
+        TweenMax.to('#mid-line', 0.5, {attr: {x1: '15', x2: '15'}})
+
+        let openScene = new TimeLineMax({onComplete: () => this.setState({isNavOpen: true, isDrawing: false})})
+        openScene.set('.mobile-nav', { display: 'block' })
+            .to('.mobile-nav', 1, { top: '70px', ease: Expo.easeOut })
+
+        document.querySelectorAll('.mobile-nav li').forEach(item => openScene.to(item, 0.1, { opacity: '1' }))
+    }
+    handleNavClose = () => {
+        TweenMax.to('#top-line', 0.5, {attr: {y2: '5'}})
+        TweenMax.to('#bot-line', 0.5, {attr: {y2: '25'}})
+        TweenMax.to('#mid-line', 0.5, {attr: {x1: '0', x2: '30'}})
+
+        let closeScene = new TimeLineMax({onComplete: () => this.setState({isNavOpen: false, isDrawing: false})})
+        
+        document.querySelectorAll('.mobile-nav li').forEach(item => closeScene.to(item, 0.1, { opacity: '0' }))
+        closeScene.to('.mobile-nav', 1, { top: '-200px' })
+            .set('.mobile-nav', { display: 'none' })
     }
 
     selectNav = location => {
@@ -51,7 +88,8 @@ class Navbar extends Component {
     componentDidMount() {
         if (window.outerWidth < 992) {
             this.props.changeNavType(NavbarTypes.MOBILE)
-            return   
+            document.querySelectorAll('.mobile-nav a').forEach(link => link.onclick = this.handleNavToggle)
+            return
         }
         this.selectNav(this.props.location.pathname)
         window.onwheel = e => {
@@ -71,7 +109,7 @@ class Navbar extends Component {
 
     render() {
         return (
-                desktopNavbar(this.props.navState, this.props.appState)
+            desktopNavbar(this.props.navState, this.handleNavToggle)
         )
     }
 }

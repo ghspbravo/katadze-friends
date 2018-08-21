@@ -7,6 +7,9 @@ import { ConnectedRouter } from 'react-router-redux'
 
 import configureStore from '../store';
 
+import { CSSPlugin, AttrPlugin }  from "gsap/all";
+
+const pluginsFix = [ CSSPlugin, AttrPlugin ];
 
 const history = createHistory();
 
