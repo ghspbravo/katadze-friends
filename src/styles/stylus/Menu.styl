@@ -141,6 +141,7 @@ a.homepage-item-inner-subtext-link
     white-space: nowrap;
     color: white;
     opacity 0
+    transition: all .5s cubic-bezier(.25,.46,.45,.94);
 .homepage-mask-wrapper
     height: 100vh;
     position: relative;
@@ -155,13 +156,11 @@ a.homepage-item-inner-subtext-link
 .svg-text-home
     OpenH1ExtraBold()
     font-size 22rem
-
-.homepage-item:hover
-    // & .homepage-item-image
-    //     opacity 1
-    //     transform: scale(1)
-    // & .homepage-item-inner
-    //     opacity 1
+    
+a.homepage-item-inner-subtext-link:hover {
+    background-color: white;
+    color: black !important
+}
 
 .scroll-to
     position: absolute

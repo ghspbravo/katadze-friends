@@ -130,6 +130,9 @@ button.more-button {
   counter-reset: item;
   list-style-type: none;
 }
+.todo-list > li {
+  display: inline-flex;
+}
 .todo-list > li:before {
   color: #fff;
   content: counter(item);
@@ -275,6 +278,11 @@ li {
 img {
   max-width: 100%;
 }
+.icon {
+  width: 35px;
+  height: 35px;
+  margin: 5px;
+}
 div[class^=col-] .row {
   margin-left: 0;
   margin-right: 0;
@@ -408,7 +416,8 @@ button.lead {
   border-radius: 22.5px;
   padding: 10px;
   width: 100%;
-  margin: 30px 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .stars .star {
   float: left;
@@ -450,6 +459,9 @@ button.lead {
   .order-fix {
     order: 2;
   }
+  p.small {
+    font-size: 14px;
+  }
 }
 @media (max-width: 992px) {
   .homepage-item-inner {
@@ -475,6 +487,11 @@ button.lead {
   .homepage-item-inner-subtext-subtitle,
   a.homepage-item-inner-subtext-link {
     opacity: 1 !important;
+  }
+  .todo-list > li:before {
+    height: 55px;
+    width: 55px;
+    margin-bottom: 40px;
   }
 }
 @media (max-width: 576px) {
@@ -528,6 +545,12 @@ button.lead {
   }
   .homepage-item-inner-title {
     font-size: 55px !important;
+  }
+  .gid-card {
+    margin: 20px 0 !important;
+  }
+  .todo-list > li:before {
+    margin-right: 20px;
   }
 }
 .homepage {
@@ -701,6 +724,7 @@ a.homepage-item-inner-subtext-link {
   white-space: nowrap;
   color: #fff;
   opacity: 0;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .homepage-mask-wrapper {
   height: 100vh;
@@ -721,6 +745,10 @@ a.homepage-item-inner-subtext-link {
   font-size: 45px;
   line-height: 61px;
   font-size: 22rem;
+}
+a.homepage-item-inner-subtext-link:hover {
+  background-color: #fff;
+  color: #000 !important;
 }
 .scroll-to {
   position: absolute;

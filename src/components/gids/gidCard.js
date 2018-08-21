@@ -4,11 +4,11 @@ import Stars from './Stars';
 
 export default index => {
     return (
-        <div key={index} className="col-md-5 gid-card">
+        <div key={index} className="col-12 col-lg-5 gid-card">
             <Link to={`/gids/id=${index}`}>
                 <div className="row">
-                    <div className="col-4"><div style={{ backgroundColor: '#494949', width: '100%', height: '100%' }} src="#" alt="gidPhoto" /></div>
-                    <div className="offset-1 col-6">
+                    <div className="col-12 col-md-4"><div style={{ backgroundColor: '#494949', width: '100%', height: '100%' }} src="#" alt="gidPhoto" /></div>
+                    <div className="col-10 offset-1 col-md-6">
                         <div className="row align-center">
                             <div className="col-8">
                                 <p className="small bold">Имя</p>

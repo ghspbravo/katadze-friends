@@ -6,7 +6,7 @@ export default (inputHandler, searchHandler) => {
         <div>
             <section id="gids-header" className="vh-100">
                 <div className="row justify-center">
-                    <div className="col-lg-4">
+                    <div className="col-10 col-md-8 col-xl-4">
                         <h1 className="upper">Найти гида</h1>
                         <div className="row searchBox">
                             <div className="col-8"><input name="search" onChange={inputHandler} type="text" /></div>
@@ -20,19 +20,18 @@ export default (inputHandler, searchHandler) => {
             </section>
             <section>
                 <h1 className="text-center"><span>Поможем найти гида</span></h1>
-                <div className="offset-md-1 col-md-10 row justify-center">
+                <div className="offset-md-1 col-md-10 justify-center">
                     {[...Array(10)].map((e, i) => gidCard(i))}
-                    <div className="col-12 gid-card justify-center">
-                        <ul className="row col-12 todo-list v-offset-small justify-space-around">
-                            <li>Создай профиль гида</li>
-                            <li>Покажи места, которые знаешь</li>
-                            <li>Заработай денег</li>
-                        </ul>
-                        <button className="col-md-2 lead">Стать гидом</button>
+                    <div className="col-12 gid-card">
+                        <div className="row v-offset-small">
+                            <ul className="offset-1 col-10 todo-list">
+                                <li>Создай профиль гида</li>
+                                <li>Покажи места, которые знаешь</li>
+                                <li>Заработай денег</li>
+                            </ul>
+                        </div>
+                        <button className="offset-2 col-8 col-lg-2 lead">Стать гидом</button>
                     </div>
-                </div>
-                <div className="row justify-center">
-                    <button className="col-md-2 lead">Показать больше гидов</button>
                 </div>
             </section>
         </div>

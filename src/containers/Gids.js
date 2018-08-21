@@ -54,13 +54,13 @@ class Gids extends Component {
                     )
                 }} />
                 <Route path="/gids/search=:search" render={() => {
-                    document.body.style.backgroundColor = "white"
+                    document.body.style.backgroundColor = "#E8EFFC"
                     return search(
                         this.state.search
                     )
                 }} />
                 <Route path="/tours/:id" render={() => {
-                    document.body.style.backgroundColor = "#E8EFFC"
+                    document.body.style.backgroundColor = "white"
                     return tour(
 
                     )
