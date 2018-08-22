@@ -8,9 +8,25 @@
     .order-fix
         order: 2
     p.small 
-        font-size 14px  
+        font-size 14px
+    .preloader .logo span,
+    .brand
+        font-size: 10rem !important
+    .homepage-item .title
+        font-size 35px !important
+    .homepage-item-inner-title
+        font-size 45px !important
+    .footer 
+        margin-top 3rem !important
+    .steps
+        & span
+            margin-right 40px !important
+        & li
+            font-size 28px !important
     
 @media (max-width: 992px)
+    h1.super
+        font-size 188px
     .homepage-item-inner
         position: relative !important
         opacity: 1 !important
@@ -32,13 +48,26 @@
         height 55px
         width 55px
         margin-bottom 40px
-        
+    .preloader .logo span,
+    .brand
+        font-size: 8rem !important
+    .steps li
+        font-size 24px !important
+    .profile-nav
+        margin-bottom: 40px
+        display flex
+        flex-wrap: wrap
+        & .profile-current
+            border-bottom: none
 
 @media (max-width: 576px)
     h1  
         font-size 24px
+        font-weight 600
         &.lead
             font-size 35px
+        &.super
+            font-size 100px
     p   
         font-size 18px
     li   
@@ -46,10 +75,8 @@
     section 
         padding-top: 50px
         padding-bottom: 50px
-    .footer 
-        margin-top 3rem !important
-        & a  
-            font-size 18px !important
+    .footer a  
+        font-size 18px !important
     [id$=-main]
         background: none !important
     .vh-50
@@ -76,3 +103,12 @@
         margin: 20px 0 !important
     .todo-list > li:before
         margin-right 20px
+    .preloader .logo span,
+    .brand
+        font-size: 3rem !important
+    .row-sm-direction
+        flex-direction: column
+    .steps
+        & span
+            margin-right 20px !important
+            font-size 52px !important

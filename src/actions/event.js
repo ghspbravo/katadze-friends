@@ -10,7 +10,7 @@ export const EVENT_FAILURE = '@@event/EVENT_FAILURE';
 
 export const list = (page = 0) => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/events?format=json`,
+		endpoint: `https://katadze-test.ru/api/events/?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [

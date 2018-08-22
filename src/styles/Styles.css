@@ -111,7 +111,7 @@
   margin-bottom: 100px;
 }
 .list-card-pic {
-  height: 300px;
+  min-height: 300px;
 }
 button.more-button {
   font-family: OpenSans;
@@ -462,8 +462,30 @@ button.lead {
   p.small {
     font-size: 14px;
   }
+  .preloader .logo span,
+  .brand {
+    font-size: 10rem !important;
+  }
+  .homepage-item .title {
+    font-size: 35px !important;
+  }
+  .homepage-item-inner-title {
+    font-size: 45px !important;
+  }
+  .footer {
+    margin-top: 3rem !important;
+  }
+  .steps span {
+    margin-right: 40px !important;
+  }
+  .steps li {
+    font-size: 28px !important;
+  }
 }
 @media (max-width: 992px) {
+  h1.super {
+    font-size: 188px;
+  }
   .homepage-item-inner {
     position: relative !important;
     opacity: 1 !important;
@@ -493,13 +515,32 @@ button.lead {
     width: 55px;
     margin-bottom: 40px;
   }
+  .preloader .logo span,
+  .brand {
+    font-size: 8rem !important;
+  }
+  .steps li {
+    font-size: 24px !important;
+  }
+  .profile-nav {
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .profile-nav .profile-current {
+    border-bottom: none;
+  }
 }
 @media (max-width: 576px) {
   h1 {
     font-size: 24px;
+    font-weight: 600;
   }
   h1.lead {
     font-size: 35px;
+  }
+  h1.super {
+    font-size: 100px;
   }
   p {
     font-size: 18px;
@@ -510,9 +551,6 @@ button.lead {
   section {
     padding-top: 50px;
     padding-bottom: 50px;
-  }
-  .footer {
-    margin-top: 3rem !important;
   }
   .footer a {
     font-size: 18px !important;
@@ -551,6 +589,17 @@ button.lead {
   }
   .todo-list > li:before {
     margin-right: 20px;
+  }
+  .preloader .logo span,
+  .brand {
+    font-size: 3rem !important;
+  }
+  .row-sm-direction {
+    flex-direction: column;
+  }
+  .steps span {
+    margin-right: 20px !important;
+    font-size: 52px !important;
   }
 }
 .homepage {
@@ -804,6 +853,11 @@ a.homepage-item-inner-subtext-link:hover {
   width: 33.333%;
   transform-origin: left top;
 }
+.preloader .preloader-inner span#loader-big {
+  background: #151515;
+  width: 100%;
+  transform-origin: left top;
+}
 .preloader .logo {
   position: absolute;
   top: 50%;
@@ -826,6 +880,7 @@ a.homepage-item-inner-subtext-link:hover {
   width: 100%;
   z-index: 10;
   transition: opacity 0.5s;
+  position: relative;
 }
 .navbar a {
   font-family: BebasNeue;
@@ -833,9 +888,17 @@ a.homepage-item-inner-subtext-link:hover {
   font-size: 25px;
   line-height: 29px;
 }
-.navbar-bg-large {
-  position: sticky;
+.navbar-bg-large > .navbar-inner {
+  top: 0;
+  height: 160px;
+  position: fixed;
   background-color: #fff;
+}
+.navbar-bg-large > .navbar-inner > div {
+  padding-top: 30px;
+}
+.navbar-bg-large {
+  padding: 80px 0;
 }
 .navbar-bg-large a {
   color: #000;
@@ -847,9 +910,14 @@ a.homepage-item-inner-subtext-link:hover {
 .navbar-bg-large svg .burger-line {
   stroke: #000;
 }
-.navbar-bg-small {
+.navbar-bg-small > .navbar-inner {
   position: fixed;
   background-color: #fff;
+  top: 0;
+  height: 100px;
+}
+.navbar-bg-small > .navbar-inner > div {
+  padding-top: 30px;
 }
 .navbar-bg-small a {
   color: #000;
@@ -861,9 +929,17 @@ a.homepage-item-inner-subtext-link:hover {
 .navbar-bg-small svg .burger-line {
   stroke: #000;
 }
-.navbar-bg-small-sticky {
-  position: sticky;
+.navbar-bg-small-sticky > .navbar-inner {
+  top: 0;
+  height: 100px;
+  position: fixed;
   background-color: #fff;
+}
+.navbar-bg-small-sticky > .navbar-inner > div {
+  padding-top: 30px;
+}
+.navbar-bg-small-sticky {
+  padding: 60px 0;
 }
 .navbar-bg-small-sticky a {
   color: #000;
@@ -916,10 +992,16 @@ a.homepage-item-inner-subtext-link:hover {
 .navbar-white-large svg .burger-line {
   stroke: #fff;
 }
-.navbar-mobile {
+.navbar-mobile > .navbar-inner {
+  top: 0;
+  height: 80px;
   padding: 0;
-  position: sticky;
+  position: fixed;
   background-color: #fff;
+  z-index: 5;
+}
+.navbar-mobile {
+  padding: 40px 0;
 }
 .navbar-mobile a {
   color: #000;
@@ -942,7 +1024,7 @@ a.active-nav {
 }
 .mobile-nav {
   display: none;
-  position: absolute;
+  position: fixed;
   top: -200px;
   background-color: #fff;
   transition: none;

@@ -10,7 +10,7 @@ export const PARTNER_FAILURE = '@@partner/PARTNER_FAILURE';
 
 export const list = (page = 0) => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/partner_categories?format=json`,
+		endpoint: `https://katadze-test.ru/api/partner_categories/?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [

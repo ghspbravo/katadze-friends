@@ -10,15 +10,37 @@ export default () => {
             <section id="gids-header" className="vh-100"></section>
             <div className="container v-offset-small">
                 <div className="row">
-                    <div className="col-md-7">
+                    <div className="col-lg-7">
                         <div className="row">
-                            <h1 className="col-10">Название тура</h1>
-                            <Link to='/gids/id=1' className="col-2">
+                            <h1 className="col-9">Название тура</h1>
+                            <Link to='/gids/id=1' className="col-3 justify-center">
                                 <div className="profile-image-small">
                                     <img src="http://via.placeholder.com/80x80" alt="gidImage" />
                                 </div>
-                                <p className="text-center v-offset-small">Имя</p>
+                                <p className="text-center v-offset-small col-12">Имя</p>
                             </Link>
+                        </div>
+                        <div className="col-12 border-box v-offset-small d-lg-none">
+                            <p className="bold">1000 руб. <span className="small">за час</span></p>
+                            <div className="row">
+                                {Stars(5)}
+                                <span className="bold small">100</span>
+                            </div>
+                            <hr />
+                            <p className="bold"><span className="small">Даты и время</span></p>
+                            <div className="data-box" style={{padding: '15px 0'}}>
+                                <div className="row">
+                                    <span className="small col-4 text-right">01.01.2018</span>
+                                    <svg className="col-4" height="10px" width="100%">
+                                        <line x1="0" y1="7px" x2="100%" y2="7px"
+                                            style={{ stroke: 'black', strokeWidth: 2 }} />
+                                    </svg>
+                                    <span className="small col-4">18.01.2018</span>
+                                </div>
+                            </div>
+                            <div className="row justify-center v-offset-small">
+                                <button className="col-8 col-md-4 lead">Забронировать</button>
+                            </div>
                         </div>
                         <div className="border-box v-offset-small">
                             <p className="bold">Описание тура</p>
@@ -94,7 +116,7 @@ export default () => {
                             </div>
                         </div>
                     </div>
-                    <div className="l-offset-small col-md-4">
+                    <div className="l-offset-small d-none d-lg-block col-lg-4">
                         <div className="col-12 border-box sticky">
                             <p className="bold">1000 руб. <span className="small">за час</span></p>
                             <div className="row">
@@ -105,12 +127,12 @@ export default () => {
                             <p className="bold"><span className="small">Даты и время</span></p>
                             <div className="data-box">
                                 <div className="row">
-                                    <span className="small">01.01.2018</span>
-                                    <svg height="10px" width="140px">
-                                        <line x1="20px" y1="7px" x2="120px" y2="7px"
+                                    <span className="small col-md-5 col-xl-4 text-right">01.01.2018</span>
+                                    <svg className="col-xl-4 col-md-2" height="10px" width="100%">
+                                        <line x1="0" y1="7px" x2="100%" y2="7px"
                                             style={{ stroke: 'black', strokeWidth: 2 }} />
                                     </svg>
-                                    <span className="small">18.01.2018</span>
+                                    <span className="small col-md-5 col-xl-4">18.01.2018</span>
                                 </div>
                             </div>
                             <div className="row justify-center v-offset-small">

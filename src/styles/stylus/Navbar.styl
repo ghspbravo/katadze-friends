@@ -5,12 +5,19 @@
     width: 100%;
     z-index: 10;
     transition: opacity 0.5s
+    position relative
     & a
         BebasH5Book()
         
-.navbar-bg-large
-    position: sticky;
+.navbar-bg-large > .navbar-inner
+    top: 0
+    height 160px
+    position: fixed;
     background-color: white;
+    & > div
+        padding-top: 30px
+.navbar-bg-large
+    padding: 80px 0
     & a  
         color: black
     & .logo
@@ -19,9 +26,14 @@
     & svg .burger-line
         stroke: black
 
-.navbar-bg-small
+.navbar-bg-small > .navbar-inner
     position: fixed;
     background-color: white;
+    top: 0
+    height 100px
+    & > div
+        padding-top: 30px
+.navbar-bg-small
     & a  
         color: black
     & .logo
@@ -30,9 +42,15 @@
     & svg .burger-line
         stroke: black
 
-.navbar-bg-small-sticky
-    position: sticky;
+.navbar-bg-small-sticky > .navbar-inner
+    top: 0
+    height 100px
+    position: fixed;
     background-color: white;
+    & > div
+        padding-top: 30px
+.navbar-bg-small-sticky
+    padding: 60px 0
     & a  
         color: black
     & .logo
@@ -72,10 +90,15 @@
     & svg .burger-line
         stroke: white
 
-.navbar-mobile
+.navbar-mobile > .navbar-inner
+    top: 0
+    height 80px
     padding: 0
-    position: sticky
+    position: fixed;
     background-color: white;
+    z-index 5
+.navbar-mobile
+    padding: 40px 0
     & a  
         color: black
         font-size 18px
@@ -96,7 +119,7 @@ a.active-nav
 
 .mobile-nav
     display none
-    position: absolute;
+    position: fixed;
     top: -200px;
     background-color: white;
     transition: none

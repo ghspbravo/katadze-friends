@@ -25,6 +25,7 @@ export default class Layout extends Component {
 
     componentWillMount() {
         if (typeof sessionStorage.getItem('isFirstVisit') === 'undefined') sessionStorage.setItem('isFirstVisit', true);
+        // window.onresize = () => window.location.reload()
     }
 
     render() {

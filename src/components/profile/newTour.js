@@ -56,8 +56,8 @@ export default () => {
                     <div className="col-3 text-right"><label htmlFor='tourDates'><p className="small">Возможные даты тура</p></label></div>
                     <div className="offset-1 col-8">
                         <div className="row">
-                            <input className='col-5' id='tourDates' type="date" />
-                            <input className='offset-1 col-5' id='tourDates' type="date" />
+                            <input className='col-md-5 col-12' id='tourDates' type="date" />
+                            <input className='offset-md-1 col-md-5 col-12' id='tourDates' type="date" />
                         </div>
                     </div>
 

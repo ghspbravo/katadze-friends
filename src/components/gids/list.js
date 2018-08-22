@@ -25,12 +25,12 @@ export default (inputHandler, searchHandler) => {
                     <div className="col-12 gid-card">
                         <div className="row v-offset-small">
                             <ul className="offset-1 col-10 todo-list">
-                                <li>Создай профиль гида</li>
-                                <li>Покажи места, которые знаешь</li>
-                                <li>Заработай денег</li>
+                                <li className="col-12">Создай профиль гида</li>
+                                <li className="col-12">Покажи места, которые знаешь</li>
+                                <li className="col-12">Заработай денег</li>
                             </ul>
                         </div>
-                        <button className="offset-2 col-8 col-lg-2 lead">Стать гидом</button>
+                        <button className="offset-2 col-8 offset-lg-4 offset-xl-5 col-lg-4 col-xl-2 lead">Стать гидом</button>
                     </div>
                 </div>
             </section>

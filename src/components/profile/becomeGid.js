@@ -22,12 +22,12 @@ export default () => {
                             <p className="small">Языки</p></label></div>
                     <div className="offset-1 col-8">
                         <div className="row">
-                            <select className="col-5" name="language" id="language">
+                            <select className="col-md-5 col-12" name="language" id="language">
                                 <option value="russian">Русский</option>
                                 <option value="russian">Русский</option>
                                 <option value="russian">Русский</option>
                             </select>
-                            <select className="offset-1 col-5" name="languageLevel" id="languageLevel">
+                            <select className="offset-md-1 col-md-5 col-12" name="languageLevel" id="languageLevel">
                                 <option value="Basic">Basic</option>
                                 <option value="Conversational">Conversational</option>
                                 <option value="Advanced">Advanced</option>

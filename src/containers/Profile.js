@@ -17,30 +17,30 @@ class Profile extends Component {
 
 	render() {
 		return ( this.props.isAuthenticated
-			? <div className="row">
-				<div className="offset-lg-2 col-lg-2 no-select">
-					<div className="sticky profile-nav">
-						<div className="col-12 v-offset-small">
+			? <div className="row no-margin">
+				<div className="offset-xl-2 offset-lg-1 col-lg-3 col-xl-2 no-select">
+					<div className="sticky profile-nav" style={window.innerWidth < 992 ? {textAlign: 'center'} : {}}>
+						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/edit' >Редактировать профиль</NavLink>
 						</div>
-						<div className="col-12 v-offset-small">
+						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/applications'  >Заявки</NavLink>
 						</div>
-						<div className="col-12 v-offset-small">
+						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/tours' >Мои туры</NavLink>
 						</div>
-						<div className="col-12 v-offset-small">
+						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/become-gid' >Стать гидом</NavLink>
 						</div>
-						<div className="col-12 v-offset-small">
+						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/create-tour' >Создать тур</NavLink>
 						</div>
-						<div className="col-12 v-offset-small">
+						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<button onClick={this.props.logout}><Link to='/login' >Выйти</Link></button>
 						</div>
 					</div>
 				</div>
-				<div className="col-lg-6">
+				<div className="col-xl-6 col-lg-7">
 					<Switch>
 						<Route path='/profile/edit' component={edit} />
 						<Route path='/profile/applications' component={applications} />

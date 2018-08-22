@@ -17,7 +17,7 @@ export default class Menu extends Component {
             .set(`#${id} .homepage-item-image`, { opacity: '1' })
             .set('.background', { opacity: '0' })
             .to(`#${id} .homepage-item-image`, 0.5, { transform: 'scale(1)' })
-            .to(`#${id} .knockout-text-bg`, 2, { attr: { y: '0' }, ease: Expo.easeOut }, 'start')
+            .to(`#${id} .knockout-text-bg`, 1, { attr: { y: '0' }, ease: Expo.easeOut }, 'start')
             .to(`#${id} .homepage-item-inner-title`, 0.2, { opacity: '1' }, 'start+=1')
             .to(`#${id} .homepage-item-inner-subtext-subtitle`, 0.2, { opacity: '1' }, 'start+=1.2')
             .to(`#${id} .homepage-item-inner-subtext-link`, 0.2, { opacity: '1' }, 'start+=1.4')
@@ -48,28 +48,41 @@ export default class Menu extends Component {
             })
         }
         else {
-            let loaderScene = new TimelineMax({
-                onComplete: () => {
-                    sessionStorage.setItem('isFirstVisit', 'false');
-                    document.querySelectorAll('.homepage-item').forEach(item => {
-                        let hoverScene = new TimelineMax()
+            if (window.innerWidth > 992) {
+                let loaderScene = new TimelineMax({
+                    onComplete: () => {
+                        sessionStorage.setItem('isFirstVisit', 'false');
+                        document.querySelectorAll('.homepage-item').forEach(item => {
+                            let hoverScene = new TimelineMax()
 
-                        item.onmouseenter = () => this.handleItemHover(item, hoverScene)
-                        item.onmouseleave = () => this.handleItemLeft(item, hoverScene)
-                    })
-                }
-            })
+                            item.onmouseenter = () => this.handleItemHover(item, hoverScene)
+                            item.onmouseleave = () => this.handleItemLeft(item, hoverScene)
+                        })
+                    }
+                })
 
-            loaderScene.add('start')
-                .staggerFrom('.preloader .logo span', 0.5, { opacity: '0' }, 0.2, '+=1.5')
-                .to('#loader-part-1', 1.5, { y: `-${window.innerHeight}`, ease: Expo.easeIn })
-                .to('#loader-part-2', 1.2, { y: `-${window.innerHeight}`, ease: Expo.easeIn }, '-=1')
-                .to('#loader-part-3', 1, { y: `-${window.innerHeight}`, ease: Expo.easeIn }, '-=0.8')
-                .from('.background', 0.3, { transform: 'scale(1.1)' }, '-=1')
-                .to('.preloader .logo', 1, { opacity: '0' })
-                .from('.brand', 1, { opacity: '0' },  '-=1')
-                .staggerFrom('.homepage-item .title', 0.3, { opacity: '0' }, 0.2)
-                .set('.preloader .logo', { display: 'none' })
+                loaderScene.staggerFrom('.preloader .logo span', 0.5, { opacity: '0' }, 0.3, '+=1.5')
+                    .to('#loader-part-1', 1.5, { y: `-${window.innerHeight}`, ease: Expo.easeIn })
+                    .to('#loader-part-2', 1.2, { y: `-${window.innerHeight}`, ease: Expo.easeIn }, '-=1')
+                    .to('#loader-part-3', 1, { y: `-${window.innerHeight}`, ease: Expo.easeIn }, '-=0.8')
+                    .from('.background', 0.3, { transform: 'scale(1.1)' }, '-=1')
+                    .to('.preloader .logo', 1, { opacity: '0' })
+                    .from('.brand', 1, { opacity: '0' }, '-=1')
+                    .staggerFrom('.homepage-item .title', 0.3, { opacity: '0' }, 0.2, '-=1')
+                    .set('.preloader .logo', { display: 'none' })
+            } else {
+                let loaderScene = new TimelineMax({
+                    onComplete: () => sessionStorage.setItem('isFirstVisit', 'false')
+                })
+
+                loaderScene.staggerFrom('.preloader .logo span', 0.5, { opacity: '0' }, 0.3, '+=1.5')
+                    .to('#loader-big', 1.5, { y: `-${window.innerHeight}`, ease: Expo.easeIn })
+                    .to('.preloader .logo', 1, { opacity: '0' })
+                    .from('.brand', 1, { opacity: '0' }, '-=1')
+                    .staggerFrom('.homepage-item .title', 0.3, { opacity: '0' }, 0.2, '-=1')
+                    .set('.preloader .logo', { display: 'none' })
+
+            }
         }
 
         document.querySelector('a.scroll-to').onclick = e => {
@@ -86,9 +99,10 @@ export default class Menu extends Component {
             <div>
                 <div className="preloader">
                     <div className="preloader-inner">
-                        <span id="loader-part-1"></span>
-                        <span id="loader-part-2"></span>
-                        <span id="loader-part-3"></span>
+                        <span id="loader-part-1" className="d-none d-lg-block"></span>
+                        <span id="loader-part-2" className="d-none d-lg-block"></span>
+                        <span id="loader-part-3" className="d-none d-lg-block"></span>
+                        <span id="loader-big" className="d-lg-none"></span>
                     </div>
                     <div className="logo">
                         <span>K</span>
@@ -167,7 +181,7 @@ export default class Menu extends Component {
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}></div>
                     <div id="content" className="homepage-item-inner">
-                        <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})` }}></div>
+                        <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})`, backgroundPositionX: '65%' }}></div>
                         <div className="homepage-item-inner-title">Скидки</div>
                         <div className="homepage-item-inner-subtext">
                             <div className="homepage-item-inner-subtext-subtitle">
@@ -180,7 +194,7 @@ export default class Menu extends Component {
                         </div>
                     </div>
                     <div className="homepage-item-inner">
-                        <div className="homepage-item-image" style={{ backgroundImage: `url(${gids})` }}></div>
+                        <div className="homepage-item-image" style={{ backgroundImage: `url(${gids})`, backgroundPositionX: '35%' }}></div>
                         <div className="homepage-item-inner-title">Сеть гидов</div>
                         <div className="homepage-item-inner-subtext">
                             <div className="homepage-item-inner-subtext-subtitle">

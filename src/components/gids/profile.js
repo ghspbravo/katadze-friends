@@ -6,7 +6,7 @@ import review from './review';
 export default () => {
     return (
         <div className="row justify-center">
-            <div className="col-10 offset-lg-1 col-lg-3">
+            <div className="col-10 col-lg-3">
                 <div className="row column-direction">
                     <section className="d-lg-none jumbotron">
                         <div className="content">

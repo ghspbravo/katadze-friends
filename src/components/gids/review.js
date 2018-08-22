@@ -5,10 +5,10 @@ export default index => {
         <div key={index} className="row">
             <div className="col-6 col-md-2">
                 <div className="row justify-center">
-                    <div className="profile-image-small">
+                    <div className="col-6 col-md-12 no-padding profile-image-small">
                         <img src="http://via.placeholder.com/80x80" alt="userImage" />
                     </div>
-                    <p className="secondary col-12 text-center small v-offset-small">Имя</p>
+                    <p className="secondary col-6 col-md-12 text-center small v-offset-small">Имя</p>
                 </div>
             </div>
             <div className="col-12 col-md-10">
