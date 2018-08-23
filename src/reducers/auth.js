@@ -2,6 +2,7 @@ import jwtDecode from 'jwt-decode'
 import * as auth from '../actions/auth'
 
 const initialState = {
+    userId: undefined,
     access: undefined,
     refresh: undefined,
     errors: {},
@@ -12,6 +13,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case auth.LOGIN_SUCCESS:
             return {
+                userId: action.payload.user.id,
                 access: {
                     token: action.payload.access,
                     ...jwtDecode(action.payload.access)
@@ -39,12 +41,19 @@ export default (state = initialState, action) => {
             }
         case auth.LOGOUT_SUCCESS:
             return {
+                userId: undefined,
                 access: undefined,
                 refresh: undefined,
                 errors: {}
             }
         default:
             return state
+    }
+}
+
+export function getUserId(state) {
+    if (state.userId) {
+        return state.userId
     }
 }
 

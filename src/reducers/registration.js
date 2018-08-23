@@ -1,7 +1,7 @@
 import * as registration from '../actions/registration'
 
 const initialState = {
-    username: undefined,
+    id: undefined,
     errors: {},
 }
 
@@ -9,12 +9,12 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case registration.REGISTRATION_SUCCESS:
             return {
-                username: action.payload.username,
+                id: action.payload.id,
                 errors: {}
             }
         case registration.REGISTRATION_FAILURE:
             return {
-                username: undefined,
+                id: undefined,
                 errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
             }
         default:
@@ -22,12 +22,8 @@ export default (state = initialState, action) => {
     }
 }
 
-export function username(state) {
-    return state.username
-}
-
 export function isRegistered(state) {
-    return typeof state.username !== 'undefined'
+    return typeof state.id === 'undefined' ? false : true
 }
 
 export function errors(state) {

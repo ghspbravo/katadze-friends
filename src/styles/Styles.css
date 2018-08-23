@@ -59,6 +59,11 @@
   flex-wrap: wrap;
   align-items: center;
 }
+.align-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
 .vh-100 {
   padding-top: 35vh;
   padding-bottom: 35vh;
@@ -231,6 +236,9 @@ h1.super {
 span {
   color: #41bfef;
 }
+span.error {
+  color: #a94442 !important;
+}
 span.small {
   color: inherit;
   font-size: 14px;
@@ -370,6 +378,8 @@ form > input {
 }
 form select {
   height: 50px;
+  display: flex;
+  align-items: flex-end;
 }
 form textarea {
   resize: vertical;
@@ -542,10 +552,9 @@ button.lead {
   h1.super {
     font-size: 100px;
   }
-  p {
-    font-size: 18px;
-  }
-  li {
+  p,
+  li,
+  a {
     font-size: 18px;
   }
   section {
@@ -692,6 +701,10 @@ button.lead {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.hidden-lines .homepage-item:before,
+.hidden-lines .homepage-item:after {
+  opacity: 0;
 }
 .homepage-item-image {
   position: fixed;

@@ -43,9 +43,15 @@ export default class Menu extends Component {
             document.querySelectorAll('.homepage-item').forEach(item => {
                 let hoverScene = new TimelineMax()
 
-                item.onmouseenter = () => this.handleItemHover(item, hoverScene)
+                item.onmouseover = () => this.handleItemHover(item, hoverScene)
                 item.onmouseleave = () => this.handleItemLeft(item, hoverScene)
             })
+            document.querySelector('.homepage-item-wrapper').onmouseover = () => {
+                document.querySelector('.homepage-item-wrapper').classList.add('hidden-lines')
+            }
+            document.querySelector('.homepage-item-wrapper').onmouseleave = () => {
+                document.querySelector('.homepage-item-wrapper').classList.remove('hidden-lines')
+            }
         }
         else {
             if (window.innerWidth > 992) {
@@ -55,9 +61,15 @@ export default class Menu extends Component {
                         document.querySelectorAll('.homepage-item').forEach(item => {
                             let hoverScene = new TimelineMax()
 
-                            item.onmouseenter = () => this.handleItemHover(item, hoverScene)
+                            item.onmouseover = () => this.handleItemHover(item, hoverScene)
                             item.onmouseleave = () => this.handleItemLeft(item, hoverScene)
                         })
+                        document.querySelector('.homepage-item-wrapper').onmouseover = () => {
+                            document.querySelector('.homepage-item-wrapper').classList.add('hidden-lines')
+                        }
+                        document.querySelector('.homepage-item-wrapper').onmouseleave = () => {
+                            document.querySelector('.homepage-item-wrapper').classList.remove('hidden-lines')
+                        }
                     }
                 })
 

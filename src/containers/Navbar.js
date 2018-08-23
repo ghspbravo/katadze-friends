@@ -56,7 +56,7 @@ class Navbar extends Component {
         switch (pathList[1]) {
             case "partners":
                 if (typeof pathList[2] !== 'undefined') {
-                    this.props.changeNavType(NavbarTypes.BG_LARGE)
+                    this.props.changeNavType(NavbarTypes.BG_SMALL_STICKY)
                     break;
                 }
             case "gids":

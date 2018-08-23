@@ -31,7 +31,12 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            email: ''
+            email: '',
+            first_name: '',
+            last_name: '',
+            gender: '',
+            date_birth: '',
+            residence: '',
         }
     }
 
@@ -52,7 +57,7 @@ class Login extends Component {
                 this.props.onLogin(this.state.username, this.state.password)
                 break;
             case '/registration':
-                this.props.onRegistration(this.state.username, this.state.password, this.state.email)
+                this.props.onRegistration(this.state.email, this.state.password, this.state.date_birth, this.state.gender, this.state.last_name, this.state.first_name, this.state.username, this.state.residence)
                 break;
             case '/reset-password':
                 this.props.onReset(this.state.email)
@@ -78,6 +83,10 @@ class Login extends Component {
                     <Route path='/registration' render={() => registrationComponent(this.onSubmit,
                         this.handleInputChange,
                         this.props.registrationErrors)} />
+                    {this.props.isRegistered
+                        ? this.props.onLogin(this.state.username, this.state.password)
+                        : null
+                    }
                 </Switch>
         )
     }
@@ -90,7 +99,7 @@ const mapStateToProps = (state) => ({
     resetErrors: resetErrors(state),
     isAuthenticated: isAuthenticated(state),
     isRegistered: isRegistered(state),
-    resetMessage: getMessage(state)
+    resetMessage: getMessage(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -98,8 +107,8 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(login(username, password))
     },
 
-    onRegistration: (username, password, email) => {
-        dispatch(registration(username, email, password))
+    onRegistration: (email, password, date_birth, gender, last_name, first_name, username, residence) => {
+        dispatch(registration(email, password, date_birth, gender, last_name, first_name, username, residence))
     },
 
     onReset: (email) => {
