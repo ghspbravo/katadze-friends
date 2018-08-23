@@ -6,6 +6,7 @@ export default (errors, field = 'non_field_errors') => {
         ? <div>
             <div className="col-12">
                 <p className="small"><span className="error">{errors[field][0]}</span></p>
+                {console.error(errors)}
             </div>
         </div>
         : null

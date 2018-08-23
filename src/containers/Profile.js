@@ -10,16 +10,70 @@ import newTour from '../components/profile/newTour'
 import { Route, Redirect } from 'react-router'
 import { Switch, Link, NavLink } from 'react-router-dom'
 
-import { isAuthenticated } from '../reducers'
+import { isAuthenticated, userId } from '../reducers'
 import { logout } from '../actions/auth'
+import { userInfo, createGid } from '../actions/profile'
 
 class Profile extends Component {
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			bio: '',
+			keyphrase: '',
+			languages: [],
+			level: [],
+			hobbies: [],
+			activities: [],
+		}
+	}
+
+	componentDidMount() {
+		this.props.fetchUser(this.props.userId)
+	}
+
+	handleInputChange = (event) => {
+		const target = event.target,
+			value = target.type ===
+				'checkbox' ? target.checked : target.value,
+			name = target.name
+		this.setState({
+			[name]: value
+		});
+	};
+
+	hadleListChange = event => {
+		let name = event.target.name
+		let currentList = this.state[name]
+		currentList.push(event.target.value)
+		this.setState({ [name]: currentList })
+	}
+
+	onSubmit = (event) => {
+		event.preventDefault()
+		switch (this.props.location.pathname) {
+			case '/profile/become-gid':
+				let languages = []
+				let hobbies = []
+				let activities = []
+				this.state.languages.forEach((language, i) => languages.push({ name: language, level: this.state.level[i] }))
+				this.state.hobbies.forEach(hobbie => hobbies.push({ code: hobbie }))
+				this.state.activities.forEach(activity => activities.push({ code: activity }))
+				console.log(languages)
+				this.props.onCreateGid(this.state.bio, this.state.keyphrase, languages, hobbies, activities)
+				break;
+
+			default:
+				break;
+		}
+	};
+
 
 	render() {
-		return ( this.props.isAuthenticated
+		return (this.props.isAuthenticated
 			? <div className="row no-margin">
 				<div className="offset-xl-2 offset-lg-1 col-lg-3 col-xl-2 no-select">
-					<div className="sticky profile-nav" style={window.innerWidth < 992 ? {textAlign: 'center'} : {}}>
+					<div className="sticky profile-nav" style={window.innerWidth < 992 ? { textAlign: 'center' } : {}}>
 						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/edit' >Редактировать профиль</NavLink>
 						</div>
@@ -36,16 +90,25 @@ class Profile extends Component {
 							<NavLink activeClassName='profile-current' to='/profile/create-tour' >Создать тур</NavLink>
 						</div>
 						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
+							<button onClick={() => console.log(this.props.state)}><p>STATE</p></button>
+						</div>
+						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<button onClick={this.props.logout}><Link to='/login' >Выйти</Link></button>
 						</div>
 					</div>
 				</div>
 				<div className="col-xl-6 col-lg-7">
 					<Switch>
-						<Route path='/profile/edit' component={edit} />
+						<Route path='/profile/edit' render={() => edit(
+							this.props.user
+						)} />
 						<Route path='/profile/applications' component={applications} />
 						<Route path='/profile/tours' component={tours} />
-						<Route path='/profile/become-gid' component={becomeGid} />
+						<Route path='/profile/become-gid' render={() => becomeGid(
+							this.handleInputChange,
+							this.hadleListChange,
+							this.onSubmit
+						)} />
 						<Route path='/profile/create-tour' component={newTour} />
 					</Switch>
 				</div>
@@ -56,11 +119,19 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	isAuthenticated: isAuthenticated(state)
+	user: state.profile,
+	isAuthenticated: isAuthenticated(state),
+	userId: userId(state),
+	state: state,
 });
 
 const mapDispatchToProps = dispatch => ({
-	logout: () => dispatch(logout())
+	logout: () => dispatch(logout()),
+	fetchUser: id => dispatch(userInfo(id)),
+
+	onCreateGid: (bio, keyphrase, languages, hobbies, activities) => {
+		dispatch(createGid(bio, keyphrase, languages, hobbies, activities))
+	},
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

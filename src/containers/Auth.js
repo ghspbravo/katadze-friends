@@ -37,6 +37,8 @@ class Login extends Component {
             gender: '',
             date_birth: '',
             residence: '',
+            phones: '',
+            img_photo: ''
         }
     }
 
@@ -50,6 +52,19 @@ class Login extends Component {
         });
     };
 
+    handleFileLoad = () => {
+        let file = document.forms.registration.img_photo.files[0]
+        let fr = new FileReader()
+        fr.onloadend = info => {
+            document.querySelector('.avatar-container img').src = info.target.result
+            // this.setState({img_photo: info.target.result})
+        }
+        fr.readAsDataURL(file)
+        let load = new FileReader()
+        load.onloadend = info => this.setState({img_photo: info.target.result})
+        load.readAsBinaryString(file)
+    }
+
     onSubmit = (event) => {
         event.preventDefault()
         switch (this.props.match.path) {
@@ -57,7 +72,7 @@ class Login extends Component {
                 this.props.onLogin(this.state.username, this.state.password)
                 break;
             case '/registration':
-                this.props.onRegistration(this.state.email, this.state.password, this.state.date_birth, this.state.gender, this.state.last_name, this.state.first_name, this.state.username, this.state.residence)
+                this.props.onRegistration(this.state.email, this.state.password, this.state.date_birth, this.state.gender, this.state.last_name, this.state.first_name, this.state.username, this.state.residence, this.state.phones, this.state.img_photo)
                 break;
             case '/reset-password':
                 this.props.onReset(this.state.email)
@@ -82,6 +97,7 @@ class Login extends Component {
                         this.props.resetErrors)} />
                     <Route path='/registration' render={() => registrationComponent(this.onSubmit,
                         this.handleInputChange,
+                        this.handleFileLoad,
                         this.props.registrationErrors)} />
                     {this.props.isRegistered
                         ? this.props.onLogin(this.state.username, this.state.password)

@@ -4,7 +4,7 @@ export const REGISTRATION_REQUEST = '@@registration/REGISTRATION_REQUEST';
 export const REGISTRATION_SUCCESS = '@@registration/REGISTRATION_SUCCESS';
 export const REGISTRATION_FAILURE = '@@registration/REGISTRATION_FAILURE';
 
-export const registration = (email, password, date_birth, gender, last_name, first_name, username, residence) => ({
+export const registration = (email, password, date_birth, gender, last_name, first_name, username, residence, phone, img_photo) => ({
     [RSAA]: {
         endpoint: 'https://katadze-test.ru/api/user/',
         method: 'POST',

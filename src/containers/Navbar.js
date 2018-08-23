@@ -47,7 +47,7 @@ class Navbar extends Component {
         let closeScene = new TimeLineMax({onComplete: () => this.setState({isNavOpen: false, isDrawing: false})})
         
         document.querySelectorAll('.mobile-nav li').forEach(item => closeScene.to(item, 0.1, { opacity: '0' }))
-        closeScene.to('.mobile-nav', 1, { top: '-200px' })
+        closeScene.to('.mobile-nav', 1, { top: '-300px' })
             .set('.mobile-nav', { display: 'none' })
     }
 

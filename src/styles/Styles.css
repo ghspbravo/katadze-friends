@@ -378,8 +378,6 @@ form > input {
 }
 form select {
   height: 50px;
-  display: flex;
-  align-items: flex-end;
 }
 form textarea {
   resize: vertical;
@@ -1018,7 +1016,7 @@ a.homepage-item-inner-subtext-link:hover {
 }
 .navbar-mobile a {
   color: #000;
-  font-size: 18px;
+  line-height: 2;
 }
 .navbar-mobile .logo {
   height: 80px;
@@ -1376,10 +1374,11 @@ a.profile-current {
   border-bottom: 1px solid;
 }
 .avatar-container {
-  width: 250px;
   background-color: #c4c4c4;
 }
 .avatar-container > img {
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
 }
 select.bordered {

@@ -12,8 +12,8 @@ export default (state = initialState, action) => {
     console.log(action.type)
     switch (action.type) {
         case auth.LOGIN_SUCCESS:
+            console.log(action.payload)
             return {
-                userId: action.payload.user.id,
                 access: {
                     token: action.payload.access,
                     ...jwtDecode(action.payload.access)
@@ -52,8 +52,8 @@ export default (state = initialState, action) => {
 }
 
 export function getUserId(state) {
-    if (state.userId) {
-        return state.userId
+    if (state.access) {
+        return state.access.user_id
     }
 }
 

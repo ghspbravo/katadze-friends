@@ -6,7 +6,7 @@ import navbar from './navbar'
 import auth, * as fromAuth from './auth.js'
 import registration, * as fromReg from './registration'
 import resetPassword, * as fromReset from './resetPassword'
-
+import profile, * as fromProfile from './profile'
 
 const rootReducer = combineReducers({
     router: routerReducer,
@@ -15,7 +15,8 @@ const rootReducer = combineReducers({
     event,
     navbar,
     registration,
-    resetPassword
+    resetPassword,
+    profile
 })
 
 export default rootReducer
