@@ -7,12 +7,13 @@ import tours from '../components/profile/tours'
 import becomeGid from '../components/profile/becomeGid'
 import newTour from '../components/profile/newTour'
 
-import { Route, Redirect } from 'react-router'
+import { Route, Redirect, withRouter } from 'react-router'
 import { Switch, Link, NavLink } from 'react-router-dom'
 
 import { isAuthenticated, userId } from '../reducers'
 import { logout } from '../actions/auth'
 import { userInfo, createGid } from '../actions/profile'
+import { activate, activateConfirm } from '../actions/registration';
 
 class Profile extends Component {
 	constructor(props) {
@@ -59,7 +60,7 @@ class Profile extends Component {
 				this.state.languages.forEach((language, i) => languages.push({ name: language, level: this.state.level[i] }))
 				this.state.hobbies.forEach(hobbie => hobbies.push({ code: hobbie }))
 				this.state.activities.forEach(activity => activities.push({ code: activity }))
-				console.log(languages)
+				console.log(this.state.bio)
 				this.props.onCreateGid(this.state.bio, this.state.keyphrase, languages, hobbies, activities)
 				break;
 
@@ -67,6 +68,14 @@ class Profile extends Component {
 				break;
 		}
 	};
+
+	handleActivate = () => {
+		let locationList = this.props.location.pathname.split('/')
+		let uidb64 = locationList[2]
+		let token = locationList[3]
+
+		this.props.onActivateConfirm(token, uidb64)
+	}
 
 
 	render() {
@@ -93,6 +102,9 @@ class Profile extends Component {
 							<button onClick={() => console.log(this.props.state)}><p>STATE</p></button>
 						</div>
 						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
+							<button onClick={this.props.onActivate}><p>ACTIVATE</p></button>
+						</div>
+						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<button onClick={this.props.logout}><Link to='/login' >Выйти</Link></button>
 						</div>
 					</div>
@@ -110,10 +122,20 @@ class Profile extends Component {
 							this.onSubmit
 						)} />
 						<Route path='/profile/create-tour' component={newTour} />
+						<Route path='/activate/' render={() => {
+							this.handleActivate()
+							return <Redirect to='/profile' />
+						}} />
 					</Switch>
 				</div>
 			</div>
-			: <Redirect to='/login' />
+			: <Switch>
+				<Route path='/activate/' render={() => {
+							() => this.handleActivate()
+							return <p>Activating</p>
+						}} />
+				<Route render={() => <Redirect to='/login' />} />
+			</Switch>
 		)
 	}
 }
@@ -132,6 +154,14 @@ const mapDispatchToProps = dispatch => ({
 	onCreateGid: (bio, keyphrase, languages, hobbies, activities) => {
 		dispatch(createGid(bio, keyphrase, languages, hobbies, activities))
 	},
+
+	onActivate: () => {
+		dispatch(activate())
+	},
+
+	onActivateConfirm: (token, uidb64) => {
+		dispatch(activateConfirm(token, uidb64))
+	}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

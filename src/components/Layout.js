@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import {
     Route,
     Switch,
@@ -21,16 +22,35 @@ import Events from '../containers/Events';
 import Partners from '../containers/Partners'
 import Navbar from '../containers/Navbar';
 
-export default class Layout extends Component {
+import { getErrors, resetErrors, getMessages, resetMessages } from '../reducers';
+import { forceRefresh } from '../actions';
+
+class Layout extends Component {
 
     componentWillMount() {
         if (typeof sessionStorage.getItem('isFirstVisit') === 'undefined') sessionStorage.setItem('isFirstVisit', true);
-        // window.onresize = () => window.location.reload()
+        window.onresize = () => window.location.reload()
     }
 
     render() {
         return (
             <div className="app-container">
+                <div className="container errors-alert" style={this.props.errors !== '' ? { opacity: '1', top: '30px' } : { opacity: '0', top: '-1000px' }}>
+                    <div className="row justify-center">
+                        <div className="col-12 col-md-8">
+                            <button className="close-button" onClick={() => {this.props.resetErrors(); this.props.forceRefresh()}}>X</button>
+                            <p className="small">{this.props.errors}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="container messages-alert" style={this.props.messages.length > 0 ? { opacity: '1', top: '30px' } : { opacity: '0', top: '-1000px' }}>
+                    <div className="row justify-center">
+                        <div className="col-12 col-md-8">
+                            <button className="close-button" onClick={() => {this.props.resetMessages(); this.props.forceRefresh()}}>X</button>
+                            <p className="small">{this.props.messages}</p>
+                        </div>
+                    </div>
+                </div>
                 <Switch>
                     <Route exact path="/" render={() => true} />
                     <Route component={Navbar} />
@@ -48,6 +68,8 @@ export default class Layout extends Component {
                 <Route path='/events/:id' component={Events} />
                 <Route path='/gids' component={Gids} />
                 <Route path='/tours' component={Gids} />
+                <Route path='/activate/' component={Profile} />
+                <Route path='/reset/' component={Auth} />
                 <Route path='/profile' component={Profile} />
 
                 <Route path='/about' component={About} />
@@ -63,3 +85,18 @@ export default class Layout extends Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    errors: getErrors(state),
+    resetErrors: () => resetErrors(state),
+    messages: getMessages(state),
+    resetMessages: () => resetMessages(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    forceRefresh: () => {
+        dispatch(forceRefresh())
+    },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)

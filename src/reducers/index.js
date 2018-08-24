@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
     navbar,
     registration,
     resetPassword,
-    profile
+    profile,
 })
 
 export default rootReducer
@@ -27,15 +27,51 @@ export const isRegistered = state => fromReg.isRegistered(state.registration);
 export const isAuthenticated = state => fromAuth.isAuthenticated(state.auth);
 
 export const accessToken = state => fromAuth.accessToken(state.auth);
+export const registrationToken = state => fromReg.getRegistrationToken(state.registration)
+
 export const isAccessTokenExpired = state => fromAuth.isAccessTokenExpired(state.auth);
 export const refreshToken = state => fromAuth.refreshToken(state.auth);
 export const isRefreshTokenExpired = state => fromAuth.isRefreshTokenExpired(state.auth);
 
-export const authErrors = state => fromAuth.errors(state.auth);
-export const registrationErrors = state => fromReg.errors(state.registration);
-export const resetErrors = state => fromReg.errors(state.resetPassword);
+// export const getMessage = state => fromReset.message(state.resetPassword);
 
-export const getMessage = state => fromReset.message(state.resetPassword);
+export var getErrors = state => {
+    let errors = ''
+    Object.keys(state).forEach(action => {
+        if (state[action].errors && state[action].errors.non_field_errors) errors = state[action].errors.non_field_errors
+    })
+    return errors
+}
+
+export var getFiledErrors = state => {
+    let errors = {}
+    if (state.errors) {
+        Object.keys(state.errors).forEach(field => {
+            if (field !== 'non_field_errors') errors[field] = state.errors[field]
+        })
+    }
+    return errors
+}
+
+export function resetErrors(state) {
+    Object.keys(state).forEach(action => {
+        if (state[action].errors && state[action].errors.non_field_errors) state[action].errors.non_field_errors = undefined
+    })
+}
+
+export var getMessages = state => {
+    let messages = ''
+    Object.keys(state).forEach(action => {
+        if (state[action].message) messages = state[action].message
+    })
+    return messages
+}
+
+export function resetMessages(state) {
+    Object.keys(state).forEach(action => {
+        if (state[action].message) state[action].message = undefined
+    })
+}
 
 export function withAuth(headers = {}) {
     return (state) => ({

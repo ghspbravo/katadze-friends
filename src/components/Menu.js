@@ -18,9 +18,9 @@ export default class Menu extends Component {
             .set('.background', { opacity: '0' })
             .to(`#${id} .homepage-item-image`, 0.5, { transform: 'scale(1)' })
             .to(`#${id} .knockout-text-bg`, 1, { attr: { y: '0' }, ease: Expo.easeOut }, 'start')
-            .to(`#${id} .homepage-item-inner-title`, 0.2, { opacity: '1' }, 'start+=1')
-            .to(`#${id} .homepage-item-inner-subtext-subtitle`, 0.2, { opacity: '1' }, 'start+=1.2')
-            .to(`#${id} .homepage-item-inner-subtext-link`, 0.2, { opacity: '1' }, 'start+=1.4')
+            .to(`#${id} .homepage-item-inner-title`, 0.2, { opacity: '1' }, 'start+=0.6')
+            .to(`#${id} .homepage-item-inner-subtext-subtitle`, 0.2, { opacity: '1' }, 'start+=0.8')
+            .to(`#${id} .homepage-item-inner-subtext-link`, 0.2, { opacity: '1' }, 'start+=1')
     }
 
     handleItemLeft = (target, scene) => {
@@ -88,7 +88,7 @@ export default class Menu extends Component {
                 })
 
                 loaderScene.staggerFrom('.preloader .logo span', 0.5, { opacity: '0' }, 0.3, '+=1.5')
-                    .to('#loader-big', 1.5, { y: `-${window.innerHeight+200}`, ease: Expo.easeIn })
+                    .to('#loader-big', 1.5, { y: `-${window.innerHeight + 200}`, ease: Expo.easeIn })
                     .to('.preloader .logo', 1, { opacity: '0' })
                     .from('.brand', 1, { opacity: '0' }, '-=1')
                     .staggerFrom('.homepage-item .title', 0.3, { opacity: '0' }, 0.2, '-=1')
@@ -132,21 +132,21 @@ export default class Menu extends Component {
                         <span className="credits">made by katadze digital studio</span>
                     </div>
                     <div className="homepage-item-wrapper">
-                        <div id="partners" className="homepage-item">
-                            <div className="title">Скидки.</div>
-                            <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})` }}>
+                        <div id="events" className="homepage-item">
+                            <div className="title">Мероприятия.</div>
+                            <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}>
                                 <span className="credits">made by katadze digital studio</span>
                             </div>
                             <div className="homepage-item-inner">
-                                <div className="homepage-item-inner-title">Скидки</div>
+                                <div className="homepage-item-inner-title">Весь мир</div>
                                 <div className="homepage-item-inner-subtext">
                                     <div className="homepage-item-inner-subtext-subtitle">
                                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
                                     </div>
-                                    <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
+                                    <Link className="homepage-item-inner-subtext-link" to="/events">Перейти</Link>
                                 </div>
                                 <div className="homepage-mask-wrapper">
-                                    <svg width="100%" height="100%"> <defs> <mask id="knockout-text-0" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">%</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-0)"></rect> </svg>
+                                    <svg width="100%" height="100%"> <defs> <mask id="knockout-text-3" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-3)"></rect> </svg>
                                 </div>
                             </div>
                         </div>
@@ -168,21 +168,21 @@ export default class Menu extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div id="events" className="homepage-item">
-                            <div className="title">Мероприятия.</div>
-                            <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}>
+                        <div id="partners" className="homepage-item">
+                            <div className="title">Скидки.</div>
+                            <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})` }}>
                                 <span className="credits">made by katadze digital studio</span>
                             </div>
                             <div className="homepage-item-inner">
-                                <div className="homepage-item-inner-title">Весь мир</div>
+                                <div className="homepage-item-inner-title">Скидки</div>
                                 <div className="homepage-item-inner-subtext">
                                     <div className="homepage-item-inner-subtext-subtitle">
                                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
                                     </div>
-                                    <Link className="homepage-item-inner-subtext-link" to="/events">Перейти</Link>
+                                    <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
                                 </div>
                                 <div className="homepage-mask-wrapper">
-                                    <svg width="100%" height="100%"> <defs> <mask id="knockout-text-3" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-3)"></rect> </svg>
+                                    <svg width="100%" height="100%"> <defs> <mask id="knockout-text-0" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">%</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-0)"></rect> </svg>
                                 </div>
                             </div>
                         </div>
@@ -192,17 +192,17 @@ export default class Menu extends Component {
                     <a href="#content" className="scroll-to"><span></span>SCROLL</a>
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}></div>
-                    <div id="content" className="homepage-item-inner">
-                        <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})`, backgroundPositionX: '65%' }}></div>
-                        <div className="homepage-item-inner-title">Скидки</div>
+                    <div className="homepage-item-inner">
+                        <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
+                        <div className="homepage-item-inner-title">Весь мир</div>
                         <div className="homepage-item-inner-subtext">
                             <div className="homepage-item-inner-subtext-subtitle">
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
                             </div>
-                            <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
+                            <Link className="homepage-item-inner-subtext-link" to="/events">Перейти</Link>
                         </div>
                         <div className="homepage-mask-wrapper">
-                            <svg width="100%" height="100%"> <defs> <mask id="knockout-text-4" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">%</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-4)"></rect> </svg>
+                            <svg width="100%" height="100%"> <defs> <mask id="knockout-text-6" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-6)"></rect> </svg>
                         </div>
                     </div>
                     <div className="homepage-item-inner">
@@ -218,17 +218,17 @@ export default class Menu extends Component {
                             <svg width="100%" height="100%"> <defs> <mask id="knockout-text-5" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">❖</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-5)"></rect> </svg>
                         </div>
                     </div>
-                    <div className="homepage-item-inner">
-                        <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
-                        <div className="homepage-item-inner-title">Весь мир</div>
+                    <div id="content" className="homepage-item-inner">
+                        <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})`, backgroundPositionX: '65%' }}></div>
+                        <div className="homepage-item-inner-title">Скидки</div>
                         <div className="homepage-item-inner-subtext">
                             <div className="homepage-item-inner-subtext-subtitle">
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
                             </div>
-                            <Link className="homepage-item-inner-subtext-link" to="/events">Перейти</Link>
+                            <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
                         </div>
                         <div className="homepage-mask-wrapper">
-                            <svg width="100%" height="100%"> <defs> <mask id="knockout-text-6" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-6)"></rect> </svg>
+                            <svg width="100%" height="100%"> <defs> <mask id="knockout-text-4" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">%</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-4)"></rect> </svg>
                         </div>
                     </div>
                 </div>

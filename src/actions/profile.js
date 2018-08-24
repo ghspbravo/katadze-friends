@@ -25,7 +25,7 @@ export const createGid = (bio, keyphrase, languages, hobbies, activities) => ({
         endpoint: 'https://katadze-test.ru/api/user/profile/',
         method: 'POST',
         body: JSON.stringify({ bio, keyphrase, languages, hobbies, activities }),
-        headers: withAuth(),
+        headers: withAuth({'Content-Type': 'application/json'}),
         types: [
             CREATE_GID_REQUEST, CREATE_GID_SUCCESS, CREATE_GID_FAILURE
         ]

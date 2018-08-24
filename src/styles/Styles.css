@@ -454,6 +454,50 @@ button.lead {
 .comment {
   text-align: justify;
 }
+.errors-alert {
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+.errors-alert div[class^='col-'] {
+  padding: 10px 20px;
+  background-color: #a94442;
+  border-radius: 15px;
+}
+.errors-alert p {
+  color: #fff;
+}
+.errors-alert button.close-button {
+  color: #fff;
+}
+.messages-alert {
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 1s;
+  opacity: 0;
+}
+.messages-alert div[class^='col-'] {
+  padding: 10px 20px;
+  background-color: #155724;
+  border-radius: 15px;
+}
+.messages-alert p {
+  color: #fff;
+}
+.messages-alert button.close-button {
+  color: #fff;
+}
+button.close-button {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  padding: 5px;
+}
 @media (max-width: 1200px) {
   [id$=-main] {
     background-size: 50% !important;

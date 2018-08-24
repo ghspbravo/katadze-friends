@@ -2,16 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import {
-    registrationErrors,
-    authErrors,
     isAuthenticated,
     isRegistered,
-    getMessage,
-    resetErrors
+    getFiledErrors,
 } from '../reducers'
 import { login } from '../actions/auth'
-import { registration } from '../actions/registration'
-import { resetPassword } from '../actions/resetPassword'
+import { registration, activate } from '../actions/registration'
+import { resetPassword, resetConfirm } from '../actions/resetPassword'
 import {
     Route,
     Switch,
@@ -21,6 +18,7 @@ import {
 import LoginComponent from '../components/auth/login'
 import resetPasswordComponent from '../components/auth/resetPassword'
 import registrationComponent from '../components/auth/registration'
+import resetConfirmComponent from '../components/auth/resetConfirm';
 
 
 
@@ -57,13 +55,19 @@ class Login extends Component {
         let fr = new FileReader()
         fr.onloadend = info => {
             document.querySelector('.avatar-container img').src = info.target.result
-            // this.setState({img_photo: info.target.result})
+            this.setState({ img_photo: info.target.result })
         }
         fr.readAsDataURL(file)
-        let load = new FileReader()
-        load.onloadend = info => this.setState({img_photo: info.target.result})
-        load.readAsBinaryString(file)
     }
+
+    handleReset = (event) => {
+        event.preventDefault()
+		let locationList = this.props.location.pathname.split('/')
+		let uidb64 = locationList[2]
+		let token = locationList[3]
+
+		this.props.onResetConfirm(token, uidb64, this.state.password)
+	}
 
     onSubmit = (event) => {
         event.preventDefault()
@@ -93,14 +97,18 @@ class Login extends Component {
                         this.props.authErrors)} />
                     <Route path='/reset-password' render={() => resetPasswordComponent(this.onSubmit,
                         this.handleInputChange,
-                        this.props.resetMessage,
                         this.props.resetErrors)} />
+                    <Route path='/reset/' render={() => resetConfirmComponent(
+                        this.handleReset,
+                        this.handleInputChange,
+                        this.props.fieldErrors
+                    )} />
                     <Route path='/registration' render={() => registrationComponent(this.onSubmit,
                         this.handleInputChange,
                         this.handleFileLoad,
                         this.props.registrationErrors)} />
                     {this.props.isRegistered
-                        ? this.props.onLogin(this.state.username, this.state.password)
+                        ? this.props.onLogin(this.state.username, this.state.password, this.props.isRegistered)
                         : null
                     }
                 </Switch>
@@ -110,25 +118,26 @@ class Login extends Component {
 
 
 const mapStateToProps = (state) => ({
-    authErrors: authErrors(state),
-    registrationErrors: registrationErrors(state),
-    resetErrors: resetErrors(state),
     isAuthenticated: isAuthenticated(state),
     isRegistered: isRegistered(state),
-    resetMessage: getMessage(state),
+    fieldErrors: getFiledErrors(state.resetPassword)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onLogin: (username, password) => {
+    onLogin: (username, password, isRegistered = false) => {
         dispatch(login(username, password))
+        if (isRegistered) setTimeout(() => dispatch(activate()), 5000)
     },
 
-    onRegistration: (email, password, date_birth, gender, last_name, first_name, username, residence) => {
-        dispatch(registration(email, password, date_birth, gender, last_name, first_name, username, residence))
+    onRegistration: (email, password, date_birth, gender, last_name, first_name, username, residence, phones, img_photo) => {
+        dispatch(registration(email, password, date_birth, gender, last_name, first_name, username, residence, phones, img_photo))
     },
 
     onReset: (email) => {
         dispatch(resetPassword(email))
+    },
+    onResetConfirm: (token, uidb64, password) => {
+        dispatch(resetConfirm(token, uidb64, password))
     }
 });
 

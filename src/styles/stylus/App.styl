@@ -17,7 +17,7 @@ h1
 span 
     color: acsent
     &.error
-        color: #a94442 !important
+        color: alert !important
 
 span.small 
     color: inherit 
@@ -190,3 +190,41 @@ button
 
 .comment
     text-align: justify
+
+.errors-alert 
+    position fixed
+    z-index 9999
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.5s;
+    opacity: 0;
+    & div[class^='col-']
+        padding: 10px 20px
+        background-color: alert 
+        border-radius: 15px
+    & p 
+        color: white
+    & button.close-button
+        color: white
+    
+.messages-alert 
+    position fixed
+    z-index 9999
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 1s;
+    opacity: 0;
+    & div[class^='col-']
+        padding: 10px 20px
+        background-color: success 
+        border-radius: 15px
+    & p 
+        color: white
+    & button.close-button
+        color: white
+    
+button.close-button
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    padding: 5px;

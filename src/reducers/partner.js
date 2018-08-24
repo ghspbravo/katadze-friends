@@ -11,6 +11,12 @@ export default (state = {}, action) => {
             return {
                 ...action.payload,
             }
+        case partner.PARTNER_FAILURE:
+        case partner.LIST_FAILURE:
+            return {
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+            }
+
 
         default:
             return state

@@ -2,6 +2,10 @@ import * as profile from '../actions/profile'
 
 export default (state = {}, action) => {
     switch (action.type) {
+        case 'FORCE_REFRESH':
+            return {
+                ...state
+            }
 
         case profile.USER_INFO_SUCCESS:
             return {
@@ -15,10 +19,11 @@ export default (state = {}, action) => {
                 ...action.payload
             }
 
+        case profile.USER_INFO_FAILURE:
         case profile.CREATE_GID_FAILURE:
             return {
                 ...state,
-                ...action.payload
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
             }
 
         default:
