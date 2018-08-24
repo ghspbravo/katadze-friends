@@ -11,7 +11,7 @@ export default search => {
             </section>
             <section>
                 <h1 className="text-center"><span>Поможем найти гида</span></h1>
-                <div className="offset-md-1 col-md-10 row justify-center">
+                <div className="offset-md-1 col-md-10 justify-center">
                     {[...Array(10)].map((e, i) => gidCard(i))}
                 </div>
             </section>

@@ -88,7 +88,7 @@ export default class Menu extends Component {
                 })
 
                 loaderScene.staggerFrom('.preloader .logo span', 0.5, { opacity: '0' }, 0.3, '+=1.5')
-                    .to('#loader-big', 1.5, { y: `-${window.innerHeight}`, ease: Expo.easeIn })
+                    .to('#loader-big', 1.5, { y: `-${window.innerHeight+200}`, ease: Expo.easeIn })
                     .to('.preloader .logo', 1, { opacity: '0' })
                     .from('.brand', 1, { opacity: '0' }, '-=1')
                     .staggerFrom('.homepage-item .title', 0.3, { opacity: '0' }, 0.2, '-=1')
