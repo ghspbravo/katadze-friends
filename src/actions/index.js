@@ -1,9 +1,11 @@
+export const FORCE_REFRESH = '@@service/FORCE_REFRESH';
+
 export const changeNavType = navType => ({
     type: 'NAVTYPE_CHANGE',
     navType: navType
 })
 export const forceRefresh = () => ({
-    type: 'FORCE_REFRESH',
+    type: FORCE_REFRESH,
 })
 
 export const NavbarTypes = {

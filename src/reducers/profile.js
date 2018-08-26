@@ -2,11 +2,6 @@ import * as profile from '../actions/profile'
 
 export default (state = {}, action) => {
     switch (action.type) {
-        case 'FORCE_REFRESH':
-            return {
-                ...state
-            }
-
         case profile.USER_INFO_SUCCESS:
             return {
                 ...state,

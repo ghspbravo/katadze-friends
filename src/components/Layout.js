@@ -56,7 +56,6 @@ class Layout extends Component {
                     <Route component={Navbar} />
                 </Switch>
 
-                <Route render={() => { window.scrollTo(0, 0); return true }} />
                 <Route exact path='/' component={Menu} />
                 <Route exact path='/login' component={Auth} />
                 <Route exact path='/registration' component={Auth} />

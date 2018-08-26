@@ -7,6 +7,7 @@ import auth, * as fromAuth from './auth.js'
 import registration, * as fromReg from './registration'
 import resetPassword, * as fromReset from './resetPassword'
 import profile, * as fromProfile from './profile'
+import service from './service'
 
 const rootReducer = combineReducers({
     router: routerReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     registration,
     resetPassword,
     profile,
+    service
 })
 
 export default rootReducer
@@ -32,8 +34,6 @@ export const registrationToken = state => fromReg.getRegistrationToken(state.reg
 export const isAccessTokenExpired = state => fromAuth.isAccessTokenExpired(state.auth);
 export const refreshToken = state => fromAuth.refreshToken(state.auth);
 export const isRefreshTokenExpired = state => fromAuth.isRefreshTokenExpired(state.auth);
-
-// export const getMessage = state => fromReset.message(state.resetPassword);
 
 export var getErrors = state => {
     let errors = ''
