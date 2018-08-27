@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 export default class FAQ extends Component {
     render() {
@@ -65,9 +66,9 @@ export default class FAQ extends Component {
                     </div>
                 </section>
                 <section className="container">
-                    <div>
+                    <Link to='/contacts'>
                         <h1 className="secondary text-center">Не нашел <span className="lead">ответ</span></h1>
-                    </div>
+                    </Link>
                 </section>
             </div>
         )

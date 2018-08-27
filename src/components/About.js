@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import teamMember from '../resourses/About/team-member.png'
 import achieveIcon from '../resourses/LogoBlack.png'
@@ -10,7 +11,7 @@ export default class About extends Component {
                 <section id="about-main" className="row vh-50">
                     <div className="offset-lg-2 offset-1 col-lg-4">
                         <h1 className="lead">О проекте:</h1>
-                            <h1><span>Намного больше
+                        <h1><span>Намного больше
                             <br />Чем ты думаешь</span></h1>
                         <div className="read-more">
                             <a href="#aboutus">Читать дальше</a>
@@ -91,7 +92,7 @@ export default class About extends Component {
                                 </div>
                             </div>
                             <div className="member-name"><h1>Имя Фамилия</h1></div>
-                            <div className="member-status"><p>должность, название</p></div>
+                            <div className="member-status"><p className="secondary small">должность, название</p></div>
                         </div>
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
@@ -100,7 +101,7 @@ export default class About extends Component {
                                 </div>
                             </div>
                             <div className="member-name"><h1>Имя Фамилия</h1></div>
-                            <div className="member-status"><p>должность, название</p></div>
+                            <div className="member-status"><p className="secondary small">должность, название</p></div>
                         </div>
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
@@ -109,7 +110,7 @@ export default class About extends Component {
                                 </div>
                             </div>
                             <div className="member-name"><h1>Имя Фамилия</h1></div>
-                            <div className="member-status"><p>должность, название</p></div>
+                            <div className="member-status"><p className="secondary small">должность, название</p></div>
                         </div>
                         <div className="member-card col-12 col-lg-6">
                             <div className="member-photo justify-center">
@@ -118,14 +119,16 @@ export default class About extends Component {
                                 </div>
                             </div>
                             <div className="member-name"><h1>Имя Фамилия</h1></div>
-                            <div className="member-status"><p>должность, название</p></div>
+                            <div className="member-status"><p className="secondary small">должность, название</p></div>
                         </div>
                     </div>
                 </section>
                 <section id="social" className="container">
                     <div>
-                        <h1 className="secondary text-center">
-                            <span className="lead">Хочу</span> пообщаться</h1>
+                        <Link to='/contacts'>
+                            <h1 className="secondary text-center">
+                                <span className="lead">Хочу</span> пообщаться</h1>
+                        </Link>
                     </div>
                 </section>
             </div>
