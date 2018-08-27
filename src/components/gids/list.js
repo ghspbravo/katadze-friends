@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import gidCard from './gidCard';
 
 export default (gids, inputHandler, searchHandler) => {
@@ -33,7 +35,7 @@ export default (gids, inputHandler, searchHandler) => {
                                 <li className="col-12">Заработай денег</li>
                             </ul>
                         </div>
-                        <button className="offset-2 col-8 offset-lg-4 offset-xl-5 col-lg-4 col-xl-2 lead">Стать гидом</button>
+                        <Link to='/profile/become-gid'><button className="offset-2 col-8 offset-lg-4 offset-xl-5 col-lg-4 col-xl-2 lead">Стать гидом</button></Link>
                     </div>
                 </div>
             </section>

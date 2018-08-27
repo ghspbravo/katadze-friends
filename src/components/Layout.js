@@ -61,12 +61,14 @@ class Layout extends Component {
                 <Route exact path='/registration' component={Auth} />
                 <Route exact path='/reset-password' component={Auth} />
                 <Route exact path='/events' component={Events} />
+                <Route exact path='/gids' component={Gids} />
                 <Route exact path='/partners' component={Partners} />
 
                 <Route path='/partners/:id' component={Partners} />
                 <Route path='/events/:id' component={Events} />
-                <Route path='/gids' component={Gids} />
-                <Route path='/tours' component={Gids} />
+                <Route path='/gids/id=:id' component={Gids} />
+                <Route path='/gids/search=:search' component={Gids} />
+                <Route path='/tours/:id' component={Gids} />
                 <Route path='/activate/' component={Profile} />
                 <Route path='/reset/' component={Auth} />
                 <Route path='/profile' component={Profile} />

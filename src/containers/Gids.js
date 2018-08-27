@@ -9,7 +9,7 @@ import list from '../components/gids/list'
 import profile from '../components/gids/profile';
 import search from '../components/gids/search';
 import tour from '../components/gids/tour';
-import { gidList, gidInfo } from '../actions/gids';
+import { gidList, gidInfo, tourInfo } from '../actions/gids';
 
 class Gids extends Component {
     constructor(props) {
@@ -17,8 +17,6 @@ class Gids extends Component {
 
         this.state = {
             search: '',
-            gidId: this.props.match.params && this.props.match.params.id,
-            searchQuery: this.props.match.params && this.props.match.params.search
         }
     }
 
@@ -36,10 +34,23 @@ class Gids extends Component {
         ? null
         : this.props.history.push(`/gids/search=${this.state.search}`)
 
-    conponentDidMount() {
-        if (typeof this.state.gidId !== 'undefined') this.props.onFetchGid(this.state.gidId)
-        else if (typeof this.state.searchQuery !== 'undefined') null
-        else this.props.onFetchList()
+    componentDidMount() {
+        switch (this.props.match.path) {
+            case '/tours/:id':
+                this.props.onFetchTour(this.props.match.params.id)
+                break;
+        
+            case '/gids':
+                this.props.onFetchList()
+                break;
+        
+            case '/gids/id=:id':
+                this.props.onFetchGid(this.props.match.params.id)
+                break;
+        
+            default:
+                break;
+        }
     }
 
     componentWillUnmount() {
@@ -49,31 +60,31 @@ class Gids extends Component {
     render() {
         return (
             <Switch>
-                {console.log(this.props)}
                 <Route exact path="/gids" render={() => {
-                    document.body.style.backgroundColor = "#E8EFFC"
+                    document.body.style.backgroundColor = "#E8EFFC";
                     return list(
                         this.props.gids,
                         this.handleInputChange,
                         this.handleSearch
                     )
                 }} />
-                <Route path="/gids/id=:id" render={() => {
+                <Route exact path="/gids/id=:id" render={() => {
                     document.body.style.backgroundColor = "white"
                     return profile(
-
+                        this.props.gids
                     )
                 }} />
-                <Route path="/gids/search=:search" render={() => {
+                <Route exact path="/gids/search=:search" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC"
                     return search(
-                        this.state.search
+                        this.state.search,
+                        this.props.gids
                     )
                 }} />
-                <Route path="/tours/:id" render={() => {
-                    document.body.style.backgroundColor = "white"
+                <Route exact path="/tours/:id" render={() => {
+                    document.body.style.backgroundColor = "white";
                     return tour(
-
+                        this.props.gids
                     )
                 }} />
             </Switch>
@@ -86,8 +97,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onFetchList: dispatch(gidList()),
-    onFetchGid: id => dispatch(gidInfo(id))
+    onFetchList: page => dispatch(gidList(page)),
+    onFetchGid: id => dispatch(gidInfo(id)),
+    onFetchTour: id => dispatch(tourInfo(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gids)
