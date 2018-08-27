@@ -7,12 +7,12 @@ import tours from '../components/profile/tours'
 import becomeGid from '../components/profile/becomeGid'
 import newTour from '../components/profile/newTour'
 
-import { Route, Redirect, withRouter } from 'react-router'
+import { Route, Redirect } from 'react-router'
 import { Switch, Link, NavLink } from 'react-router-dom'
 
 import { isAuthenticated, userId } from '../reducers'
 import { logout } from '../actions/auth'
-import { userInfo, createGid } from '../actions/profile'
+import { userInfo, createGid, createTour } from '../actions/profile'
 import { activate, activateConfirm } from '../actions/registration';
 
 class Profile extends Component {
@@ -22,16 +22,106 @@ class Profile extends Component {
 		this.state = {
 			bio: '',
 			keyphrase: '',
-			languages: [],
-			level: [],
-			hobbies: [],
-			activities: [],
+			languages: {},
+			// level: [],
+			hobbies: {},
+			activities: {},
+
+			inclusion: '',
+			price: '',
+			slogan: '',
+			transport: '',
+			route: '',
+			meeting_details: '',
+			description: '',
+			name: '',
+			location: '',
+			date_from: '',
+			date_to: '',
+			expenses: '',
+			extra_options: '',
+			extra_info: '',
+			max_tourists: '',
+
+			hobbiesList: [
+				'Искусство',
+				'Еда',
+				'Экстрим',
+				'Мода',
+				'Путешествия',
+				'Музыка',
+				'Фильмы',
+				'Спорт',
+				'Литература',
+				'Автомобили',
+				'Фотография',
+				'Hand-made',
+				'История',
+				'Культура',
+				'Шоппинг',
+				'Языки'
+			],
+
+			activitiesList: [
+				'Встреча и сопровождение',
+				'Обзорная экскурсия',
+				'Знакомство с историей и культурой',
+				'Посещение музеев',
+				'Посещение кафе и ресторанов',
+				'Осмотр достопримечательностей',
+				'Шопинг',
+				'Спорт и экстрим'
+			],
+
+			languagesList: [
+				'Русский',
+				'Английский'
+			]
 		}
 	}
 
 	componentDidMount() {
 		this.props.fetchUser(this.props.userId)
+		this.hobbiesListConst = [
+			'Искусство',
+			'Еда',
+			'Экстрим',
+			'Мода',
+			'Путешествия',
+			'Музыка',
+			'Фильмы',
+			'Спорт',
+			'Литература',
+			'Автомобили',
+			'Фотография',
+			'Hand-made',
+			'История',
+			'Культура',
+			'Шоппинг',
+			'Языки'
+		]
+
+		this.activitiesListConst = [
+			'Встреча и сопровождение',
+			'Обзорная экскурсия',
+			'Знакомство с историей и культурой',
+			'Посещение музеев',
+			'Посещение кафе и ресторанов',
+			'Осмотр достопримечательностей',
+			'Шопинг',
+			'Спорт и экстрим'
+		]
+
+		this.languagesListConst = [
+			'Русский',
+			'Английский'
+		]
 	}
+
+	hobbiesListConst = []
+	activitiesListConst = []
+	languagesListConst = []
+
 
 	handleInputChange = (event) => {
 		const target = event.target,
@@ -46,27 +136,55 @@ class Profile extends Component {
 	hadleListChange = event => {
 		let name = event.target.name
 		let currentList = this.state[name]
-		currentList.push(event.target.value)
+		let id = this[`${name}ListConst`].indexOf(event.target.value)
+
+		currentList[id] = event.target.value
+
+		if (this.state[`${name}List`]) {
+			let itemsList = this.state[`${name}List`]
+			itemsList.splice(itemsList.indexOf(event.target.value), 1)
+			this.setState({ [`${name}List`]: itemsList })
+		}
 		this.setState({ [name]: currentList })
+	}
+
+	handleListDelete = event => {
+		let id = event.target.dataset.id
+		let targetList = event.target.dataset.for
+
+		let currentList = this.state[targetList]
+		delete currentList[id]
+
+		this.setState({ [targetList]: currentList })
+
+		currentList = this.state[`${targetList}List`]
+		currentList.splice(id, 0, this[`${targetList}ListConst`][id])
+
+		this.setState({ [`${targetList}List`]: currentList })
 	}
 
 	onSubmit = (event) => {
 		event.preventDefault()
 		switch (this.props.location.pathname) {
 			case '/profile/become-gid':
-				let languages = []
-				let hobbies = []
-				let activities = []
-				this.state.languages.forEach((language, i) => languages.push({ name: language, level: this.state.level[i] }))
-				this.state.hobbies.forEach(hobbie => hobbies.push({ code: hobbie }))
-				this.state.activities.forEach(activity => activities.push({ code: activity }))
-				console.log(this.state.bio)
+
+				let languages = [], hobbies = [], activities = []
+
+				Object.keys(this.state.languages).forEach(id => languages.push({name: this.state.languages[id], level: 0}))
+				Object.keys(this.state.hobbies).forEach(id => hobbies.push({code: id}))
+				Object.keys(this.state.activities).forEach(id => activities.push({code: id}))
+
 				this.props.onCreateGid(this.state.bio, this.state.keyphrase, languages, hobbies, activities)
+				break;
+
+			case '/profile/create-tour':
+				this.props.onCreateTour(this.state.name, this.state.location, this.state.description, this.state.route, this.state.transport, this.state.inclusion, this.state.price, this.state.date_from, this.state.date_to, this.state.meeting_details, this.state.slogan, this.state.expenses, this.state.extra_options, this.state.extra_info, this.state.max_tourists)
 				break;
 
 			default:
 				break;
 		}
+		window.location.reload()
 	};
 
 	handleActivate = () => {
@@ -102,9 +220,6 @@ class Profile extends Component {
 							<button onClick={() => console.log(this.props.state)}><p>STATE</p></button>
 						</div>
 						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
-							<button onClick={this.props.onActivate}><p>ACTIVATE</p></button>
-						</div>
-						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<button onClick={this.props.logout}><Link to='/login' >Выйти</Link></button>
 						</div>
 					</div>
@@ -115,13 +230,55 @@ class Profile extends Component {
 							this.props.user
 						)} />
 						<Route path='/profile/applications' component={applications} />
-						<Route path='/profile/tours' component={tours} />
-						<Route path='/profile/become-gid' render={() => becomeGid(
-							this.handleInputChange,
-							this.hadleListChange,
-							this.onSubmit
+						<Route path='/profile/tours' render={() => tours(
+							this.props.user.tours
 						)} />
-						<Route path='/profile/create-tour' component={newTour} />
+						<Route path='/profile/become-gid' render={() =>
+							this.props.user.is_suspended
+								? <section className="jumbotron v-offset-small">
+									<div className="content">
+										<div className="v-offset-small text-center">
+											<p className="bold">Вы не можете стать гидом.</p>
+										</div>
+										<div className="v-offset-small text-center">
+											<p>Подтвердите свой почтовый адрес для возможности стать частью сообщества гидов.</p>
+										</div>
+										<div className="v-offset-small text-center">
+											<p>Не пришло письмо? <button onClick={this.props.onActivate}>Повторить отправку</button></p>
+										</div>
+									</div>
+								</section>
+								: becomeGid(
+									this.handleInputChange,
+									this.hadleListChange,
+									this.onSubmit,
+									this.handleListDelete,
+									this.state,
+									this.props.user.profile === null ? false : this.props.user.profile
+								)} />
+						<Route path='/profile/create-tour' render={() =>
+							this.props.user.is_accepted
+								? newTour(
+									this.handleInputChange,
+									this.onSubmit
+								)
+								: <section className="jumbotron v-offset-small">
+									<div className="content">
+										<div className="v-offset-small text-center">
+											<p className="bold">Вы не можете создать тур.</p>
+										</div>
+										<div className="v-offset-small text-center">
+											<p>Заполните заявку для того, чтобы стать гидом. После подтверждения Вашей заявки администратором, Вы сможете создать свой первый тур</p>
+										</div>
+										<div className="v-offset-mid row justify-center">
+											<div className="col-lg-5">
+												<Link to='become-gid'>
+													<button className="lead">Стать гидом</button>
+												</Link>
+											</div>
+										</div>
+									</div>
+								</section>} />
 						<Route path='/activate/' render={() => {
 							this.handleActivate()
 							return <Redirect to='/profile' />
@@ -131,9 +288,9 @@ class Profile extends Component {
 			</div>
 			: <Switch>
 				<Route path='/activate/' render={() => {
-							() => this.handleActivate()
-							return <p>Activating</p>
-						}} />
+					this.handleActivate()
+					return <Redirect to='/login' />
+				}} />
 				<Route render={() => <Redirect to='/login' />} />
 			</Switch>
 		)
@@ -153,6 +310,10 @@ const mapDispatchToProps = dispatch => ({
 
 	onCreateGid: (bio, keyphrase, languages, hobbies, activities) => {
 		dispatch(createGid(bio, keyphrase, languages, hobbies, activities))
+	},
+
+	onCreateTour: (name, location, description, route, transport, inclusion, price, date_from, date_to, meeting_details, slogan, expenses, extra_options, extra_info, max_tourists) => {
+		dispatch(createTour(name, location, description, route, transport, inclusion, price, date_from, date_to, meeting_details, slogan, expenses, extra_options, extra_info, max_tourists))
 	},
 
 	onActivate: () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default () => {
+export default (tours) => {
     return (
         <div>
             <form action="">
@@ -13,23 +13,29 @@ export default () => {
                     <option value="myTours">Мои туры (0)</option>
                 </select>
             </form>
-            <section className="jumbotron v-offset-small">
-                <div className="content">
-                    <div className="v-offset-small text-center">
-                        <p className="bold">Туров пока нет.</p>
-                    </div>
-                    <div className="v-offset-small text-center">
-                        <p>Когда вы выберете тур, или создадите свой, найдете его здесь.</p>
-                    </div>
-                    <div className="v-offset-mid row justify-center">
-                        <div className="col-lg-5">
-                            <Link to='/gids'>
-                                <button className="lead">Найти тур</button>
-                            </Link>
+            {tours === null
+                ? <section className="jumbotron v-offset-small">
+                    <div className="content">
+                        <div className="v-offset-small text-center">
+                            <p className="bold">Туров пока нет.</p>
+                        </div>
+                        <div className="v-offset-small text-center">
+                            <p>Когда вы выберете тур, или создадите свой, найдете его здесь.</p>
+                        </div>
+                        <div className="v-offset-mid row justify-center">
+                            <div className="col-lg-5">
+                                <Link to='/gids'>
+                                    <button className="lead">Найти тур</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+                : <div>
+                    {tours.filter(tour => tour.is_accepted).map((tour, i) => <div key={i}>
+                            <h1>{tour.name}</h1>
+                        </div>)}
+                </div>}
         </div>
     )
 }

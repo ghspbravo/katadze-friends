@@ -373,7 +373,10 @@ form textarea {
   border-bottom: 1px solid #9b9b9b;
   background-color: transparent;
 }
-form > input {
+form input[type=file] {
+  display: none;
+}
+form input {
   margin: 10px 0;
 }
 form select {
@@ -413,6 +416,9 @@ button {
   cursor: pointer;
   outline: none;
 }
+button:hover {
+  color: #41bfef;
+}
 button.lead {
   font-family: OpenSans;
   font-weight: normal;
@@ -426,6 +432,9 @@ button.lead {
   width: 100%;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+button.lead:hover {
+  color: #fff;
 }
 .stars .star {
   float: left;
@@ -497,6 +506,15 @@ button.close-button {
   right: 10px;
   top: 0px;
   padding: 5px;
+  margin: 0;
+  border: none;
+}
+label.file {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
+  text-align: center;
 }
 @media (max-width: 1200px) {
   [id$=-main] {
@@ -1365,7 +1383,7 @@ section.idSection .section-id {
 .gid-card {
   background-color: #fff;
   margin: 20px;
-  padding: 0;
+  padding: 5px;
 }
 .gid-card div {
   padding-left: 0;

@@ -1,7 +1,7 @@
 import React from 'react'
 import gidCard from './gidCard';
 
-export default (inputHandler, searchHandler) => {
+export default (gids, inputHandler, searchHandler) => {
     return (
         <div>
             <section id="gids-header" className="vh-100">
@@ -21,7 +21,10 @@ export default (inputHandler, searchHandler) => {
             <section>
                 <h1 className="text-center"><span>Поможем найти гида</span></h1>
                 <div className="offset-md-1 col-md-10 justify-center">
-                    {[...Array(10)].map((e, i) => gidCard(i))}
+                    {Array.isArray(gids)
+                        ? gids.map((info, i) => gidCard(info, i))
+                        : <p>Loading...</p>
+                    }
                     <div className="col-12 gid-card">
                         <div className="row v-offset-small">
                             <ul className="offset-1 col-10 todo-list">

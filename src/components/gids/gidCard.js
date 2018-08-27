@@ -2,22 +2,22 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Stars from './Stars';
 
-export default index => {
+export default (gid, index) => {
     return (
         <div key={index} className="col-12 col-lg-5 gid-card">
-            <Link to={`/gids/id=${index}`}>
+            <Link to={`/gids/id=${gid.id}`}>
                 <div className="row">
-                    <div className="col-12 col-md-4"><div style={{ backgroundColor: '#494949', width: '100%', height: '100%' }} src="#" alt="gidPhoto" /></div>
+                    <div className="col-12 col-md-4"><img src={gid.img_photo} alt="gidPhoto" /></div>
                     <div className="col-10 offset-1 col-md-6">
                         <div className="row align-center">
                             <div className="col-8">
-                                <p className="small bold">Имя</p>
-                                <p className="small secondary">Город, страна</p>
+                                <p className="small bold">{gid.first_name}</p>
+                                <p className="small secondary">{gid.residence}</p>
                             </div>
-                            <div className="col-4"><p className="small"><span>1000р/час</span></p></div>
+                            <div className="col-4"><p className="small"><span>{`${gid.price_avg} руб`}</span></p></div>
                         </div>
                         <div className="row gid-description">
-                            <p className="small">Комментарий к посту</p>
+                            <p className="small">{gid.profile.keyphrase}</p>
                         </div>
                         <div className="row text-center">
                             <div className="col-5"><p className="small secondary">Отзывы</p>

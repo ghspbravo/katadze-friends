@@ -16,9 +16,9 @@ export default (user) => {
 
 					<div className="offset-4 col-8"><p className='small secondary'>В вашем публичном профиле отображается только ваше имя. Когда вы запросите бронирование, гид увидит ваши имя и фамилию.</p></div>
 
-					<div className="col-3 text-right"><label htmlFor="gender"><p className="small">Я</p></label></div>
+					<div className="col-3 text-right"><label htmlFor="gender"><p className="small">Пол</p></label></div>
 					<div className="offset-1 col-8"><select value={user.gender} disabled className='col-md-5 col-12' id='gender'>
-						<option value="" disabled selected hidden>Пол</option>
+						<option value="" disabled selected hidden></option>
 						<option value="0">Мужчина</option>
 						<option value="1">Женщина</option>
 					</select></div>
@@ -30,7 +30,7 @@ export default (user) => {
 					<div className="offset-1 col-8"><input value={user.email} disabled className='col-12' id='email' type="email" placeholder='example@mail.ru' /></div>
 
 					<div className="col-3 text-right"><label htmlFor='phoneNumber'><p className="small">Номер телефона</p></label></div>
-					<div className="offset-1 col-8"><input disabled className='col-12' id='phoneNumber' type="tel" /></div>
+					<div className="offset-1 col-8"><input value={user.phones[0].number} disabled className='col-12' id='phoneNumber' type="tel" /></div>
 
 					<div className="col-3 text-right"><label htmlFor="language"><p className="small">Выбранный язык</p></label></div>
 					<div className="offset-1 col-8"><select value={user.locale} disabled className='col-md-5 col-12' id='language'>
@@ -56,17 +56,18 @@ export default (user) => {
 			<section className="jumbotron">
 				<div className="row head"><p>Фото в профиле</p></div>
 				<div className="row content">
-					<div className="col-4 avatar-container">
-						<img src="http://via.placeholder.com/250x250/ffffff" alt="avatar-preview" />
+					<div className="col-md-4 col-12 avatar-container justify-center">
+						<img src={user.img_photo} alt="avatar-preview" />
 					</div>
-					<div className="col-8">
-						<label htmlFor="avatar"><p className="small">Важно, чтобы ваше лицо было отчетливо видно на фото.</p></label>
+					<div className="col-md-8 col-12">
+						<p className="small">Важно, чтобы ваше лицо было отчетливо видно на фото.</p>
+						<label className="file v-offset-small" htmlFor="avatar"><p>Загрузить фото</p></label>
 						<input disabled id="avatar" type="file" accept=".jpg, .jpeg, .png" />
 					</div>
 				</div>
 			</section>
 
-			<button className="col-md-4 lead" onClick={() => true} type="submit">Сохранить</button>
+			<button disabled className="col-md-4 lead" onClick={() => true} type="submit">Сохранить</button>
 		</form>
 	)
 }

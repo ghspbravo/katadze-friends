@@ -116,7 +116,10 @@ form textarea
     border-bottom: 1px solid secondaryDark;
     background-color: transparent;
 
-form > input
+form input[type=file]
+    display none
+
+form input
     margin 10px 0
 
 form select
@@ -152,6 +155,8 @@ button
     border: none;
     cursor: pointer;
     outline: none
+    &:hover  
+        color: acsent
     &.lead
         OpenH4()
         color white
@@ -162,6 +167,9 @@ button
         width 100%
         margin-top: 30px
         margin-bottom: 30px
+        &:hover
+            color: white
+
 
 .stars .star {
   float: left;
@@ -228,3 +236,13 @@ button.close-button
     right: 10px;
     top: 0px;
     padding: 5px;
+    margin:  0
+    border: none
+
+label.file {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid secondary;
+    cursor:  pointer;
+    text-align: center;
+}

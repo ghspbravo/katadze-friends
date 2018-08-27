@@ -9,6 +9,10 @@ export const CREATE_GID_REQUEST = '@@event/CREATE_GID_REQUEST';
 export const CREATE_GID_SUCCESS = '@@event/CREATE_GID_SUCCESS';
 export const CREATE_GID_FAILURE = '@@event/CREATE_GID_FAILURE';
 
+export const CREATE_TOUR_REQUEST = '@@event/CREATE_TOUR_REQUEST';
+export const CREATE_TOUR_SUCCESS = '@@event/CREATE_TOUR_SUCCESS';
+export const CREATE_TOUR_FAILURE = '@@event/CREATE_TOUR_FAILURE';
+
 export const userInfo = id => ({
 	[RSAA]: {
 		endpoint: `https://katadze-test.ru/api/user/${id}/?format=json`,
@@ -28,6 +32,18 @@ export const createGid = (bio, keyphrase, languages, hobbies, activities) => ({
         headers: withAuth({'Content-Type': 'application/json'}),
         types: [
             CREATE_GID_REQUEST, CREATE_GID_SUCCESS, CREATE_GID_FAILURE
+        ]
+    }
+})
+
+export const createTour = (name, location, description, route, transport, inclusion, price, date_from, date_to, meeting_details, slogan, expenses, extra_options, extra_info, max_tourists) => ({
+	[RSAA]: {
+        endpoint: 'https://katadze-test.ru/api/tour/',
+        method: 'POST',
+        body: JSON.stringify({ name, location, description, route, transport, inclusion, price, date_from, date_to, meeting_details, slogan, expenses, extra_options, extra_info, max_tourists }),
+        headers: withAuth({'Content-Type': 'application/json'}),
+        types: [
+            CREATE_TOUR_REQUEST, CREATE_TOUR_SUCCESS, CREATE_TOUR_FAILURE
         ]
     }
 })

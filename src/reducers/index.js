@@ -5,8 +5,9 @@ import partner from './partner'
 import navbar from './navbar'
 import auth, * as fromAuth from './auth.js'
 import registration, * as fromReg from './registration'
-import resetPassword, * as fromReset from './resetPassword'
-import profile, * as fromProfile from './profile'
+import resetPassword from './resetPassword'
+import profile from './profile'
+import gids from './gids';
 import service from './service'
 
 const rootReducer = combineReducers({
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     registration,
     resetPassword,
     profile,
+    gids,
     service
 })
 

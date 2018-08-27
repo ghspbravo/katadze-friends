@@ -50,12 +50,24 @@ class Login extends Component {
         });
     };
 
-    handleFileLoad = () => {
-        let file = document.forms.registration.img_photo.files[0]
+    handleFileLoad = (event) => {
+        let input = event.target
+        let file = event.target.files[0]
         let fr = new FileReader()
         fr.onloadend = info => {
             document.querySelector('.avatar-container img').src = info.target.result
             this.setState({ img_photo: info.target.result })
+
+            let closeButton = document.createElement('button')
+            closeButton.classList.add('close-button')
+            closeButton.innerHTML = "X"
+            closeButton.onclick = () => {
+                this.setState({img_photo: ''})
+                document.querySelector('.avatar-container img').src = 'http://via.placeholder.com/250x250/ffffff'
+                document.querySelector('.avatar-container').removeChild(closeButton)
+                input.value = null
+            }
+            document.querySelector('.avatar-container').appendChild(closeButton)
         }
         fr.readAsDataURL(file)
     }

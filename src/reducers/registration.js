@@ -11,9 +11,6 @@ export default (state = initialState, action) => {
                 token: action.payload.token,
             }
         case registration.ACTIVATE_SUCCESS:
-            return {
-                message: action.payload.message
-            }
         case registration.ACTIVATE_CONFIRM_SUCCESS:
             return {
                 message: action.payload.message
