@@ -24,7 +24,7 @@ export default (submitHandler, inputHandler, fileHandler, errors) => {
                     {errorMessage(errors, 'gender')}
                     <input name="residence" autoComplete="city" type='text' placeholder='Город' onChange={inputHandler} required />
                     {errorMessage(errors, 'residence')}
-                    <input name="phones" autoComplete="tel" type='tel' placeholder='+7' onChange={inputHandler} required />
+                    <input name="phones" autoComplete="tel" type='tel' placeholder='Номер телефона' onChange={inputHandler} required />
                     <p className="small secondary">Важно, чтобы номер телефона начинался с +7</p>
                     {errorMessage(errors, 'phones')}
                     <input name="username" autoComplete="login" type='text' placeholder='Имя пользователя' onChange={inputHandler} required />
