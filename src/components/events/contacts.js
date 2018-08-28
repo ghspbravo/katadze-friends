@@ -22,7 +22,7 @@ export default () => {
 			<section id="writeus" className="light-bg">
 				<div className="row justify-center align-center vh-50">
 					<p className="secondary lead col-12 text-center">Напишите нам</p>
-					<h1 className="col-12 text-center">info@katadze.com</h1>
+					<h1 className="col-12 text-center">katadzzze@yandex.ru</h1>
 				</div>
 			</section>
 			<section id="adress" className="container">
@@ -33,7 +33,7 @@ export default () => {
 					<h1 className="col-12">Екатеринбург</h1>
 					<p className="secondary">
 						Мира 19, ГУК-309<br />
-						<span className="tel-number">+7 (000) 000-00-00</span>
+						<span className="tel-number">8 (966) 709-09-09</span>
 					</p>
 				</div>
 			</section>
