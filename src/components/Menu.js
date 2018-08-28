@@ -79,7 +79,8 @@ export default class Menu extends Component {
                     .to('#loader-part-3', 1, { y: `-${window.innerHeight}`, ease: Expo.easeIn }, '-=0.8')
                     .from('.background', 0.3, { transform: 'scale(1.1)' }, '-=1')
                     .to('.preloader .logo', 1, { opacity: '0' })
-                    .from('.brand', 1, { opacity: '0' }, '-=1')
+                    .set('.brand', { opacity: '0' }, '-=1')
+                    .to('.brand', 1, { opacity: '0.5' }, '-=1')
                     .staggerFrom('.homepage-item .title', 0.3, { opacity: '0' }, 0.2, '-=1')
                     .set('.preloader .logo', { display: 'none' })
             } else {
