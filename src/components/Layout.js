@@ -11,9 +11,6 @@ import '../styles/Styles.css';
 
 import Menu from './Menu'
 import Footer from './Footer'
-import About from './About';
-import Contacts from './Contacts';
-import FAQ from './FAQ';
 
 import Gids from '../containers/Gids';
 import Profile from '../containers/Profile';
@@ -64,19 +61,26 @@ class Layout extends Component {
                 <Route exact path='/gids' component={Gids} />
                 <Route exact path='/partners' component={Partners} />
 
-                <Route path='/partners/:id' component={Partners} />
-                <Route path='/events/:id' component={Events} />
+                <Route exact path='/gids/faq' component={Gids} />
+                <Route exact path='/gids/about' component={Gids} />
+                <Route exact path='/gids/contacts' component={Gids} />
+
+                <Route exact path='/partners/faq' component={Partners} />
+                <Route exact path='/partners/about' component={Partners} />
+                <Route exact path='/partners/contacts' component={Partners} />
+
+                <Route exact path='/events/faq' component={Events} />
+                <Route exact path='/events/about' component={Events} />
+                <Route exact path='/events/contacts' component={Events} />
+
+                <Route path='/partners/id=:id' component={Partners} />
+                <Route path='/events/id=:id' component={Events} />
                 <Route path='/gids/id=:id' component={Gids} />
                 <Route path='/gids/search=:search' component={Gids} />
                 <Route path='/tours/:id' component={Gids} />
                 <Route path='/activate/' component={Profile} />
                 <Route path='/reset/' component={Auth} />
                 <Route path='/profile' component={Profile} />
-
-                <Route path='/about' component={About} />
-                <Route path='/contacts' component={Contacts} />
-                <Route path='/FAQ' component={FAQ} />
-
 
                 <Switch>
                     <Route exact path="/" render={() => true} />

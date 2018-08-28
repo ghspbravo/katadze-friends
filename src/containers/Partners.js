@@ -10,6 +10,9 @@ import { partner } from '../actions/partner'
 
 import listPartners from '../components/partners/list';
 import info from '../components/partners/info';
+import about from '../components/partners/about';
+import faq from '../components/partners/faq';
+import contacts from '../components/partners/contacts'
 
 class Partners extends Component {
     constructor(props) {
@@ -21,11 +24,21 @@ class Partners extends Component {
         }
     }
 
-    showPartnerFormHandler = () => this.setState({showPartnerForm: true})
+    showPartnerFormHandler = () => this.setState({ showPartnerForm: true })
 
     componentDidMount() {
-        if (typeof this.state.partnerId !== 'undefined') this.props.fetchPartner(this.state.partnerId)
-        else this.props.fetchPartnerList()
+        switch (this.props.match.path) {
+            case '/partners':
+                this.props.fetchPartnerList()
+                break;
+
+            case '/partners/id=:id':
+                this.props.fetchPartner(this.props.match.params.id)
+                break;
+
+            default:
+                break;
+        }
     }
 
     render() {
@@ -36,9 +49,12 @@ class Partners extends Component {
                     this.state.showPartnerForm,
                     this.showPartnerFormHandler
                 )} />
-                <Route path="/partners/:id" render={() => info(
+                <Route exact path="/partners/id=:id" render={() => info(
                     this.props.partners
                 )} />
+                <Route exact path="/partners/about" component={about} />
+                <Route exact path="/partners/faq" component={faq} />
+                <Route exact path="/partners/contacts" component={contacts} />
             </Switch>
         )
     }

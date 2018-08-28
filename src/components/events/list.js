@@ -14,7 +14,7 @@ export default events => {
                             <div key={event.id} className="row list-card">
                                 <div className="col-lg-6 order-fix">
                                     <h1>{event.name}</h1>
-                                    <button className="more-button"><Link to={`/events/${event.id}`}>Подробнее</Link></button>
+                                    <button className="more-button"><Link to={`/events/id=${event.id}`}>Подробнее</Link></button>
                                 </div>
                                 <div className="col-lg-6 justify-center align-center">
                                     <img className="list-card-pic" src={event.img} alt="project-pic" />

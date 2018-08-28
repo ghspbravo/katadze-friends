@@ -11,7 +11,7 @@ export default (gid) => {
                     <div className="row column-direction">
                         <section className="d-lg-none jumbotron">
                             <div className="content">
-                                <p>{`Здравствуйте, меня зовут ${gid.last_name} ${gid.first_name}!`}</p>
+                                <p>{`Привет, меня зовут ${gid.last_name} ${gid.first_name}!`}</p>
                                 <p className="small secondary">{gid.profile.keyphrase}</p>
                                 <hr className="v-offset-small" />
                                 <p className="small v-offset-small">{gid.profile.bio}</p>
@@ -82,7 +82,7 @@ export default (gid) => {
                 <div className={`${window.innerWidth < 992 ? '' : 'l-offset-mid'} col-10 col-lg-7 col-xl-6`}>
                     <section className="d-none d-lg-block jumbotron">
                         <div className="content">
-                            <p>{`Здравствуйте, меня зовут ${gid.first_name} ${gid.last_name}!`}</p>
+                            <p>{`Привет, меня зовут ${gid.first_name} ${gid.last_name}!`}</p>
                             <p className="small secondary">{gid.profile.keyphrase}</p>
                             <hr className="v-offset-small" />
                             <p className="small">{gid.profile.bio}</p>

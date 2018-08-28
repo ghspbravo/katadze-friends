@@ -260,7 +260,7 @@ p.lead {
   font-size: 38px;
   line-height: 52px;
 }
-p.small {
+.small {
   font-family: OpenSans;
   font-weight: lighter;
   font-size: 18px;
@@ -309,7 +309,7 @@ section[id$=header] {
   background-position: center;
 }
 section.jumbotron {
-  padding: 0 10px;
+  padding: 0px 10px 10px 10px;
   margin-bottom: 70px;
   border: 1px solid #9b9b9b;
 }
@@ -809,7 +809,6 @@ label.file {
   transform: translate(-50%, -50%);
   width: 100%;
   text-transform: uppercase;
-  text-shadow: 1px 1px #000, -1px -1px #000;
   opacity: 0;
 }
 .homepage-item-inner-subtext {
@@ -1243,7 +1242,8 @@ a.active-nav {
 #partners-header {
   background-image: url("../resourses/Partners/header-image.jpg");
 }
-#partners-header h2 {
+#partners-header h2,
+#partners-header p {
   color: #fff;
 }
 .category-name {
@@ -1356,7 +1356,8 @@ section.idSection .section-id {
 #gids-header h1,
 #gids-header h2,
 #gids-header p,
-#gids-header button {
+#gids-header button,
+#gids-header a {
   color: #fff;
 }
 .searchBox > div {

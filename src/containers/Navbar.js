@@ -56,7 +56,11 @@ class Navbar extends Component {
         switch (pathList[1]) {
             case "partners":
                 if (typeof pathList[2] !== 'undefined') {
-                    this.props.changeNavType(NavbarTypes.BG_SMALL_STICKY)
+                    if (pathList[2].match(/^id=/)) {
+                        this.props.changeNavType(NavbarTypes.BG_SMALL_STICKY)
+                        break;
+                    }
+                    this.props.changeNavType(NavbarTypes.BG_LARGE)
                     break;
                 }
             case "gids":
@@ -69,9 +73,16 @@ class Navbar extends Component {
                         this.props.changeNavType(NavbarTypes.BG_SMALL_STICKY)
                         break;
                     }
+                    this.props.changeNavType(NavbarTypes.BG_LARGE)
                 }
             case "events":
-                this.props.changeNavType(NavbarTypes.TRANSPARENT_WHITE_LARGE)
+                if (typeof pathList[2] !== 'undefined') {
+                    if (pathList[2].match(/^id=/)) {
+                        this.props.changeNavType(NavbarTypes.TRANSPARENT_WHITE_LARGE)
+                        break;
+                    }
+                    this.props.changeNavType(NavbarTypes.BG_LARGE)
+                } else this.props.changeNavType(NavbarTypes.TRANSPARENT_WHITE_LARGE)
                 break
             case "profile":
             case "tours":

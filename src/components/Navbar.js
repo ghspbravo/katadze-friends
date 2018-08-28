@@ -22,19 +22,25 @@ export default (currentState, openNavHandler) => {
                                 </Switch>
                             </li>
                             <li>
-                                <NavLink to="/about" activeClassName="active-nav">
-                                    О нас
-                            </NavLink>
+                                <Switch>
+                                    <Route path="/partners" render={() => <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>} />
+                                    <Route path="/events" render={() => <NavLink to="/events/about" activeClassName="active-nav">О нас</NavLink>} />
+                                    <Route render={() => <NavLink to="/gids/about" activeClassName="active-nav">О нас</NavLink>} />
+                                </Switch>
                             </li>
                             <li>
-                                <NavLink to="/FAQ" activeClassName="active-nav">
-                                    Вопросы
-                            </NavLink>
+                                <Switch>
+                                    <Route path="/partners" render={() => <NavLink to="/partners/faq" activeClassName="active-nav">Вопросы</NavLink>} />
+                                    <Route path="/events" render={() => <NavLink to="/events/faq" activeClassName="active-nav">Вопросы</NavLink>} />
+                                    <Route render={() => <NavLink to="/gids/faq" activeClassName="active-nav">Вопросы</NavLink>} />
+                                </Switch>
                             </li>
                             <li>
-                                <NavLink to="/contacts" activeClassName="active-nav">
-                                    Контакты
-                            </NavLink>
+                                <Switch>
+                                    <Route path="/partners" render={() => <NavLink to="/partners/contacts" activeClassName="active-nav">Контакты</NavLink>} />
+                                    <Route path="/events" render={() => <NavLink to="/events/contacts" activeClassName="active-nav">Контакты</NavLink>} />
+                                    <Route render={() => <NavLink to="/gids/contacts" activeClassName="active-nav">Контакты</NavLink>} />
+                                </Switch>
                             </li>
                             <li>
                                 <NavLink to="/profile" activeClassName="active-nav">

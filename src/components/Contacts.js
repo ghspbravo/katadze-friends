@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import cityImage from '../resourses/Contacts/pass.png'
+import cityImage from '../resourses/Contacts/city.png'
 
 export default class Contacts extends Component {
     render() {

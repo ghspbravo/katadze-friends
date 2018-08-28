@@ -10,6 +10,9 @@ import profile from '../components/gids/profile';
 import search from '../components/gids/search';
 import tour from '../components/gids/tour';
 import { gidList, gidInfo, tourInfo } from '../actions/gids';
+import faq from '../components/gids/faq';
+import about from '../components/gids/about';
+import contacts from '../components/partners/contacts';
 
 class Gids extends Component {
     constructor(props) {
@@ -39,15 +42,15 @@ class Gids extends Component {
             case '/tours/:id':
                 this.props.onFetchTour(this.props.match.params.id)
                 break;
-        
+
             case '/gids':
                 this.props.onFetchList()
                 break;
-        
+
             case '/gids/id=:id':
                 this.props.onFetchGid(this.props.match.params.id)
                 break;
-        
+
             default:
                 break;
         }
@@ -87,6 +90,9 @@ class Gids extends Component {
                         this.props.gids
                     )
                 }} />
+                <Route exact path="/gids/about" component={about} />
+                <Route exact path="/gids/faq" component={faq} />
+                <Route exact path="/gids/contacts" component={contacts} />
             </Switch>
         )
     }

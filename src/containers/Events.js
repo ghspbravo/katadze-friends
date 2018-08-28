@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { list } from '../actions/event'
 import { event } from '../actions/event'
 
+import about from '../components/events/about'
+import faq from '../components/events/faq'
+import contacts from '../components/events/contacts'
+
 import {
     Route,
     Switch,
@@ -24,8 +28,18 @@ class Events extends Component {
     tariffChangeHandle = id => this.setState({ tariffId: id })
 
     componentDidMount() {
-        if (typeof this.state.eventId !== 'undefined') this.props.fetchEvent(this.state.eventId)
-        else this.props.fetchEventList()
+        switch (this.props.match.path) {
+            case '/events':
+                this.props.fetchEventList()
+                break;
+
+            case '/events/id=:id':
+                this.props.fetchEvent(this.props.match.params.id)
+                break;
+
+            default:
+                break;
+        }
     }
 
     render() {
@@ -36,13 +50,17 @@ class Events extends Component {
                         this.props.events
                     )
                 } />
-                <Route path='/events/:id' render={() => info(
+                <Route exact path='/events/id=:id' render={() => info(
                     this.props.events,
                     this.state.tariffId,
                     this.tariffChangeHandle
                 )
                 } />
+                <Route exact path="/events/about" component={about} />
+                <Route exact path="/events/faq" component={faq} />
+                <Route exact path="/events/contacts" component={contacts} />
             </ Switch>
+
         )
     }
 }

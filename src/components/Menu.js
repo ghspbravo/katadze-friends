@@ -133,15 +133,15 @@ export default class Menu extends Component {
                     </div>
                     <div className="homepage-item-wrapper">
                         <div id="events" className="homepage-item">
-                            <div className="title">Мероприятия.</div>
+                            <div className="title">События.</div>
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}>
                                 <span className="credits">made by katadze digital studio</span>
                             </div>
                             <div className="homepage-item-inner">
-                                <div className="homepage-item-inner-title">Весь мир</div>
+                                <div className="homepage-item-inner-title">События</div>
                                 <div className="homepage-item-inner-subtext">
                                     <div className="homepage-item-inner-subtext-subtitle">
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
+                                        <p>Объединяя людей по всему миру, мы создаем уникальные проекты самой разной направленности. Присоединяйся: погнали Katadze</p>
                                     </div>
                                     <Link className="homepage-item-inner-subtext-link" to="/events">Перейти</Link>
                                 </div>
@@ -156,28 +156,28 @@ export default class Menu extends Component {
                                 <span className="credits">made by katadze digital studio</span>
                             </div>
                             <div className="homepage-item-inner">
-                                <div className="homepage-item-inner-title">Сеть гидов</div>
+                                <div className="homepage-item-inner-title">Гиды</div>
                                 <div className="homepage-item-inner-subtext">
                                     <div className="homepage-item-inner-subtext-subtitle">
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
+                                        <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!.</p>
                                     </div>
                                     <Link className="homepage-item-inner-subtext-link" to="/gids">Перейти</Link>
                                 </div>
                                 <div className="homepage-mask-wrapper">
-                                    <svg width="100%" height="100%"> <defs> <mask id="knockout-text-1" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">❖</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-1)"></rect> </svg>
+                                    <svg width="100%" height="100%"> <defs> <mask id="knockout-text-1" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">❉</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-1)"></rect> </svg>
                                 </div>
                             </div>
                         </div>
                         <div id="partners" className="homepage-item">
-                            <div className="title">Скидки.</div>
+                            <div className="title">Друзья.</div>
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})` }}>
                                 <span className="credits">made by katadze digital studio</span>
                             </div>
                             <div className="homepage-item-inner">
-                                <div className="homepage-item-inner-title">Скидки</div>
+                                <div className="homepage-item-inner-title">Друзья</div>
                                 <div className="homepage-item-inner-subtext">
                                     <div className="homepage-item-inner-subtext-subtitle">
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
+                                        <p>Создавать пространство для возможностей - наша цель. Добиваться её нам помогают наши партнеры: постоянные скидки и бонусы от Друзей Katadze.</p>
                                     </div>
                                     <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
                                 </div>
@@ -194,10 +194,10 @@ export default class Menu extends Component {
                     <div className="background" style={{ backgroundImage: `url(${main})` }}></div>
                     <div className="homepage-item-inner">
                         <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
-                        <div className="homepage-item-inner-title">Весь мир</div>
+                        <div className="homepage-item-inner-title">События</div>
                         <div className="homepage-item-inner-subtext">
                             <div className="homepage-item-inner-subtext-subtitle">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
+                                <p>Объединяя людей по всему миру, мы создаем уникальные проекты самой разной направленности. Присоединяйся: погнали Katadze</p>
                             </div>
                             <Link className="homepage-item-inner-subtext-link" to="/events">Перейти</Link>
                         </div>
@@ -206,11 +206,11 @@ export default class Menu extends Component {
                         </div>
                     </div>
                     <div className="homepage-item-inner">
-                        <div className="homepage-item-image" style={{ backgroundImage: `url(${gids})`, backgroundPositionX: '35%' }}></div>
-                        <div className="homepage-item-inner-title">Сеть гидов</div>
+                        <div className="homepage-item-image" style={{ backgroundImage: `url(${gids})` }}></div>
+                        <div className="homepage-item-inner-title">Гиды</div>
                         <div className="homepage-item-inner-subtext">
                             <div className="homepage-item-inner-subtext-subtitle">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
+                                <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!.</p>
                             </div>
                             <Link className="homepage-item-inner-subtext-link" to="/gids">Перейти</Link>
                         </div>
@@ -219,11 +219,11 @@ export default class Menu extends Component {
                         </div>
                     </div>
                     <div id="content" className="homepage-item-inner">
-                        <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})`, backgroundPositionX: '65%' }}></div>
-                        <div className="homepage-item-inner-title">Скидки</div>
+                        <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})`, backgroundPositionX: '25%' }}></div>
+                        <div className="homepage-item-inner-title">Друзья</div>
                         <div className="homepage-item-inner-subtext">
                             <div className="homepage-item-inner-subtext-subtitle">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, dicta.</p>
+                                <p>Создавать пространство для возможностей - наша цель. Добиваться её нам помогают наши партнеры: постоянные скидки и бонусы от Друзей Katadze.</p>
                             </div>
                             <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
                         </div>
