@@ -80,8 +80,8 @@ class Gids extends Component {
                 <Route exact path="/gids/search=:search" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC"
                     return search(
-                        this.state.search,
-                        this.props.gids
+                        this.props.match.params.search,
+                        {}
                     )
                 }} />
                 <Route exact path="/tours/:id" render={() => {

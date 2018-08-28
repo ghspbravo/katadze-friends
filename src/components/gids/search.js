@@ -1,7 +1,7 @@
 import React from 'react'
 import gidCard from './gidCard';
 
-export default search => {
+export default (search, gids) => {
     return (
         <div>
             <section id="gids-header" className="vh-100">
@@ -12,7 +12,10 @@ export default search => {
             <section>
                 <h1 className="text-center"><span>Поможем найти гида</span></h1>
                 <div className="offset-md-1 col-md-10 justify-center">
-                    {[...Array(10)].map((e, i) => gidCard(i))}
+                    {Array.isArray(gids)
+                        ? gids.map((info, i) => gidCard(info, i))
+                        : <h1>Гидов в текущем городе не найдено...</h1>
+                    }
                 </div>
             </section>
         </div>
