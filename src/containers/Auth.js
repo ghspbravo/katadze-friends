@@ -106,10 +106,10 @@ class Login extends Component {
                 : <Switch>
                     <Route path='/login' render={() => LoginComponent(this.onSubmit,
                         this.handleInputChange,
-                        this.props.authErrors)} />
+                        this.props.fieldErrors)} />
                     <Route path='/reset-password' render={() => resetPasswordComponent(this.onSubmit,
                         this.handleInputChange,
-                        this.props.resetErrors)} />
+                        this.props.fieldErrors)} />
                     <Route path='/reset/' render={() => resetConfirmComponent(
                         this.handleReset,
                         this.handleInputChange,
@@ -118,7 +118,7 @@ class Login extends Component {
                     <Route path='/registration' render={() => registrationComponent(this.onSubmit,
                         this.handleInputChange,
                         this.handleFileLoad,
-                        this.props.registrationErrors)} />
+                        this.props.fieldErrors)} />
                     {this.props.isRegistered
                         ? this.props.onLogin(this.state.username, this.state.password, this.props.isRegistered)
                         : null
@@ -132,7 +132,7 @@ class Login extends Component {
 const mapStateToProps = (state) => ({
     isAuthenticated: isAuthenticated(state),
     isRegistered: isRegistered(state),
-    fieldErrors: getFiledErrors(state.resetPassword)
+    fieldErrors: getFiledErrors(state.registration)
 });
 
 const mapDispatchToProps = (dispatch) => ({
