@@ -1,7 +1,7 @@
 import React from 'react'
 import LogoWhite from '../../resourses/LogoWhite.png'
 
-export default (event, currentTariff, handleTariffChange) => {
+export default (event, currentTariff, handleTariffChange, handleAcquiring) => {
     return (
         <div>
             {event && event.sections
@@ -23,7 +23,7 @@ export default (event, currentTariff, handleTariffChange) => {
                                                 </div>
                                             </div>
                                             : <div>
-                                                <div className="col-12 offset-lg-1 col-lg-5" style={{zIndex: 5}}>
+                                                <div className="col-12 offset-lg-1 col-lg-5" style={{ zIndex: 5 }}>
                                                     <h1>{section.title}</h1>
                                                     <p>{section.content}</p>
                                                 </div>
@@ -56,10 +56,10 @@ export default (event, currentTariff, handleTariffChange) => {
                                     </section>
 
                                 case 2:
-                                    return <section key={section.id} className="eventSection one-page" style={window.innerWidth < 992 ? {backgroundColor: '#fb0'} : {}}>
+                                    return <section key={section.id} className="eventSection one-page" style={window.innerWidth < 992 ? { backgroundColor: '#fb0' } : {}}>
                                         <div className="offset-lg-1 col-12 col-md-8">
-                                            <h1><span style={window.innerWidth < 992 ? {color: '#fff'} : {}}>{section.title}</span></h1>
-                                            <p className="small secondary v-offset-large" style={window.innerWidth < 992 ? {color: '#fff'} : {}}>{section.content}</p>
+                                            <h1><span style={window.innerWidth < 992 ? { color: '#fff' } : {}}>{section.title}</span></h1>
+                                            <p className="small secondary v-offset-large" style={window.innerWidth < 992 ? { color: '#fff' } : {}}>{section.content}</p>
                                         </div>
                                         <div className="d-none d-md-flex col-md-4 col-lg-3 one-page justify-center acsent-alt-bg">
                                             <div className="col-lg-10">
@@ -84,7 +84,7 @@ export default (event, currentTariff, handleTariffChange) => {
                         </section>
                         : console.log('STEPS_NOT_FOUND')
                     }
-                    {event && event.tariffs[currentTariff]
+                    {event && event.tariffs[0]
                         ? <section>
                             <div className="offset-1">
                                 <h1 className="super"><span>Пакеты</span></h1>
@@ -92,25 +92,27 @@ export default (event, currentTariff, handleTariffChange) => {
                             <div className="container align-center">
                                 <div className="col-lg-3 col-md-4 text-center tarif-selector">
                                     {
-                                        event.tariffs.map((tariff, i) => <button
-                                            onClick={() => handleTariffChange(i)}
-                                            className={currentTariff === i ? "col-12 active" : "col-12"}
-                                            key={tariff.id}><p className="lead">{tariff.name}</p></button>)
+                                        event.tariffs.map((tariff, i) => {
+                                            return <button
+                                                onClick={() => handleTariffChange(i, tariff.id)}
+                                                className={currentTariff === i ? "col-12 active" : "col-12"}
+                                                key={tariff.id}><p className="lead">{tariff.name}</p></button>
+                                        })
                                     }
                                 </div>
                                 <div className="offset-lg-2 offset-md-1 col-md-7">
                                     <div className="col-12 tarif-description"><p>
                                         {
-                                            event.tariffs[currentTariff].description
+                                            typeof currentTariff !== 'undefined' ? event.tariffs[currentTariff].description : 'Нажмите на название тарифа для просмотра информации'
                                         }
                                     </p></div>
                                     <div className="row">
                                         <div className="col-lg-4 tarif-price v-offset-small"><p className="small">
                                             {
-                                                `${event.tariffs[currentTariff].price} рублей`
+                                                typeof currentTariff !== 'undefined' ? `${event.tariffs[currentTariff].price} рублей` : 'неизвестно'
                                             }
                                         </p></div>
-                                        <button className="offset-lg-4 col-lg-4 tarif-button v-offset-small"><p className="small">
+                                        <button onClick={() => handleAcquiring()} className="offset-lg-4 col-lg-4 tarif-button v-offset-small"><p className="small">
                                             Поехали!
                                     </p></button>
                                     </div>

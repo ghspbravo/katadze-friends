@@ -21,6 +21,7 @@ import Navbar from '../containers/Navbar';
 
 import { getErrors, resetErrors, getMessages, resetMessages } from '../reducers';
 import { forceRefresh } from '../actions';
+import Acquiring from '../containers/Acquiring';
 
 class Layout extends Component {
 
@@ -81,6 +82,9 @@ class Layout extends Component {
                 <Route path='/activate/' component={Profile} />
                 <Route path='/reset/' component={Auth} />
                 <Route path='/profile' component={Profile} />
+
+                <Route exact path='/success?orderId=:uuid' component={Acquiring} />
+                <Route exact path='/fail?orderId=:uuid' component={Acquiring} />
 
                 <Switch>
                     <Route exact path="/" render={() => true} />

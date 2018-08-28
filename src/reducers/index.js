@@ -9,6 +9,7 @@ import resetPassword from './resetPassword'
 import profile from './profile'
 import gids from './gids';
 import service from './service'
+import commerce from './commerce';
 
 const rootReducer = combineReducers({
     router: routerReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     resetPassword,
     profile,
     gids,
-    service
+    service,
+    commerce
 })
 
 export default rootReducer

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { list } from '../actions/event'
-import { event } from '../actions/event'
+import { list, event } from '../actions/event'
+import { acquiringEvent } from '../actions/commerce'
 
 import about from '../components/events/about'
 import faq from '../components/events/faq'
@@ -20,12 +20,16 @@ class Events extends Component {
         super(props)
 
         this.state = {
-            eventId: this.props.match.params && this.props.match.params.id,
-            tariffId: 0
+            tariffIndex: undefined,
+            tariffId: undefined,
         }
     }
 
-    tariffChangeHandle = id => this.setState({ tariffId: id })
+    tariffChangeHandle = (index, id) => this.setState({ tariffIndex: index, tariffId: id })
+
+    handleAcquiring = () => {
+        this.props.onAcquiring(this.state.tariffId)
+    }
 
     componentDidMount() {
         switch (this.props.match.path) {
@@ -44,7 +48,8 @@ class Events extends Component {
 
     render() {
         return (
-            <Switch>
+            <Switch>            
+                {console.log(this.props.payment)}
                 <Route exact path='/events' render={() =>
                     listEvents(
                         this.props.events
@@ -52,26 +57,28 @@ class Events extends Component {
                 } />
                 <Route exact path='/events/id=:id' render={() => info(
                     this.props.events,
-                    this.state.tariffId,
-                    this.tariffChangeHandle
+                    this.state.tariffIndex,
+                    this.tariffChangeHandle,
+                    this.handleAcquiring
                 )
                 } />
                 <Route exact path="/events/about" component={about} />
                 <Route exact path="/events/faq" component={faq} />
                 <Route exact path="/events/contacts" component={contacts} />
             </ Switch>
-
         )
     }
 }
 
 const mapStateToProps = state => ({
     events: state.event,
+    payment: state.commerce
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchEvent: id => dispatch(event(id)),
-    fetchEventList: page => dispatch(list(page))
+    fetchEventList: page => dispatch(list(page)),
+    onAcquiring: id => dispatch(acquiringEvent(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Events)
