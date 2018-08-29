@@ -10,7 +10,7 @@ export default (state = {}, action) => {
             }
         case commerce.ACQUIRING_STATUS_UPDATE_SUCCESS:
             return {
-                ...action.payload.status
+                ...action.payload
             }
 
         case commerce.ACQUIRING_EVENT_FAILURE:

@@ -18,4 +18,4 @@ export const NavbarTypes = {
     MOBILE: 'mobile'
 }
 
-export const server = '188.93.210.198'
+export const server = 'katadze.ru'

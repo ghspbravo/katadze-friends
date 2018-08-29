@@ -13,6 +13,10 @@ export const TOUR_REQUEST = '@@gids/TOUR_REQUEST';
 export const TOUR_SUCCESS = '@@gids/TOUR_SUCCESS';
 export const TOUR_FAILURE = '@@gids/TOUR_FAILURE';
 
+export const GIDS_FILTER_REQUEST = '@@gids/GIDS_FILTER_REQUEST';
+export const GIDS_FILTER_SUCCESS = '@@gids/GIDS_FILTER_SUCCESS';
+export const GIDS_FILTER_FAILURE = '@@gids/GIDS_FILTER_FAILURE';
+
 export const gidList = (page = 0) => ({
 	[RSAA]: {
 		endpoint: `https://${server}/api/users/?format=json`,
@@ -42,6 +46,17 @@ export const tourInfo = (id) => ({
 		headers: {},
 		types: [
 			TOUR_REQUEST, TOUR_SUCCESS, TOUR_FAILURE
+		]
+	},
+});
+
+export const gidsFilter = (location) => ({
+	[RSAA]: {
+		endpoint: `https://${server}/api/users/?location=${location}&format=json`,
+		method: 'GET',
+		headers: {},
+		types: [
+			GIDS_FILTER_REQUEST, GIDS_FILTER_SUCCESS, GIDS_FILTER_FAILURE
 		]
 	},
 });

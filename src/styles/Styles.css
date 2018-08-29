@@ -1364,7 +1364,8 @@ section.idSection .section-id {
   padding: 0;
 }
 .searchBox input {
-  padding: 15px 10px;
+  padding: 15px 10px !important;
+  background-color: #fff;
   width: 100%;
   font-family: OpenSans;
   font-weight: normal;
@@ -1372,8 +1373,9 @@ section.idSection .section-id {
   line-height: 25px;
 }
 .searchBox button {
-  padding: 15px 20px;
-  height: 100%;
+  padding: 13px 20px !important;
+  margin-top: 10px;
+  border-bottom: none;
   background-color: #41bfef;
 }
 .gid-card {

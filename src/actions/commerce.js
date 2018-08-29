@@ -12,7 +12,7 @@ export const ACQUIRING_STATUS_UPDATE_FAILURE = '@@commerce/ACQUIRING_STATUS_UPDA
 
 export const acquiringEvent = (event_tariff_id) => ({
     [RSAA]: {
-        endpoint: `https://${server}/api/auth/token/obtain/`,
+        endpoint: `https://${server}/api/order/event/`,
         method: 'POST',
         body: JSON.stringify({ event_tariff_id }),
         headers: withAuth({ 'Content-Type': 'application/json' }),
@@ -23,9 +23,9 @@ export const acquiringEvent = (event_tariff_id) => ({
 });
 
 
-export const acquiringStatusUpdate = () => ({
+export const acquiringStatusUpdate = (id) => ({
     [RSAA]: {
-        endpoint: `https://${server}/api/auth/token/obtain/`,
+        endpoint: `https://${server}/api/order/${id}`,
         method: 'PATCH',
         headers: withAuth({ 'Content-Type': 'application/json' }),
         types: [

@@ -74,6 +74,8 @@ class Layout extends Component {
                 <Route exact path='/events/about' component={Events} />
                 <Route exact path='/events/contacts' component={Events} />
 
+                <Route path='/payment/' component={Acquiring} />
+
                 <Route path='/partners/id=:id' component={Partners} />
                 <Route path='/events/id=:id' component={Events} />
                 <Route path='/gids/id=:id' component={Gids} />
@@ -82,9 +84,6 @@ class Layout extends Component {
                 <Route path='/activate/' component={Profile} />
                 <Route path='/reset/' component={Auth} />
                 <Route path='/profile' component={Profile} />
-
-                <Route exact path='/success?orderId=:uuid' component={Acquiring} />
-                <Route exact path='/fail?orderId=:uuid' component={Acquiring} />
 
                 <Switch>
                     <Route exact path="/" render={() => true} />

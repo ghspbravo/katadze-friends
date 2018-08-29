@@ -25,11 +25,11 @@ export const userInfo = id => ({
 	},
 });
 
-export const createGid = (bio, keyphrase, languages, hobbies, activities) => ({
+export const createGid = (bio, keyphrase, languages, hobbies, activities, price) => ({
 	[RSAA]: {
         endpoint: `https://${server}/api/user/profile/`,
         method: 'POST',
-        body: JSON.stringify({ bio, keyphrase, languages, hobbies, activities }),
+        body: JSON.stringify({ bio, keyphrase, languages, hobbies, activities, price }),
         headers: withAuth({'Content-Type': 'application/json'}),
         types: [
             CREATE_GID_REQUEST, CREATE_GID_SUCCESS, CREATE_GID_FAILURE

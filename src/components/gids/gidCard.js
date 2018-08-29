@@ -14,7 +14,7 @@ export default (gid, index) => {
                                 <p className="small bold">{gid.first_name}</p>
                                 <p className="small secondary">{gid.residence}</p>
                             </div>
-                            <div className="col-4"><p className="small"><span>{ gid.price_avg === null ? 'нет туров' : `${gid.price_avg} руб`}</span></p></div>
+                            <div className="col-4"><p className="small"><span>{ gid.profile.price == 0 ? 'БЕСПЛАТНО' : `${gid.profile.price} руб`}</span></p></div>
                         </div>
                         <div className="row gid-description">
                             <p className="small">{gid.profile.keyphrase}</p>

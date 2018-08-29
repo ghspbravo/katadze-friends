@@ -9,7 +9,7 @@ export default (inputHandler, inputListHandler, submitHandler, deleteHandle, fie
                 <div className="head"><p>Дополнительная информация</p></div>
                 <div className="row content">
                     <div className="col-3 text-right"><label htmlFor='aboutMe'><p className="small">Информация о себе</p></label></div>
-                    <div className="offset-1 col-8"><textarea disabled={user ? true : false} value={user ? user.bio : ''} onChange={inputHandler} className='col-12' id='aboutMe' name="bio" rows='4' /></div>
+                    <div className="offset-1 col-8"><textarea readOnly={user ? true : false} value={user ? user.bio : undefined} onChange={inputHandler} className='col-12' id='aboutMe' name="bio" rows='4' required /></div>
 
                     <div className="offset-4 col-8"><p className="small secondary">Katadze основано на взаимоотношениях. <br /> Помогите другим лучше узнать вас.
 <br /><br /> Расскажите о своих интересах: без каких 5 вещей вы не можете жить? Где вы больше всего любите путешествовать? Любимые виды спорта?
@@ -36,20 +36,10 @@ export default (inputHandler, inputListHandler, submitHandler, deleteHandle, fie
                                 </div>)}
                             </div>
                         }
-                        <select disabled={user ? true : false} onChange={inputListHandler} className="col-md-6 col-12" name="languages" id="languages">
-                            <option key={Object.keys(fields.languages).length} value="" disabled selected hidden></option>
+                        {user || Object.keys(fields.languagesList).length === 0 ? null : <select disabled={user ? true : false} onChange={inputListHandler} className="col-md-6 col-12" name="languages" id="languages">
+                            <option key={Object.keys(fields.languagesList).length} value="" disabled selected hidden></option>
                             {fields.languagesList.map((language, i) => <option key={i} value={language}>{language}</option>)}
-                        </select>
-                        {/* <select onChange={inputListHandler} className="col-md-6 col-12" name="languages" id="language">
-                                <option value="Русский">Русский</option>
-                                <option value="Английский">Английский</option>
-                            </select> */}
-                        {/* <select onChange={inputListHandler} className="offset-md-1 col-md-5 col-12" name="level" id="languageLevel">
-                                <option value="0">Basic</option>
-                                <option value="1">Conversational</option>
-                                <option value="2">Advanced</option>
-                                <option value="3">Fluent</option>
-                            </select> */}
+                        </select>}
                     </div>
 
                     <div className="col-3 text-right"><label htmlFor='hobbies'><p className="small">Увлечения / хобби</p></label></div>
@@ -67,10 +57,10 @@ export default (inputHandler, inputListHandler, submitHandler, deleteHandle, fie
                                 <button type="button" onClick={deleteHandle} className="offset-1" data-for='hobbies' data-id={hobbieId}>X</button>
                             </div>)}
                             </div>}
-                        <select disabled={user ? true : false} onChange={inputListHandler} name="hobbies" id="hobbies">
+                        {user || Object.keys(fields.hobbiesList).length === 0 ? null : <select disabled={user ? true : false} onChange={inputListHandler} name="hobbies" id="hobbies">
                             <option key={Object.keys(fields.hobbies).length} value="" disabled selected hidden></option>
                             {fields.hobbiesList.map((hobbie, i) => <option key={i} value={hobbie}>{hobbie}</option>)}
-                        </select>
+                        </select>}
                     </div>
 
                     <div className="col-3 text-right"><label htmlFor='activities'><p className="small">Активности</p></label></div>
@@ -88,14 +78,20 @@ export default (inputHandler, inputListHandler, submitHandler, deleteHandle, fie
                                 <button type="button" onClick={deleteHandle} className="offset-1" data-for='activities' data-id={activityId}>X</button>
                             </div>)}
                             </div>}
-                        <select disabled={user ? true : false} onChange={inputListHandler} name="activities" id="activities">
+                        {user || Object.keys(fields.activitiesList).length === 0 ? null : <select disabled={user ? true : false} onChange={inputListHandler} name="activities" id="activities">
                             <option key={Object.keys(fields.activities).length} value="" disabled selected hidden></option>
                             {fields.activitiesList.map((activity, i) => <option key={i} value={activity}>{activity}</option>)}
-                        </select>
+                        </select>}
+                    </div>
+
+                    <div className="col-3 text-right"><label htmlFor="price"><p className="small">Цена услуг</p></label></div>
+                    <div className="offset-1 col-8">
+                        <input id="price" name="price" className="col-12" readOnly={user ? true : false} value={user ? user.price : undefined} onChange={inputHandler} type="number" required />
+                        <p className="small secondary">Стоимость Ваших услуг, введенная в рублях, будет видна каждому. Именно по ней закладывается первое впечатление о гиде.</p>
                     </div>
 
                     <div className="col-3 text-right"><label htmlFor='motto'><p className="small">Ключевая фраза обо мне и моей деятельности</p></label></div>
-                    <div className="offset-1 col-8"><textarea disabled={user ? true : false} value={user ? user.keyphrase : ''} onChange={inputHandler} name="keyphrase" className='col-12' id='motto' rows='4' /></div>
+                    <div className="offset-1 col-8"><textarea readOnly={user ? true : false} value={user ? user.keyphrase : undefined} onChange={inputHandler} name="keyphrase" className='col-12' id='motto' rows='4' required /></div>
                 </div>
             </section>
 

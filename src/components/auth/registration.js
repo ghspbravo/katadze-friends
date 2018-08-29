@@ -35,7 +35,10 @@ export default (submitHandler, inputHandler, fileHandler, errors) => {
                     {errorMessage(errors, 'password')}
                     <div className="row v-offset-small">
                         <div className="col-md-4 col-12 avatar-container justify-center"><img src="http://via.placeholder.com/250x250/ffffff" alt="ava" /></div>
-                        <div className="offset-md-1 col-md-6 col-12 align-center"><label className="file v-offset-small" htmlFor="reg-photo"><p>Загрузить фото</p></label></div>
+                        <div className="offset-md-1 col-md-6 col-12 align-center">
+                            <p className="small">Важно, чтобы ваше лицо было отчетливо видно на фото.</p>
+                            <label className="file v-offset-small" htmlFor="reg-photo"><p>Загрузить фото</p></label>
+                        </div>
                         <input id="reg-photo" className=" offset-md-2 col-md-6 col-12" name="img_photo" type="file" accept=".jpg, .jpeg, .png" onChange={fileHandler} />
                     </div>
                     {errorMessage(errors, 'img_photo')}

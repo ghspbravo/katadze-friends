@@ -1,44 +1,51 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-    Route,
-    Switch,
-} from 'react-router'
 import { acquiringStatusUpdate } from '../actions/commerce';
 
 class Acquiring extends Component {
+    constructor(props) {
+        super(props)
+
+        let uuid = this.props.location.search
+        uuid = uuid.replace('?orderId=', '')
+        uuid = uuid.replace('&lang=ru', '')
+
+        this.state = {
+            uuid: uuid
+        }
+    }
+
 
     statusList = [
         'Заказ зарегистрирован в банке, но не оплачен',
-        'сумма удержана',
-        'заказ полностью авторизован',
-        'авторизация отменена',
-        'проведена операция возврата',
-        'авторизация инициирована через сервер банка-эмитента',
-        'авторизация отклонена'
+        'Сумма удержана',
+        'Заказ полностью авторизован',
+        'Авторизация отменена',
+        'Проведена операция возврата',
+        'Авторизация инициирована через сервер банка-эмитента',
+        'Авторизация отклонена'
     ]
 
     componentDidMount() {
-        this.props.onStatusRequest(this.props.match.params.uuid)
+        setTimeout(() => this.props.onStatusRequest(this.state.uuid), 2000)
     }
 
     render() {
         return (
             <div className="container">
-                {console.log(this.props.details)}
-                <h1>Ваш заказ {typeof this.props.details === 'undefined' ? 'обрабатывается' : 'обработан'}!</h1>
-                <p>{typeof this.props.details === 'undefined' ? null : this.statusList[this.props.details]}</p>
+                <h1>Ваш заказ {Object.keys(this.props.details).length === 0 ? 'обрабатывается' : 'обработан'}!</h1>
+                <p>{this.props.details && this.props.details.status ? this.statusList[this.props.details.status] : null}</p>
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    details: state.commerce
+    details: state.commerce,
 });
 
 const mapDispatchToProps = dispatch => ({
-    onStatusRequest: () => dispatch(acquiringStatusUpdate)
+    onStatusRequest: (id) => dispatch(acquiringStatusUpdate(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Acquiring)

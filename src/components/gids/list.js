@@ -8,17 +8,17 @@ export default (gids, inputHandler, searchHandler) => {
         <div>
             <section id="gids-header" className="vh-100">
                 <div className="row">
-                    <div className="offset-1 offset-xl-3 offset-md-2 col-10 col-md-8 col-xl-4">
+                    <form className="offset-1 offset-xl-3 offset-md-2 col-10 col-md-8 col-xl-4">
                         <h1 className="upper">Найти гида</h1>
-                        <div className="row searchBox">
+                        <div className="row no-margin searchBox">
                             <div className="col-8"><input name="search" onChange={inputHandler} type="text" /></div>
                             <div className="col-4"><button onClick={searchHandler} ><p className="small">
                                 Искать
                                 </p></button></div>
                         </div>
                         <p className="small" >Например: Екатеринбург</p>
-                        <a href="#become_gid" className="lead">СТАТЬ ГИДОМ</a>
-                    </div>
+                        <button onClick={() => document.querySelector('#become_gid').scrollIntoView({ behavior: "smooth" })} className="lead v-offset-mid lead col-5">СТАТЬ ГИДОМ</button>
+                    </form>
                 </div>
             </section>
             <section>
@@ -42,24 +42,24 @@ export default (gids, inputHandler, searchHandler) => {
 
                     <div className="col-12 gid-card v-offset-mid">
                         <div className="offset-md-1 col-md-10">
-                            <h1 style={{textAlign: 'center'}}><span>Кatadze-guide</span> - покажи любимый город своими глазами.</h1>
+                            <h1 style={{ textAlign: 'center' }}><span>Кatadze-guide</span> - покажи любимый город своими глазами.</h1>
                             <p className="v-offset-small">
                                 Надоели заезженные туры по любимым городам и странам? Множество людей и завышенные цены? А персональный гид от оператора водит теми же маршрутами и рассказывает то же самое, что и группам?
-    <br /><br/>
+    <br /><br />
                                 Тогда специально для Вас – Katadze Guide – удобный сервис, позволяющий отыскать поистине уникального и увлекательного местного гида, который покажет Вам свою страну и свой город, какими их видят все местные жители. Он отведет в такие места, где Вы проникнитесь местным духом, ведь туристы обычно там не появляются. Он познакомит с настоящей кухней, расскажет городские легенды, не описанные в туристических брошюрах и буклетах.
-    <br /><br/>
+    <br /><br />
                                 Katadze Guide до невозможного прост и удобен в использовании, ведь позволяет найти своего гида по ряду критериев, например, полу, возрасту, интересам, стоимости. Каждый гид имеет свой уникальный профиль, в котором указывает всю интересующую Вас информацию: от временных рамок и стоимости, установленных им по своемужеланию, до любимого блюда и жанра музыки. Так что отыскать «своего человека» не составит никакого труда.
-    <br /><br/>
+    <br /><br />
                                 Путешественник отправляет заявку понравившемуся гиду и вслед за подтверждением получает всю необходимую контактную информацию, после чего они уже в личной беседе договариваются о встречи и желаниях путешественника.
-    <br /><br/>
+    <br /><br />
                                 Стать гидом также очень просто – достаточно любить и знать свои город и страну, быть приятным собеседником и открытым к новым знакомствам человеком.
-    <br /><br/>
+    <br /><br />
                                 Система оценки гида открыта и публична. Оценки и комментарии формируют рейтинг гидов, который позволяет последнему находить новых путешественников.
-    <br /><br/>
+    <br /><br />
                                 Katadze Guide – для тех, кто любит путешествовать и узнавать новое!
-    <br /><br/>
+    <br /><br />
                                 Katadze Guide – для тех, кто любит свой город!
-    <br /><br/>
+    <br /><br />
                                 Когда хочется выжать из путешествия всё по максимуму – интересно и со вкусом. <Link to="/profile">
                                     Регистрируйся
                                 </Link> и наслаждайся!

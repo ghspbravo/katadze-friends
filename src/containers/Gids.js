@@ -9,7 +9,7 @@ import list from '../components/gids/list'
 import profile from '../components/gids/profile';
 import search from '../components/gids/search';
 import tour from '../components/gids/tour';
-import { gidList, gidInfo, tourInfo } from '../actions/gids';
+import { gidList, gidInfo, tourInfo, gidsFilter } from '../actions/gids';
 import faq from '../components/gids/faq';
 import about from '../components/gids/about';
 import contacts from '../components/partners/contacts';
@@ -51,6 +51,11 @@ class Gids extends Component {
                 this.props.onFetchGid(this.props.match.params.id)
                 break;
 
+            case '/gids/search=:search':
+                console.log(this.props.match.params)
+                this.props.onFilterGids(this.props.match.params.search)
+                break;
+
             default:
                 break;
         }
@@ -81,7 +86,7 @@ class Gids extends Component {
                     document.body.style.backgroundColor = "#E8EFFC"
                     return search(
                         this.props.match.params.search,
-                        {}
+                        this.props.gids
                     )
                 }} />
                 <Route exact path="/tours/:id" render={() => {
@@ -106,6 +111,7 @@ const mapDispatchToProps = dispatch => ({
     onFetchList: page => dispatch(gidList(page)),
     onFetchGid: id => dispatch(gidInfo(id)),
     onFetchTour: id => dispatch(tourInfo(id)),
+    onFilterGids: location => dispatch(gidsFilter(location))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gids)

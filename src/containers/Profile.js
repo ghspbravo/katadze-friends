@@ -174,7 +174,7 @@ class Profile extends Component {
 				Object.keys(this.state.hobbies).forEach(id => hobbies.push({code: id}))
 				Object.keys(this.state.activities).forEach(id => activities.push({code: id}))
 
-				this.props.onCreateGid(this.state.bio, this.state.keyphrase, languages, hobbies, activities)
+				this.props.onCreateGid(this.state.bio, this.state.keyphrase, languages, hobbies, activities, this.state.price)
 				break;
 
 			case '/profile/create-tour':
@@ -184,7 +184,7 @@ class Profile extends Component {
 			default:
 				break;
 		}
-		window.location.reload()
+		// window.location.reload()
 	};
 
 	handleActivate = () => {
@@ -254,7 +254,7 @@ class Profile extends Component {
 									this.onSubmit,
 									this.handleListDelete,
 									this.state,
-									this.props.user.profile === null ? false : this.props.user.profile
+									this.props.user.profile === null ? false : this.props.user.profile,
 								)} />
 						<Route path='/profile/create-tour' render={() =>
 							this.props.user.is_accepted
@@ -308,8 +308,8 @@ const mapDispatchToProps = dispatch => ({
 	logout: () => dispatch(logout()),
 	fetchUser: id => dispatch(userInfo(id)),
 
-	onCreateGid: (bio, keyphrase, languages, hobbies, activities) => {
-		dispatch(createGid(bio, keyphrase, languages, hobbies, activities))
+	onCreateGid: (bio, keyphrase, languages, hobbies, activities, price) => {
+		dispatch(createGid(bio, keyphrase, languages, hobbies, activities, price))
 	},
 
 	onCreateTour: (name, location, description, route, transport, inclusion, price, date_from, date_to, meeting_details, slogan, expenses, extra_options, extra_info, max_tourists) => {
