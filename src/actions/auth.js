@@ -1,4 +1,5 @@
 import { RSAA } from 'redux-api-middleware';
+import { server } from './index'
 
 export const LOGIN_REQUEST = '@@auth/LOGIN_REQUEST';
 export const LOGIN_SUCCESS = '@@auth/LOGIN_SUCCESS';
@@ -10,7 +11,7 @@ export const LOGOUT_SUCCESS = '@@auth/LOGOUT_SUCCESS';
 
 export const login = (username, password) => ({
     [RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/auth/token/obtain/',
+        endpoint: `https://${server}/api/auth/token/obtain/`,
         method: 'POST',
         body: JSON.stringify({ username, password }),
         headers: { 'Content-Type': 'application/json' },
@@ -22,7 +23,7 @@ export const login = (username, password) => ({
 
 export const refreshAccessToken = (token) => ({
     [RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/auth/token/refresh/',
+        endpoint: `https://${server}/api/auth/token/refresh/`,
         method: 'POST',
         body: JSON.stringify({ refresh: token }),
         headers: { 'Content-Type': 'application/json' },

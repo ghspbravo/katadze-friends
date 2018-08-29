@@ -1,5 +1,6 @@
 import { RSAA } from 'redux-api-middleware';
 import { withAuth } from '../reducers';
+import { server } from '.';
 
 export const ACQUIRING_EVENT_REQUEST = '@@commerce/ACQUIRING_EVENT_REQUEST';
 export const ACQUIRING_EVENT_SUCCESS = '@@commerce/ACQUIRING_EVENT_SUCCESS';
@@ -11,7 +12,7 @@ export const ACQUIRING_STATUS_UPDATE_FAILURE = '@@commerce/ACQUIRING_STATUS_UPDA
 
 export const acquiringEvent = (event_tariff_id) => ({
     [RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/auth/token/obtain/',
+        endpoint: `https://${server}/api/auth/token/obtain/`,
         method: 'POST',
         body: JSON.stringify({ event_tariff_id }),
         headers: withAuth({ 'Content-Type': 'application/json' }),
@@ -24,7 +25,7 @@ export const acquiringEvent = (event_tariff_id) => ({
 
 export const acquiringStatusUpdate = () => ({
     [RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/auth/token/obtain/',
+        endpoint: `https://${server}/api/auth/token/obtain/`,
         method: 'PATCH',
         headers: withAuth({ 'Content-Type': 'application/json' }),
         types: [

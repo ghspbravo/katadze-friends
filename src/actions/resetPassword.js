@@ -1,4 +1,5 @@
 import { RSAA } from 'redux-api-middleware';
+import { server } from '.';
 
 export const RESET_REQUEST = '@@reset/RESET_REQUEST';
 export const RESET_SUCCESS = '@@reset/RESET_SUCCESS';
@@ -10,7 +11,7 @@ export const RESET_CONFIRM_FAILURE = '@@reset/RESET_CONFIRM_FAILURE';
 
 export const resetPassword = email => ({
     [RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/reset/',
+        endpoint: `https://${server}/api/reset/`,
         method: 'POST',
         body: JSON.stringify({ email }),
         headers: { 'Content-Type': 'application/json' },
@@ -22,7 +23,7 @@ export const resetPassword = email => ({
 
 export const resetConfirm = (token, uidb64, password) => ({
     [RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/reset-confirm/',
+        endpoint: `https://${server}/api/reset-confirm/`,
         method: 'POST',
         body: JSON.stringify({ token, uidb64, password }),
         headers: { 'Content-Type': 'application/json' },

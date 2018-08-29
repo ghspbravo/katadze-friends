@@ -1,5 +1,6 @@
 import { RSAA } from 'redux-api-middleware';
 import { withAuth } from '../reducers';
+import { server } from '.';
 
 export const REGISTRATION_REQUEST = '@@registration/REGISTRATION_REQUEST';
 export const REGISTRATION_SUCCESS = '@@registration/REGISTRATION_SUCCESS';
@@ -15,7 +16,7 @@ export const ACTIVATE_CONFIRM_FAILURE = '@@registration/ACTIVATE_CONFIRM_FAILURE
 
 export const registration = (email, password, date_birth, gender, last_name, first_name, username, residence, phone, img_photo) => ({
     [RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/user/',
+        endpoint: `https://${server}/api/user/`,
         method: 'POST',
         body: JSON.stringify({ email, password, date_birth, gender, last_name, first_name, username, residence, phones: [{ number: phone }], img_photo }),
         headers: { 'Content-Type': 'application/json' },
@@ -27,7 +28,7 @@ export const registration = (email, password, date_birth, gender, last_name, fir
 
 export const activate = () => ({
     [RSAA]: {
-        endpoint: `https://katadze-test.ru/api/activate/`,
+        endpoint: `https://${server}/api/activate/`,
         method: 'POST',
         headers: withAuth(),
         types: [
@@ -38,7 +39,7 @@ export const activate = () => ({
 
 export const activateConfirm = (token, uidb64) => ({
     [RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/activate-confirm/',
+        endpoint: `https://${server}/api/activate-confirm/`,
         method: 'POST',
         body: JSON.stringify({ token, uidb64 }),
         headers: { 'Content-Type': 'application/json' },

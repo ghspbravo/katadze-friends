@@ -1,4 +1,5 @@
 import { RSAA } from 'redux-api-middleware';
+import { server } from '.';
 
 export const LIST_REQUEST = '@@event/LIST_REQUEST';
 export const LIST_SUCCESS = '@@event/LIST_SUCCESS';
@@ -10,7 +11,7 @@ export const EVENT_FAILURE = '@@event/EVENT_FAILURE';
 
 export const list = (page = 0) => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/events/?format=json`,
+		endpoint: `https://${server}/api/events/?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [
@@ -21,7 +22,7 @@ export const list = (page = 0) => ({
 
 export const event = id => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/event/${id}/?format=json`,
+		endpoint: `https://${server}/api/event/${id}/?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [

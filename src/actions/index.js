@@ -17,3 +17,5 @@ export const NavbarTypes = {
     TRANSPARENT_BLACK_LARGE: 'black-large',
     MOBILE: 'mobile'
 }
+
+export const server = '188.93.210.198'

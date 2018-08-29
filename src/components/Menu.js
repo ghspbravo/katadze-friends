@@ -193,7 +193,7 @@ export default class Menu extends Component {
                     <a href="#content" className="scroll-to"><span></span>SCROLL</a>
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}></div>
-                    <div className="homepage-item-inner">
+                    <div id="content" className="homepage-item-inner">
                         <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
                         <div className="homepage-item-inner-title">События</div>
                         <div className="homepage-item-inner-subtext">
@@ -219,7 +219,7 @@ export default class Menu extends Component {
                             <svg width="100%" height="100%"> <defs> <mask id="knockout-text-5" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">❖</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-5)"></rect> </svg>
                         </div>
                     </div>
-                    <div id="content" className="homepage-item-inner">
+                    <div className="homepage-item-inner">
                         <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})`, backgroundPositionX: '25%' }}></div>
                         <div className="homepage-item-inner-title">Друзья</div>
                         <div className="homepage-item-inner-subtext">

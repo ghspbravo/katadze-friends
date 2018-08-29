@@ -1,5 +1,6 @@
 import { RSAA } from 'redux-api-middleware';
 import { withAuth } from '../reducers';
+import { server } from '.';
 
 export const USER_INFO_REQUEST = '@@event/USER_INFO_REQUEST';
 export const USER_INFO_SUCCESS = '@@event/USER_INFO_SUCCESS';
@@ -15,7 +16,7 @@ export const CREATE_TOUR_FAILURE = '@@event/CREATE_TOUR_FAILURE';
 
 export const userInfo = id => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/user/${id}/?format=json`,
+		endpoint: `https://${server}/api/user/${id}/?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [
@@ -26,7 +27,7 @@ export const userInfo = id => ({
 
 export const createGid = (bio, keyphrase, languages, hobbies, activities) => ({
 	[RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/user/profile/',
+        endpoint: `https://${server}/api/user/profile/`,
         method: 'POST',
         body: JSON.stringify({ bio, keyphrase, languages, hobbies, activities }),
         headers: withAuth({'Content-Type': 'application/json'}),
@@ -38,7 +39,7 @@ export const createGid = (bio, keyphrase, languages, hobbies, activities) => ({
 
 export const createTour = (name, location, description, route, transport, inclusion, price, date_from, date_to, meeting_details, slogan, expenses, extra_options, extra_info, max_tourists) => ({
 	[RSAA]: {
-        endpoint: 'https://katadze-test.ru/api/tour/',
+        endpoint: `https://${server}/api/tour/`,
         method: 'POST',
         body: JSON.stringify({ name, location, description, route, transport, inclusion, price, date_from, date_to, meeting_details, slogan, expenses, extra_options, extra_info, max_tourists }),
         headers: withAuth({'Content-Type': 'application/json'}),

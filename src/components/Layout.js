@@ -50,7 +50,7 @@ class Layout extends Component {
                     </div>
                 </div>
                 <Switch>
-                    <Route exact path="/" render={() => true} />
+                    <Route exact path="/" component={window.innerWidth <= 992 ? Navbar : null} />
                     <Route component={Navbar} />
                 </Switch>
 

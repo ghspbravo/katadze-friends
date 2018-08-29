@@ -1,4 +1,5 @@
 import { RSAA } from 'redux-api-middleware';
+import { server } from '.';
 
 export const LIST_REQUEST = '@@partner/LIST_REQUEST';
 export const LIST_SUCCESS = '@@partner/LIST_SUCCESS';
@@ -10,7 +11,7 @@ export const PARTNER_FAILURE = '@@partner/PARTNER_FAILURE';
 
 export const list = (page = 0) => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/partner_categories/?format=json`,
+		endpoint: `https://${server}/api/partner_categories/?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [
@@ -21,7 +22,7 @@ export const list = (page = 0) => ({
 
 export const partner = id => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/partner/${id}/?format=json`,
+		endpoint: `https://${server}/api/partner/${id}/?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [

@@ -1,5 +1,5 @@
 import { RSAA } from 'redux-api-middleware';
-import { withAuth } from '../reducers';
+import { server } from './index'
 
 export const LIST_REQUEST = '@@gids/LIST_REQUEST';
 export const LIST_SUCCESS = '@@gids/LIST_SUCCESS';
@@ -15,7 +15,7 @@ export const TOUR_FAILURE = '@@gids/TOUR_FAILURE';
 
 export const gidList = (page = 0) => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/users/?format=json`,
+		endpoint: `https://${server}/api/users/?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [
@@ -26,7 +26,7 @@ export const gidList = (page = 0) => ({
 
 export const gidInfo = (id) => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/user/${id}?format=json`,
+		endpoint: `https://${server}/api/user/${id}?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [
@@ -37,7 +37,7 @@ export const gidInfo = (id) => ({
 
 export const tourInfo = (id) => ({
 	[RSAA]: {
-		endpoint: `https://katadze-test.ru/api/tour/${id}?format=json`,
+		endpoint: `https://${server}/api/tour/${id}?format=json`,
 		method: 'GET',
 		headers: {},
 		types: [
