@@ -1,5 +1,6 @@
 import React from 'react'
 import LogoWhite from '../../resourses/LogoWhite.png'
+import Regform from './regform'
 
 export default (event, currentTariff, handleTariffChange, handleAcquiring) => {
     return (
@@ -8,6 +9,9 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring) => {
                 ? <div>
                     <section className="col-12 header" style={{ backgroundImage: `url(${event.img})`, paddingTop: '25vh', paddingBottom: '25vh' }}>
                         <h2>{event.name}</h2>
+                        {event && event.tariffs[0]
+                            ? <button onClick={() => document.querySelector('#tariffs').scrollIntoView({ behavior: 'smooth' })} className="lead col-10 col-md-4 col-lg-2">Выбор тарифа</button>
+                            : null}
                     </section>
                     {
                         event.sections.map(section => {
@@ -85,7 +89,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring) => {
                         : console.log('STEPS_NOT_FOUND')
                     }
                     {event && event.tariffs[0]
-                        ? <section>
+                        ? <section id="tariffs">
                             <div className="offset-1">
                                 <h1 className="super"><span>Пакеты</span></h1>
                             </div>
@@ -119,7 +123,10 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring) => {
                                 </div>
                             </div>
                         </section>
-                        : console.log('TARIFS_NOT_FOUND')
+                        : console.log('TARIFS_NOT_FOUND')}
+                    {/РКВ/.test(event.name)
+                        ? <Regform />
+                        : null
                     }
                 </div>
                 : <h1>Loading...</h1>}

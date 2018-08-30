@@ -35,7 +35,7 @@ class Login extends Component {
             gender: '',
             date_birth: '',
             residence: '',
-            phones: '',
+            phones: '+7 ',
             img_photo: ''
         }
     }
@@ -50,6 +50,8 @@ class Login extends Component {
         });
     };
 
+    handleValueChange = (name, value) => this.setState({ [name]: value })
+
     handleFileLoad = (event) => {
         let input = event.target
         let file = event.target.files[0]
@@ -62,7 +64,7 @@ class Login extends Component {
             closeButton.classList.add('close-button')
             closeButton.innerHTML = "X"
             closeButton.onclick = () => {
-                this.setState({img_photo: ''})
+                this.setState({ img_photo: '' })
                 document.querySelector('.avatar-container img').src = 'http://via.placeholder.com/250x250/ffffff'
                 document.querySelector('.avatar-container').removeChild(closeButton)
                 input.value = null
@@ -74,12 +76,12 @@ class Login extends Component {
 
     handleReset = (event) => {
         event.preventDefault()
-		let locationList = this.props.location.pathname.split('/')
-		let uidb64 = locationList[2]
-		let token = locationList[3]
+        let locationList = this.props.location.pathname.split('/')
+        let uidb64 = locationList[2]
+        let token = locationList[3]
 
-		this.props.onResetConfirm(token, uidb64, this.state.password)
-	}
+        this.props.onResetConfirm(token, uidb64, this.state.password)
+    }
 
     onSubmit = (event) => {
         event.preventDefault()
@@ -88,7 +90,9 @@ class Login extends Component {
                 this.props.onLogin(this.state.username, this.state.password)
                 break;
             case '/registration':
-                this.props.onRegistration(this.state.email, this.state.password, this.state.date_birth, this.state.gender, this.state.last_name, this.state.first_name, this.state.username, this.state.residence, this.state.phones, this.state.img_photo)
+                let date = this.state.date_birth.split('.')
+                let phone = this.state.phones.replace(/\D/g, '')
+                this.props.onRegistration(this.state.email, this.state.password, date.length === 3 ? `${date[2]}-${date[1]}-${date[0]}` : '', this.state.gender, this.state.last_name, this.state.first_name, this.state.username, this.state.residence, `+${phone}`, this.state.img_photo)
                 break;
             case '/reset-password':
                 this.props.onReset(this.state.email)
@@ -118,7 +122,9 @@ class Login extends Component {
                     <Route path='/registration' render={() => registrationComponent(this.onSubmit,
                         this.handleInputChange,
                         this.handleFileLoad,
-                        this.props.fieldErrors)} />
+                        this.props.fieldErrors,
+                        this.handleValueChange,
+                        this.state)} />
                     {this.props.isRegistered
                         ? this.props.onLogin(this.state.username, this.state.password, this.props.isRegistered)
                         : null

@@ -203,6 +203,9 @@ button.more-button {
 .column-direction {
   flex-direction: column;
 }
+.justify-text {
+  text-align: justify;
+}
 #root {
   overflow-x: hidden;
 }
@@ -282,6 +285,9 @@ li {
   font-weight: lighter;
   font-size: 25px;
   line-height: 34px;
+}
+ol {
+  list-style: decimal;
 }
 img {
   max-width: 100%;
@@ -375,6 +381,9 @@ form textarea {
 }
 form input[type=file] {
   display: none;
+}
+form input:focus {
+  border-bottom: 2px solid #fb0;
 }
 form input {
   margin: 10px 0;
@@ -555,6 +564,7 @@ label.file {
 @media (max-width: 992px) {
   h1.super {
     font-size: 188px;
+    line-height: 1;
   }
   .homepage-item-inner {
     position: relative !important;
@@ -600,6 +610,12 @@ label.file {
   .profile-nav .profile-current {
     border-bottom: none;
   }
+  .footer .info li:after {
+    margin-left: 30px !important;
+  }
+  .footer li {
+    margin: 0 1rem !important;
+  }
 }
 @media (max-width: 576px) {
   h1 {
@@ -611,6 +627,10 @@ label.file {
   }
   h1.super {
     font-size: 100px;
+  }
+  h2 {
+    font-size: 42px;
+    line-height: 54px;
   }
   p,
   li,
@@ -669,6 +689,13 @@ label.file {
   .steps span {
     margin-right: 20px !important;
     font-size: 52px !important;
+  }
+  .footer .info li:after {
+    display: none;
+  }
+  .week li {
+    margin: 10px !important;
+    padding: 10px 15px !important;
   }
 }
 .homepage {
@@ -1109,11 +1136,16 @@ a.active-nav {
   padding: 30px 0;
   margin-top: 13rem;
 }
-.footer a {
-  font-family: BebasNeue;
-  font-weight: bold;
-  font-size: 25px;
-  line-height: 29px;
+.footer li {
+  margin: 0 2rem;
+}
+.footer .info li:last-child::after {
+  display: none;
+}
+.footer .info li:after {
+  content: '•';
+  color: #c4c4c4;
+  margin-left: 50px;
 }
 .read-more {
   font-family: OpenSans;
@@ -1266,6 +1298,14 @@ a.active-nav {
 .category-delimiter hr {
   border-color: #9b9b9b;
 }
+.week li {
+  margin: 20px;
+  padding: 20px 25px;
+  border-radius: 50%;
+  border: 1px solid;
+  background-color: #90ee90;
+  user-select: none;
+}
 #events-header {
   background-image: url("../resourses/Events/header-image.jpg");
 }
@@ -1313,7 +1353,11 @@ section.idSection .section-id {
   border-radius: 25px 25px 0px 25px;
 }
 .tarif-selector button.active {
-  background-color: #fb0;
+  background-color: #fff;
+  border: 2px solid #fb0;
+}
+.tarif-selector button.active p {
+  color: #fb0;
 }
 .tarif-selector button p {
   color: #fff;

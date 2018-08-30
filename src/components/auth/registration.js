@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import errorMessage from '../errorMessage';
 
-export default (submitHandler, inputHandler, fileHandler, errors) => {
+import { formatToPhone, formatToDate, enforceFormat } from '../../functions'
+
+export default (submitHandler, inputHandler, fileHandler, errors, changeValue, fields) => {
     return (
         <div>
             <div className="container">
@@ -11,10 +13,7 @@ export default (submitHandler, inputHandler, fileHandler, errors) => {
                     {errorMessage(errors, 'first_name')}
                     <input name="last_name" autoComplete="last_name" type='text' placeholder='Фамилия' onChange={inputHandler} required />
                     {errorMessage(errors, 'last_name')}
-                    <div className="row align-bottom no-margin">
-                        <label className="col-6" htmlFor="date_birth"><p className="small">Дата рождения</p></label>
-                        <input className="col-6" id="date_birth" name="date_birth" autoComplete="birthdate" type='date' onChange={inputHandler} required />
-                    </div>
+                    <input value={fields.date_birth} onKeyDown={enforceFormat} name="date_birth" placeholder="Дата рождения" autoComplete="birthdate" type='text' onChange={e => changeValue('date_birth', formatToDate(e))} required />
                     {errorMessage(errors, 'date_birth')}
                     <select name="gender" onChange={inputHandler} required>
                         <option value="" disabled selected hidden>Пол</option>
@@ -24,8 +23,7 @@ export default (submitHandler, inputHandler, fileHandler, errors) => {
                     {errorMessage(errors, 'gender')}
                     <input name="residence" autoComplete="city" type='text' placeholder='Город' onChange={inputHandler} required />
                     {errorMessage(errors, 'residence')}
-                    <input name="phones" autoComplete="tel" type='tel' placeholder='Номер телефона' onChange={inputHandler} required />
-                    <p className="small secondary">Важно, чтобы номер телефона начинался с +7</p>
+                    <input name="phones" value={fields.phones} onKeyDown={enforceFormat} autoComplete="tel" type='tel' onFocus={() => fields.phones === '' || typeof fields.phones === 'undefined' ? changeValue('phones', '+7 ') : null} onBlur={() => fields.phones === '+7 ' ? changeValue('phones', '') : null} placeholder='Номер телефона' onChange={(e) => changeValue('phones', formatToPhone(e))} required />
                     {errorMessage(errors, 'phones')}
                     <input name="username" autoComplete="login" type='text' placeholder='Имя пользователя' onChange={inputHandler} required />
                     {errorMessage(errors, 'username')}

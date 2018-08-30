@@ -73,8 +73,8 @@ export default () => {
 						</div>
 					</div>
 					<div className="col-lg-6 achieve-details justify-center align-center">
-						<h1>666</h1>
-						<p>Мы сделали вот это</p>
+						<h1 className="col-12 text-center">3</h1>
+						<p className="col-12 text-center">Года на рынке</p>
 					</div>
 				</div>
 			</section>
