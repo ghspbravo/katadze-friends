@@ -17,7 +17,7 @@ export default (gids, inputHandler, searchHandler) => {
                                 </p></button></div>
                         </div>
                         <p className="small" >Например: Екатеринбург</p>
-                        <button onClick={() => document.querySelector('#become_gid').scrollIntoView({ behavior: "smooth" })} className="lead v-offset-mid lead col-5">СТАТЬ ГИДОМ</button>
+                        <button type="button" onClick={() => document.querySelector('#become_gid').scrollIntoView({ behavior: "smooth" })} className="lead v-offset-mid lead col-5">СТАТЬ ГИДОМ</button>
                     </form>
                 </div>
             </section>

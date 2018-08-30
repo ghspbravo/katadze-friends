@@ -5,11 +5,11 @@ export default (state = {}, action) => {
 
         case partner.LIST_SUCCESS:
             return {
-                ...action.payload
+                list: action.payload
             }
         case partner.PARTNER_SUCCESS:
             return {
-                ...action.payload,
+                info: action.payload,
             }
         case partner.PARTNER_FAILURE:
         case partner.LIST_FAILURE:

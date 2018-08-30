@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
     Route,
     Switch,
+    withRouter
 } from 'react-router'
 
 import '../bootstrap-grid.min.css';
@@ -27,7 +28,6 @@ class Layout extends Component {
 
     componentWillMount() {
         if (typeof sessionStorage.getItem('isFirstVisit') === 'undefined') sessionStorage.setItem('isFirstVisit', true);
-        // window.onresize = () => window.location.reload()
     }
 
     render() {
@@ -76,17 +76,17 @@ class Layout extends Component {
 
                 <Route path='/payment/' component={Acquiring} />
 
-                <Route path='/partners/id=:id' component={Partners} />
-                <Route path='/events/id=:id' component={Events} />
-                <Route path='/gids/id=:id' component={Gids} />
-                <Route path='/gids/search=:search' component={Gids} />
-                <Route path='/tours/:id' component={Gids} />
+                <Route exact path='/partners/id=:id' component={Partners} />
+                <Route exact path='/events/id=:id' component={Events} />
+                <Route exact path='/gids/id=:id' component={Gids} />
+                <Route exact path='/gids/search=:search' component={Gids} />
+                <Route exact path='/tours/:id' component={Gids} />
                 <Route path='/activate/' component={Profile} />
                 <Route path='/reset/' component={Auth} />
                 <Route path='/profile' component={Profile} />
 
                 <Switch>
-                    <Route exact path="/" render={() => true} />
+                    <Route exact path="/" render={() => null} />
                     <Route component={Footer} />
                 </Switch>
             </div>
@@ -107,4 +107,4 @@ const mapDispatchToProps = (dispatch) => ({
     },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout))

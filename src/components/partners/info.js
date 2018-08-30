@@ -1,9 +1,8 @@
 import React from 'react'
 
 export default partner => {
-    console.log(partner)
     return (
-        typeof partner.title !== 'undefined'
+        partner && partner.title
             ? <div className="container">
                 <h2 className="text-center">{partner.title}</h2>
                 <h1 className="text-center"><span>{partner.category.name}</span></h1>

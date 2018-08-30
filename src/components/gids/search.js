@@ -12,7 +12,7 @@ export default (search, gids) => {
             <section>
                 <h1 className="text-center"><span>Поможем найти гида</span></h1>
                 <div className="offset-md-1 col-md-10 justify-center">
-                    {gids.length > 0
+                    {gids && gids.length > 0
                         ? gids.map((info, i) => gidCard(info, i))
                         : <h1>Гидов в текущем городе не найдено...</h1>
                     }

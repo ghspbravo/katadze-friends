@@ -50,7 +50,7 @@ class Partners extends Component {
                     this.showPartnerFormHandler
                 )} />
                 <Route exact path="/partners/id=:id" render={() => info(
-                    this.props.partners
+                    this.props.partner
                 )} />
                 <Route exact path="/partners/about" component={about} />
                 <Route exact path="/partners/faq" component={faq} />
@@ -62,7 +62,8 @@ class Partners extends Component {
 
 
 const mapStateToProps = state => ({
-    partners: state.partner,
+    partners: state.partner.list,
+    partner: state.partner.info
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -5,11 +5,13 @@ export default (state = {}, action) => {
 
         case event.LIST_SUCCESS:
             return {
-                ...action.payload
+                ...state,
+                list: action.payload
             }
         case event.EVENT_SUCCESS:
             return {
-                ...action.payload,
+                ...state,
+                info: action.payload,
             }
         case event.EVENT_FAILURE:
         case event.LIST_FAILURE:

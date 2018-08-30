@@ -2,15 +2,25 @@ import * as gids from '../actions/gids'
 
 export default (state = {}, action) => {
     switch (action.type) {
-        case gids.LIST_SUCCESS:
         case gids.GIDS_FILTER_SUCCESS:
-        return [
-            ...action.payload.results
-        ]
+        return {
+            ...state,
+            search: action.payload.results
+        }
+        case gids.LIST_SUCCESS:
+        return {
+            ...state,
+            list: action.payload.results
+        }
         case gids.INFO_SUCCESS:
+        return {
+            ...state,
+            info: action.payload
+        }
         case gids.TOUR_SUCCESS:
         return {
-            ...action.payload
+            ...state,
+            tour: action.payload
         }
 
         case gids.LIST_FAILURE:

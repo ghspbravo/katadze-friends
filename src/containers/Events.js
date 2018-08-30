@@ -12,6 +12,8 @@ import {
     Switch,
 } from 'react-router'
 
+import { withRouter } from 'react-router'
+
 import listEvents from '../components/events/list'
 import info from '../components/events/info';
 
@@ -48,15 +50,15 @@ class Events extends Component {
 
     render() {
         return (
-            <Switch>            
-                {console.log(this.props.payment)}
+            <Switch>
+                {console.log(this.props)}
                 <Route exact path='/events' render={() =>
                     listEvents(
                         this.props.events
                     )
                 } />
                 <Route exact path='/events/id=:id' render={() => info(
-                    this.props.events,
+                    this.props.event,
                     this.state.tariffIndex,
                     this.tariffChangeHandle,
                     this.handleAcquiring
@@ -71,7 +73,8 @@ class Events extends Component {
 }
 
 const mapStateToProps = state => ({
-    events: state.event,
+    events: state.event.list,
+    event: state.event.info,
     payment: state.commerce
 });
 
@@ -81,4 +84,4 @@ const mapDispatchToProps = dispatch => ({
     onAcquiring: id => dispatch(acquiringEvent(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Events)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Events))

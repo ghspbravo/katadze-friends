@@ -79,20 +79,20 @@ class Gids extends Component {
                 <Route exact path="/gids/id=:id" render={() => {
                     document.body.style.backgroundColor = "white"
                     return profile(
-                        this.props.gids
+                        this.props.gid
                     )
                 }} />
                 <Route exact path="/gids/search=:search" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC"
                     return search(
                         this.props.match.params.search,
-                        this.props.gids
+                        this.props.search
                     )
                 }} />
                 <Route exact path="/tours/:id" render={() => {
                     document.body.style.backgroundColor = "white";
                     return tour(
-                        this.props.gids
+                        this.props.tour
                     )
                 }} />
                 <Route exact path="/gids/about" component={about} />
@@ -104,7 +104,10 @@ class Gids extends Component {
 }
 
 const mapStateToProps = state => ({
-    gids: state.gids
+    gids: state.gids.list,
+    gid: state.gids.info,
+    search: state.gids.search,
+    tour: state.gids.tour
 });
 
 const mapDispatchToProps = dispatch => ({
