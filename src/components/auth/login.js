@@ -11,7 +11,6 @@ export default (submitHandler, inputHandler, errors) => {
                     {errorMessage(errors, 'username')}
                     <input name="password" autoComplete="password" type="password" placeholder='Пароль' onChange={inputHandler} required />
                     {errorMessage(errors, 'password')}
-                    {errorMessage(errors)}
                     <button type="submit">Войти</button>
                 </form>
             </div>

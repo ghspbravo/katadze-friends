@@ -4,6 +4,11 @@ import Stars from './Stars'
 
 import { Link } from 'react-router-dom'
 
+import tourVideo from '../../resourses/Gids/video-preview.png'
+import thumbnail from '../../resourses/Gids/person-thumbnail.png'
+
+import { showPopup } from '../../functions'
+
 export default (tour) => {
     return (
         <div>
@@ -19,7 +24,7 @@ export default (tour) => {
                                 </div>
                                 <Link to={`/gids/id=${tour.user}`} className="col-3 justify-center">
                                     <div className="profile-image-small">
-                                        <img src="http://via.placeholder.com/80x80" alt="gidImage" />
+                                        <img src={thumbnail} alt="gidImage" />
                                     </div>
                                     <p className="text-center v-offset-small col-12">Имя</p>
                                 </Link>
@@ -84,7 +89,7 @@ export default (tour) => {
                                 <p className="small">Дополнительные расходы: {tour.expenses}</p>
                             </div>
                             <div className="v-offset-small">
-                                <img src="http://via.placeholder.com/700x400" alt="video" />
+                                <img src={tourVideo} alt="video" />
                             </div>
                             <div className="tour-rating v-offset-small">
                                 <div className="row">
@@ -157,7 +162,8 @@ export default (tour) => {
                                 <p className="small bold v-offset-small">Место проведения</p>
                                 <p className="small">{tour.location}</p>
                                 <div className="row justify-center v-offset-small">
-                                    <button className="col-md-8 lead">Забронировать</button>
+                                    <button onClick={() => showPopup('tourAlert')} className="col-md-8 lead">Забронировать</button>
+                                    <div className="popupMessage" id="tourAlert"><h1>Бронирование временно недоступно!</h1><p>Мы ждем пока нас станет чуть чуть больше...</p></div>
                                 </div>
                             </div>
                         </div>

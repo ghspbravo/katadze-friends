@@ -10,6 +10,7 @@ export default (state = initialState, action) => {
         case resetPassword.RESET_CONFIRM_SUCCESS:
             return {
                 message: action.payload.message,
+                success: true
             }
 
         case resetPassword.RESET_FAILURE:

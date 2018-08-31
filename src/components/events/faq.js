@@ -49,7 +49,7 @@ export default () => {
 				</div>
 			</section>
 			<section className="container">
-				<Link to='/contacts'>
+				<Link to='contacts'>
 					<h1 className="secondary text-center">Не нашел <span className="lead">ответ</span></h1>
 				</Link>
 			</section>

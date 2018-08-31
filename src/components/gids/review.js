@@ -1,12 +1,14 @@
 import React from 'react'
 
+import thumbnail from '../../resourses/Gids/person-thumbnail.png'
+
 export default index => {
     return (
         <div key={index} className="row">
             <div className="col-6 col-md-2">
                 <div className="row justify-center">
                     <div className="col-6 col-md-12 no-padding profile-image-small justify-center">
-                        <img src="http://via.placeholder.com/80x80" alt="userImage" />
+                        <img src={thumbnail} alt="userImage" />
                     </div>
                     <p className="secondary col-6 col-md-12 text-center small v-offset-small">Имя</p>
                 </div>

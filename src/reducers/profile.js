@@ -3,16 +3,18 @@ import * as profile from '../actions/profile'
 export default (state = {}, action) => {
     switch (action.type) {
         case profile.USER_INFO_SUCCESS:
-        case profile.CREATE_TOUR_SUCCESS:
             return {
                 ...state,
-                ...action.payload
+                ...action.payload,
+                
             }
-
+        case profile.CREATE_TOUR_SUCCESS:
         case profile.CREATE_GID_SUCCESS:
             return {
                 ...state,
-                profile: action.payload
+                ...action.payload,
+                success: true,
+                errors: undefined
             }
 
         case profile.USER_INFO_FAILURE:

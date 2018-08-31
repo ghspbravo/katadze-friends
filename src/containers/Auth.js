@@ -5,6 +5,7 @@ import {
     isAuthenticated,
     isRegistered,
     getFiledErrors,
+    resetSuccess
 } from '../reducers'
 import { login } from '../actions/auth'
 import { registration, activate } from '../actions/registration'
@@ -20,6 +21,10 @@ import resetPasswordComponent from '../components/auth/resetPassword'
 import registrationComponent from '../components/auth/registration'
 import resetConfirmComponent from '../components/auth/resetConfirm';
 
+import thumbnail from '../resourses/Gids/person-thumbnail.png'
+import { forceRefresh } from '../actions'
+
+import { showSuccess } from '../functions'
 
 
 class Login extends Component {
@@ -36,7 +41,7 @@ class Login extends Component {
             date_birth: '',
             residence: '',
             phones: '+7 ',
-            img_photo: ''
+            img_photo: '',
         }
     }
 
@@ -60,12 +65,13 @@ class Login extends Component {
             document.querySelector('.avatar-container img').src = info.target.result
             this.setState({ img_photo: info.target.result })
 
+            if (document.querySelector('.avatar-container .close-button') !== null) return
             let closeButton = document.createElement('button')
             closeButton.classList.add('close-button')
             closeButton.innerHTML = "X"
             closeButton.onclick = () => {
                 this.setState({ img_photo: '' })
-                document.querySelector('.avatar-container img').src = 'http://via.placeholder.com/250x250/ffffff'
+                document.querySelector('.avatar-container img').src = thumbnail
                 document.querySelector('.avatar-container').removeChild(closeButton)
                 input.value = null
             }
@@ -81,6 +87,8 @@ class Login extends Component {
         let token = locationList[3]
 
         this.props.onResetConfirm(token, uidb64, this.state.password)
+
+        setTimeout( () => {this.props.resetSuccess(); this.props.history.push('/login')}, 3000)
     }
 
     onSubmit = (event) => {
@@ -96,6 +104,7 @@ class Login extends Component {
                 break;
             case '/reset-password':
                 this.props.onReset(this.state.email)
+				setTimeout(() => {this.props.resetSuccess(); this.props.forceRefresh()}, 3000)
                 break;
 
             default:
@@ -106,18 +115,20 @@ class Login extends Component {
     render() {
         return (
             this.props.isAuthenticated
-                ? <Redirect to='/profile' />
+                ?  <Redirect to='/profile' />
                 : <Switch>
                     <Route path='/login' render={() => LoginComponent(this.onSubmit,
                         this.handleInputChange,
                         this.props.fieldErrors)} />
                     <Route path='/reset-password' render={() => resetPasswordComponent(this.onSubmit,
                         this.handleInputChange,
-                        this.props.fieldErrors)} />
+                        this.props.fieldErrors,
+                        this.props.success)} />
                     <Route path='/reset/' render={() => resetConfirmComponent(
                         this.handleReset,
                         this.handleInputChange,
-                        this.props.fieldErrors
+                        this.props.fieldErrors,
+                        this.props.success
                     )} />
                     <Route path='/registration' render={() => registrationComponent(this.onSubmit,
                         this.handleInputChange,
@@ -126,7 +137,7 @@ class Login extends Component {
                         this.handleValueChange,
                         this.state)} />
                     {this.props.isRegistered
-                        ? this.props.onLogin(this.state.username, this.state.password, this.props.isRegistered)
+                        ? showSuccess('Вы стали частью семьи Катадзе. Подготавливаем Ваш личный кабинет...', () => this.props.onLogin(this.state.username, this.state.password, this.props.isRegistered))
                         : null
                     }
                 </Switch>
@@ -138,7 +149,9 @@ class Login extends Component {
 const mapStateToProps = (state) => ({
     isAuthenticated: isAuthenticated(state),
     isRegistered: isRegistered(state),
-    fieldErrors: getFiledErrors(state.registration)
+    fieldErrors: getFiledErrors(state.registration),
+    success: state.resetPassword.success,
+	resetSuccess: () => resetSuccess(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -156,7 +169,11 @@ const mapDispatchToProps = (dispatch) => ({
     },
     onResetConfirm: (token, uidb64, password) => {
         dispatch(resetConfirm(token, uidb64, password))
-    }
+    },
+
+    forceRefresh: () => {
+		dispatch(forceRefresh())
+	},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

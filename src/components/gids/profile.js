@@ -3,7 +3,38 @@ import achieveIcon from '../../resourses/LogoBlack.png'
 import tourCard from './tourCard';
 import review from './review';
 
+import { showPopup } from '../../functions'
+
 export default (gid) => {
+    const hobbiesList = [
+        'Искусство',
+        'Еда',
+        'Экстрим',
+        'Мода',
+        'Путешествия',
+        'Музыка',
+        'Фильмы',
+        'Спорт',
+        'Литература',
+        'Автомобили',
+        'Фотография',
+        'Hand-made',
+        'История',
+        'Культура',
+        'Шоппинг',
+        'Языки'
+    ]
+
+    const activitiesList = [
+        'Встреча и сопровождение',
+        'Обзорная экскурсия',
+        'Знакомство с историей и культурой',
+        'Посещение музеев',
+        'Посещение кафе и ресторанов',
+        'Осмотр достопримечательностей',
+        'Шопинг',
+        'Спорт и экстрим'
+    ]
     return (
         gid && gid.profile
             ? <div className="row justify-center">
@@ -11,15 +42,18 @@ export default (gid) => {
                     <div className="row column-direction">
                         <section className="d-lg-none jumbotron">
                             <div className="content">
+                                <div className="price-popup"><p style={{ color: 'white' }}>{gid.profile.price == 0 ? 'БЕСПЛАТНО' : `${gid.profile.price} руб`}</p></div>
                                 <p>{`Привет, меня зовут ${gid.last_name} ${gid.first_name}!`}</p>
                                 <p className="small secondary">{gid.profile.keyphrase}</p>
                                 <hr className="v-offset-small" />
                                 <p className="small v-offset-small">{gid.profile.bio}</p>
                                 <hr className="v-offset-small" />
                                 <p className="v-offset-small text-center"><span>Из {gid.residence} - {gid.date_birth.split('-')[0]} года рождения</span></p>
+                                <button onClick={() => showPopup('gidAlert')} className="offset-md-4 offset-2 v-offset-small col-8 col-md-4 lead">Забронировать</button>
+                                <div className="popupMessage" id="gidAlert"><h1>Бронирование временно недоступно!</h1><p>Мы ждем пока нас станет чуть чуть больше...</p></div>
                             </div>
                         </section>
-                        <img src={gid.img_photo} alt="avatar" />
+                        <img style={{ height: '450px', objectFit: 'cover' }} src={gid.img_photo} alt="avatar" />
                         <section className="jumbotron v-offset-small">
                             <div className="head"><p className="small">Подтвержденная информация</p></div>
                             <div className="content no-padding">
@@ -63,8 +97,12 @@ export default (gid) => {
                             <div className="content no-padding">
                                 <ul>
                                     <li className="v-offset-small">
-                                        <p className="small bold">Школа</p>
-                                        <p className="small">Лицей №2</p>
+                                        <p className="small bold">Увлечения</p>
+                                        <p className="small">{gid.profile.hobbies.map((hobbies, i) => `${hobbiesList[hobbies.code]}${i+1 === gid.profile.hobbies.length ? '.' : ', '}`)}</p>
+                                    </li>
+                                    <li className="v-offset-small">
+                                        <p className="small bold">Активности</p>
+                                        <p className="small">{gid.profile.activities.map((activity, i) => `${activitiesList[activity.code]}${i+1 === gid.profile.activities.length ? '.' : ', '}`)}</p>
                                     </li>
                                     <li className="v-offset-small">
                                         <p className="small bold">Работа</p>
@@ -82,20 +120,24 @@ export default (gid) => {
                 <div className={`${window.innerWidth < 992 ? '' : 'l-offset-mid'} col-10 col-lg-7 col-xl-6`}>
                     <section className="d-none d-lg-block jumbotron">
                         <div className="content">
+                            <div className="price-popup"><p style={{ color: 'white' }}>{gid.profile.price == 0 ? 'БЕСПЛАТНО' : `${gid.profile.price} руб`}</p></div>
                             <p>{`Привет, меня зовут ${gid.first_name} ${gid.last_name}!`}</p>
                             <p className="small secondary">{gid.profile.keyphrase}</p>
                             <hr className="v-offset-small" />
                             <p className="small">{gid.profile.bio}</p>
                             <hr className="v-offset-small" />
                             <p className="v-offset-small text-center"><span>Из {gid.residence} - {gid.date_birth.split('-')[0]} года рождения</span></p>
+                            <button onClick={() => showPopup('gidAlert')} className="offset-md-4 offset-2 v-offset-small col-8 col-md-4 lead">Забронировать</button>
                         </div>
                     </section>
-                    <section className="jumbotron no-padding">
-                        <div className="head no-margin"><p>Мои туры</p></div>
-                        <div className="row">
-                            {gid.tours.map((tour, i) => tourCard(tour, i))}
-                        </div>
-                    </section>
+                    {gid.tours.length > 0
+                        ? <section className="jumbotron no-padding">
+                            <div className="head no-margin"><p>Мои туры</p></div>
+                            <div className="row">
+                                {gid.tours.map((tour, i) => tourCard(tour, i))}
+                            </div>
+                        </section>
+                        : null}
                     <section className="jumbotron">
                         <div className="head"><p>Отзывы путешественников</p></div>
                         <div className="content reviews">

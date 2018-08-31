@@ -10,6 +10,7 @@ import profile from './profile'
 import gids from './gids';
 import service from './service'
 import commerce from './commerce';
+import ticket from './ticket'
 
 const rootReducer = combineReducers({
     router: routerReducer,
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
     profile,
     gids,
     service,
-    commerce
+    commerce,
+    ticket
 })
 
 export default rootReducer
@@ -60,6 +62,12 @@ export var getFiledErrors = state => {
 export function resetErrors(state) {
     Object.keys(state).forEach(action => {
         if (state[action].errors && state[action].errors.non_field_errors) state[action].errors.non_field_errors = undefined
+    })
+}
+
+export function resetSuccess(state) {
+    Object.keys(state).forEach(action => {
+        if (state[action].success) state[action].success = undefined
     })
 }
 

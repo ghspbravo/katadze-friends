@@ -11,33 +11,37 @@ export default partner => {
                     <h1 className="bold">Описание</h1>
                     <p className="v-offset-small justify-text">{partner.content}</p>
                 </section>
-                <section>
+                {partner.services.length > 0
+                ? <section>
                     <h1 className="bold">Услуги</h1>
                     <ol className="col-12" type="1">
-                        <li className="v-offset-small">Lorem ipsum dolor sit amet.</li>
-                        <li className="v-offset-small">Lorem ipsum dolor sit amet.</li>
-                        <li className="v-offset-small">Lorem ipsum dolor sit amet.</li>
-                        <li className="v-offset-small">Lorem ipsum dolor sit amet.</li>
-                        <li className="v-offset-small">Lorem ipsum dolor sit amet.</li>
+                        {
+                            partner.services.forEach(service => <li className="v-offset-small">{service}</li>)
+                        }
                     </ol>
                 </section>
-                <section>
+                :null}
+                {partner.conditions
+                ? <section>
                     <h1 className="bold">Условия</h1>
-                    <p className="justify-text v-offset-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos delectus corrupti autem magni dicta, saepe neque error dolor odio doloremque eos, esse praesentium distinctio? Ad ratione consequuntur sapiente. Consectetur, voluptas, rerum enim at quo dicta itaque amet iure explicabo molestias aliquam, quasi doloribus asperiores quos et inventore iste obcaecati eius.</p>
+                    <p className="justify-text v-offset-small">{partner.conditions}</p>
                 </section>
-                <section>
+                :null}
+                {partner.schedule
+                ? <section>
                     <h1 className="bold">Расписание</h1>
-                    <p className="v-offset-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nisi totam architecto temporibus minima eum reprehenderit possimus ipsum aperiam deleniti?</p>
+                    <p className="v-offset-small">{partner.schedule}</p>
                     <ul className="row week v-offset-mid col-12 justify-center">
-                        <li>ПН</li>
-                        <li>ВТ</li>
-                        <li>СР</li>
-                        <li>ЧТ</li>
-                        <li>ПТ</li>
-                        <li>СБ</li>
-                        <li>ВС</li>
+                        <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('1') ? 'lightgreen' : 'lightcoral'}}>ПН</li>
+                        <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('2') ? 'lightgreen' : 'lightcoral'}}>ВТ</li>
+                        <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('3') ? 'lightgreen' : 'lightcoral'}}>СР</li>
+                        <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('4') ? 'lightgreen' : 'lightcoral'}}>ЧТ</li>
+                        <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('5') ? 'lightgreen' : 'lightcoral'}}>ПТ</li>
+                        <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('6') ? 'lightgreen' : 'lightcoral'}}>СБ</li>
+                        <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('7') ? 'lightgreen' : 'lightcoral'}}>ВС</li>
                     </ul>
                 </section>
+                :null}
             </div>
             : <h1>Error in partner</h1>
     )

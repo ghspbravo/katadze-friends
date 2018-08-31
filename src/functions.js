@@ -1,3 +1,5 @@
+import React from 'react'
+
 const isNumericInput = (event) => {
     const key = event.keyCode;
     return ((key >= 48 && key <= 57) || // Allow number line
@@ -51,3 +53,42 @@ export const formatToDate = (event) => {
     else if (input.length > 1) { return `${day}.${mounth}`; }
     else if (input.length > 0) { return `${day}` }
 };
+
+export const showPopup = innerId => {
+    let inner = document.querySelector(`#${innerId}`);
+    let popupWindow = document.createElement("div");
+    let popup = document.createElement("div");
+    let closePopup = document.createElement("div");
+
+    popupWindow.className = "popup-wrapper";
+    popup.className = "popup";
+    closePopup.className = "close-popup";
+
+    popup.innerHTML = inner.innerHTML
+    closePopup.innerHTML = 'X'
+
+    popupWindow.onclick = e => {
+        if (e.target === popupWindow || window.innerWidth < 992) hidePopup();
+    };
+    closePopup.onclick = () => hidePopup();
+
+    popup.appendChild(closePopup)
+    popupWindow.appendChild(popup)
+
+    document.querySelector("body").appendChild(popupWindow);
+    document.querySelector("body").style.overflow = "hidden";
+};
+
+const hidePopup = () => {
+    let popupWindow = document.querySelector(".popup-wrapper");
+    popupWindow.parentNode.removeChild(popupWindow)
+    document.querySelector("body").style.overflow = "auto";
+};
+
+export const showSuccess = (message, callback = null) => {
+    if (callback !== null) setTimeout(callback, 3000)
+    return <div style={{ textAlign: 'center' }}>
+        <h1>Успех!</h1>
+        <p>{message}</p>
+    </div>
+}

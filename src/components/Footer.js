@@ -10,7 +10,7 @@ export default () => {
             <div className="col-12 justify-center">
                 <ul className="row col-11 justify-center info">
                     <li><a className="secondary small" href="">Политика</a></li>
-                    <li><a className="secondary small" href="">Основная информация</a></li>
+                    <li><a className="secondary small" href="">Конфиденциальность</a></li>
                     <li><a className="secondary small" href="">Советы и помощь</a></li>
                 </ul>
             </div>

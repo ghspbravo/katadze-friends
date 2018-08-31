@@ -10,10 +10,11 @@ import newTour from '../components/profile/newTour'
 import { Route, Redirect } from 'react-router'
 import { Switch, Link, NavLink } from 'react-router-dom'
 
-import { isAuthenticated, userId } from '../reducers'
+import { isAuthenticated, userId, getFiledErrors, resetSuccess } from '../reducers'
 import { logout } from '../actions/auth'
 import { userInfo, createGid, createTour } from '../actions/profile'
 import { activate, activateConfirm } from '../actions/registration';
+import { forceRefresh } from '../actions'
 
 class Profile extends Component {
 	constructor(props) {
@@ -170,22 +171,29 @@ class Profile extends Component {
 
 				let languages = [], hobbies = [], activities = []
 
-				Object.keys(this.state.languages).forEach(id => languages.push({name: this.state.languages[id], level: 0}))
-				Object.keys(this.state.hobbies).forEach(id => hobbies.push({code: id}))
-				Object.keys(this.state.activities).forEach(id => activities.push({code: id}))
+				Object.keys(this.state.languages).forEach(id => languages.push({ name: this.state.languages[id], level: 0 }))
+				Object.keys(this.state.hobbies).forEach(id => hobbies.push({ code: id }))
+				Object.keys(this.state.activities).forEach(id => activities.push({ code: id }))
 
 				this.props.onCreateGid(this.state.bio, this.state.keyphrase, languages, hobbies, activities, this.state.price)
+				setTimeout(() => {this.props.resetSuccess(); this.props.forceRefresh()}, 3000)
 				break;
 
 			case '/profile/create-tour':
-				this.props.onCreateTour(this.state.name, this.state.location, this.state.description, this.state.route, this.state.transport, this.state.inclusion, this.state.price, this.state.date_from, this.state.date_to, this.state.meeting_details, this.state.slogan, this.state.expenses, this.state.extra_options, this.state.extra_info, this.state.max_tourists)
+				let dateFrom = this.state.date_from.split('.')
+				let dateTo = this.state.date_to.split('.')
+				this.props.onCreateTour(this.state.name, this.state.location, this.state.description, this.state.route, this.state.transport, this.state.inclusion, this.state.price, dateFrom.length === 3 ? `${dateFrom[2]}-${dateFrom[1]}-${dateFrom[0]}` : '', dateTo.length === 3 ? `${dateTo[2]}-${dateTo[1]}-${dateTo[0]}` : '', this.state.meeting_details, this.state.slogan, this.state.expenses, this.state.extra_options, this.state.extra_info, this.state.max_tourists)
+
+				this.setState({date_to: '', date_from: ''})
+				setTimeout(() => {this.props.resetSuccess(); this.props.forceRefresh()}, 3000)
 				break;
 
 			default:
 				break;
 		}
-		// window.location.reload()
 	};
+
+    handleValueChange = (name, value) => this.setState({ [name]: value })
 
 	handleActivate = () => {
 		let locationList = this.props.location.pathname.split('/')
@@ -215,9 +223,6 @@ class Profile extends Component {
 						</div>
 						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/create-tour' >Создать тур</NavLink>
-						</div>
-						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
-							<button onClick={() => console.log(this.props.state)}><p>STATE</p></button>
 						</div>
 						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<button onClick={this.props.logout}><Link to='/login' >Выйти</Link></button>
@@ -255,12 +260,17 @@ class Profile extends Component {
 									this.handleListDelete,
 									this.state,
 									this.props.user.profile === null ? false : this.props.user.profile,
+									this.props.success
 								)} />
 						<Route path='/profile/create-tour' render={() =>
 							this.props.user.is_accepted
 								? newTour(
 									this.handleInputChange,
-									this.onSubmit
+									this.onSubmit,
+									this.props.errors,
+									this.props.success,
+									this.handleValueChange,
+									this.state
 								)
 								: <section className="jumbotron v-offset-small">
 									<div className="content">
@@ -268,15 +278,19 @@ class Profile extends Component {
 											<p className="bold">Вы не можете создать тур.</p>
 										</div>
 										<div className="v-offset-small text-center">
-											<p>Заполните заявку для того, чтобы стать гидом. После подтверждения Вашей заявки администратором, Вы сможете создать свой первый тур</p>
+											{this.props.user.profile
+												? <p>Ваша заявка находится на рассмотрении модераторами сервиса. Попробуйте позже</p>
+												: <p>Заполните заявку для того, чтобы стать гидом. После подтверждения Вашей заявки администратором, Вы сможете создать свой первый тур</p>}
 										</div>
-										<div className="v-offset-mid row justify-center">
-											<div className="col-lg-5">
-												<Link to='become-gid'>
-													<button className="lead">Стать гидом</button>
-												</Link>
-											</div>
-										</div>
+										{this.props.user.profile
+											? null
+											: <div className="v-offset-mid row justify-center">
+												<div className="col-lg-5">
+													<Link to='become-gid'>
+														<button className="lead">Стать гидом</button>
+													</Link>
+												</div>
+											</div>}
 									</div>
 								</section>} />
 						<Route path='/activate/' render={() => {
@@ -299,14 +313,21 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => ({
 	user: state.profile,
+	errors: getFiledErrors(state.profile),
 	isAuthenticated: isAuthenticated(state),
 	userId: userId(state),
 	state: state,
+	success: state.profile.success,
+	resetSuccess: () => resetSuccess(state)
 });
 
 const mapDispatchToProps = dispatch => ({
 	logout: () => dispatch(logout()),
 	fetchUser: id => dispatch(userInfo(id)),
+
+	forceRefresh: () => {
+		dispatch(forceRefresh())
+	},
 
 	onCreateGid: (bio, keyphrase, languages, hobbies, activities, price) => {
 		dispatch(createGid(bio, keyphrase, languages, hobbies, activities, price))

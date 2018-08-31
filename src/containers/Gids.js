@@ -12,7 +12,10 @@ import tour from '../components/gids/tour';
 import { gidList, gidInfo, tourInfo, gidsFilter } from '../actions/gids';
 import faq from '../components/gids/faq';
 import about from '../components/gids/about';
-import contacts from '../components/partners/contacts';
+import contacts from '../components/gids/contacts';
+import { contact } from '../actions/ticket';
+import { resetSuccess, getFiledErrors } from '../reducers';
+import { forceRefresh } from '../actions';
 
 class Gids extends Component {
     constructor(props) {
@@ -20,6 +23,10 @@ class Gids extends Component {
 
         this.state = {
             search: '',
+            title: '',
+            name: '',
+            email: '',
+            question: '',
         }
     }
 
@@ -37,6 +44,13 @@ class Gids extends Component {
         ? null
         : this.props.history.push(`/gids/search=${this.state.search}`)
 
+    handleContact = (event) => {
+        event.preventDefault()
+        this.props.onContact(this.state.title, this.state.name, this.state.email, this.state.question)
+        this.setState({title: '', name: '', email: '', question: ''})
+        setTimeout( () => {this.props.resetSuccess(); this.props.forceRefresh()}, 3000)
+    }
+
     componentDidMount() {
         switch (this.props.match.path) {
             case '/tours/:id':
@@ -52,7 +66,6 @@ class Gids extends Component {
                 break;
 
             case '/gids/search=:search':
-                console.log(this.props.match.params)
                 this.props.onFilterGids(this.props.match.params.search)
                 break;
 
@@ -97,7 +110,13 @@ class Gids extends Component {
                 }} />
                 <Route exact path="/gids/about" component={about} />
                 <Route exact path="/gids/faq" component={faq} />
-                <Route exact path="/gids/contacts" component={contacts} />
+                <Route exact path="/gids/contacts" render={() => contacts(
+                    this.handleInputChange,
+                    this.handleContact,
+                    this.props.errors,
+                    this.props.success,
+                    this.state
+                    )} />
             </Switch>
         )
     }
@@ -107,14 +126,22 @@ const mapStateToProps = state => ({
     gids: state.gids.list,
     gid: state.gids.info,
     search: state.gids.search,
-    tour: state.gids.tour
+    tour: state.gids.tour,
+    success: state.ticket.success,
+    errors: getFiledErrors(state.ticket),
+	resetSuccess: () => resetSuccess(state)
 });
 
 const mapDispatchToProps = dispatch => ({
     onFetchList: page => dispatch(gidList(page)),
     onFetchGid: id => dispatch(gidInfo(id)),
     onFetchTour: id => dispatch(tourInfo(id)),
-    onFilterGids: location => dispatch(gidsFilter(location))
+    onFilterGids: location => dispatch(gidsFilter(location)),
+    onContact: (title, name, email, question) => dispatch(contact(title, name, email, question)),
+
+    forceRefresh: () => {
+		dispatch(forceRefresh())
+	},
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gids)

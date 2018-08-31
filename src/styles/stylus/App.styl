@@ -253,3 +253,33 @@ label.file {
     cursor:  pointer;
     text-align: center;
 }
+
+.popup-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  position: relative;
+  background-color: white;
+  padding: 50px 200px;
+}
+
+.close-popup {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.popupMessage {
+  display: none;
+}

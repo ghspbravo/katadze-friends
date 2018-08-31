@@ -1,8 +1,8 @@
 import React from 'react'
 import LogoWhite from '../../resourses/LogoWhite.png'
-import Regform from './regform'
+import regform from './regform';
 
-export default (event, currentTariff, handleTariffChange, handleAcquiring) => {
+export default (event, currentTariff, handleTariffChange, handleAcquiring, handeInput, handleSubmit, errors, success, fields, handleValueChange) => {
     return (
         <div>
             {event && event.sections
@@ -86,7 +86,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring) => {
                                 </ul>
                             </div>
                         </section>
-                        : console.log('STEPS_NOT_FOUND')
+                        : null
                     }
                     {event && event.tariffs[0]
                         ? <section id="tariffs">
@@ -123,9 +123,9 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring) => {
                                 </div>
                             </div>
                         </section>
-                        : console.log('TARIFS_NOT_FOUND')}
+                        : null}
                     {/РКВ/.test(event.name)
-                        ? <Regform />
+                        ? regform(handeInput, handleSubmit, errors, success, fields, handleValueChange)
                         : null
                     }
                 </div>

@@ -1,7 +1,9 @@
 import React from 'react'
 import cityImage from '../../resourses/Contacts/city.png'
+import { showSuccess } from '../../functions';
+import errorMessage from '../errorMessage';
 
-export default () => {
+export default (handeInput, handleSubmit, errors, success, fields) => {
 	return (
 		<div>
 			<section id="contacts-main" className="row vh-50">
@@ -9,13 +11,19 @@ export default () => {
 					<h1 className="lead">У тебя остался вопрос?</h1>
 					<h1><span>Свяжись с нами</span></h1>
 					<div className="col-lg-12 contact-form">
-						<form autoComplete="off" className="justify-space-between row" action="">
-							<input autoComplete="theme" className="col-12" type="text" placeholder="Меня интересует" name="theme" id="theme" />
-							<input autoComplete="name" className="col-12 col-xl-5" type="text" placeholder="Имя" name="name" id="name" />
-							<input autoComplete="email" className="col-12 offset-xl-1 col-xl-6" type="email" placeholder="Электронная почта" name="email" id="email" />
-							<input autoComplete="question" className="col-12" type="text" placeholder="Ваш вопрос (желательно)" name="question" id="question" />
-							<button type="submit">Отправить</button>
-						</form>
+					{ success
+						? showSuccess('Ваш вопрос будет обязательно рассмотрен!')
+						: <form autoComplete="off" className="justify-space-between row" onSubmit={handleSubmit}>
+							<input onChange={handeInput} value={fields.title} autoComplete="theme" className="col-12" type="text" placeholder="Меня интересует" name="title" id="theme" required/>
+							{errorMessage(errors, 'title')}
+							<input onChange={handeInput} value={fields.name} autoComplete="name" className="col-12 col-xl-5" type="text" placeholder="Имя" name="name" id="name" required />
+							{errorMessage(errors, 'name')}
+							<input onChange={handeInput} value={fields.email} autoComplete="email" className="col-12 offset-xl-1 col-xl-6" type="email" placeholder="Электронная почта" name="email" id="email" required/>
+							{errorMessage(errors, 'email')}
+							<input onChange={handeInput} value={fields.question} autoComplete="question" className="col-12" type="text" placeholder="Ваш вопрос (желательно)" name="question" id="question" />
+							{errorMessage(errors, 'question')}
+							<button>Отправить</button>
+						</form>}
 					</div>
 				</div>
 			</section>

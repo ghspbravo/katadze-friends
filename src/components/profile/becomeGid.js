@@ -1,10 +1,12 @@
 import React from 'react'
 import question from '../../resourses/icons/question.svg'
 
+import { showSuccess } from '../../functions'
 
-export default (inputHandler, inputListHandler, submitHandler, deleteHandle, fields, user) => {
-    return (
-        <form action="POST" autoComplete="off" onSubmit={submitHandler}>
+export default (inputHandler, inputListHandler, submitHandler, deleteHandle, fields, user, success) => {
+    return (success
+        ? showSuccess('Ваша заявка принята. Ожидайте подтверждения модераторами')
+        : <form action="POST" autoComplete="off" onSubmit={submitHandler}>
             <section className="jumbotron">
                 <div className="head"><p>Дополнительная информация</p></div>
                 <div className="row content">
@@ -16,8 +18,12 @@ export default (inputHandler, inputListHandler, submitHandler, deleteHandle, fie
 <br /><br /> Расскажите, какой вы гид: как вы любите путешествовать? Или как вам нравится открывать что-то новое людям?
 <br /><br /> Расскажите им о себе: какие у вас жизненные принципы?</p></div>
 
+                    <div className="col-3 text-right"><label htmlFor='activityType'><p className="small">Род деятельности</p></label></div>
+                    <div className="offset-1 col-8"><input readOnly={user ? true : false} value={user ? null : undefined} onChange={inputHandler} className='col-12' id='activityType' name="rod" required /></div>
+
+
                     <div className="col-3 row align-center justify-right">
-                        <object aria-label="question" type="image/svg+xml" data={question} width="35" height="35" />
+                        {/* <object aria-label="question" type="image/svg+xml" data={question} width="35" height="35" /> */}
                         <label htmlFor='language'>
                             <p className="small">Языки</p></label></div>
                     <div className="offset-1 col-8">
