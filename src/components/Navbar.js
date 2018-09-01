@@ -21,13 +21,15 @@ export default (currentState, openNavHandler) => {
                                     <Route render={() => <NavLink to="/">Главная</NavLink>} />
                                 </Switch>
                             </li>
-                            <li>
-                                <Switch>
-                                    <Route path="/partners" render={() => <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>} />
-                                    <Route path="/events" render={() => <NavLink to="/events/about" activeClassName="active-nav">О нас</NavLink>} />
-                                    <Route render={() => <NavLink to="/gids/about" activeClassName="active-nav">О нас</NavLink>} />
-                                </Switch>
-                            </li>
+                            <Switch>
+                                {/* <Route path="/partners" render={() => <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>} /> */}
+                                {/* <Route path="/events" render={() => <NavLink to="/events/about" activeClassName="active-nav">О нас</NavLink>} /> */}
+                                <Route path="/partners" render={() => null} />
+                                <Route path="/events" render={() => null} />
+                                <Route render={() => <li>
+                                    <NavLink to="/gids/about" activeClassName="active-nav">О нас</NavLink>
+                                </li>} />
+                            </Switch>
                             <li>
                                 <Switch>
                                     <Route path="/partners" render={() => <NavLink to="/partners/faq" activeClassName="active-nav">Вопросы</NavLink>} />
@@ -81,13 +83,15 @@ export default (currentState, openNavHandler) => {
                             <Route render={() => <NavLink to="/">Главная</NavLink>} />
                         </Switch>
                     </li>
-                    <li>
-                        <Switch>
-                            <Route path="/partners" render={() => <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>} />
-                            <Route path="/events" render={() => <NavLink to="/events/about" activeClassName="active-nav">О нас</NavLink>} />
-                            <Route render={() => <NavLink to="/gids/about" activeClassName="active-nav">О нас</NavLink>} />
-                        </Switch>
-                    </li>
+                    <Switch>
+                        {/* <Route path="/partners" render={() => <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>} /> */}
+                        {/* <Route path="/events" render={() => <NavLink to="/events/about" activeClassName="active-nav">О нас</NavLink>} /> */}
+                        <Route path="/partners" render={() => null} />
+                        <Route path="/events" render={() => null} />
+                        <Route render={() => <li>
+                            <NavLink to="/gids/about" activeClassName="active-nav">О нас</NavLink>
+                        </li>} />
+                    </Switch>
                     <li>
                         <Switch>
                             <Route path="/partners" render={() => <NavLink to="/partners/faq" activeClassName="active-nav">Вопросы</NavLink>} />

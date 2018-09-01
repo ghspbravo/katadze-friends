@@ -1,7 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import FAQ from '../FAQ';
 
 export default () => {
+	const questions = [
+		{
+			title: 'Как стать участником события?',
+			answer: <p>Для того, чтобы принять участие в любом из наших проектов достаточно <Link to='/profile' className="bold">зарегистрироваться</Link> на нашем портале, выбрать интересное событие и оплатить участие в нем, кликнув по соответствующей кнопке.</p>,
+		},
+		{
+			title: 'Стать участником события может любой желающий?',
+			answer: <p>Да, мы считаем, что привлекать к активному образу жизни можно и нужно людей всех возрастов, пола и убеждений. Никаких ограничений и фильтров. Только Вы и События Katadze.</p>
+		},
+		{
+			title: 'Где узнать еще больше про отдельное мероприятие?',
+			answer: <p>Специально для каждого проекта мы создаем отдельную группу в социальной сети в Вконтакте, где размещаем всю информацию: от расписания до фото-отчетов. Следите за нами на <a href="https://vk.com/katadzzze" target="_blank" className="bold">нашей официальной страничке</a></p>
+		},
+		{
+			title: 'Можно ли самому стать организатором события?',
+			answer: <p>Можно и нужно! Специально для этого мы создали сервис <Link to='/gids' className="bold">Katadze Guide</Link>, благодаря которому теперь у каждого есть возможность организовать с нашей помощью свой Event.</p>
+		}
+	]
+
 	return (
 		<div>
 			<section id="faq-main" className="row vh-50">
@@ -10,7 +30,7 @@ export default () => {
 					<h1><span>И не только</span></h1>
 				</div>
 			</section>
-			<section className="light-bg">
+			{/* <section className="light-bg">
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-6 question-wrapper">
@@ -47,7 +67,8 @@ export default () => {
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> */}
+			<FAQ questionList={questions} />
 			<section className="container">
 				<Link to='contacts'>
 					<h1 className="secondary text-center">Не нашел <span className="lead">ответ</span></h1>

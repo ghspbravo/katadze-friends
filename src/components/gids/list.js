@@ -17,7 +17,8 @@ export default (gids, inputHandler, searchHandler) => {
                                 </p></button></div>
                         </div>
                         <p className="small" >Например: Екатеринбург</p>
-                        <button type="button" onClick={() => document.querySelector('#become_gid').scrollIntoView({ behavior: "smooth" })} className="lead v-offset-mid lead col-5">СТАТЬ ГИДОМ</button>
+                        <p className="v-offset-mid" style={{ color: 'white' }}>СОЗДАЙ СВОЮ ИСТОРИЮ!</p>
+                        <button type="button" onClick={() => document.querySelector('#become_gid').scrollIntoView({ behavior: "smooth" })} className="lead col-5">СТАТЬ ГИДОМ</button>
                     </form>
                 </div>
             </section>
@@ -36,7 +37,6 @@ export default (gids, inputHandler, searchHandler) => {
                                 <li className="col-12">Заработай денег</li>
                             </ul>
                         </div>
-                        <h1 style={{ textAlign: 'center' }}>СОЗДАЙ СВОЮ ИСТОРИЮ!</h1>
                         <Link to='/profile/become-gid'><button className="offset-2 col-8 offset-lg-4 offset-xl-5 col-lg-4 col-xl-2 lead">Стать гидом</button></Link>
                     </div>
 

@@ -9,20 +9,21 @@ export default () => {
         <div className="justify-center footer no-select">
             <div className="col-12 justify-center">
                 <ul className="row col-11 justify-center info">
-                    <li><a className="secondary small" href="">Политика</a></li>
-                    <li><a className="secondary small" href="">Конфиденциальность</a></li>
-                    <li><a className="secondary small" href="">Советы и помощь</a></li>
+                    {/* <li className={`col-12 col-sm-3 ${window.innerWidth < 576 ? 'text-center' : 'text-right'}`}><a className="secondary small" href="">Политика</a></li>
+                    <li className="d-none d-sm-flex col-sm-1 justify-center secondary">•</li>
+                    <li className={`col-12 col-sm-3 ${window.innerWidth < 576 ? 'text-center' : ''}`}><a className="secondary small" href="">Конфиденциальность</a></li> */}
+                    <li className="col-12 text-center"><a href="" className="secondary small">Политика и конфиденциальность</a></li>
                 </ul>
             </div>
-            <div className="col-lg-6 v-offset-small">
-                <ul className="row justify-center">
-                    <li>
+            <div className="col-12 justify-center v-offset-small">
+                <ul className="row col-11 justify-center">
+                    <li className="col-3 col-md-2 col-lg-1 justify-center">
                         <a href="https://vk.com/katadzzze" target="blank"><img src={vk} width="45" height="45" /></a>
                     </li>
-                    <li>
+                    <li className="col-3 col-md-2 col-lg-1 justify-center">
                         <a href="https://www.instagram.com/katadzzze/" target="blank"><img src={instagram} width="45" height="45" /></a>
                     </li>
-                    <li>
+                    <li className="col-3 col-md-2 col-lg-1 justify-center">
                         <a href="https://www.youtube.com/channel/UCNboNWbUzYA-Rkc9O9KbKfg" target="blank"><img src={youtube} width="45" height="45" /></a>
                     </li>
                 </ul>

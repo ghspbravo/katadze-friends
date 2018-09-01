@@ -1,7 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import FAQ from '../FAQ';
 
 export default () => {
+
+    const questions = [
+		{
+			title: 'Как стать гидом?',
+			answer: <p>Чтобы стать гидом, в первую очередь, необходимо зарегистрироваться на платформе Katadze.ru и <Link to='/profile' className='bold'>создать профиль гида</Link>. Далее нужно заполнить всю необходимую информацию о себе и об активностях, которые ты готов предложить.
+            <br/><br/>
+            Чем креативнее ты заполнишь данные о себе – тем больше путешественников будут обращать внимание на твой профиль.
+            <br/><br/>
+            Также ты можешь установить стоимость (руб./час) своих услуг на своё усмотрение или поставить пометку БЕСПЛАТНО. Советуем тебе не завышать цену, так как это может негативно отразиться на твоей популярности.
+            <br/><br/>
+            Как только твой профиль полностью заполнен – ты сразу же появишься в общем списке гидов, где путешественники смогут найти тебя и связаться.</p>
+		},
+	]
+
     return (
         <div>
             <section id="faq-main" className="row vh-50">
@@ -10,7 +25,7 @@ export default () => {
                     <h1><span>И не только</span></h1>
                 </div>
             </section>
-            <section className="light-bg">
+            {/* <section className="light-bg">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 question-wrapper">
@@ -29,7 +44,8 @@ export default () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
+			<FAQ questionList={questions} />
             <section className="container">
                 <Link to='contacts'>
                     <h1 className="secondary text-center">Не нашел <span className="lead">ответ</span></h1>

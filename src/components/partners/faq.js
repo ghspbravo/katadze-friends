@@ -1,7 +1,26 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import FAQ from '../FAQ';
 
 export default () => {
+    const questions = [
+        {
+            title: 'Как стать Другом?',
+            answer: <p>Все просто: для связи с нашими специалистами достаточно просто заполнить первоначальную <Link to='/partners' className="bold">заявку</Link>. Дальше мы все сделаем за вас сами.</p>
+        },
+        {
+            title: 'Какие организации интересны вам в разрезе партнерства?',
+            answer: <p>Как и в случае с нашими клиентами – мы не ставим никаких барьеров. Вы производите машинное масло? – мы ездим на автомобилях. Ваш продукт – уроки английского? – завтра мы будем покорять Эверест – пригодится!</p>
+        },
+        {
+            title: 'Моя компания – тоже туроператор. Как сотрудничать?',
+            answer: <p>Прекрасно! Создадим коллаборацию туроператоров. Сделаем совместный тур. Поделимся опытом. Заполняйте <Link to='/partners' className='bold' >заявку</Link> – мы найдем, где применить Ваш талант.</p>
+        },
+        {
+            title: ' Моя организация не из Екатеринбурга, есть смысл сотрудничать?',
+            answer: <p>Есть. Хотя бы потому что наш идейный вдохновитель – с Кавказа. А креативный менеджер – из Киргизии. А наши планы – охватить весь мир. Вместе с Вами</p>
+        }
+    ]
     return (
         <div>
             <section id="faq-main" className="row vh-50">
@@ -10,7 +29,7 @@ export default () => {
                     <h1><span>И не только</span></h1>
                 </div>
             </section>
-            <section className="light-bg">
+            {/* <section className="light-bg">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 question-wrapper">
@@ -47,7 +66,8 @@ export default () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
+            <FAQ questionList={questions} />
             <section className="container">
                 <Link to='contacts'>
                     <h1 className="secondary text-center">Не нашел <span className="lead">ответ</span></h1>
