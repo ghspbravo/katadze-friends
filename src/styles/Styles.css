@@ -1493,8 +1493,7 @@ a.profile-current {
   background-color: #c4c4c4;
 }
 .avatar-container > img {
-  width: 250px;
-  height: 250px;
+  height: 220px;
   border-radius: 50%;
   object-fit: cover;
 }

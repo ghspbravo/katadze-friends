@@ -4,7 +4,7 @@ import errorMessage from '../errorMessage';
 
 import { formatToPhone, formatToDate, enforceFormat } from '../../functions'
 
-import thumbnail from '../../resourses/Gids/person-thumbnail.png'
+// import thumbnail from '../../resourses/Gids/person-thumbnail.png'
 
 export default (submitHandler, inputHandler, fileHandler, errors, changeValue, fields) => {
     return (
@@ -34,7 +34,7 @@ export default (submitHandler, inputHandler, fileHandler, errors, changeValue, f
                     <input name="password" autoComplete="on" type="password" placeholder='Пароль' onChange={inputHandler} required />
                     {errorMessage(errors, 'password')}
                     <div className="row v-offset-small">
-                        <div className="col-md-4 col-12 avatar-container justify-center"><img src={thumbnail} alt="ava" /></div>
+                        <div className="col-md-4 col-12 avatar-container justify-center"><img src={fields.thumbnail} alt="ava" /></div>
                         <div className="offset-md-1 col-md-6 col-12 align-center">
                             <p className="small">Важно, чтобы ваше лицо было отчетливо видно на фото.</p>
                             <label className="file v-offset-small" htmlFor="reg-photo"><p>Загрузить фото</p></label>

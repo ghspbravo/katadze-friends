@@ -21,7 +21,6 @@ import resetPasswordComponent from '../components/auth/resetPassword'
 import registrationComponent from '../components/auth/registration'
 import resetConfirmComponent from '../components/auth/resetConfirm';
 
-import thumbnail from '../resourses/Gids/person-thumbnail.png'
 import { forceRefresh, STATUS_SUCCESS } from '../actions'
 
 import { showSuccess } from '../functions'
@@ -30,6 +29,11 @@ import { showSuccess } from '../functions'
 class Login extends Component {
     constructor(props) {
         super(props)
+        const reqJpg = require.context('../resourses/Profile', true, /\.jpg$/)
+        const paths = reqJpg.keys()
+        const thumbnail = paths.map(path => reqJpg(path))
+
+        const randomId = Math.floor(Math.random() * (7 - 0 + 1)) + 0;
 
         this.state = {
             username: '',
@@ -42,8 +46,10 @@ class Login extends Component {
             residence: '',
             phones: '+7 ',
             img_photo: '',
+            thumbnail: thumbnail[randomId]
         }
     }
+
 
     handleInputChange = (event) => {
         const target = event.target,
@@ -71,7 +77,7 @@ class Login extends Component {
             closeButton.innerHTML = "X"
             closeButton.onclick = () => {
                 this.setState({ img_photo: '' })
-                document.querySelector('.avatar-container img').src = thumbnail
+                document.querySelector('.avatar-container img').src = this.state.thumbnail
                 document.querySelector('.avatar-container').removeChild(closeButton)
                 input.value = null
             }
@@ -88,7 +94,7 @@ class Login extends Component {
 
         this.props.onResetConfirm(token, uidb64, this.state.password)
 
-        setTimeout( () => {if (this.props.status === STATUS_SUCCESS) this.props.history.push('/login')}, 3000)
+        setTimeout(() => { if (this.props.status === STATUS_SUCCESS) this.props.history.push('/login') }, 3000)
     }
 
     onSubmit = (event) => {
@@ -114,7 +120,7 @@ class Login extends Component {
     render() {
         return (
             this.props.isAuthenticated
-                ?  <Redirect to='/profile' />
+                ? <Redirect to='/profile' />
                 : <Switch>
                     {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ email: '', password: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
                     <Route path='/login' render={() => LoginComponent(this.onSubmit,
@@ -151,7 +157,7 @@ const mapStateToProps = (state) => ({
     isRegistered: isRegistered(state),
     fieldErrors: getFiledErrors(state.registration),
     status: state.resetPassword.status,
-	resetStatus: () => resetStatus(state)
+    resetStatus: () => resetStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -172,8 +178,8 @@ const mapDispatchToProps = (dispatch) => ({
     },
 
     forceRefresh: () => {
-		dispatch(forceRefresh())
-	},
+        dispatch(forceRefresh())
+    },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
