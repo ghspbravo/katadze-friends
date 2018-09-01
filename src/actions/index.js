@@ -18,4 +18,8 @@ export const NavbarTypes = {
     MOBILE: 'mobile'
 }
 
+export const STATUS_SUCCESS = 'success'
+export const STATUS_PROCESSING = 'processing'
+export const STATUS_ERROR = 'error'
+
 export const server = 'katadze.ru'

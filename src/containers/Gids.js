@@ -14,8 +14,8 @@ import faq from '../components/gids/faq';
 import about from '../components/gids/about';
 import contacts from '../components/gids/contacts';
 import { contact } from '../actions/ticket';
-import { resetSuccess, getFiledErrors } from '../reducers';
-import { forceRefresh } from '../actions';
+import { resetStatus, getFiledErrors } from '../reducers';
+import { forceRefresh, STATUS_SUCCESS } from '../actions';
 
 class Gids extends Component {
     constructor(props) {
@@ -48,7 +48,6 @@ class Gids extends Component {
         event.preventDefault()
         this.props.onContact(this.state.title, this.state.name, this.state.email, this.state.question)
         this.setState({title: '', name: '', email: '', question: ''})
-        setTimeout( () => {this.props.resetSuccess(); this.props.forceRefresh()}, 3000)
     }
 
     componentDidMount() {
@@ -81,6 +80,7 @@ class Gids extends Component {
     render() {
         return (
             <Switch>
+                {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
                 <Route exact path="/gids" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC";
                     return list(
@@ -114,7 +114,7 @@ class Gids extends Component {
                     this.handleInputChange,
                     this.handleContact,
                     this.props.errors,
-                    this.props.success,
+                    this.props.status,
                     this.state
                     )} />
             </Switch>
@@ -127,9 +127,9 @@ const mapStateToProps = state => ({
     gid: state.gids.info,
     search: state.gids.search,
     tour: state.gids.tour,
-    success: state.ticket.success,
+    status: state.ticket.status,
     errors: getFiledErrors(state.ticket),
-	resetSuccess: () => resetSuccess(state)
+	resetStatus: () => resetStatus(state)
 });
 
 const mapDispatchToProps = dispatch => ({

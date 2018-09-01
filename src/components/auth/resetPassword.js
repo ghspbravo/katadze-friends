@@ -1,19 +1,22 @@
 import React from 'react'
 import errorMessage from '../errorMessage'
+import { showSuccess, showLoading } from '../../functions';
+import { STATUS_SUCCESS, STATUS_PROCESSING } from '../../actions';
 
-import { showSuccess } from '../../functions'
+export default (submitHandler, inputHandler, errors, status) => {
+    switch (status) {
+        case STATUS_SUCCESS: return showSuccess('Проверьте Вашу почту.')
+        case STATUS_PROCESSING: return showLoading()
 
-export default (submitHandler, inputHandler, errors, success) => {
-    return (
-        <div className="container">
-            {success
-                ? showSuccess('Проверьте свою почту')
-                : <form className='offset-xl-2 col-xl-8 col-12' action="POST" autoComplete="off" onSubmit={submitHandler}>
+        default: return (
+            <div className="container">
+                <form className='offset-xl-2 col-xl-8 col-12' action="POST" autoComplete="off" onSubmit={submitHandler}>
                     <input name="email" autoComplete="email" type="email" placeholder='email' onChange={inputHandler} required />
                     {errorMessage(errors, 'email')}
                     <button type="submit">Сбросить пароль</button>
                 </form>
-            }
+                }
         </div>
-    )
+        )
+    }
 }

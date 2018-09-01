@@ -5,7 +5,7 @@ import {
     isAuthenticated,
     isRegistered,
     getFiledErrors,
-    resetSuccess
+    resetStatus
 } from '../reducers'
 import { login } from '../actions/auth'
 import { registration, activate } from '../actions/registration'
@@ -22,7 +22,7 @@ import registrationComponent from '../components/auth/registration'
 import resetConfirmComponent from '../components/auth/resetConfirm';
 
 import thumbnail from '../resourses/Gids/person-thumbnail.png'
-import { forceRefresh } from '../actions'
+import { forceRefresh, STATUS_SUCCESS } from '../actions'
 
 import { showSuccess } from '../functions'
 
@@ -88,7 +88,7 @@ class Login extends Component {
 
         this.props.onResetConfirm(token, uidb64, this.state.password)
 
-        setTimeout( () => {this.props.resetSuccess(); this.props.history.push('/login')}, 3000)
+        setTimeout( () => {if (this.props.status === STATUS_SUCCESS) this.props.history.push('/login')}, 3000)
     }
 
     onSubmit = (event) => {
@@ -104,7 +104,6 @@ class Login extends Component {
                 break;
             case '/reset-password':
                 this.props.onReset(this.state.email)
-				setTimeout(() => {this.props.resetSuccess(); this.props.forceRefresh()}, 3000)
                 break;
 
             default:
@@ -117,18 +116,19 @@ class Login extends Component {
             this.props.isAuthenticated
                 ?  <Redirect to='/profile' />
                 : <Switch>
+                    {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ email: '', password: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
                     <Route path='/login' render={() => LoginComponent(this.onSubmit,
                         this.handleInputChange,
                         this.props.fieldErrors)} />
                     <Route path='/reset-password' render={() => resetPasswordComponent(this.onSubmit,
                         this.handleInputChange,
                         this.props.fieldErrors,
-                        this.props.success)} />
+                        this.props.status)} />
                     <Route path='/reset/' render={() => resetConfirmComponent(
                         this.handleReset,
                         this.handleInputChange,
                         this.props.fieldErrors,
-                        this.props.success
+                        this.props.status
                     )} />
                     <Route path='/registration' render={() => registrationComponent(this.onSubmit,
                         this.handleInputChange,
@@ -150,8 +150,8 @@ const mapStateToProps = (state) => ({
     isAuthenticated: isAuthenticated(state),
     isRegistered: isRegistered(state),
     fieldErrors: getFiledErrors(state.registration),
-    success: state.resetPassword.success,
-	resetSuccess: () => resetSuccess(state)
+    status: state.resetPassword.status,
+	resetStatus: () => resetStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

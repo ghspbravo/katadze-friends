@@ -2,7 +2,7 @@ import React from 'react'
 import becomePartner from './becomePartner'
 import { Link } from 'react-router-dom'
 
-export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, handleSubmit, errors, success, fields) => {
+export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, handleSubmit, errors, status, fields) => {
     return (
         <div>
             <section id="partners-header" className="vh-100 col-12 text-center">
@@ -11,7 +11,7 @@ export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, h
             </section>
             <section className="container justify-center">
                 {showPartnerForm
-                    ? becomePartner(handeInput, handleSubmit, errors, success, fields)
+                    ? becomePartner(handeInput, handleSubmit, errors, status, fields)
                     : <button onClick={() => showPartnerFormHandler()}><h1 className="upper underline"><span>Стать Другом Катадзе</span></h1></button>
                 }
             </section>

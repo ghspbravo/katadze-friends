@@ -1,11 +1,16 @@
 import React from 'react'
-import { showSuccess } from '../../functions';
+import { showSuccess, showLoading } from '../../functions';
 import errorMessage from '../errorMessage';
+import { STATUS_SUCCESS, STATUS_PROCESSING } from '../../actions';
 
-export default (handeInput, handleSubmit, errors, success, fields) => {
-    return (success
-        ? showSuccess('Ваша заявка отправлена. Мы рады новым друзьям!')
-        : <form autoComplete="off" className="row" onSubmit={handleSubmit}>
+export default (handeInput, handleSubmit, errors, status, fields) => {
+    switch (status) {
+        case STATUS_SUCCESS: return showSuccess('Ваша заявка отправлена. Мы рады новым друзьям!')
+        case STATUS_PROCESSING: return showLoading()
+
+        default:
+    return (
+        <form autoComplete="off" className="row" onSubmit={handleSubmit}>
             <div className="col-md-6">
                 <h1>Стать Другом Катадзе</h1>
                 <p className="secondary">Друзья.Katadze – это объединение компаний самого разного уровня и характера в одну единую сеть нашей бонусной программы. Наша клиентская база: более ____ тысяч активных, молодых и целеустремленных людей. Возможно, ваша компания нуждается в таких клиентах. Возможно, мы нуждаемся в Вас. Заполните заявку и давайте дружить продуктивно.</p>
@@ -24,4 +29,5 @@ export default (handeInput, handleSubmit, errors, success, fields) => {
             </div>
         </form>
     )
+}
 }

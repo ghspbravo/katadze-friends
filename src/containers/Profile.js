@@ -10,11 +10,11 @@ import newTour from '../components/profile/newTour'
 import { Route, Redirect } from 'react-router'
 import { Switch, Link, NavLink } from 'react-router-dom'
 
-import { isAuthenticated, userId, getFiledErrors, resetSuccess } from '../reducers'
+import { isAuthenticated, userId, getFiledErrors, resetStatus } from '../reducers'
 import { logout } from '../actions/auth'
 import { userInfo, createGid, createTour } from '../actions/profile'
 import { activate, activateConfirm } from '../actions/registration';
-import { forceRefresh } from '../actions'
+import { forceRefresh, STATUS_SUCCESS } from '../actions'
 
 class Profile extends Component {
 	constructor(props) {
@@ -176,7 +176,6 @@ class Profile extends Component {
 				Object.keys(this.state.activities).forEach(id => activities.push({ code: id }))
 
 				this.props.onCreateGid(this.state.bio, this.state.keyphrase, languages, hobbies, activities, this.state.price)
-				setTimeout(() => {this.props.resetSuccess(); this.props.forceRefresh()}, 3000)
 				break;
 
 			case '/profile/create-tour':
@@ -184,8 +183,6 @@ class Profile extends Component {
 				let dateTo = this.state.date_to.split('.')
 				this.props.onCreateTour(this.state.name, this.state.location, this.state.description, this.state.route, this.state.transport, this.state.inclusion, this.state.price, dateFrom.length === 3 ? `${dateFrom[2]}-${dateFrom[1]}-${dateFrom[0]}` : '', dateTo.length === 3 ? `${dateTo[2]}-${dateTo[1]}-${dateTo[0]}` : '', this.state.meeting_details, this.state.slogan, this.state.expenses, this.state.extra_options, this.state.extra_info, this.state.max_tourists)
 
-				this.setState({date_to: '', date_from: ''})
-				setTimeout(() => {this.props.resetSuccess(); this.props.forceRefresh()}, 3000)
 				break;
 
 			default:
@@ -231,6 +228,7 @@ class Profile extends Component {
 				</div>
 				<div className="col-xl-6 col-lg-7">
 					<Switch>
+					{this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ date_to: '', date_from: '', name: '', location: '', description: '', route: '', transport: '', inclusion: '', price: '', meeting_details: '', slogan: '', expenses: '', extra_options: '', extra_info: '', max_tourists: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
 						<Route path='/profile/edit' render={() => edit(
 							this.props.user
 						)} />
@@ -260,7 +258,7 @@ class Profile extends Component {
 									this.handleListDelete,
 									this.state,
 									this.props.user.profile === null ? false : this.props.user.profile,
-									this.props.success
+									this.props.status
 								)} />
 						<Route path='/profile/create-tour' render={() =>
 							this.props.user.is_accepted
@@ -268,7 +266,7 @@ class Profile extends Component {
 									this.handleInputChange,
 									this.onSubmit,
 									this.props.errors,
-									this.props.success,
+									this.props.status,
 									this.handleValueChange,
 									this.state
 								)
@@ -317,8 +315,8 @@ const mapStateToProps = (state) => ({
 	isAuthenticated: isAuthenticated(state),
 	userId: userId(state),
 	state: state,
-	success: state.profile.success,
-	resetSuccess: () => resetSuccess(state)
+	status: state.profile.status,
+	resetStatus: () => resetStatus(state)
 });
 
 const mapDispatchToProps = dispatch => ({

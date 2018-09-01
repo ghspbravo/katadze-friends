@@ -85,10 +85,18 @@ const hidePopup = () => {
     document.querySelector("body").style.overflow = "auto";
 };
 
-export const showSuccess = (message, callback = null) => {
+export const showSuccess = (message = '', callback = null) => {
     if (callback !== null) setTimeout(callback, 3000)
     return <div style={{ textAlign: 'center' }}>
         <h1>Успех!</h1>
+        <p>{message}</p>
+    </div>
+}
+
+export const showLoading = (message = 'Магия случится через 3..2..1...', callback = null) => {
+    if (callback !== null) setTimeout(callback, 3000)
+    return <div style={{ textAlign: 'center' }}>
+        <h1>Подождите...</h1>
         <p>{message}</p>
     </div>
 }

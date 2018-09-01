@@ -14,9 +14,9 @@ import {
 
 import listEvents from '../components/events/list'
 import info from '../components/events/info';
-import { getFiledErrors, resetSuccess } from '../reducers';
+import { getFiledErrors, resetStatus } from '../reducers';
 import { contact, rkv } from '../actions/ticket';
-import { forceRefresh } from '../actions';
+import { forceRefresh, STATUS_SUCCESS } from '../actions';
 
 class Events extends Component {
     constructor(props) {
@@ -58,8 +58,6 @@ class Events extends Component {
     handleContact = (event) => {
         event.preventDefault()
         this.props.onContact(this.state.title, this.state.name, this.state.email, this.state.question)
-        this.setState({ title: '', name: '', email: '', question: '' })
-        setTimeout(() => { this.props.resetSuccess(); this.props.forceRefresh() }, 3000)
     }
 
     handleSubmit = (event) => {
@@ -67,8 +65,6 @@ class Events extends Component {
         let date = this.state.date_birth.split('.')
         let phone = this.state.phone_number.replace(/\D/g, '')
         this.props.onRKV(this.state.name, date.length === 3 ? `${date[2]}-${date[1]}-${date[0]}` : '', `+${phone}`, this.state.url_social, this.state.city, this.state.work_place, this.state.came_from)
-        this.setState({ name: '', date_birth: '', phone_number: '', url_social: '', city: '', work_place: '', came_from: '' })
-        setTimeout(() => { this.props.resetSuccess(); this.props.forceRefresh() }, 3000)
     }
 
     handleValueChange = (name, value) => this.setState({ [name]: value })
@@ -91,6 +87,7 @@ class Events extends Component {
     render() {
         return (
             <Switch>
+                {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', date_birth: '', phone_number: '', url_social: '', city: '', work_place: '', came_from: '', email: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
                 <Route exact path='/events' render={() =>
                     listEvents(
                         this.props.events
@@ -105,9 +102,9 @@ class Events extends Component {
                     this.handleInputChange,
                     this.handleSubmit,
                     this.props.errors,
-                    this.props.success,
+                    this.props.status,
                     this.state,
-                    this.handleValueChange
+                    this.handleValueChange,
                 )
                 } />
                 <Route exact path="/events/about" component={about} />
@@ -116,7 +113,7 @@ class Events extends Component {
                     this.handleInputChange,
                     this.handleContact,
                     this.props.errors,
-                    this.props.success,
+                    this.props.status,
                     this.state
                 )} />
             </ Switch>
@@ -128,9 +125,9 @@ const mapStateToProps = state => ({
     events: state.event.list,
     event: state.event.info,
     payment: state.commerce,
-    success: state.ticket.success,
+    status: state.ticket.status,
     errors: getFiledErrors(state.ticket),
-    resetSuccess: () => resetSuccess(state)
+    resetStatus: () => resetStatus(state)
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -2,7 +2,7 @@ import React from 'react'
 import LogoWhite from '../../resourses/LogoWhite.png'
 import regform from './regform';
 
-export default (event, currentTariff, handleTariffChange, handleAcquiring, handeInput, handleSubmit, errors, success, fields, handleValueChange) => {
+export default (event, currentTariff, handleTariffChange, handleAcquiring, handeInput, handleSubmit, errors, status, fields, handleValueChange) => {
     return (
         <div>
             {event && event.sections
@@ -125,7 +125,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                         </section>
                         : null}
                     {/РКВ/.test(event.name)
-                        ? regform(handeInput, handleSubmit, errors, success, fields, handleValueChange)
+                        ? regform(handeInput, handleSubmit, errors, status, fields, handleValueChange)
                         : null
                     }
                 </div>

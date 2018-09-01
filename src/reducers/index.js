@@ -65,9 +65,9 @@ export function resetErrors(state) {
     })
 }
 
-export function resetSuccess(state) {
+export function resetStatus(state) {
     Object.keys(state).forEach(action => {
-        if (state[action].success) state[action].success = undefined
+        if (state[action].status) state[action].status = undefined
     })
 }
 

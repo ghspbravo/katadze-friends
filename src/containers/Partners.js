@@ -13,10 +13,9 @@ import info from '../components/partners/info';
 import about from '../components/partners/about';
 import faq from '../components/partners/faq';
 import contacts from '../components/partners/contacts'
-import { getFiledErrors, resetSuccess } from '../reducers';
+import { getFiledErrors, resetStatus } from '../reducers';
 import { contact, becomePartnerRequest } from '../actions/ticket';
-import { forceRefresh } from '../actions';
-import becomePartner from '../components/partners/becomePartner';
+import { forceRefresh, STATUS_SUCCESS } from '../actions';
 
 class Partners extends Component {
     constructor(props) {
@@ -48,14 +47,11 @@ class Partners extends Component {
         event.preventDefault()
         this.props.onContact(this.state.title, this.state.name, this.state.email, this.state.question)
         this.setState({ title: '', name: '', email: '', question: '' })
-        setTimeout(() => { this.props.resetSuccess(); this.props.forceRefresh() }, 3000)
     }
 
     handleBecomePartner = (event) => {
         event.preventDefault()
         this.props.onBecomePartner(this.state.organization, this.state.name, this.state.email, this.state.comment)
-        this.setState({ organization: '', name: '', email: '', comment: '' })
-        setTimeout(() => { this.props.resetSuccess(); this.props.forceRefresh(); this.setState({ showPartnerForm: false }) }, 3000)
     }
 
     showPartnerFormHandler = () => this.setState({ showPartnerForm: true })
@@ -78,6 +74,7 @@ class Partners extends Component {
     render() {
         return (
             <Switch>
+                {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '', organization: '', comment: '', showPartnerForm: false }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
                 <Route exact path="/partners" render={() => listPartners(
                     this.props.partners,
                     this.state.showPartnerForm,
@@ -86,7 +83,7 @@ class Partners extends Component {
                     this.handleInputChange,
                     this.handleBecomePartner,
                     this.props.errors,
-                    this.props.success,
+                    this.props.status,
                     this.state
                 )} />
                 <Route exact path="/partners/id=:id" render={() => info(
@@ -98,7 +95,7 @@ class Partners extends Component {
                     this.handleInputChange,
                     this.handleContact,
                     this.props.errors,
-                    this.props.success,
+                    this.props.status,
                     this.state
                 )} />
             </Switch>
@@ -110,9 +107,9 @@ class Partners extends Component {
 const mapStateToProps = state => ({
     partners: state.partner.list,
     partner: state.partner.info,
-    success: state.ticket.success,
+    status: state.ticket.status,
     errors: getFiledErrors(state.ticket),
-    resetSuccess: () => resetSuccess(state),
+    resetStatus: () => resetStatus(state),
 });
 
 const mapDispatchToProps = dispatch => ({
