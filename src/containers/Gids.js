@@ -42,7 +42,7 @@ class Gids extends Component {
 
     handleSearch = () => this.state.search === ""
         ? null
-        : this.props.history.push(`/gids/search=${this.state.search}`)
+        : this.props.history.push(`/guids/search=${this.state.search}`)
 
     handleContact = (event) => {
         event.preventDefault()

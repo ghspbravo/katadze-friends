@@ -77,7 +77,7 @@ export default () => {
                             <p className="col-md-10 col-sm-8" style={{ color: 'white' }}>Поделись своим опытом: Поставь оценку своему гиду, напиши отзыв, расскажи о нас в соц.сетях</p>
                         </li>
                     </ul>
-                    <button style={{ backgroundColor: 'white' }} className="lead v-offset-small offset-lg-4 col-lg-4"><Link to='/gids' style={{ color: '#41BFEF' }}>Найти гида</Link></button>
+                    <button style={{ backgroundColor: 'white' }} className="lead v-offset-small offset-lg-4 col-lg-4"><Link to='/guids' style={{ color: '#41BFEF' }}>Найти гида</Link></button>
                 </div>
 
                 {/* <div className="row">
