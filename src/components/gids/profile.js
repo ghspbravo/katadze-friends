@@ -120,7 +120,7 @@ export default (gid) => {
                             <p>{`Привет, меня зовут ${gid.first_name} ${gid.last_name}!`}</p>
                             <p className="small secondary">{gid.profile.keyphrase}</p>
                             <hr className="v-offset-small" />
-                            <p className="small">{gid.profile.bio}</p>
+                            <p className="small" style={{whiteSpace: 'pre-line'}}>{gid.profile.bio}</p>
                             <hr className="v-offset-small" />
                             <p className="v-offset-small text-center"><span>Из г. {gid.residence} - {gid.date_birth.split('-')[0]} года рождения</span></p>
                             <button onClick={() => showPopup('gidAlert')} className="offset-md-4 offset-2 v-offset-small col-8 col-md-4 lead">Забронировать</button>
