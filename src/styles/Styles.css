@@ -1478,6 +1478,7 @@ section.idSection .section-id {
 .profile-image-small img {
   height: 80px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .profile-nav a {
   font-family: BebasNeue;

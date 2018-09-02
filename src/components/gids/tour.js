@@ -18,11 +18,11 @@ export default (tour) => {
                     ? <div className="row">
                         <div className="col-lg-7">
                             <div className="row">
-                                <div className="col-9">
+                                <div className="col-8">
                                     <h1>{tour.name}</h1>
                                     <p className="small secondary">{tour.slogan}</p>
                                 </div>
-                                <Link to={`/gids/id=${tour.user}`} className="col-3 justify-center">
+                                <Link to={`/gids/id=${tour.user}`} className="col-4 justify-center">
                                     <div className="profile-image-small">
                                         <img src={thumbnail} alt="gidImage" />
                                     </div>
@@ -50,7 +50,7 @@ export default (tour) => {
                                 <p className="small bold v-offset-small">Место проведения</p>
                                 <p className="small">{tour.location}</p>
                                 <div className="row justify-center v-offset-small">
-                                    <button className="col-8 col-md-4 lead">Забронировать</button>
+                                    <button className="col-8 col-md-4 lead">Добавить в закладки</button>
                                 </div>
                             </div>
                             <div className="border-box v-offset-small">
@@ -162,7 +162,7 @@ export default (tour) => {
                                 <p className="small bold v-offset-small">Место проведения</p>
                                 <p className="small">{tour.location}</p>
                                 <div className="row justify-center v-offset-small">
-                                    <button onClick={() => showPopup('tourAlert')} className="col-md-8 lead">Забронировать</button>
+                                    <button onClick={() => showPopup('tourAlert')} className="col-md-8 lead">Добавить в закладки</button>
                                     <div className="popupMessage" id="tourAlert"><h1>Бронирование временно недоступно!</h1><p>Мы ждем пока нас станет чуть чуть больше...</p></div>
                                 </div>
                             </div>
