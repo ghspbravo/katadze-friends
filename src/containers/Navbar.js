@@ -100,7 +100,7 @@ class Navbar extends Component {
         if (window.outerWidth < 992) {
             this.props.changeNavType(NavbarTypes.MOBILE)
             document.querySelectorAll('.mobile-nav a').forEach(link => link.onclick = this.handleNavToggle)
-            document.querySelectorAll('.logo').forEach(link => link.onclick = this.handleNavToggle)
+            document.querySelectorAll('.logo').forEach(link => link.onclick = this.handleNavClose)
             return
         }
         this.selectNav(this.props.location.pathname)

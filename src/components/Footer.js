@@ -4,15 +4,18 @@ import instagram from '../resourses/icons/instagram.svg'
 import vk from '../resourses/icons/vk.svg'
 import youtube from '../resourses/icons/youtube.svg'
 
+import rools from "../resourses/Uslovia_polzoania_servisom.pdf";
+import confidence from "../resourses/Politika_konfidentsialnosti.pdf";
+
 export default () => {
     return (
         <div className="justify-center footer no-select">
             <div className="col-12 justify-center">
                 <ul className="row col-11 justify-center info">
-                    {/* <li className={`col-12 col-sm-3 ${window.innerWidth < 576 ? 'text-center' : 'text-right'}`}><a className="secondary small" href="">Политика</a></li>
+                    <li className={`col-12 col-sm-3 ${window.innerWidth < 576 ? 'text-center' : 'text-right'}`}><a target="blank" className="secondary small" href={rools}>Политика</a></li>
                     <li className="d-none d-sm-flex col-sm-1 justify-center secondary">•</li>
-                    <li className={`col-12 col-sm-3 ${window.innerWidth < 576 ? 'text-center' : ''}`}><a className="secondary small" href="">Конфиденциальность</a></li> */}
-                    <li className="col-12 text-center"><a href="" className="secondary small">Политика и конфиденциальность</a></li>
+                    <li className={`col-12 col-sm-3 ${window.innerWidth < 576 ? 'text-center' : ''}`}><a target="blank" className="secondary small" href={confidence}>Конфиденциальность</a></li>
+                    {/* <li className="col-12 text-center"><a href="" className="secondary small">Политика и конфиденциальность</a></li> */}
                 </ul>
             </div>
             <div className="col-12 justify-center v-offset-small">

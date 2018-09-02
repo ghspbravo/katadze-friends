@@ -82,7 +82,7 @@
   border-bottom: #41bfef 1px solid;
 }
 .secondary {
-  color: #c4c4c4;
+  color: #000;
 }
 .light-bg {
   background-color: #e6edf1;
@@ -845,6 +845,7 @@ label.file {
   height: 100%;
   opacity: 0;
   z-index: 1;
+  overflow: hidden;
 }
 .homepage-item-inner-title {
   font-family: OpenSans;
