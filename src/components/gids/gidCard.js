@@ -5,7 +5,7 @@ import Stars from './Stars';
 export default (gid, index) => {
     return (
         <div key={index} className="col-12 col-lg-5 gid-card">
-            <Link to={`/gids/id=${gid.id}`}>
+            <Link to={`/guids/id=${gid.id}`}>
                 <div className="row">
                     <div className="col-12 col-md-4"><img style={{minHeight: '250px', objectFit: 'cover'}} src={gid.img_photo} alt="gidPhoto" /></div>
                     <div className="col-10 offset-1 col-md-6">

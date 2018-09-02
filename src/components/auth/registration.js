@@ -19,8 +19,8 @@ export default (submitHandler, inputHandler, fileHandler, errors, changeValue, f
                     {errorMessage(errors, 'date_birth')}
                     <select name="gender" onChange={inputHandler} required>
                         <option value="" disabled selected hidden>Пол</option>
-                        <option value="0">Мужчина</option>
-                        <option value="1">Женщина</option>
+                        <option value="0">Мужской</option>
+                        <option value="1">Женский</option>
                     </select>
                     {errorMessage(errors, 'gender')}
                     <input name="residence" autoComplete="on" type='text' placeholder='Город' onChange={inputHandler} required />

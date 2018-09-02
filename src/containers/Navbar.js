@@ -63,7 +63,7 @@ class Navbar extends Component {
                     this.props.changeNavType(NavbarTypes.BG_LARGE)
                     break;
                 }
-            case "gids":
+            case "guids":
                 if (typeof pathList[2] !== 'undefined') {
                     if (pathList[2].match(/^search=/)) {
                         this.props.changeNavType(NavbarTypes.BG_ALT_SMALL)

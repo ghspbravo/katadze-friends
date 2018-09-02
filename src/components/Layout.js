@@ -59,12 +59,12 @@ class Layout extends Component {
                 <Route exact path='/registration' component={Auth} />
                 <Route exact path='/reset-password' component={Auth} />
                 <Route exact path='/events' component={Events} />
-                <Route exact path='/gids' component={Gids} />
+                <Route exact path='/guids' component={Gids} />
                 <Route exact path='/partners' component={Partners} />
 
-                <Route exact path='/gids/faq' component={Gids} />
-                <Route exact path='/gids/about' component={Gids} />
-                <Route exact path='/gids/contacts' component={Gids} />
+                <Route exact path='/guids/faq' component={Gids} />
+                <Route exact path='/guids/about' component={Gids} />
+                <Route exact path='/guids/contacts' component={Gids} />
 
                 <Route exact path='/partners/faq' component={Partners} />
                 <Route exact path='/partners/about' component={Partners} />
@@ -78,8 +78,8 @@ class Layout extends Component {
 
                 <Route exact path='/partners/id=:id' component={Partners} />
                 <Route exact path='/events/id=:id' component={Events} />
-                <Route exact path='/gids/id=:id' component={Gids} />
-                <Route exact path='/gids/search=:search' component={Gids} />
+                <Route exact path='/guids/id=:id' component={Gids} />
+                <Route exact path='/guids/search=:search' component={Gids} />
                 <Route exact path='/tours/:id' component={Gids} />
                 <Route path='/activate/' component={Profile} />
                 <Route path='/reset/' component={Auth} />

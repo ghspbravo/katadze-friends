@@ -22,7 +22,7 @@ export default (tour) => {
                                     <h1>{tour.name}</h1>
                                     <p className="small secondary">{tour.slogan}</p>
                                 </div>
-                                <Link to={`/gids/id=${tour.user}`} className="col-4 justify-center">
+                                <Link to={`/guids/id=${tour.user}`} className="col-4 justify-center">
                                     <div className="profile-image-small">
                                         <img src={thumbnail} alt="gidImage" />
                                     </div>

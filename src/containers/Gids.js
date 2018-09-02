@@ -56,15 +56,15 @@ class Gids extends Component {
                 this.props.onFetchTour(this.props.match.params.id)
                 break;
 
-            case '/gids':
+            case '/guids':
                 this.props.onFetchList()
                 break;
 
-            case '/gids/id=:id':
+            case '/guids/id=:id':
                 this.props.onFetchGid(this.props.match.params.id)
                 break;
 
-            case '/gids/search=:search':
+            case '/guids/search=:search':
                 this.props.onFilterGids(this.props.match.params.search)
                 break;
 
@@ -81,7 +81,7 @@ class Gids extends Component {
         return (
             <Switch>
                 {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
-                <Route exact path="/gids" render={() => {
+                <Route exact path="/guids" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC";
                     return list(
                         this.props.gids,
@@ -89,13 +89,13 @@ class Gids extends Component {
                         this.handleSearch
                     )
                 }} />
-                <Route exact path="/gids/id=:id" render={() => {
+                <Route exact path="/guids/id=:id" render={() => {
                     document.body.style.backgroundColor = "white"
                     return profile(
                         this.props.gid
                     )
                 }} />
-                <Route exact path="/gids/search=:search" render={() => {
+                <Route exact path="/guids/search=:search" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC"
                     return search(
                         this.props.match.params.search,
@@ -108,9 +108,9 @@ class Gids extends Component {
                         this.props.tour
                     )
                 }} />
-                <Route exact path="/gids/about" component={about} />
-                <Route exact path="/gids/faq" component={faq} />
-                <Route exact path="/gids/contacts" render={() => contacts(
+                <Route exact path="/guids/about" component={about} />
+                <Route exact path="/guids/faq" component={faq} />
+                <Route exact path="/guids/contacts" render={() => contacts(
                     this.handleInputChange,
                     this.handleContact,
                     this.props.errors,

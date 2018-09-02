@@ -17,7 +17,7 @@ export default (handeInput, handleSubmit, errors, status, fields) => {
 			<section id="writeus" className="light-bg">
 				<div className="row justify-center align-center vh-50">
 					<p className="secondary lead col-12 text-center">Напишите нам</p>
-					<h1 className="col-12 text-center">katadzeguide@mail.ru</h1>
+					<h1 className="col-12 text-center">info@katadze.ru</h1>
 				</div>
 			</section>
 			<section id="adress" className="container">
@@ -27,7 +27,7 @@ export default (handeInput, handleSubmit, errors, status, fields) => {
 				<div className="adress justify-center">
 					<h1 className="col-12">Екатеринбург</h1>
 					<p className="secondary">
-					ул. Малышева, д. 105, офис 6.29<br />
+					ул. Ленина д. 66 (вход справа)<br />
 						<span className="tel-number">+ 7 (966) 709-09-09</span>
 					</p>
 				</div>

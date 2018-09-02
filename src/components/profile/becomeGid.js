@@ -12,7 +12,8 @@ export default (inputHandler, inputListHandler, submitHandler, deleteHandle, fie
         default:
             return (
                 <form action="POST" autoComplete="off" onSubmit={submitHandler}>
-                    <section className="jumbotron">
+                    {user ? <p className="lead">Ура! Ты почти стал гидом. В течение короткого времени мы проверим твой профиль и будет тебе счастье!</p> : null}
+                    <section className='jumbotron'>
                         <div className="head"><p>Дополнительная информация</p></div>
                         <div className="row content">
                             <div className="col-3 text-right"><label htmlFor='aboutMe'><p className="small">Информация о себе</p></label></div>

@@ -50,7 +50,7 @@ export default class Menu extends Component {
                 document.querySelector('.homepage-item-wrapper').classList.add('hidden-lines')
             }
             document.querySelector('.homepage-item-wrapper').onmouseleave = () => {
-                document.querySelector('.homepage-item-wrapper').classList.remove('hidden-lines')
+               if (document.querySelector('.homepage-item-wrapper')) document.querySelector('.homepage-item-wrapper').classList.remove('hidden-lines')
             }
         }
         else {
@@ -130,13 +130,15 @@ export default class Menu extends Component {
                 <div className="d-none d-lg-block homepage">
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}>
-                        <span className="credits">made by katadze digital studio</span>
+                        <span className="credits">made by katadze digital studio
+                        <br />На сайте используются cookies</span>
                     </div>
                     <div className="homepage-item-wrapper">
                         <div id="events" className="homepage-item">
                             <div className="title">События.</div>
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}>
-                                <span className="credits">made by katadze digital studio</span>
+                                <span className="credits">made by katadze digital studio
+                                <br />На сайте используются cookies</span>
                             </div>
                             <div className="homepage-item-inner">
                                 <div className="homepage-item-inner-title">События</div>
@@ -154,7 +156,8 @@ export default class Menu extends Component {
                         <div id="gids" className="homepage-item">
                             <div className="title">Гиды.</div>
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${gids})` }}>
-                                <span className="credits">made by katadze digital studio</span>
+                                <span className="credits">made by katadze digital studio
+                                <br />На сайте используются cookies</span>
                             </div>
                             <div className="homepage-item-inner">
                                 <div className="homepage-item-inner-title">Гиды</div>
@@ -162,7 +165,7 @@ export default class Menu extends Component {
                                     <div className="homepage-item-inner-subtext-subtitle">
                                         <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!.</p>
                                     </div>
-                                    <Link className="homepage-item-inner-subtext-link" to="/gids">Перейти</Link>
+                                    <Link className="homepage-item-inner-subtext-link" to="/guids">Перейти</Link>
                                 </div>
                                 <div className="homepage-mask-wrapper">
                                     <svg width="100%" height="100%"> <defs> <mask id="knockout-text-1" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">❉</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-1)"></rect> </svg>
@@ -172,7 +175,8 @@ export default class Menu extends Component {
                         <div id="partners" className="homepage-item">
                             <div className="title">Друзья.</div>
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})` }}>
-                                <span className="credits">made by katadze digital studio</span>
+                                <span className="credits">made by katadze digital studio
+                                <br />На сайте используются cookies</span>
                             </div>
                             <div className="homepage-item-inner">
                                 <div className="homepage-item-inner-title">Друзья</div>
@@ -213,7 +217,7 @@ export default class Menu extends Component {
                             <div className="homepage-item-inner-subtext-subtitle">
                                 <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!.</p>
                             </div>
-                            <Link className="homepage-item-inner-subtext-link" to="/gids">Перейти</Link>
+                            <Link className="homepage-item-inner-subtext-link" to="/guids">Перейти</Link>
                         </div>
                         <div className="homepage-mask-wrapper">
                             <svg width="100%" height="100%"> <defs> <mask id="knockout-text-5" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✼</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-5)"></rect> </svg>
