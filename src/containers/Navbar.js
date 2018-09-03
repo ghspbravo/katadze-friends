@@ -29,7 +29,7 @@ class Navbar extends Component {
 
 
     handleNavOpen = () => {
-        TweenMax.to('#top-line', 0.5, { attr: { y2: '25' } })
+        TweenMax.to('#top-line', 0.5, { attr: { y2: '24' } })
         TweenMax.to('#bot-line', 0.5, { attr: { y2: '5' } })
         TweenMax.to('#mid-line', 0.5, { attr: { x1: '15', x2: '15' } })
 
@@ -41,7 +41,7 @@ class Navbar extends Component {
     }
     handleNavClose = () => {
         TweenMax.to('#top-line', 0.5, { attr: { y2: '5' } })
-        TweenMax.to('#bot-line', 0.5, { attr: { y2: '25' } })
+        TweenMax.to('#bot-line', 0.5, { attr: { y2: '24' } })
         TweenMax.to('#mid-line', 0.5, { attr: { x1: '0', x2: '30' } })
 
         let closeScene = new TimeLineMax({ onComplete: () => this.setState({ isNavOpen: false, isDrawing: false }) })

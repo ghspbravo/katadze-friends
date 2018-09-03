@@ -391,6 +391,7 @@ form input:focus {
 }
 form input {
   margin: 10px 0;
+  border-radius: 0;
 }
 form select {
   height: 50px;
@@ -625,8 +626,9 @@ label.file {
     opacity: 1 !important;
   }
   .todo-list > li:before {
-    height: 55px;
-    width: 55px;
+    max-height: 55px;
+    max-width: 55px;
+    width: 100%;
     margin-bottom: 40px;
   }
   .preloader .logo span,
@@ -693,8 +695,8 @@ label.file {
     padding: 20px;
   }
   .acsent-box .todo-list > li:before {
-    height: 45px;
-    width: 45px;
+    max-height: 45px;
+    max-width: 45px;
     margin-right: 20px;
   }
   .mobile-nav ul {

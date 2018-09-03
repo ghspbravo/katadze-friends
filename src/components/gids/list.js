@@ -18,7 +18,7 @@ export default (gids, inputHandler, searchHandler) => {
                         </div>
                         <p className="small" >Например: Екатеринбург</p>
                         <p className="v-offset-mid" style={{ color: 'white' }}>СОЗДАЙ СВОЮ ИСТОРИЮ!</p>
-                        <button type="button" onClick={() => document.querySelector('#become_gid').scrollIntoView({ behavior: "smooth" })} className="lead col-5">СТАТЬ ГИДОМ</button>
+                        <button type="button" onClick={() => document.querySelector('#become_gid').scrollIntoView({ behavior: "smooth" })} className="lead col-12 col-sm-5">СТАТЬ ГИДОМ</button>
                     </form>
                 </div>
             </section>
@@ -31,7 +31,7 @@ export default (gids, inputHandler, searchHandler) => {
                     }
                     <div id="become_gid" className="col-12 gid-card">
                         <div className="row v-offset-small">
-                            <ul className="offset-1 col-10 todo-list">
+                            <ul className="offset-sm-1 col-sm-10 col-12 todo-list">
                                 <li className="col-12">Создай профиль гида</li>
                                 <li className="col-12">Покажи места, которые знаешь</li>
                                 <li className="col-12">Заработай денег</li>

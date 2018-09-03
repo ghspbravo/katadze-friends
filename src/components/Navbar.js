@@ -60,10 +60,10 @@ export default (currentState, openNavHandler) => {
                         <Route render={() =>
                             <div className="d-block d-lg-none offset-5 offset-md-8 col-1 row">
                                 <button onClick={openNavHandler}>
-                                    <svg width="30" height="30">
-                                        <line id="top-line" className="burger-line" x1="0" y1="5" x2="30" y2="5" style={{ strokeWidth: 1 }} />
-                                        <line id="mid-line" className="burger-line" x1="0" y1="15" x2="30" y2="15" style={{ strokeWidth: 1 }} />
-                                        <line id="bot-line" className="burger-line" x1="0" y1="25" x2="30" y2="25" style={{ strokeWidth: 1 }} />
+                                    <svg width="25" height="25">
+                                        <line id="top-line" className="burger-line" x1="0" y1="5" x2="25" y2="5" style={{ strokeWidth: 1 }} />
+                                        <line id="mid-line" className="burger-line" x1="0" y1="15" x2="25" y2="15" style={{ strokeWidth: 1 }} />
+                                        <line id="bot-line" className="burger-line" x1="0" y1="24" x2="25" y2="24" style={{ strokeWidth: 1 }} />
                                     </svg>
                                 </button>
                             </div>} />

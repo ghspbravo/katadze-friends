@@ -12,9 +12,9 @@ export default () => {
         <div className="justify-center footer no-select">
             <div className="col-12 justify-center">
                 <ul className="row col-11 justify-center info">
-                    <li className={`col-12 col-sm-3 ${window.innerWidth < 576 ? 'text-center' : 'text-right'}`}><a target="blank" className="secondary small" href={rools}>Условия пользования</a></li>
+                    <li className={`col-12 col-sm-5 ${window.innerWidth < 576 ? 'text-center' : 'text-right'}`}><a target="blank" className="secondary small" href={rools}>Условия пользования</a></li>
                     <li className="d-none d-sm-flex col-sm-1 justify-center secondary">•</li>
-                    <li className={`col-12 col-sm-3 ${window.innerWidth < 576 ? 'text-center' : ''}`}><a target="blank" className="secondary small" href={confidence}>Конфиденциальность</a></li>
+                    <li className={`col-12 col-sm-5 ${window.innerWidth < 576 ? 'text-center' : ''}`}><a target="blank" className="secondary small" href={confidence}>Конфиденциальность</a></li>
                     {/* <li className="col-12 text-center"><a href="" className="secondary small">Политика и конфиденциальность</a></li> */}
                 </ul>
             </div>

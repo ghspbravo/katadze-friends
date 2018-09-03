@@ -22,29 +22,29 @@ export default (tour) => {
                                     <h1>{tour.name}</h1>
                                     <p className="small secondary">{tour.slogan}</p>
                                 </div>
-                                <Link to={`/guids/id=${tour.user}`} className="col-4 justify-center">
+                                {/* <Link to={`/guids/id=${tour.user}`} className="col-4 justify-center">
                                     <div className="profile-image-small">
                                         <img src={thumbnail} alt="gidImage" />
                                     </div>
                                     <p className="text-center v-offset-small col-12">Имя</p>
-                                </Link>
+                                </Link> */}
                             </div>
                             <div className="col-12 border-box v-offset-small d-lg-none">
                                 <p className="bold">{tour.price} руб. <span className="small">за час</span></p>
                                 <div className="row">
                                     {Stars(5)}
-                                    <span className="bold small">100</span>
+                                    {/* <span className="bold small">100</span> */}
                                 </div>
                                 <hr />
                                 <p className="bold"><span className="small">Даты и время</span></p>
                                 <div className="data-box" style={{ padding: '15px 0' }}>
                                     <div className="row">
-                                        <span className="small col-4 text-right">{tour.date_from}</span>
+                                        <span className="small col-4 text-right">{`${tour.date_from.split('-')[2]}.${tour.date_from.split('-')[1]}.${tour.date_from.split('-')[0]}`}</span>
                                         <svg className="col-4" height="10px" width="100%">
                                             <line x1="0" y1="7px" x2="100%" y2="7px"
                                                 style={{ stroke: 'black', strokeWidth: 2 }} />
                                         </svg>
-                                        <span className="small col-4">{tour.date_to}</span>
+                                        <span className="small col-4">{`${tour.date_to.split('-')[2]}.${tour.date_to.split('-')[1]}.${tour.date_to.split('-')[0]}`}</span>
                                     </div>
                                 </div>
                                 <p className="small bold v-offset-small">Место проведения</p>
@@ -88,7 +88,7 @@ export default (tour) => {
                                 <p className="small">{tour.extra_options}</p>
                                 <p className="small">Дополнительные расходы: {tour.expenses}</p>
                             </div>
-                            <div className="v-offset-small">
+                            {/* <div className="v-offset-small">
                                 <img src={tourVideo} alt="video" />
                             </div>
                             <div className="tour-rating v-offset-small">
@@ -138,25 +138,25 @@ export default (tour) => {
                                 <div className="reviews">
                                     {[...Array(6)].map((e, i) => review(i))}
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="l-offset-small d-none d-lg-block col-lg-4">
                             <div className="col-12 border-box sticky">
                                 <p className="bold">{tour.price} руб. <span className="small">за час</span></p>
                                 <div className="row">
                                     {Stars(5)}
-                                    <span className="bold small">100</span>
+                                    {/* <span className="bold small">100</span> */}
                                 </div>
                                 <hr />
                                 <p className="bold"><span className="small">Даты и время</span></p>
                                 <div className="data-box">
                                     <div className="row">
-                                        <span className="small col-md-5 col-xl-4 text-right">{tour.date_from}</span>
+                                        <span className="small col-md-5 col-xl-4 text-right">{`${tour.date_from.split('-')[2]}.${tour.date_from.split('-')[1]}.${tour.date_from.split('-')[0]}`}</span>
                                         <svg className="col-xl-4 col-md-2" height="10px" width="100%">
                                             <line x1="0" y1="7px" x2="100%" y2="7px"
                                                 style={{ stroke: 'black', strokeWidth: 2 }} />
                                         </svg>
-                                        <span className="small col-md-5 col-xl-4">{tour.date_to}</span>
+                                        <span className="small col-md-5 col-xl-4">{`${tour.date_to.split('-')[2]}.${tour.date_to.split('-')[1]}.${tour.date_to.split('-')[0]}`}</span>
                                     </div>
                                 </div>
                                 <p className="small bold v-offset-small">Место проведения</p>
