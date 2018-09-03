@@ -16,12 +16,12 @@ export default class FAQ extends Component {
                     <div className="col-md-4">
                         {
                             this.props.questionList.map((question, i) => <div className="col-12">
-                                <button style={{color: i === this.state.currentQuestion ? "#41bfef" : 'black'}} onClick={() => this.setState({currentQuestion: i})} className="question">{question.title}</button>
+                                <button style={{color: i === this.state.currentQuestion ? "#41bfef" : 'black'}} onClick={() => {this.setState({currentQuestion: i}); document.querySelector('#answer').scrollIntoView({behavior: 'smooth'})}} className="question">{question.title}</button>
                             </div>)
                         }
                     </div>
                     <div className="col-lg-6 col-md-8">
-                        <div className="col-12">
+                        <div id='answer' className="col-12">
                             <h1 className="bold no-margin">{this.props.questionList[this.state.currentQuestion].title}</h1>
                             <div className="v-offset-small">{this.props.questionList[this.state.currentQuestion].answer}</div>
                         </div>
