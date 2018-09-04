@@ -124,7 +124,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                             </div>
                         </section>
                         : null}
-                    {/RKV/.test(event.name)
+                    {/RKW/.test(event.name)
                         ? regform(handeInput, handleSubmit, errors, status, fields, handleValueChange)
                         : null
                     }

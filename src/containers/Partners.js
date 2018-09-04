@@ -59,7 +59,7 @@ class Partners extends Component {
     componentDidMount() {
         switch (this.props.match.path) {
             case '/partners':
-                this.props.fetchPartnerList()
+                this.props.partners && this.props.partners[0] ? null : this.props.fetchPartnerList()
                 break;
 
             case '/partners/id=:id':

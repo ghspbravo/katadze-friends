@@ -72,7 +72,7 @@ class Events extends Component {
     componentDidMount() {
         switch (this.props.match.path) {
             case '/events':
-                this.props.fetchEventList()
+                this.props.events && this.props.events[0] ? null : this.props.fetchEventList()
                 break;
 
             case '/events/id=:id':
