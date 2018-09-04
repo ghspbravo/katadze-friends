@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 import gidCard from './gidCard';
 
-export default (gids, inputHandler, searchHandler, city) => {
+export default (gids, inputHandler, searchHandler, loadMore, nextPage) => {
     return (
         <div>
-            <section id="gids-header" className="vh-100" backgroundImage={city}>
+            <section id="gids-header" className="vh-100">
                 <div className="row">
                     <form className="offset-1 offset-xl-3 offset-md-2 col-10 col-md-8 col-xl-4">
                         <h1 className="upper">Найти гида</h1>
@@ -29,6 +29,7 @@ export default (gids, inputHandler, searchHandler, city) => {
                         ? gids.map((info, i) => gidCard(info, i))
                         : <p>Loading...</p>
                     }
+                    <div className="col-12 v-offset-small justify-center"><button onClick={nextPage !== null ? () => loadMore(nextPage) : null} style={nextPage === null ? {backgroundColor: 'lightgray'}: null} className="col-lg-3 lead">{`${nextPage !== null ? 'Показать еще' : 'Все гиды загружены'}`}</button></div>
                     <div id="become_gid" className="col-12 gid-card">
                         <div className="row v-offset-small">
                             <ul className="offset-sm-1 col-sm-10 col-12 todo-list">

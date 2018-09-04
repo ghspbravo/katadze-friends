@@ -23,7 +23,7 @@ export const CITY_INFO_FAILURE = '@@gids/CITY_INFO_FAILURE';
 
 export const gidList = (page = 0) => ({
 	[RSAA]: {
-		endpoint: `https://${server}/api/users/?format=json`,
+		endpoint: `https://${server}/api/users/?${page !== 0 ? `page=${page}` : null}&format=json`,
 		method: 'GET',
 		headers: {},
 		types: [

@@ -80,13 +80,16 @@ class Gids extends Component {
     render() {
         return (
             <Switch>
+                {console.log(this.props)}
                 {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
                 <Route exact path="/guids" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC";
                     return list(
                         this.props.gids,
                         this.handleInputChange,
-                        this.handleSearch
+                        this.handleSearch,
+                        this.props.onFetchList,
+                        this.props.next
                     )
                 }} />
                 <Route exact path="/guids/id=:id" render={() => {
@@ -125,6 +128,7 @@ class Gids extends Component {
 
 const mapStateToProps = state => ({
     gids: state.gids.list,
+    next: state.gids.next,
     gid: state.gids.info,
     search: state.gids.search,
     tour: state.gids.tour,

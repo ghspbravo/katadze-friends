@@ -10,7 +10,7 @@ export default (tour, index) => {
             <div className="row justify-center align-center tour-preview" style={{ backgroundImage: `url(${thumbnail})`, backgroundSize: 'cover' }} >
                 <div className="text-center">
                     <p style={{color: 'white'}}>{tour.name}</p>
-                    <p style={{color: 'white'}}>{tour.price} руб.</p>
+                    <p style={{color: 'white'}}>{tour.price.split('.')[0]} руб.</p>
                 </div>
             </div>
         </Link>

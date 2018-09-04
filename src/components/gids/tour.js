@@ -142,7 +142,7 @@ export default (tour) => {
                         </div>
                         <div className="l-offset-small d-none d-lg-block col-lg-4">
                             <div className="col-12 border-box sticky">
-                                <p className="bold">{tour.price} руб. <span className="small">за час</span></p>
+                                <p className="bold">{tour.price.split('.')[0]} руб. <span className="small">за час</span></p>
                                 <div className="row">
                                     {Stars(5)}
                                     {/* <span className="bold small">100</span> */}

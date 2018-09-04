@@ -120,7 +120,7 @@ export default (gid) => {
                 <div className={`${window.innerWidth < 992 ? '' : 'l-offset-mid'} col-10 col-lg-7 col-xl-6`}>
                     <section className="d-none d-lg-block jumbotron">
                         <div className="content">
-                            <div className="price-popup"><p style={{ color: 'white' }}>{gid.profile.price == 0 ? 'БЕСПЛАТНО' : `${gid.profile.price} руб`}</p></div>
+                            <div className="price-popup"><p style={{ color: 'white' }}>{gid.profile.price == 0 ? 'БЕСПЛАТНО' : `${gid.profile.price.split('.')[0]} руб`}</p></div>
                             <p>{`Привет, меня зовут ${gid.first_name} ${gid.last_name}!`}</p>
                             <p className="small secondary">{gid.profile.keyphrase}</p>
                             <hr className="v-offset-small" />

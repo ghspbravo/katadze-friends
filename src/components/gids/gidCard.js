@@ -7,16 +7,16 @@ export default (gid, index) => {
         <div key={index} className="col-12 col-lg-5 gid-card">
             <Link to={`/guids/id=${gid.id}`}>
                 <div className="row">
-                    <div className="col-12 col-md-4"><img style={{minHeight: '250px', objectFit: 'cover'}} src={gid.img_photo} alt="gidPhoto" /></div>
+                    <div className="col-12 col-md-4"><img style={{width: '100%', height: '250px', objectFit: 'cover'}} src={gid.img_photo} alt="gidPhoto" /></div>
                     <div className="col-10 offset-1 col-md-6">
                         <div className="row align-center">
                             <div className="col-8">
                                 <p className="small bold">{gid.first_name}</p>
                                 <p className="small secondary">{gid.residence}</p>
                             </div>
-                            <div className="col-4"><p className="small"><span>{ gid.profile.price == 0 ? 'БЕСПЛАТНО' : `${gid.profile.price} руб`}</span></p></div>
+                            <div className="col-4"><p className="small"><span>{ gid.profile.price == 0 ? 'БЕСПЛАТНО' : `${gid.profile.price.split('.')[0]} руб`}</span></p></div>
                         </div>
-                        <div className="row gid-description">
+                        <div className="row gid-description align-center" style={{height: '50%', overflowY: 'auto'}}>
                             <p className="small">{gid.profile.keyphrase}</p>
                         </div>
                         <div className="row text-center">

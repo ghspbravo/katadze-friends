@@ -1,7 +1,7 @@
 import * as gids from '../actions/gids'
 import defaultCity from '../resourses/Gids/header-image.png'
 
-export default (state = {}, action) => {
+export default (state = {list: []}, action) => {
     switch (action.type) {
         case gids.GIDS_FILTER_SUCCESS:
         return {
@@ -9,9 +9,11 @@ export default (state = {}, action) => {
             search: action.payload.results
         }
         case gids.LIST_SUCCESS:
+        // Array.isArray(state.list) ? state.list.push(action.payload.results) : null
         return {
             ...state,
-            list: action.payload.results
+            list: [...state.list, ...action.payload.results],
+            next: action.payload.next ? action.payload.next.match(/page=(\d+)/)[1] : null,
         }
         case gids.INFO_SUCCESS:
         return {
