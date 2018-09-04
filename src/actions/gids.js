@@ -17,6 +17,10 @@ export const GIDS_FILTER_REQUEST = '@@gids/GIDS_FILTER_REQUEST';
 export const GIDS_FILTER_SUCCESS = '@@gids/GIDS_FILTER_SUCCESS';
 export const GIDS_FILTER_FAILURE = '@@gids/GIDS_FILTER_FAILURE';
 
+export const CITY_INFO_REQUEST = '@@gids/CITY_INFO_REQUEST';
+export const CITY_INFO_SUCCESS = '@@gids/CITY_INFO_SUCCESS';
+export const CITY_INFO_FAILURE = '@@gids/CITY_INFO_FAILURE';
+
 export const gidList = (page = 0) => ({
 	[RSAA]: {
 		endpoint: `https://${server}/api/users/?format=json`,
@@ -57,6 +61,17 @@ export const gidsFilter = (location) => ({
 		headers: {},
 		types: [
 			GIDS_FILTER_REQUEST, GIDS_FILTER_SUCCESS, GIDS_FILTER_FAILURE
+		]
+	},
+});
+
+export const getCity = (city) => ({
+	[RSAA]: {
+		endpoint: `https://${server}/api/city?name=${city}&format=json`,
+		method: 'GET',
+		headers: {},
+		types: [
+			CITY_INFO_REQUEST, CITY_INFO_SUCCESS, CITY_INFO_FAILURE
 		]
 	},
 });

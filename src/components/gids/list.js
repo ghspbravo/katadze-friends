@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 import gidCard from './gidCard';
 
-export default (gids, inputHandler, searchHandler) => {
+export default (gids, inputHandler, searchHandler, city) => {
     return (
         <div>
-            <section id="gids-header" className="vh-100">
+            <section id="gids-header" className="vh-100" backgroundImage={city}>
                 <div className="row">
                     <form className="offset-1 offset-xl-3 offset-md-2 col-10 col-md-8 col-xl-4">
                         <h1 className="upper">Найти гида</h1>

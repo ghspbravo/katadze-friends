@@ -25,7 +25,7 @@ export default (inputHandler, inputListHandler, submitHandler, deleteHandle, fie
 <br /><br /> Расскажите им о себе: какие у вас жизненные принципы?</p></div>
 
                             <div className="col-3 text-right"><label htmlFor='activityType'><p className="small">Род деятельности</p></label></div>
-                            <div className="offset-1 col-8"><input readOnly={user ? true : false} value={user ? null : undefined} onChange={inputHandler} className='col-12' id='activityType' name="rod" required /></div>
+                            <div className="offset-1 col-8"><input readOnly={user ? true : false} value={user ? user.occupation : undefined} onChange={inputHandler} className='col-12' id='activityType' name="rod" required /></div>
 
 
                             <div className="col-3 row align-center justify-right">

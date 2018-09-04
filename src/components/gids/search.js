@@ -1,10 +1,10 @@
 import React from 'react'
 import gidCard from './gidCard';
 
-export default (search, gids) => {
+export default (search, gids, city) => {
     return (
         <div>
-            <section id="gids-header" className="vh-100">
+            <section id="gids-header" className="vh-100" style={{backgroundImage: city && city.img ? `url(${city.img})` : ''}}>
                 <div className="row justify-center">
                     <h1 className="upper">{search}</h1>
                 </div>

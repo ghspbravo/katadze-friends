@@ -9,7 +9,7 @@ import list from '../components/gids/list'
 import profile from '../components/gids/profile';
 import search from '../components/gids/search';
 import tour from '../components/gids/tour';
-import { gidList, gidInfo, tourInfo, gidsFilter } from '../actions/gids';
+import { gidList, gidInfo, tourInfo, gidsFilter, getCity } from '../actions/gids';
 import faq from '../components/gids/faq';
 import about from '../components/gids/about';
 import contacts from '../components/gids/contacts';
@@ -99,7 +99,8 @@ class Gids extends Component {
                     document.body.style.backgroundColor = "#E8EFFC"
                     return search(
                         this.props.match.params.search,
-                        this.props.search
+                        this.props.search,
+                        this.props.city
                     )
                 }} />
                 <Route exact path="/tours/:id" render={() => {
@@ -127,6 +128,7 @@ const mapStateToProps = state => ({
     gid: state.gids.info,
     search: state.gids.search,
     tour: state.gids.tour,
+    city: state.gids.city,
     status: state.ticket.status,
     errors: getFiledErrors(state.ticket),
 	resetStatus: () => resetStatus(state)
@@ -136,7 +138,10 @@ const mapDispatchToProps = dispatch => ({
     onFetchList: page => dispatch(gidList(page)),
     onFetchGid: id => dispatch(gidInfo(id)),
     onFetchTour: id => dispatch(tourInfo(id)),
-    onFilterGids: location => dispatch(gidsFilter(location)),
+    onFilterGids: location => {
+        dispatch(getCity(location))
+        dispatch(gidsFilter(location))
+    },
     onContact: (title, name, email, question) => dispatch(contact(title, name, email, question)),
 
     forceRefresh: () => {
