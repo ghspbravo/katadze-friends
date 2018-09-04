@@ -58,10 +58,12 @@ export default (gid) => {
                             <div className="head"><p className="small">Обо мне</p></div>
                             <div className="content no-padding">
                                 <ul>
-                                    <li className="v-offset-small">
+                                    { gid.profile.occupation
+                                    ? <li className="v-offset-small">
                                         <p className="small bold">Род деятельности</p>
                                         <p className="small">{gid.profile.occupation}</p>
                                     </li>
+                                    : null}
                                     <li className="v-offset-small">
                                         <p className="small bold">Увлечения</p>
                                         <p className="small">{gid.profile.hobbies.map((hobbies, i) => `${hobbiesList[hobbies.code]}${i+1 === gid.profile.hobbies.length ? '.' : ', '}`)}</p>
