@@ -105,7 +105,7 @@ class Navbar extends Component {
         }
         this.selectNav(this.props.location.pathname)
         window.onscroll = e => {
-            if (window.pageYOffset / window.innerHeight > 0.4 && window.pageYOffset / window.innerHeight < 0.5) null
+            if (window.pageYOffset / window.innerHeight > 0.4 && window.pageYOffset / window.innerHeight < 0.7) null
             else if (window.pageYOffset / window.innerHeight > 0.5) {
                 if (this.props.navState !== NavbarTypes.BG_SMALL
                     && this.props.navState !== NavbarTypes.BG_SMALL_STICKY
