@@ -9,8 +9,8 @@ export default events => {
             </section>
             <section className="container">
                 {
-                    events && events.results
-                        ? events.results.map(event =>
+                    events
+                        ? events.map(event =>
                             <div key={event.id} className="row list-card">
                                 <div className="col-lg-6 order-fix">
                                     <h1>{event.name}</h1>

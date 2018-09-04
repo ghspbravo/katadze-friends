@@ -6,7 +6,7 @@ export default (state = {}, action) => {
         case event.LIST_SUCCESS:
             return {
                 ...state,
-                list: action.payload
+                list: action.payload.results
             }
         case event.EVENT_SUCCESS:
             return {

@@ -5,7 +5,7 @@ export default (state = {}, action) => {
 
         case partner.LIST_SUCCESS:
             return {
-                list: action.payload
+                list: action.payload.results
             }
         case partner.PARTNER_SUCCESS:
             return {

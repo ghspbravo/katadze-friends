@@ -16,8 +16,8 @@ export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, h
                 }
             </section>
             {
-                partners && partners.results
-                    ? partners.results.map(category =>
+                partners
+                    ? partners.map(category =>
                         <section key={category.id} className="container">
                             <div className="row">
                                 <div className="category-name col-12">
