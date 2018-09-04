@@ -57,7 +57,7 @@ class Gids extends Component {
                 break;
 
             case '/guids':
-                this.props.onFetchList()
+                this.props.gids && this.props.gids[0] ? null : this.props.onFetchList()
                 break;
 
             case '/guids/id=:id':
@@ -80,7 +80,6 @@ class Gids extends Component {
     render() {
         return (
             <Switch>
-                {console.log(this.props)}
                 {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
                 <Route exact path="/guids" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC";
