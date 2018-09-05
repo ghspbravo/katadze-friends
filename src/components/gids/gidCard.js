@@ -4,11 +4,11 @@ import Stars from './Stars';
 
 export default (gid, index) => {
     return (
-        <div key={index} className="col-12 col-lg-5 gid-card">
+        <div key={index} className="col-12 col-xl-5 gid-card">
             <Link to={`/guids/id=${gid.id}`}>
                 <div className="row">
-                    <div className="col-12 col-md-4"><img style={{width: '100%', height: '250px', objectFit: 'cover'}} src={gid.img_photo} alt="gidPhoto" /></div>
-                    <div className="col-10 offset-1 col-md-6">
+                    <div className="col-12 col-md-4" style={{height: '250px'}}><img style={{width: '100%', height: '250px', objectFit: window.innerWidth < 568 ? 'contain' : 'cover'}} src={gid.img_photo} alt="gidPhoto" /></div>
+                    <div className="col-10 offset-1 col-md-6" style={{display: 'flex', flexDirection: 'column', paddingTop: '10px', paddingBottom: '10px', height: '250px'}}>
                         <div className="row align-center">
                             <div className="col-8">
                                 <p className="small bold">{gid.first_name}</p>
@@ -17,7 +17,7 @@ export default (gid, index) => {
                             <div className="col-4"><p className="small"><span>{ gid.profile.price == 0 ? 'БЕСПЛАТНО' : `${gid.profile.price.split('.')[0]} руб`}</span></p></div>
                         </div>
                         <div className="row gid-description align-center" style={{height: '50%', overflowY: 'auto'}}>
-                            <p className="small">{gid.profile.keyphrase}</p>
+                            <p className="small" style={{maxHeight: '100%', padding: '10px 0'}}>{gid.profile.keyphrase}</p>
                         </div>
                         <div className="row text-center">
                             <div className="col-5"><p className="small secondary">Отзывы</p>

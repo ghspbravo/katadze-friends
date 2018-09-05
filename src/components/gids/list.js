@@ -11,8 +11,8 @@ export default (gids, inputHandler, searchHandler, loadMore, nextPage) => {
                     <form className="offset-1 offset-xl-3 offset-md-2 col-10 col-md-8 col-xl-4">
                         <h1 className="upper">Найти гида</h1>
                         <div className="row no-margin searchBox">
-                            <div className="col-8"><input name="search" onChange={inputHandler} type="text" /></div>
-                            <div className="col-4"><button onClick={searchHandler} ><p className="small">
+                            <div className="col-8"><input style={{borderRadius: '25px 0 0 25px'}} name="search" onChange={inputHandler} type="text" /></div>
+                            <div className="col-4"><button style={{borderRadius: '0 25px 25px 0'}} onClick={searchHandler} ><p className="small">
                                 Искать
                                 </p></button></div>
                         </div>
