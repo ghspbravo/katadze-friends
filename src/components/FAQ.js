@@ -16,7 +16,7 @@ export default class FAQ extends Component {
                     <div className="col-md-4">
                         {
                             this.props.questionList.map((question, i) => <div className="col-12">
-                                <button style={{color: i === this.state.currentQuestion ? "#41bfef" : 'black'}} onClick={() => {this.setState({currentQuestion: i}); document.querySelector('#answer').scrollIntoView({behavior: 'smooth'})}} className="question">{question.title}</button>
+                                <button style={{color: i === this.state.currentQuestion ? "#41bfef" : 'black'}} onClick={() => {this.setState({currentQuestion: i}); document.querySelector('#answer').scrollIntoView({behavior: 'smooth'})}} className="question"><p>{question.title}</p></button>
                             </div>)
                         }
                     </div>
