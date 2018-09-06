@@ -13,13 +13,13 @@ export default (currentState, openNavHandler) => {
                             <li>
                                 <Switch>
                                     <Route path="/partners" render={() => <NavLink to="/partners" activeClassName="active-nav">Партнеры</NavLink>} />
-                                    <Route path="/events" render={() => <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>} />
                                     <Route path="/guids" render={() => <NavLink to="/guids" activeClassName="active-nav">Гиды</NavLink>} />
+                                    <Route path="/events" render={() => <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>} />
                                     <Route path="/tours" render={() => <NavLink to="/guids" activeClassName="active-nav">Гиды</NavLink>} />
                                     <Route path="/profile" render={() => <NavLink to="/guids" activeClassName="active-nav">Гиды</NavLink>} />
 
 
-                                    <Route render={() => <NavLink to="/">Главная</NavLink>} />
+                                    <Route render={() => <NavLink to="/guids">Гиды</NavLink>} />
                                 </Switch>
                             </li>
                             <Switch>
@@ -82,7 +82,7 @@ export default (currentState, openNavHandler) => {
                             <Route path="/profile" render={() => <NavLink to="/guids" activeClassName="active-nav">Гиды</NavLink>} />
 
 
-                            <Route render={() => <NavLink to="/">Главная</NavLink>} />
+                            <Route render={() => <NavLink to="/guids">Гиды</NavLink>} />
                         </Switch>
                     </li>
                     <Switch>

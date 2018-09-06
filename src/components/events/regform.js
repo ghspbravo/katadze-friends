@@ -10,7 +10,10 @@ export default (handeInput, handleSubmit, errors, status, fields, changeValue) =
 
         default:
             return <section>
-                <h1 className="text-center">Заполни заявку на РКВ 2019!</h1>
+                <div className="container">
+                    <h1 className="text-center">Заполни заявку на РКВ 2019!</h1>
+                    <p>Если ты не хочешь оплачивать поездку сейчас</p>
+                </div>
                 <form action="POST" className="container" onSubmit={handleSubmit}>
                     <div className="row v-offset-small align-center justify-center">
                         <label className={`col-12 col-lg-4 col-md-6 ${window.innerWidth < 576 ? '' : 'text-right'}`} htmlFor="name"><p className="small">Ф.И.О. / Name, surname</p></label>

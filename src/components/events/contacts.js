@@ -23,7 +23,7 @@ export default (handeInput, handleSubmit, errors, status, fields) => {
 			</section>
 			<section id="adress" className="container">
 				<div className="justify-center">
-					<div className="col-4"><img src={cityImage} alt="cityImage" /></div>
+					<div className="col-lg-4 col-md-6 col-12"><img src={cityImage} alt="cityImage" /></div>
 				</div>
 				<div className="adress justify-center">
 					<h1 className="col-12">Екатеринбург</h1>

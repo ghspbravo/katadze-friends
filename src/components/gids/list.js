@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import gidCard from './gidCard';
+import howToBecomeGid from '../../resourses/Gids/how_to_become_gid.jpg'
 
 export default (gids, inputHandler, searchHandler, loadMore, nextPage) => {
     return (
@@ -31,12 +32,13 @@ export default (gids, inputHandler, searchHandler, loadMore, nextPage) => {
                     }
                     <div className="col-12 v-offset-small justify-center"><button onClick={nextPage !== null ? () => loadMore(nextPage) : null} style={nextPage === null ? {backgroundColor: 'lightgray'}: null} className="col-lg-3 lead">{`${nextPage !== null ? 'Показать еще' : 'Все гиды загружены'}`}</button></div>
                     <div id="become_gid" className="col-12 gid-card">
-                        <div className="row v-offset-small">
-                            <ul className="offset-sm-1 col-sm-10 col-12 todo-list">
+                        <div className="row v-offset-small justify-center">
+                            {/* <ul className="offset-sm-1 col-sm-10 col-12 todo-list">
                                 <li className="col-12">Создай профиль гида</li>
                                 <li className="col-12">Покажи места, которые знаешь</li>
                                 <li className="col-12">Заработай денег</li>
-                            </ul>
+                            </ul> */}
+                            <img className="col-xl-10 col-12" src={howToBecomeGid} alt="instruction" style={{maxHeight: '50vw', objectFit: 'contain'}} />
                         </div>
                         <Link to='/profile/become-gid'><button className="offset-2 col-8 offset-lg-4 offset-xl-5 col-lg-4 col-xl-2 lead">Стать гидом</button></Link>
                     </div>
@@ -44,7 +46,7 @@ export default (gids, inputHandler, searchHandler, loadMore, nextPage) => {
                     <div className="col-12 gid-card v-offset-mid">
                         <div className="offset-md-1 col-md-10">
                             <h1 style={{ textAlign: 'center' }}><span>Кatadze-guide</span> - покажи любимый город своими глазами.</h1>
-                            <p className="v-offset-small">
+                            <p className="v-offset-small" style={{maxHeight: '100vh', overflowY: 'auto'}}>
                                 Надоели заезженные туры по любимым городам и странам? Множество людей и завышенные цены? А персональный гид от оператора водит теми же маршрутами и рассказывает то же самое, что и группам?
     <br /><br />
                                 Тогда специально для Вас – Katadze Guide – удобный сервис, позволяющий отыскать поистине уникального и увлекательного местного гида, который покажет Вам свою страну и свой город, какими их видят все местные жители. Он отведет в такие места, где Вы проникнитесь местным духом, ведь туристы обычно там не появляются. Он познакомит с настоящей кухней, расскажет городские легенды, не описанные в туристических брошюрах и буклетах.
@@ -61,7 +63,7 @@ export default (gids, inputHandler, searchHandler, loadMore, nextPage) => {
     <br /><br />
                                 Katadze Guide – для тех, кто любит свой город!
     <br /><br />
-                                Когда хочется выжать из путешествия всё по максимуму – интересно и со вкусом. <Link to="/profile">
+                                Когда хочется выжать из путешествия всё по максимуму – интересно и со вкусом. <Link className="bold" to="/profile">
                                     Регистрируйся
                                 </Link> и наслаждайся!
                             </p>

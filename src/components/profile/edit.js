@@ -59,7 +59,7 @@ export default (user) => {
 					<div className="col-md-4 col-12 avatar-container justify-center">
 						<img src={user.img_photo} alt="avatar-preview" />
 					</div>
-					<div className="col-md-8 col-12">
+					<div className="col-md-8 col-12 align-center">
 						<p className="small">Важно, чтобы ваше лицо было отчетливо видно на фото.</p>
 						<label className="file v-offset-small" htmlFor="avatar"><p>Загрузить фото</p></label>
 						<input disabled id="avatar" type="file" accept=".jpg, .jpeg, .png" />

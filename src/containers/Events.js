@@ -68,7 +68,7 @@ class Events extends Component {
     }
 
     handleValueChange = (name, value) => this.setState({ [name]: value })
-
+    
     componentDidMount() {
         switch (this.props.match.path) {
             case '/events':

@@ -166,7 +166,7 @@ button.more-button {
   background-color: #41bfef;
 }
 .one-page {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
 }
@@ -260,6 +260,7 @@ p {
   line-height: 34px;
   margin-bottom: 5px;
   color: #000;
+  white-space: pre-line;
 }
 p.lead {
   font-family: OpenSans;

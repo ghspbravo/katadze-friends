@@ -49,8 +49,8 @@ export const formatToDate = (event) => {
     const mounth = input.substring(2, 4);
     const year = input.substring(4, 8);
 
-    if (input.length > 3) { return `${day}.${mounth}.${year}`; }
-    else if (input.length > 1) { return `${day}.${mounth}`; }
+    if (input.length > 4) { return `${day}.${mounth}.${year}`; }
+    else if (input.length > 2) { return `${day}.${mounth}`; }
     else if (input.length > 0) { return `${day}` }
 };
 

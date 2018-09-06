@@ -15,7 +15,6 @@ export default (submitHandler, inputHandler, errors, status) => {
                     {errorMessage(errors, 'email')}
                     <button type="submit">Сбросить пароль</button>
                 </form>
-                }
         </div>
         )
     }
