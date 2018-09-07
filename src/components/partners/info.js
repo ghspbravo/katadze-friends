@@ -1,4 +1,5 @@
 import React from 'react'
+import Parser from 'html-react-parser'
 
 export default partner => {
     return (
@@ -9,7 +10,7 @@ export default partner => {
                 <img className="col-12" src={partner.img} alt="partnerImg" />
                 <section>
                     <h1 className="bold">Описание</h1>
-                    <p className="v-offset-small justify-text">{partner.content}</p>
+                    <p className="v-offset-small justify-text">{Parser(partner.content)}</p>
                 </section>
                 {partner.services.length > 0
                 ? <section>
@@ -24,13 +25,13 @@ export default partner => {
                 {partner.conditions
                 ? <section>
                     <h1 className="bold">Условия</h1>
-                    <p className="justify-text v-offset-small">{partner.conditions}</p>
+                    <p className="justify-text v-offset-small">{Parser(partner.conditions)}</p>
                 </section>
                 :null}
                 {partner.schedule
                 ? <section>
                     <h1 className="bold">Расписание</h1>
-                    <p className="v-offset-small">{partner.schedule}</p>
+                    <p className="v-offset-small">{Parser(partner.schedule)}</p>
                     <ul className="row week v-offset-mid col-12 justify-center">
                         <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('1') ? 'lightgreen' : 'lightcoral'}}>ПН</li>
                         <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('2') ? 'lightgreen' : 'lightcoral'}}>ВТ</li>

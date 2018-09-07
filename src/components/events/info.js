@@ -3,19 +3,21 @@ import LogoWhite from '../../resourses/LogoWhite.png'
 import regform from './regform';
 import Gallery from './Gallery';
 
+import Parser from 'html-react-parser';
+
 export default (event, currentTariff, handleTariffChange, handleAcquiring, handeInput, handleSubmit, errors, status, fields, handleValueChange) => {
     return (
         <div>
             {event && event.sections
                 ? <div>
-                    {/RKW/.test(event.name) && window.innerWidth > 992
+                    {/РКВ/.test(event.name) && window.innerWidth > 992
                         ? <section className="header" style={{ height: '75vh', paddingTop: '25vh', paddingBottom: '25vh' }}>
                             <h2>{event.name}</h2>
                             {window.addEventListener('scroll', () => document.body.contains(document.querySelector('#header_video')) ? document.querySelector('#header_video').style.position = window.scrollY > window.innerHeight * 0.7 ? 'absolute' : 'fixed' : null)}
                             {event && event.tariffs[0]
                                 ? <button onClick={() => document.querySelector('#tariffs').scrollIntoView({ behavior: 'smooth' })} className="lead col-10 col-md-4 col-lg-2">Выбор тарифа</button>
                                 : null}
-                            <div id="header_video" style={{ position: 'fixed', width: '100%', height: '100%', top: '0', left: '0', zIndex: '-1', pointerEvents: 'none' }}>
+                            <div id="header_video" style={{ position: 'fixed', width: `${window.innerWidth > 1920 ? window.innerWidth : 1920}px`, height: '1080px', left: `${window.innerWidth < 1920 ? (window.innerWidth - 1920)/2 : 0}px`, top: '0', zIndex: '-1', pointerEvents: 'none' }}>
                                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/A3doCFpZGDY?start=21&end=115&autoplay=1&controls=0&loop=1&playlist=A3doCFpZGDY&modestbranding=1&showinfo=0&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
                         </section>
@@ -35,13 +37,13 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                                 <div className="section-id">{`0${section.idx}`}</div>
                                                 <div className=" col-12 offset-lg-6 col-lg-5">
                                                     <h1>{section.title}</h1>
-                                                    <p>{section.content}</p>
+                                                    {Parser(section.content)}
                                                 </div>
                                             </div>
                                             : <div>
                                                 <div className="col-12 offset-lg-1 col-lg-5" style={{ zIndex: 5 }}>
                                                     <h1>{section.title}</h1>
-                                                    <p>{section.content}</p>
+                                                    {Parser(section.content)}
                                                 </div>
                                                 <div className="section-id">{`0${section.idx}`}</div>
                                             </div>
@@ -74,7 +76,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                 case 2:
                                     return <section key={section.id} className="eventSection one-page" style={window.innerWidth < 992 ? { backgroundColor: '#fb0' } : {}}>
                                         <div className="offset-lg-1 col-12 col-md-8">
-                                            <h1><span style={window.innerWidth < 992 ? { color: '#fff' } : {}}>{section.title}</span></h1>
+                                            <h1><span style={window.innerWidth < 992 ? { color: '#fff' } : {}}>{Parser(section.title)}</span></h1>
                                             <p className="small secondary v-offset-large" style={window.innerWidth < 992 ? { color: '#fff' } : {}}>{section.content}</p>
                                         </div>
                                         <div className="d-none d-md-flex col-md-4 col-lg-3 one-page justify-center acsent-alt-bg">
@@ -100,7 +102,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                         </section>
                         : null
                     }
-                    {/RKW/.test(event.name)
+                    {/РКВ/.test(event.name)
                         ? <Gallery />
                         : null
                     }
@@ -121,12 +123,12 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                     }
                                 </div>
                                 <div className="offset-lg-2 offset-md-1 col-md-7">
-                                    <div className="col-12 tarif-description"><p>
+                                    <div className="col-12 tarif-description" style={{color: 'white'}}>
                                         {
-                                            typeof currentTariff !== 'undefined' ? event.tariffs[currentTariff].description : 'Нажмите на название тарифа для просмотра информации'
+                                            typeof currentTariff !== 'undefined' ? Parser(event.tariffs[currentTariff].description) : <p>Нажмите на название тарифа для просмотра информации</p>
                                         }
-                                    </p></div>
-                                    <div className="row">
+                                    </div>
+                                    <div className="no-margin row">
                                         <div className="col-lg-4 tarif-price v-offset-small"><p className="small">
                                             {
                                                 typeof currentTariff !== 'undefined' ? `${event.tariffs[currentTariff].price} рублей` : 'неизвестно'
@@ -141,31 +143,25 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                         </section>
                         : null
                     }
-                    {/RKW/.test(event.name)
-                        ? <section className="container">
-
-                        </section>
-                        : null
-                    }
-                    {/RKW/.test(event.name)
+                    {/РКВ/.test(event.name)
                         ? <section className="container">
                             <p className="small">
-                                По всем вопросам участия в проекте можно писать Юлии Махровой (ссылка в ВК)
+                                По всем вопросам участия в проекте можно писать <a href="https://vk.com/mahrovanov" className="bold small" target="blank">Юлии Махровой</a>
     <br /><br />
-                                По вопросам сотрудничества: Сафронов Владислав (ссылка в ВК)
+                                По вопросам сотрудничества: <a href="https://vk.com/safronov_vlad" className="bold small" target="blank">Сафронов Владислав</a>
     <br /><br />
-                                Посоветовать нам, как жить можно через Асалика (ссылка в ВК)
+                                Посоветовать нам, как жить можно через <a href="https://vk.com/safir_rais" target="blank" className="bold small">Асалика</a>
     <br /><br />
-                                И не забывайте, самая важная и нужная информация здесь (https://vk.com/rkw2019)
+                                И не забывайте, самая важная и нужная информация <a href="https://vk.com/РКВ2019" className="bold small">здесь</a>
     <br /><br />
-                                Katadze RKW-2019
+                                Katadze РКВ-2019
     <br /><br />
                                 Любовь к горам никогда не была так близко.
                             </p>
                         </section>
                         : null
                     }
-                    {/RKW/.test(event.name)
+                    {/РКВ/.test(event.name)
                         ? regform(handeInput, handleSubmit, errors, status, fields, handleValueChange)
                         : null
                     }
