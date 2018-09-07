@@ -10,7 +10,7 @@ export default partner => {
                 <img className="col-12" src={partner.img} alt="partnerImg" />
                 <section>
                     <h1 className="bold">Описание</h1>
-                    <p className="v-offset-small justify-text">{Parser(partner.content)}</p>
+                    <div className="custom_text v-offset-small justify-text">{Parser(partner.content)}</div>
                 </section>
                 {partner.services.length > 0
                 ? <section>
@@ -25,13 +25,13 @@ export default partner => {
                 {partner.conditions
                 ? <section>
                     <h1 className="bold">Условия</h1>
-                    <p className="justify-text v-offset-small">{Parser(partner.conditions)}</p>
+                    <div className="custom_text justify-text v-offset-small">{Parser(partner.conditions)}</div>
                 </section>
                 :null}
                 {partner.schedule
                 ? <section>
                     <h1 className="bold">Расписание</h1>
-                    <p className="v-offset-small">{Parser(partner.schedule)}</p>
+                    <div className="custom_text v-offset-small">{Parser(partner.schedule)}</div>
                     <ul className="row week v-offset-mid col-12 justify-center">
                         <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('1') ? 'lightgreen' : 'lightcoral'}}>ПН</li>
                         <li style={{backgroundColor: partner.schedule_weekdays.split(',').includes('2') ? 'lightgreen' : 'lightcoral'}}>ВТ</li>

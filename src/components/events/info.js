@@ -37,13 +37,17 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                                 <div className="section-id">{`0${section.idx}`}</div>
                                                 <div className=" col-12 offset-lg-6 col-lg-5">
                                                     <h1>{section.title}</h1>
-                                                    {Parser(section.content)}
+                                                    <div className="custom_text">
+                                                        {Parser(section.content)}
+                                                    </div>
                                                 </div>
                                             </div>
                                             : <div>
                                                 <div className="col-12 offset-lg-1 col-lg-5" style={{ zIndex: 5 }}>
                                                     <h1>{section.title}</h1>
-                                                    {Parser(section.content)}
+                                                    <div className="custom_text">
+                                                        {Parser(section.content)}
+                                                    </div>
                                                 </div>
                                                 <div className="section-id">{`0${section.idx}`}</div>
                                             </div>
@@ -76,8 +80,8 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                 case 2:
                                     return <section key={section.id} className="eventSection one-page" style={window.innerWidth < 992 ? { backgroundColor: '#fb0' } : {}}>
                                         <div className="offset-lg-1 col-12 col-md-8">
-                                            <h1><span style={window.innerWidth < 992 ? { color: '#fff' } : {}}>{Parser(section.title)}</span></h1>
-                                            <p className="small secondary v-offset-large" style={window.innerWidth < 992 ? { color: '#fff' } : {}}>{section.content}</p>
+                                            <h1 className="custom_text"><span style={window.innerWidth < 992 ? { color: '#fff' } : {}}>{Parser(section.content)}</span></h1>
+                                            <p className="small secondary v-offset-large" style={window.innerWidth < 992 ? { color: '#fff' } : {}}>{section.title}</p>
                                         </div>
                                         <div className="d-none d-md-flex col-md-4 col-lg-3 one-page justify-center acsent-alt-bg">
                                             <div className="col-lg-10">
@@ -123,7 +127,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                     }
                                 </div>
                                 <div className="offset-lg-2 offset-md-1 col-md-7">
-                                    <div className="col-12 tarif-description" style={{color: 'white'}}>
+                                    <div className="col-12 tarif-description custom_text" style={{color: 'white'}}>
                                         {
                                             typeof currentTariff !== 'undefined' ? Parser(event.tariffs[currentTariff].description) : <p>Нажмите на название тарифа для просмотра информации</p>
                                         }

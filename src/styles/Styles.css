@@ -558,6 +558,18 @@ label.file {
 .popupMessage {
   display: none;
 }
+.custom_text {
+  white-space: pre-line;
+}
+.custom_text a {
+  font-weight: 700;
+}
+.custom_text ul {
+  list-style: disc;
+}
+.custom_text ol {
+  list-style: decimal;
+}
 @media (max-width: 1200px) {
   [id$=-main] {
     background-size: 50% !important;
