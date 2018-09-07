@@ -17,7 +17,7 @@ export default events => {
                                     <button className="more-button"><Link to={`/events/id=${event.id}`}>Подробнее</Link></button>
                                 </div>
                                 <div className="col-lg-6 justify-center align-center">
-                                    <img className="list-card-pic" src={event.img} alt="project-pic" />
+                                    <img className="list-card-pic" src={event.img} style={{width: '100%'}} alt="project-pic" />
                                 </div>
                             </div>
                         )

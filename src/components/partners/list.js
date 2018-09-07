@@ -34,7 +34,7 @@ export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, h
                                             <button className="more-button"><Link to={`/partners/id=${partner.id}`}>Подробнее</Link></button>
                                         </div>
                                         <div className="col-lg-6 justify-center align-center">
-                                            <img className="list-card-pic" src={partner.img} alt="project-pic" />
+                                            <img className="list-card-pic" style={{width: '100%'}} src={partner.img} alt="project-pic" />
                                         </div>
                                     </div>
                                 )
