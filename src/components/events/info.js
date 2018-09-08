@@ -160,15 +160,17 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
     <br /><br />
                                 Katadze РКВ-2019
     <br /><br />
-                                Любовь к горам никогда не была так близко.
                             </p>
+                                <h1>
+                                    <span>Любовь к горам никогда не была так близко.</span>
+                                </h1>
                         </section>
                         : null
                     }
-                    {/РКВ/.test(event.name)
+                    {/* {/РКВ/.test(event.name)
                         ? regform(handeInput, handleSubmit, errors, status, fields, handleValueChange)
                         : null
-                    }
+                    } */}
                 </div>
                 : <h1>Loading...</h1>}
         </div>
