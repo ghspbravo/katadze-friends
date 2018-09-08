@@ -21,7 +21,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/A3doCFpZGDY?start=21&end=115&autoplay=1&controls=0&loop=1&playlist=A3doCFpZGDY&modestbranding=1&showinfo=0&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
                         </section>
-                        : <section className="col-12 header" style={{ backgroundImage: `url(${event.img})`, paddingTop: '25vh', paddingBottom: '25vh' }}>
+                        : <section className="col-12 header" style={{ backgroundImage: `url(${event.img})`, paddingTop: '25vh', paddingBottom: '25vh', backgroundPosition: 'center' }}>
                             <h2>{event.name}</h2>
                             {event && event.tariffs[0]
                                 ? <button onClick={() => document.querySelector('#tariffs').scrollIntoView({ behavior: 'smooth' })} className="lead col-10 col-md-4 col-lg-2">Выбор тарифа</button>
@@ -150,11 +150,11 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                     {/РКВ/.test(event.name)
                         ? <section className="container">
                             <p className="small">
-                                По всем вопросам участия в проекте можно писать <a href="https://vk.com/mahrovanov" className="bold small" target="blank">Юлии Махровой</a>
+                                По всем вопросам участия в проекте можно писать <a href="https://vk.com/mahrovanov" className="bold small" target="blank">Юлии</a> и <a href="https://vk.com/safronov_vlad" className="bold small" target="blank">Владиславу</a>
     <br /><br />
-                                По вопросам сотрудничества: <a href="https://vk.com/safronov_vlad" className="bold small" target="blank">Сафронов Владислав</a>
+                                По вопросам сотрудничества: <a href="https://vk.com/safronov_vlad" className="bold small" target="blank">Владислав</a>
     <br /><br />
-                                Посоветовать нам, как жить можно через <a href="https://vk.com/safir_rais" target="blank" className="bold small">Асалика</a>
+                                Посоветовать нам, как жить, можно через <a href="https://vk.com/safir_rais" target="blank" className="bold small">Асалика</a>
     <br /><br />
                                 И не забывайте, самая важная и нужная информация <a href="https://vk.com/РКВ2019" className="bold small">здесь</a>
     <br /><br />
