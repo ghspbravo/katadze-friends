@@ -565,7 +565,7 @@ label.file {
   font-weight: 700;
 }
 .custom_text ul {
-  list-style: disc;
+  list-style: disc inside;
 }
 .custom_text ol {
   list-style: decimal;
