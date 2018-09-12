@@ -16,7 +16,7 @@ export default (state = {}, action) => {
         case event.EVENT_FAILURE:
         case event.LIST_FAILURE:
             return {
-                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText } || { 'detail': action.payload.statusText },
             }
 
         default:

@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
             return {
                 status: STATUS_ERROR,
                 message: undefined,
-                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText } || { 'detail': action.payload.statusText },
             }
         default:
             return state

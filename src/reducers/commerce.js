@@ -16,7 +16,7 @@ export default (state = {}, action) => {
         case commerce.ACQUIRING_EVENT_FAILURE:
         case commerce.ACQUIRING_STATUS_UPDATE_FAILURE:
             return {
-                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText } || { 'detail': action.payload.statusText },
             }
 
         default:

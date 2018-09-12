@@ -14,7 +14,7 @@ export default (state = {}, action) => {
         case partner.PARTNER_FAILURE:
         case partner.LIST_FAILURE:
             return {
-                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText } || { 'detail': action.payload.statusText },
             }
 
 

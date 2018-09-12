@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
             return {
                 access: undefined,
                 refresh: undefined,
-                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText } || { 'details': action.payload.statusText },
             }
         case auth.LOGOUT_SUCCESS:
             return {

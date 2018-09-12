@@ -41,7 +41,7 @@ export default (state = {list: []}, action) => {
         case gids.TOUR_SUCCESS:
         case gids.GIDS_FILTER_FAILURE:
             return {
-                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText } || { 'detail': action.payload.statusText },
             }
 
         default:

@@ -31,7 +31,7 @@ export default (state = {}, action) => {
             return {
                 ...state,
                 status: STATUS_ERROR,
-                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText } || { 'detail': action.payload.statusText },
             }
 
         default:

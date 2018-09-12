@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
         case registration.ACTIVATE_FAILURE:
         case registration.REGISTRATION_FAILURE:
             return {
-                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText } || { 'detail': action.payload.statusText },
             }
 
         default:

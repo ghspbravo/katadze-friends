@@ -45,6 +45,7 @@ export var getErrors = state => {
     let errors = ''
     Object.keys(state).forEach(action => {
         if (state[action].errors && state[action].errors.non_field_errors) errors = state[action].errors.non_field_errors
+        if (state[action].errors && state[action].errors.detail) errors = state[action].errors.detail
     })
     return errors
 }
@@ -53,7 +54,7 @@ export var getFiledErrors = state => {
     let errors = {}
     if (state.errors) {
         Object.keys(state.errors).forEach(field => {
-            if (field !== 'non_field_errors') errors[field] = state.errors[field]
+            if (field !== 'non_field_errors' && field !== 'detail') errors[field] = state.errors[field]
         })
     }
     return errors

@@ -156,7 +156,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
     <br /><br />
                                 Посоветовать нам, как жить можно через <a href="https://vk.com/safir_rais" target="blank" className="bold small">Асалика</a>
     <br /><br />
-                                И не забывайте, самая важная и нужная информация <a href="https://vk.com/РКВ2019" className="bold small">здесь</a>
+                                И не забывайте, самая важная и нужная информация <a href="https://vk.com/rkw2019" className="bold small">здесь</a>
     <br /><br />
                                 Katadze РКВ-2019
     <br /><br />

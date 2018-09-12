@@ -22,7 +22,7 @@ export default (state = {}, action) => {
         case ticket.RKV_FAILURE:
             return {
                 status: STATUS_ERROR,
-                errors: action.payload.response || { 'non_field_errors': action.payload.statusText },
+                errors: action.payload.response || { 'non_field_errors': action.payload.statusText } || { 'detail': action.payload.statusText },
             }
 
         default:
