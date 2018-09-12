@@ -42,7 +42,7 @@ class Gids extends Component {
 
     handleSearch = () => this.state.search === ""
         ? null
-        : this.props.history.push(`/guids/search=${this.state.search}`)
+        : this.props.history.push(`/guide/search=${this.state.search}`)
 
     handleContact = (event) => {
         event.preventDefault()
@@ -56,15 +56,15 @@ class Gids extends Component {
                 this.props.onFetchTour(this.props.match.params.id)
                 break;
 
-            case '/guids':
+            case '/guide':
                 this.props.gids && this.props.gids[0] ? null : this.props.onFetchList()
                 break;
 
-            case '/guids/id=:id':
+            case '/guide/id=:id':
                 this.props.onFetchGid(this.props.match.params.id)
                 break;
 
-            case '/guids/search=:search':
+            case '/guide/search=:search':
                 this.props.onFilterGids(this.props.match.params.search)
                 break;
 
@@ -81,7 +81,7 @@ class Gids extends Component {
         return (
             <Switch>
                 {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
-                <Route exact path="/guids" render={() => {
+                <Route exact path="/guide" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC";
                     return list(
                         this.props.gids,
@@ -91,13 +91,13 @@ class Gids extends Component {
                         this.props.next
                     )
                 }} />
-                <Route exact path="/guids/id=:id" render={() => {
+                <Route exact path="/guide/id=:id" render={() => {
                     document.body.style.backgroundColor = "white"
                     return profile(
                         this.props.gid
                     )
                 }} />
-                <Route exact path="/guids/search=:search" render={() => {
+                <Route exact path="/guide/search=:search" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC"
                     return search(
                         this.props.match.params.search,
@@ -111,9 +111,9 @@ class Gids extends Component {
                         this.props.tour
                     )
                 }} />
-                <Route exact path="/guids/about" component={about} />
-                <Route exact path="/guids/faq" component={faq} />
-                <Route exact path="/guids/contacts" render={() => contacts(
+                <Route exact path="/guide/about" component={about} />
+                <Route exact path="/guide/faq" component={faq} />
+                <Route exact path="/guide/contacts" render={() => contacts(
                     this.handleInputChange,
                     this.handleContact,
                     this.props.errors,
