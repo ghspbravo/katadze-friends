@@ -22,7 +22,7 @@ const isModifierKey = (event) => {
 
 export const enforceFormat = (event) => {
     // Input must be of a valid number format or a modifier key, and not longer than ten digits
-    if (!isNumericInput(event) && !isModifierKey(event) || (event.shiftKey === true && (event.keyCode !== 57 && event.keyCode !== 48 && event.keyCode !== 37 && event.keyCode !== 39))) {
+    if (!isNumericInput(event) && !isModifierKey(event) || (event.shiftKey === true && (event.keyCode !== 57 && event.keyCode !== 48 && event.keyCode !== 37 && event.keyCode !== 39 && event.keyCode !== 187))) {
         event.preventDefault();
     }
 };
