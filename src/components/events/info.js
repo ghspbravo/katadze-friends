@@ -119,7 +119,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                 <div className="col-lg-3 col-md-4 text-center tarif-selector">
                                     {
                                         event.tariffs.map((tariff, i) => {
-                                            return <button
+                                            return <button style={{borderRadius: 0}}
                                                 onClick={() => handleTariffChange(i, tariff.id)}
                                                 className={currentTariff === i ? "col-12 active" : "col-12"}
                                                 key={tariff.id}><p className="lead">{tariff.name}</p></button>
@@ -127,18 +127,18 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                     }
                                 </div>
                                 <div className="offset-lg-2 offset-md-1 col-md-7">
-                                    <div className="col-12 tarif-description custom_text" style={{color: 'white'}}>
+                                    <div className="col-12 tarif-description custom_text" style={{color: 'white', borderRadius: 0}}>
                                         {
                                             typeof currentTariff !== 'undefined' ? Parser(event.tariffs[currentTariff].description) : <p>Нажмите на название тарифа для просмотра информации</p>
                                         }
                                     </div>
                                     <div className="no-margin row">
-                                        <div className="col-lg-4 tarif-price v-offset-small"><p className="small">
+                                        <div style={{borderRadius: 0}} className="col-lg-4 tarif-price v-offset-small"><p className="small">
                                             {
                                                 typeof currentTariff !== 'undefined' ? `${event.tariffs[currentTariff].price} рублей` : 'неизвестно'
                                             }
                                         </p></div>
-                                        <button onClick={() => handleAcquiring()} className="offset-lg-4 col-lg-4 tarif-button v-offset-small"><p className="small">
+                                        <button style={{borderRadius: 0}} onClick={() => handleAcquiring()} className="offset-lg-4 col-lg-4 tarif-button v-offset-small"><p className="small">
                                             Поехали!
                                     </p></button>
                                     </div>
