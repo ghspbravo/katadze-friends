@@ -4,8 +4,6 @@ import errorMessage from '../errorMessage';
 
 import { formatToPhone, formatToDate, enforceFormat } from '../../functions'
 
-// import thumbnail from '../../resourses/Gids/person-thumbnail.png'
-
 export default (submitHandler, inputHandler, fileHandler, errors, changeValue, fields) => {
     return (
         <div>
@@ -25,7 +23,7 @@ export default (submitHandler, inputHandler, fileHandler, errors, changeValue, f
                     {errorMessage(errors, 'gender')}
                     <input name="residence" autoComplete="on" type='text' placeholder='Город' onChange={inputHandler} required />
                     {errorMessage(errors, 'residence')}
-                    <input name="phones" value={fields.phones} onKeyDown={enforceFormat} autoComplete="on" type='tel' onFocus={() => fields.phones === '' || typeof fields.phones === 'undefined' ? changeValue('phones', '+7 ') : null} onBlur={() => fields.phones === '+7 ' ? changeValue('phones', '') : null} placeholder='Номер телефона' onChange={(e) => changeValue('phones', formatToPhone(e))} required />
+                    <input name="phones" value={fields.phones} onKeyDown={enforceFormat} autoComplete="on" type='tel' placeholder='Номер телефона' onChange={(e) => changeValue('phones', formatToPhone(e))} required />
                     {errorMessage(errors, 'phones')}
                     <input name="username" autoComplete="on" type='text' placeholder='Имя пользователя' onChange={inputHandler} required />
                     {errorMessage(errors, 'username')}

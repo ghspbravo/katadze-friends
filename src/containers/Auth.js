@@ -44,7 +44,7 @@ class Login extends Component {
             gender: '',
             date_birth: '',
             residence: '',
-            phones: '+7 ',
+            phones: '',
             img_photo: '',
             thumbnail: thumbnail[randomId]
         }

@@ -4,12 +4,13 @@ const isNumericInput = (event) => {
     const key = event.keyCode;
     return ((key >= 48 && key <= 57) || // Allow number line
         (key >= 96 && key <= 105) // Allow number pad
+        || key === 189 || key === 32
     );
 };
 
 const isModifierKey = (event) => {
     const key = event.keyCode;
-    return (event.shiftKey === true || key === 35 || key === 36) || // Allow Shift, Home, End
+    return (key === 35 || key === 36) || // Allow Shift, Home, End
         (key === 8 || key === 9 || key === 13 || key === 46) || // Allow Backspace, Tab, Enter, Delete
         (key > 36 && key < 41) || // Allow left, up, right, down
         (
@@ -21,7 +22,7 @@ const isModifierKey = (event) => {
 
 export const enforceFormat = (event) => {
     // Input must be of a valid number format or a modifier key, and not longer than ten digits
-    if (!isNumericInput(event) && !isModifierKey(event)) {
+    if (!isNumericInput(event) && !isModifierKey(event) || (event.shiftKey === true && (event.keyCode !== 57 && event.keyCode !== 48 && event.keyCode !== 37 && event.keyCode !== 39))) {
         event.preventDefault();
     }
 };
@@ -29,16 +30,17 @@ export const enforceFormat = (event) => {
 export const formatToPhone = (event) => {
     if (isModifierKey(event)) return
 
-    const input = event.target.value.replace(/\D/g, '').substring(1, 12); // First ten digits of input only
-    const zip = input.substring(0, 3);
-    const middle1 = input.substring(3, 5);
-    const middle2 = input.substring(5, 7);
-    const last = input.substring(7, 10);
+    return event.target.value
+    // const input = event.target.value.replace(/\D/g, '').substring(1, 12); // First ten digits of input only
+    // const zip = input.substring(0, 3);
+    // const middle1 = input.substring(3, 5);
+    // const middle2 = input.substring(5, 7);
+    // const last = input.substring(7, 10);
 
-    if (input.length > 7) { return `+7 (${zip}) ${middle1} ${middle2} ${last}`; }
-    else if (input.length > 5) { return `+7 (${zip}) ${middle1} ${middle2}`; }
-    else if (input.length > 3) { return `+7 (${zip}) ${middle1}`; }
-    else if (input.length > 0) { return `+7 (${zip}`; }
+    // if (input.length > 7) { return `+7 (${zip}) ${middle1} ${middle2} ${last}`; }
+    // else if (input.length > 5) { return `+7 (${zip}) ${middle1} ${middle2}`; }
+    // else if (input.length > 3) { return `+7 (${zip}) ${middle1}`; }
+    // else if (input.length > 0) { return `+7 (${zip}`; }
 };
 
 export const formatToDate = (event) => {
