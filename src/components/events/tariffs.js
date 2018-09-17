@@ -11,13 +11,21 @@ export default (event, handleAcquiring) => {
                 <div className='row'>
                     {event.tariffs.map((tariff, i) => <div key={i} style={{ borderRadius: 0, border: '2px solid #41bfef', paddingBottom: '15px', margin: window.innerWidth < 992 ? '15px 0' : null }} className='col-md-5 offset-md-1 row'>
                         <div style={{ alignSelf: 'flex-start' }}><p style={{ textTransform: 'uppercase', color: '#41bfef', textAlign: 'center' }}>{tariff.name}</p>
-                            <div className='v-offset-small' style={{ maxHeight: window.innerHeight * 0.8, overflowY: 'auto'}}>
+                            <div className='v-offset-small' style={{ maxHeight: window.innerHeight * 0.8, overflowY: 'auto' }}>
                                 {Parser(tariff.description)}
                             </div></div>
-                        <div style={{ alignSelf: 'flex-end' }} className='col-12'>
-                            <div style={{ borderRadius: 0, height: '45px' }} className="col-12 text-center tarif-description v-offset-small"><p style={{ color: 'white' }} className="small">{tariff.price}</p></div>
-                            <button style={{ borderRadius: 0, height: '45px' }} onClick={() => handleAcquiring(tariff.id)} className="col-12 tarif-button v-offset-small"><p className="small">Поехали!</p></button>
-                        </div>
+                        {tariff.parts[0] && tariff.parts[0].id
+                            ? tariff.parts.map(part => <div className='row col-12'>
+                                <div className="col-sm-6 col-12"><p className="small">
+                                    {`${part.name} - ${part.price.split('.')[0]} руб.`}
+                                </p></div>
+                                <div className="col-sm-6 col-12"><button style={{ borderRadius: 0, height: '45px' }} onClick={() => handleAcquiring(tariff.id, part.id)} className="col-12 tarif-button"><p className="small">Оплатить</p></button></div>
+                            </div>)
+                            : <div style={{ alignSelf: 'flex-end' }} className='col-12'>
+                                <div style={{ borderRadius: 0, height: '45px' }} className="col-12 text-center tarif-description v-offset-small"><p style={{ color: 'white' }} className="small">{tariff.price.split('.')[0]} руб.</p></div>
+                                <button style={{ borderRadius: 0, height: '45px' }} onClick={() => handleAcquiring(tariff.id)} className="col-12 tarif-button v-offset-small"><p className="small">Поехали!</p></button>
+                            </div>
+                        }
                     </div>)}
                 </div>
             </div>

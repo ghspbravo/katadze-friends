@@ -41,8 +41,8 @@ class Events extends Component {
 
     tariffChangeHandle = (index, id) => this.setState({ tariffIndex: index, tariffId: id })
 
-    handleAcquiring = (tariffId) => {
-        this.props.onAcquiring(tariffId)
+    handleAcquiring = (tariffId, tariff_part = null) => {
+        this.props.onAcquiring(tariffId, tariff_part)
     }
 
     handleInputChange = (event) => {
@@ -133,7 +133,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     fetchEvent: id => dispatch(event(id)),
     fetchEventList: page => dispatch(list(page)),
-    onAcquiring: id => dispatch(acquiringEvent(id)),
+    onAcquiring: (id, partId) => dispatch(acquiringEvent(id, partId)),
 
     onContact: (title, name, email, question) => dispatch(contact(title, name, email, question)),
     onRKV: (name, date_birth, phone_number, url_social, city, work_place, came_from) => dispatch(rkv(name, date_birth, phone_number, url_social, city, work_place, came_from)),
