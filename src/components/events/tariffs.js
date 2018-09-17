@@ -15,12 +15,12 @@ export default (event, handleAcquiring) => {
                                 {Parser(tariff.description)}
                             </div></div>
                         {tariff.parts[0] && tariff.parts[0].id
-                            ? tariff.parts.map(part => <div className='row col-12'>
-                                <div className="col-sm-6 col-12"><p className="small">
-                                    {`${part.name} - ${part.price.split('.')[0]} руб.`}
-                                </p></div>
-                                <div className="col-sm-6 col-12"><button style={{ borderRadius: 0, height: '45px' }} onClick={() => handleAcquiring(tariff.id, part.id)} className="col-12 tarif-button"><p className="small">Оплатить</p></button></div>
-                            </div>)
+                            ? <div style={{alignSelf: 'flex-end'}}>{tariff.parts.map(part => <div className='row col-12'>
+                            <div className="col-sm-6 col-12"><p className="small">
+                            {`${part.name} - ${part.price.split('.')[0]} руб.`}
+                            </p></div>
+                            <div className="col-sm-6 col-12"><button style={{ borderRadius: 0, height: '45px' }} onClick={() => handleAcquiring(tariff.id, part.id)} className="col-12 tarif-button"><p className="small">Оплатить</p></button></div>
+                            </div>)}</div>
                             : <div style={{ alignSelf: 'flex-end' }} className='col-12'>
                                 <div style={{ borderRadius: 0, height: '45px' }} className="col-12 text-center tarif-description v-offset-small"><p style={{ color: 'white' }} className="small">{tariff.price.split('.')[0]} руб.</p></div>
                                 <button style={{ borderRadius: 0, height: '45px' }} onClick={() => handleAcquiring(tariff.id)} className="col-12 tarif-button v-offset-small"><p className="small">Поехали!</p></button>
