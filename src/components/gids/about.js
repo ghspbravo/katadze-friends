@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom'
 import teamMember from '../../resourses/About/team-member.png'
 import achieveIcon from '../../resourses/LogoBlack.png'
 
-import step1 from '../../resourses/About/step1.svg'
-import step2 from '../../resourses/About/step2.svg'
-import step3 from '../../resourses/About/step3.svg'
-import step4 from '../../resourses/About/step4.svg'
-import step5 from '../../resourses/About/step5.svg'
+import how_to_become_gid from '../../resourses/About/how_to_become_gid.jpg'
 
 export default () => {
     return (
@@ -55,28 +51,7 @@ export default () => {
             <section id="howitworks" className="container">
                 <h1 className="upper text-center">Как это<span> работает </span>?</h1>
                 <div className="col-12 acsent-box v-offset-small">
-                    <ul>
-                        <li className="row align-center v-offset-small">
-                            <img className="col-md-2 col-sm-4" src={step1} alt="step1" />
-                            <p className="col-md-10 col-sm-8" style={{ color: 'white' }}>Выбери страну/ город: Введи название города в строке поиска</p>
-                        </li>
-                        <li className="row align-center v-offset-small">
-                            <img className="col-md-2 col-sm-4" src={step2} alt="step2" />
-                            <p className="col-md-10 col-sm-8" style={{ color: 'white' }}>Найди гида или тур: Выбери гида или тур, который тебе понравился и отправь запрос!</p>
-                        </li>
-                        <li className="row align-center v-offset-small">
-                            <img className="col-md-2 col-sm-4" src={step3} alt="step3" />
-                            <p className="col-md-10 col-sm-8" style={{ color: 'white' }}>Общайся с гидом: Обсуди с гидом детали предстоящей встречи!</p>
-                        </li>
-                        <li className="row align-center v-offset-small">
-                            <img className="col-md-2 col-sm-4" src={step4} alt="step4" />
-                            <p className="col-md-10 col-sm-8" style={{ color: 'white' }}>Наслаждайся путешествием: Путешествуй вместе с гидом, узнавай новое!</p>
-                        </li>
-                        <li className="row align-center v-offset-small">
-                            <img className="col-md-2 col-sm-4" src={step5} alt="step5" />
-                            <p className="col-md-10 col-sm-8" style={{ color: 'white' }}>Поделись своим опытом: Поставь оценку своему гиду, напиши отзыв, расскажи о нас в соц.сетях</p>
-                        </li>
-                    </ul>
+                    <img src={how_to_become_gid} alt="how it work"/>
                     <button style={{ backgroundColor: 'white' }} className="lead v-offset-small offset-lg-4 col-lg-4"><Link to='/guide' style={{ color: '#41BFEF' }}>Найти гида</Link></button>
                 </div>
 
