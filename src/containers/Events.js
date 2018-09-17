@@ -41,8 +41,8 @@ class Events extends Component {
 
     tariffChangeHandle = (index, id) => this.setState({ tariffIndex: index, tariffId: id })
 
-    handleAcquiring = () => {
-        this.props.onAcquiring(this.state.tariffId)
+    handleAcquiring = (tariffId) => {
+        this.props.onAcquiring(tariffId)
     }
 
     handleInputChange = (event) => {

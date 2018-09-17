@@ -63,6 +63,7 @@ export var getFiledErrors = state => {
 export function resetErrors(state) {
     Object.keys(state).forEach(action => {
         if (state[action].errors && state[action].errors.non_field_errors) state[action].errors.non_field_errors = undefined
+        if (state[action].errors && state[action].errors.detail) state[action].errors.detail = undefined
     })
 }
 

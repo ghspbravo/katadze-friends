@@ -4,6 +4,7 @@ import regform from './regform';
 import Gallery from './Gallery';
 
 import Parser from 'html-react-parser';
+import tariffs from './tariffs';
 
 export default (event, currentTariff, handleTariffChange, handleAcquiring, handeInput, handleSubmit, errors, status, fields, handleValueChange) => {
     return (
@@ -111,40 +112,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                         : null
                     }
                     {event && event.tariffs[0]
-                        ? <section id="tariffs">
-                            <div className="offset-1">
-                                <h1 className="super"><span>Пакеты</span></h1>
-                            </div>
-                            <div className="container align-center">
-                                <div className="col-lg-3 col-md-4 text-center tarif-selector">
-                                    {
-                                        event.tariffs.map((tariff, i) => {
-                                            return <button style={{borderRadius: 0}}
-                                                onClick={() => handleTariffChange(i, tariff.id)}
-                                                className={currentTariff === i ? "col-12 active" : "col-12"}
-                                                key={tariff.id}><p className="lead">{tariff.name}</p></button>
-                                        })
-                                    }
-                                </div>
-                                <div className="offset-lg-2 offset-md-1 col-md-7">
-                                    <div className="col-12 tarif-description custom_text" style={{color: 'white', borderRadius: 0}}>
-                                        {
-                                            typeof currentTariff !== 'undefined' ? Parser(event.tariffs[currentTariff].description) : <p>Нажмите на название тарифа для просмотра информации</p>
-                                        }
-                                    </div>
-                                    <div className="no-margin row">
-                                        <div style={{borderRadius: 0}} className="col-lg-4 tarif-price v-offset-small"><p className="small">
-                                            {
-                                                typeof currentTariff !== 'undefined' ? `${event.tariffs[currentTariff].price} рублей` : 'неизвестно'
-                                            }
-                                        </p></div>
-                                        <button style={{borderRadius: 0}} onClick={() => handleAcquiring()} className="offset-lg-4 col-lg-4 tarif-button v-offset-small"><p className="small">
-                                            Поехали!
-                                    </p></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+                        ? tariffs(event, handleAcquiring)
                         : null
                     }
                     {/РКВ/.test(event.name)
