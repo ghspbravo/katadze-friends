@@ -18,7 +18,7 @@ export const userInfo = id => ({
 	[RSAA]: {
 		endpoint: `https://${server}/api/user/${id}/?format=json`,
 		method: 'GET',
-		headers: {},
+		headers: withAuth({'Content-Type': 'application/json'}),
 		types: [
 			USER_INFO_REQUEST, USER_INFO_SUCCESS, USER_INFO_FAILURE
 		]
