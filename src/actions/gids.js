@@ -67,7 +67,7 @@ export const gidsFilter = (location) => ({
 
 export const getCity = (city) => ({
 	[RSAA]: {
-		endpoint: `https://${server}/api/city?name=${city}&format=json`,
+		endpoint: `https://${server}/api/cities?name=${city}&format=json`,
 		method: 'GET',
 		headers: {},
 		types: [
