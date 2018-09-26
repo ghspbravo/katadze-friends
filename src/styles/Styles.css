@@ -546,7 +546,8 @@ label.file {
 .popup {
   position: relative;
   background-color: #fff;
-  padding: 50px 200px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .close-popup {
   position: absolute;
@@ -554,9 +555,6 @@ label.file {
   top: 0;
   padding: 5px 10px;
   cursor: pointer;
-}
-.popupMessage {
-  display: none;
 }
 .custom_text {
   white-space: pre-line;

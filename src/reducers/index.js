@@ -11,6 +11,7 @@ import gids from './gids';
 import service from './service'
 import commerce from './commerce';
 import ticket from './ticket'
+import claim from './claim'
 
 const rootReducer = combineReducers({
     router: routerReducer,
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
     gids,
     service,
     commerce,
-    ticket
+    ticket,
+    claim
 })
 
 export default rootReducer

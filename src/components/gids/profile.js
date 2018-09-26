@@ -3,9 +3,19 @@ import achieveIcon from '../../resourses/LogoBlack.png'
 import tourCard from './tourCard';
 import review from './review';
 
-import { showPopup } from '../../functions'
+import createClaim from './createClaim';
 
-export default (gid) => {
+let showPopup = () => {
+    document.querySelector('.popupMessage').style.display = 'block'
+    document.querySelector("body").style.overflow = "hidden";
+}
+
+let hidePopup = () => {
+    document.querySelector('.popupMessage').style.display = 'none'
+    document.querySelector("body").style.overflow = "auto";
+}
+
+export default (gid, handleInput, messageToGid, handleSubmit, claimStatus) => {
     const hobbiesList = [
         'Искусство',
         'Еда',
@@ -49,8 +59,7 @@ export default (gid) => {
                                 <p className="small v-offset-small">{gid.profile.bio}</p>
                                 <hr className="v-offset-small" />
                                 <p className="v-offset-small text-center"><span>Из г. {gid.residence} - {gid.date_birth.split('-')[0]} года рождения</span></p>
-                                <button onClick={() => showPopup('gidAlert')} className="offset-md-4 offset-2 v-offset-small col-8 col-md-4 lead">Забронировать</button>
-                                <div className="popupMessage" id="gidAlert"><h1>Бронирование временно недоступно!</h1><p>Мы ждем пока нас станет чуть-чуть больше...</p></div>
+                                <button onClick={() => showPopup()} className="offset-md-4 offset-2 v-offset-small col-8 col-md-4 lead">Забронировать</button>
                             </div>
                         </section>
                         <img style={{ height: '450px', objectFit: 'cover' }} src={gid.img_photo} alt="avatar" />
@@ -58,19 +67,19 @@ export default (gid) => {
                             <div className="head"><p className="small">Обо мне</p></div>
                             <div className="content no-padding">
                                 <ul>
-                                    { gid.profile.occupation
-                                    ? <li className="v-offset-small">
-                                        <p className="small bold">Род деятельности</p>
-                                        <p className="small">{gid.profile.occupation}</p>
-                                    </li>
-                                    : null}
+                                    {gid.profile.occupation
+                                        ? <li className="v-offset-small">
+                                            <p className="small bold">Род деятельности</p>
+                                            <p className="small">{gid.profile.occupation}</p>
+                                        </li>
+                                        : null}
                                     <li className="v-offset-small">
                                         <p className="small bold">Увлечения</p>
-                                        <p className="small">{gid.profile.hobbies.map((hobbies, i) => `${hobbiesList[hobbies.code]}${i+1 === gid.profile.hobbies.length ? '.' : ', '}`)}</p>
+                                        <p className="small">{gid.profile.hobbies.map((hobbies, i) => `${hobbiesList[hobbies.code]}${i + 1 === gid.profile.hobbies.length ? '.' : ', '}`)}</p>
                                     </li>
                                     <li className="v-offset-small">
                                         <p className="small bold">Активности</p>
-                                        <p className="small">{gid.profile.activities.map((activity, i) => `${activitiesList[activity.code]}${i+1 === gid.profile.activities.length ? '.' : ', '}`)}</p>
+                                        <p className="small">{gid.profile.activities.map((activity, i) => `${activitiesList[activity.code]}${i + 1 === gid.profile.activities.length ? '.' : ', '}`)}</p>
                                     </li>
                                     <li className="v-offset-small">
                                         <p className="small bold">Языки</p>
@@ -126,10 +135,10 @@ export default (gid) => {
                             <p>{`Привет, меня зовут ${gid.first_name} ${gid.last_name}!`}</p>
                             <p className="small secondary">{gid.profile.keyphrase}</p>
                             <hr className="v-offset-small" />
-                            <p className="small" style={{whiteSpace: 'pre-line'}}>{gid.profile.bio}</p>
+                            <p className="small" style={{ whiteSpace: 'pre-line' }}>{gid.profile.bio}</p>
                             <hr className="v-offset-small" />
                             <p className="v-offset-small text-center"><span>Из г. {gid.residence} - {gid.date_birth.split('-')[0]} года рождения</span></p>
-                            <button onClick={() => showPopup('gidAlert')} className="offset-md-4 offset-2 v-offset-small col-8 col-md-4 lead">Забронировать</button>
+                            <button onClick={() => showPopup()} className="offset-md-4 offset-2 v-offset-small col-8 col-md-4 lead">Забронировать</button>
                         </div>
                     </section>
                     {gid.tours.length > 0
@@ -141,11 +150,21 @@ export default (gid) => {
                         </section>
                         : null}
                     <section className="jumbotron">
-                         <div className="head"><p>Отзывы путешественников</p></div>
-                         <div className="content reviews">
-                             {/*[...Array(6)].map((e, i) => review(i))*/}
-                         </div>
-                     </section>
+                        <div className="head"><p>Отзывы путешественников</p></div>
+                        <div className="content reviews">
+                            {/*[...Array(6)].map((e, i) => review(i))*/}
+                        </div>
+                    </section>
+                </div>
+                <div className="popupMessage" style={{ display: 'none' }}>
+                    <div onClick={(e) => {
+                        if (e.target === document.querySelector(".popup-wrapper")) hidePopup();
+                    }} className='popup-wrapper'>
+                        <div className="popup container">
+                            <div onClick={hidePopup} className="close-popup">X</div>
+                            {createClaim(handleInput, handleSubmit, messageToGid, claimStatus)}
+                        </div>
+                    </div>
                 </div>
             </div>
             : <h1>Loading...</h1>

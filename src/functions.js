@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 const isNumericInput = (event) => {
     const key = event.keyCode;
@@ -56,34 +57,48 @@ export const formatToDate = (event) => {
     else if (input.length > 0) { return `${day}` }
 };
 
-export const showPopup = innerId => {
-    let inner = document.querySelector(`#${innerId}`);
-    let popupWindow = document.createElement("div");
-    let popup = document.createElement("div");
-    let closePopup = document.createElement("div");
+export const showPopup = inner => {
 
-    popupWindow.className = "popup-wrapper";
-    popup.className = "popup";
-    closePopup.className = "close-popup";
+    let popup = <div onClick={(e) => {
+        if (e.target === document.querySelector(".popup-wrapper")) hidePopup();
+    }} className='popup-wrapper'>
+        <div className="popup container">
+            <div onClick={hidePopup} className="close-popup">X</div>
+            {inner}
+        </div>
+    </div>
 
-    popup.innerHTML = inner.innerHTML
-    closePopup.innerHTML = 'X'
+    // let inner = document.querySelector(`#${innerId}`);
+    // let popupWindow = document.createElement("div");
+    // let popup = document.createElement("div");
+    // let closePopup = document.createElement("div");
 
-    popupWindow.onclick = e => {
-        if (e.target === popupWindow || window.innerWidth < 992) hidePopup();
-    };
-    closePopup.onclick = () => hidePopup();
+    // popupWindow.className = "popup-wrapper";
+    // popup.className = "popup container";
+    // closePopup.className = "close-popup";
 
-    popup.appendChild(closePopup)
-    popupWindow.appendChild(popup)
+    // popup.innerHTML = inner.innerHTML
+    // closePopup.innerHTML = 'X'
 
-    document.querySelector("body").appendChild(popupWindow);
+    // popupWindow.onclick = e => {
+    //     if (e.target === popupWindow) hidePopup();
+    // }
+
+    // closePopup.onclick = () => hidePopup();
+
+    // popup.appendChild(closePopup)
+    // popupWindow.appendChild(popup)
+
+    // document.querySelector("body").appendChild(popup);
+
+    ReactDOM.render(popup, document.querySelector(".popupMessage"));
     document.querySelector("body").style.overflow = "hidden";
 };
 
 const hidePopup = () => {
-    let popupWindow = document.querySelector(".popup-wrapper");
-    popupWindow.parentNode.removeChild(popupWindow)
+    ReactDOM.unmountComponentAtNode(document.querySelector('.popupMessage'))
+    // let popupWindow = document.querySelector(".popup-wrapper");
+    // popupWindow.parentNode.removeChild(popupWindow)
     document.querySelector("body").style.overflow = "auto";
 };
 
