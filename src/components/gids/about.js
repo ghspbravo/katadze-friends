@@ -23,7 +23,7 @@ export default () => {
                     <div className="col-lg-6 align-center">
                         <h1 className="upper">
                             KATADZE
-                    <span> guids</span>
+                    <span> guide</span>
                         </h1>
                     </div>
                     <div className="col-lg-6" >
