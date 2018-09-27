@@ -16,6 +16,7 @@ import contacts from '../components/gids/contacts';
 import { contact } from '../actions/ticket';
 import { resetStatus, getFiledErrors } from '../reducers';
 import { forceRefresh, STATUS_SUCCESS } from '../actions';
+import { createGidClaim } from '../actions/claim';
 
 class Gids extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class Gids extends Component {
             name: '',
             email: '',
             question: '',
+            message_to_gid: ''
         }
     }
 
@@ -40,6 +42,12 @@ class Gids extends Component {
         });
     };
 
+    handleClaim = (event) => {
+        event.preventDefault()
+        this.props.onClaim(this.props.match.params.id, this.state.message_to_gid)
+        this.setState({ message_to_gid: '' })
+    }
+
     handleSearch = () => this.state.search === ""
         ? null
         : this.props.history.push(`/guide/search=${this.state.search}`)
@@ -47,10 +55,11 @@ class Gids extends Component {
     handleContact = (event) => {
         event.preventDefault()
         this.props.onContact(this.state.title, this.state.name, this.state.email, this.state.question)
-        this.setState({title: '', name: '', email: '', question: ''})
+        this.setState({ title: '', name: '', email: '', question: '' })
     }
 
     componentDidMount() {
+        this.props.resetStatus()
         switch (this.props.match.path) {
             case '/tours/:id':
                 this.props.onFetchTour(this.props.match.params.id)
@@ -94,7 +103,11 @@ class Gids extends Component {
                 <Route exact path="/guide/id=:id" render={() => {
                     document.body.style.backgroundColor = "white"
                     return profile(
-                        this.props.gid
+                        this.props.gid,
+                        this.handleInputChange,
+                        this.state.message_to_gid,
+                        this.handleClaim,
+                        this.props.claimStatus
                     )
                 }} />
                 <Route exact path="/guide/search=:search" render={() => {
@@ -119,7 +132,7 @@ class Gids extends Component {
                     this.props.errors,
                     this.props.status,
                     this.state
-                    )} />
+                )} />
             </Switch>
         )
     }
@@ -133,8 +146,9 @@ const mapStateToProps = state => ({
     tour: state.gids.tour,
     city: state.gids.city,
     status: state.ticket.status,
+    claimStatus: state.claim.status,
     errors: getFiledErrors(state.ticket),
-	resetStatus: () => resetStatus(state)
+    resetStatus: () => resetStatus(state)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -146,10 +160,11 @@ const mapDispatchToProps = dispatch => ({
         dispatch(gidsFilter(location))
     },
     onContact: (title, name, email, question) => dispatch(contact(title, name, email, question)),
+    onClaim: (id, message) => dispatch(createGidClaim(id, message)),
 
     forceRefresh: () => {
-		dispatch(forceRefresh())
-	},
+        dispatch(forceRefresh())
+    },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gids)

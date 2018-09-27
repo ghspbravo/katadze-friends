@@ -162,8 +162,10 @@ export default (tour) => {
                                 <p className="small bold v-offset-small">Место проведения</p>
                                 <p className="small">{tour.location}</p>
                                 <div className="row justify-center v-offset-small">
-                                    <button onClick={() => showPopup('tourAlert')} className="col-md-8 lead">Добавить в закладки</button>
-                                    <div className="popupMessage" id="tourAlert"><h1>Бронирование временно недоступно!</h1><p>Мы ждем пока нас станет чуть чуть больше...</p></div>
+                                    <button onClick={() => showPopup(<div>
+                                        <h1>Бронирование временно недоступно!</h1><p>Мы ждем пока нас станет чуть чуть больше...</p>
+                                    </div>)} className="col-md-8 lead">Добавить в закладки</button>
+                                    <div className="popupMessage"></div>
                                 </div>
                             </div>
                         </div>

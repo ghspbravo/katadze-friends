@@ -5,7 +5,7 @@ export default (tours) => {
     return (
         <div>
             <form action="">
-                <select className='col-5 bordered' id='application-filter'>
+                <select className='col-12 col-md-5 bordered' id='application-filter'>
                     <option value="allTours">Все туры ({tours.length})</option>
                     <option disabled value="favourites">Избранные (0)</option>
                     <option disabled value="feature">В планах (0)</option>

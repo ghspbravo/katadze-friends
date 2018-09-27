@@ -74,7 +74,15 @@ class Layout extends Component {
                 <Route exact path='/events/about' component={Events} />
                 <Route exact path='/events/contacts' component={Events} />
 
-                <Route path='/payment/' component={Acquiring} />
+                <Route exact path='/profile/contacts' component={Events} />
+
+                <Route exact path='/profile' component={Profile} />
+                <Route exact path='/profile/edit' component={Profile} />
+                <Route exact path='/profile/applications' component={Profile} />
+                <Route exact path='/profile/tours' component={Profile} />
+                <Route exact path='/profile/become-gid' component={Profile} />
+                <Route exact path='/profile/create-tour' component={Profile} />
+                <Route exact path='/profile/live/:uuid' component={Profile} />
 
                 <Route exact path='/partners/id=:id' component={Partners} />
                 <Route exact path='/events/id=:id' component={Events} />
@@ -83,7 +91,6 @@ class Layout extends Component {
                 <Route exact path='/tours/:id' component={Gids} />
                 <Route path='/activate/' component={Profile} />
                 <Route path='/reset/' component={Auth} />
-                <Route path='/profile' component={Profile} />
 
                 <Switch>
                     <Route exact path="/" render={() => null} />

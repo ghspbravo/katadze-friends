@@ -15,6 +15,8 @@ import { logout } from '../actions/auth'
 import { userInfo, createGid, createTour } from '../actions/profile'
 import { activate, activateConfirm } from '../actions/registration';
 import { forceRefresh, STATUS_SUCCESS } from '../actions'
+import { getClaimList } from '../actions/claim';
+import Chat from '../components/profile/Chat';
 
 class Profile extends Component {
 	constructor(props) {
@@ -117,6 +119,16 @@ class Profile extends Component {
 			'Русский',
 			'Английский'
 		]
+
+		switch (this.props.location.pathname) {
+			case '/profile/applications':
+				this.props.onClaimList()
+				break;
+
+			default:
+				break;
+		}
+
 	}
 
 	hobbiesListConst = []
@@ -190,7 +202,7 @@ class Profile extends Component {
 		}
 	};
 
-    handleValueChange = (name, value) => this.setState({ [name]: value })
+	handleValueChange = (name, value) => this.setState({ [name]: value })
 
 	handleActivate = () => {
 		let locationList = this.props.location.pathname.split('/')
@@ -228,15 +240,19 @@ class Profile extends Component {
 				</div>
 				<div className="col-xl-6 col-lg-7">
 					<Switch>
-					{this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ date_to: '', date_from: '', name: '', location: '', description: '', route: '', transport: '', inclusion: '', price: '', meeting_details: '', slogan: '', expenses: '', extra_options: '', extra_info: '', max_tourists: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
-						<Route path='/profile/edit' render={() => edit(
+						{this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ date_to: '', date_from: '', name: '', location: '', description: '', route: '', transport: '', inclusion: '', price: '', meeting_details: '', slogan: '', expenses: '', extra_options: '', extra_info: '', max_tourists: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
+						<Route exact path='/profile/live/:uuid' component={Chat} />
+						<Route exact path='/profile/edit' render={() => edit(
 							this.props.user
 						)} />
-						<Route path='/profile/applications' component={applications} />
-						<Route path='/profile/tours' render={() => tours(
+						<Route exact path='/profile/applications' render={() => applications(
+							this.props.claims,
+							this.props.user.is_accepted
+						)} />
+						<Route exact path='/profile/tours' render={() => tours(
 							this.props.user.tours
 						)} />
-						<Route path='/profile/become-gid' render={() =>
+						<Route exact path='/profile/become-gid' render={() =>
 							this.props.user.is_suspended
 								? <section className="jumbotron v-offset-small">
 									<div className="content">
@@ -260,7 +276,7 @@ class Profile extends Component {
 									this.props.user.profile === null ? false : this.props.user.profile,
 									this.props.status
 								)} />
-						<Route path='/profile/create-tour' render={() =>
+						<Route exact path='/profile/create-tour' render={() =>
 							this.props.user.is_accepted
 								? newTour(
 									this.handleInputChange,
@@ -311,6 +327,8 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => ({
 	user: state.profile,
+	claims: state.claim.list,
+	claim: state.claim.info,
 	errors: getFiledErrors(state.profile),
 	isAuthenticated: isAuthenticated(state),
 	userId: userId(state),
@@ -341,6 +359,10 @@ const mapDispatchToProps = dispatch => ({
 
 	onActivateConfirm: (token, uidb64) => {
 		dispatch(activateConfirm(token, uidb64))
+	},
+
+	onClaimList: () => {
+		dispatch(getClaimList())
 	}
 })
 
