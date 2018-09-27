@@ -12,6 +12,7 @@ import service from './service'
 import commerce from './commerce';
 import ticket from './ticket'
 import claim from './claim'
+import live from './live'
 
 const rootReducer = combineReducers({
     router: routerReducer,
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
     service,
     commerce,
     ticket,
-    claim
+    claim,
+    live
 })
 
 export default rootReducer

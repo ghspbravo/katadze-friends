@@ -241,7 +241,7 @@ class Profile extends Component {
 				<div className="col-xl-6 col-lg-7">
 					<Switch>
 						{this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ date_to: '', date_from: '', name: '', location: '', description: '', route: '', transport: '', inclusion: '', price: '', meeting_details: '', slogan: '', expenses: '', extra_options: '', extra_info: '', max_tourists: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
-						<Route exact path='/profile/live/:uuid' component={Chat} />
+						<Route exact path='/profile/live/:uuid/:id' component={Chat} />
 						<Route exact path='/profile/edit' render={() => edit(
 							this.props.user
 						)} />

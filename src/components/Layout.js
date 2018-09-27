@@ -82,7 +82,7 @@ class Layout extends Component {
                 <Route exact path='/profile/tours' component={Profile} />
                 <Route exact path='/profile/become-gid' component={Profile} />
                 <Route exact path='/profile/create-tour' component={Profile} />
-                <Route exact path='/profile/live/:uuid' component={Profile} />
+                <Route exact path='/profile/live/:uuid/:id' component={Profile} />
 
                 <Route exact path='/partners/id=:id' component={Partners} />
                 <Route exact path='/events/id=:id' component={Events} />
