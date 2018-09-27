@@ -20,11 +20,26 @@ export default (state = {}, action) => {
 
         case claim.GID_CLAIM_SUCCESS:
         case claim.CLAIM_CANCEL_SUCCESS:
+        case claim.CLAIM_ACCEPT_SUCCESS:
+        case claim.CLAIM_DECLINE_SUCCESS:
             return {
                 ...state,
                 ...action.payload,
                 status: STATUS_SUCCESS
             }
+
+        case claim.CLAIM_RECEIVER_SUCCESS:
+            return {
+                ...state,
+                receiver: action.payload
+            }        
+
+        case claim.CLAIM_SENDER_SUCCESS:
+            return {
+                ...state,
+                sender: action.payload
+            }
+        
         case claim.GID_CLAIM_REQUEST:
         case claim.CLAIM_LIST_REQUEST:
         case claim.CLAIM_INFO_REQUEST:

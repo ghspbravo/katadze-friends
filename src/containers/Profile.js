@@ -16,6 +16,7 @@ import { userInfo, createGid, createTour } from '../actions/profile'
 import { activate, activateConfirm } from '../actions/registration';
 import { forceRefresh, STATUS_SUCCESS } from '../actions'
 import { getClaimList } from '../actions/claim';
+import Chat from '../components/profile/Chat';
 
 class Profile extends Component {
 	constructor(props) {
@@ -121,7 +122,6 @@ class Profile extends Component {
 
 		switch (this.props.location.pathname) {
 			case '/profile/applications':
-				console.log('@@@@@@@APLICATIONS')
 				this.props.onClaimList()
 				break;
 
@@ -241,11 +241,13 @@ class Profile extends Component {
 				<div className="col-xl-6 col-lg-7">
 					<Switch>
 						{this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ date_to: '', date_from: '', name: '', location: '', description: '', route: '', transport: '', inclusion: '', price: '', meeting_details: '', slogan: '', expenses: '', extra_options: '', extra_info: '', max_tourists: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
+						<Route exact path='/profile/live/:uuid' component={Chat} />
 						<Route exact path='/profile/edit' render={() => edit(
 							this.props.user
 						)} />
 						<Route exact path='/profile/applications' render={() => applications(
-							this.props.claims
+							this.props.claims,
+							this.props.user.is_accepted
 						)} />
 						<Route exact path='/profile/tours' render={() => tours(
 							this.props.user.tours

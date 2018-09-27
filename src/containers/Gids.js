@@ -59,6 +59,7 @@ class Gids extends Component {
     }
 
     componentDidMount() {
+        this.props.resetStatus()
         switch (this.props.match.path) {
             case '/tours/:id':
                 this.props.onFetchTour(this.props.match.params.id)

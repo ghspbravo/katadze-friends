@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom'
 
 import Claims from './Claims'
 
-export default (claims) => {
+export default (claims, isGid) => {
     if (claims && claims.count > 0)
         return (
             <div>
                 <form action="">
-                    <select className='col-5 bordered' id='application-filter'>
+                    <select className='col-12 col-md-5 bordered' id='application-filter'>
                         <option>Все заявки ({claims.count})</option>
                         <option disabled>Непрочитанные (0)</option>
                         <option disabled>Бронирования (0)</option>
                         <option disabled>Заявки на рассмотрении (0)</option>
                     </select>
                 </form>
-                <Claims list={claims} />
+                <Claims list={claims} isGid={isGid} />
             </div>
         )
     else return (

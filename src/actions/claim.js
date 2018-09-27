@@ -18,6 +18,22 @@ export const CLAIM_CANCEL_REQUEST = '@@claim/CLAIM_CANCEL_REQUEST';
 export const CLAIM_CANCEL_SUCCESS = '@@claim/CLAIM_CANCEL_SUCCESS';
 export const CLAIM_CANCEL_FAILURE = '@@claim/CLAIM_CANCEL_FAILURE';
 
+export const CLAIM_SENDER_REQUEST = '@@claim/CLAIM_SENDER_REQUEST';
+export const CLAIM_SENDER_SUCCESS = '@@claim/CLAIM_SENDER_SUCCESS';
+export const CLAIM_SENDER_FAILURE = '@@claim/CLAIM_SENDER_FAILURE';
+
+export const CLAIM_RECEIVER_REQUEST = '@@claim/CLAIM_RECEIVER_REQUEST';
+export const CLAIM_RECEIVER_SUCCESS = '@@claim/CLAIM_RECEIVER_SUCCESS';
+export const CLAIM_RECEIVER_FAILURE = '@@claim/CLAIM_RECEIVER_FAILURE';
+
+export const CLAIM_ACCEPT_REQUEST = '@@claim/CLAIM_ACCEPT_REQUEST';
+export const CLAIM_ACCEPT_SUCCESS = '@@claim/CLAIM_ACCEPT_SUCCESS';
+export const CLAIM_ACCEPT_FAILURE = '@@claim/CLAIM_ACCEPT_FAILURE';
+
+export const CLAIM_DECLINE_REQUEST = '@@claim/CLAIM_DECLINE_REQUEST';
+export const CLAIM_DECLINE_SUCCESS = '@@claim/CLAIM_DECLINE_SUCCESS';
+export const CLAIM_DECLINE_FAILURE = '@@claim/CLAIM_DECLINE_FAILURE';
+
 export const createGidClaim = (receiver, message) => ({
     [RSAA]: {
         endpoint: `https://${server}/api/user/claim/?format=json`,
@@ -59,6 +75,52 @@ export const canselClaim = (id) => ({
         headers: withAuth({ 'Content-Type': 'application/json' }),
         types: [
             CLAIM_CANCEL_REQUEST, CLAIM_CANCEL_SUCCESS, CLAIM_CANCEL_FAILURE
+        ]
+    }
+});
+
+export const getClaimReceiver = (id) => ({
+    [RSAA]: {
+        endpoint: `https://${server}/api/user/${id}/?format=json`,
+        method: 'GET',
+        headers: withAuth({ 'Content-Type': 'application/json' }),
+        types: [
+            CLAIM_RECEIVER_REQUEST, CLAIM_RECEIVER_SUCCESS, CLAIM_RECEIVER_FAILURE
+        ]
+    }
+});
+
+export const getClaimSender = (id) => ({
+    [RSAA]: {
+        endpoint: `https://${server}/api/user/${id}/?format=json`,
+        method: 'GET',
+        headers: withAuth({ 'Content-Type': 'application/json' }),
+        types: [
+            CLAIM_SENDER_REQUEST, CLAIM_SENDER_SUCCESS, CLAIM_SENDER_FAILURE
+        ]
+    }
+});
+
+export const acceptClaim = (id) => ({
+    [RSAA]: {
+        endpoint: `https://${server}/api/user/claim/${id}/`,
+        method: 'PATCH',
+        headers: withAuth({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ status: 1 }),
+        types: [
+            CLAIM_ACCEPT_REQUEST, CLAIM_ACCEPT_SUCCESS, CLAIM_ACCEPT_FAILURE
+        ]
+    }
+});
+
+export const declineClaim = (id) => ({
+    [RSAA]: {
+        endpoint: `https://${server}/api/user/claim/${id}/`,
+        method: 'PATCH',
+        headers: withAuth({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ status: 2 }),
+        types: [
+            CLAIM_DECLINE_REQUEST, CLAIM_DECLINE_SUCCESS, CLAIM_DECLINE_FAILURE
         ]
     }
 });
