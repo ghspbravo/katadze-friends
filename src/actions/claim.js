@@ -34,11 +34,11 @@ export const CLAIM_DECLINE_REQUEST = '@@claim/CLAIM_DECLINE_REQUEST';
 export const CLAIM_DECLINE_SUCCESS = '@@claim/CLAIM_DECLINE_SUCCESS';
 export const CLAIM_DECLINE_FAILURE = '@@claim/CLAIM_DECLINE_FAILURE';
 
-export const createGidClaim = (receiver, message) => ({
+export const createGidClaim = (receiver_id, message) => ({
     [RSAA]: {
         endpoint: `https://${server}/api/user/claim/?format=json`,
         method: 'POST',
-        body: JSON.stringify({ receiver, message }),
+        body: JSON.stringify({ receiver_id, message }),
         headers: withAuth({ 'Content-Type': 'application/json' }),
         types: [
             GID_CLAIM_REQUEST, GID_CLAIM_SUCCESS, GID_CLAIM_FAILURE
