@@ -102,8 +102,8 @@ class Claim extends Component {
 
 const mapStateToProps = state => ({
     details: state.claim.info,
-    receiver: state.claim.receiver,
-    sender: state.claim.sender,
+    receiver: state.claim.receiver_info,
+    sender: state.claim.sender_info,
     token: accessToken(state),
 });
 
