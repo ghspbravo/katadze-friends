@@ -247,7 +247,8 @@ class Profile extends Component {
 						)} />
 						<Route exact path='/profile/applications' render={() => applications(
 							this.props.claims,
-							this.props.user.is_accepted
+							this.props.user.is_accepted,
+							this.props.user.id
 						)} />
 						<Route exact path='/profile/tours' render={() => tours(
 							this.props.user.tours

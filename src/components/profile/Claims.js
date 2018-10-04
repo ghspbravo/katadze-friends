@@ -8,11 +8,6 @@ import { accessToken } from '../../reducers';
 class Claim extends Component {
     statuses = ['Рассматривается', 'Одобрена', 'Отклонена']
 
-    handleFetchMembers = (recieverId, senderId) => {
-        this.props.getReceiverInfo(recieverId)
-        this.props.getSenderInfo(senderId)
-    }
-
     render() {
         return this.props.list.results.map((claim, index) => {
             let creationDateList = claim.created_at.match(/\d+-\d+-\d+/)[0].split('-')
@@ -23,7 +18,7 @@ class Claim extends Component {
                 padding: '20px 0',
             }}>
                 <div className="col-12 col-md-4">
-                    {this.props.isGid && claim.status === 0
+                    {this.props.isGid && claim.status === 0 && this.props.userId !== claim.sender.id
                         ? <div className='col-6 d-block d-sm-none' style={{ position: 'absolute', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}>
                             <div className="price-popup" style={{ position: 'relative', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}>
                                 <p onClick={() => this.props.acceptClaim(claim.id)} style={{ cursor: 'pointer', color: 'green' }} className="small">Одобрить</p>
@@ -39,7 +34,7 @@ class Claim extends Component {
                             {
                                 claim.status === 1
                                     ? <div className="price-popup" style={{ position: 'relative', backgroundColor: 'white', border: '1px solid #41bfef' }}>
-                                        <Link to={`/profile/live/${claim.im_room}/${this.props.isGid ? claim.sender : claim.receiver}`} className="small">Открыть чат</Link>
+                                        <Link to={`/profile/live/${claim.im_room}/${this.props.userId !== claim.sender.id ? claim.sender.id : claim.receiver.id}`} className="small">Открыть чат</Link>
                                     </div>
                                     : null
                             }
@@ -53,7 +48,7 @@ class Claim extends Component {
                         </div>}
                     <Link to={`/guide/id=${claim.receiver && claim.receiver.id}`} className="row">
                         <div className="col-6 col-md-12 no-padding profile-image-small justify-center">
-                            <img src={this.props.isGid ? claim.sender && claim.sender.img_photo : claim.receiver && claim.receiver.img_photo} alt="userImage" />
+                            <img src={this.props.userId !== claim.sender.id ? claim.sender && claim.sender.img_photo : claim.receiver && claim.receiver.img_photo} alt="userImage" />
                         </div>
                         <p className="secondary col-12 small v-offset-small">{this.props.isGid
                             ? claim.sender && claim.sender.name
@@ -79,7 +74,7 @@ class Claim extends Component {
                             {
                                 claim.status === 1
                                     ? <div className="price-popup" style={{ position: 'relative', backgroundColor: 'white', border: '1px solid #41bfef' }}>
-                                        <Link to={`/profile/live/${claim.im_room}/${this.props.isGid ? claim.sender.id : claim.receiver.id}`} className="small">Открыть чат</Link>
+                                        <Link to={`/profile/live/${claim.im_room}/${this.props.userId !== claim.sender.id ? claim.sender.id : claim.receiver.id}`} className="small">Открыть чат</Link>
                                     </div>
                                     : null
                             }
@@ -102,8 +97,6 @@ class Claim extends Component {
 
 const mapStateToProps = state => ({
     details: state.claim.info,
-    receiver: state.claim.receiver,
-    sender: state.claim.sender,
     token: accessToken(state),
 });
 
