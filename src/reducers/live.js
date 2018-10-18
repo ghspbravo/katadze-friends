@@ -7,7 +7,8 @@ export default (state = {history: []}, action) => {
         case live.LIVE_HISTORY_SUCCESS:
             return {
                 ...state,
-                history: action.payload.next && action.payload.next.match(/page=(\d+)/)[1] == 2 ? action.payload.results : [...state.history, ...action.payload.results],
+                // history: action.payload.next && action.payload.next.match(/page=(\d+)/)[1] == 2 ? action.payload.results : [...state.history, ...action.payload.results],
+                history: action.payload.results,
                 next: action.payload.next ? action.payload.next.match(/page=(\d+)/)[1] : null,
                 status: STATUS_SUCCESS
             }

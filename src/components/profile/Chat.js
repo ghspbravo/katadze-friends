@@ -46,7 +46,7 @@ class Chat extends Component {
                     time: message.created_at.match(/\d+:\d+/)[0]
                 }))
 
-                this.setState({ messages: historyMessages.reverse(), fetching: false })
+                this.setState({ messages: [...historyMessages.reverse(), ...this.state.messages], fetching: false })
             }
             if (this.state.newPage) {
                 let historyMessages = []
@@ -55,7 +55,7 @@ class Chat extends Component {
                     isMy: message.author != this.props.match.params.id ? true : false,
                     time: message.created_at.match(/\d+:\d+/)[0]
                 }))
-                this.setState({ messages: historyMessages.reverse(), newPage: false, fetching: false })
+                this.setState({ messages: [...historyMessages.reverse(), ...this.state.messages], newPage: false, fetching: false })
             }
             if (this.state.scrollFix && document.querySelector('#chatWrapper').scrollHeight > window.innerHeight * 0.5) {
                 document.querySelector('#chatWrapper').scrollTop = document.querySelector('#chatWrapper').scrollHeight

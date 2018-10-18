@@ -14,7 +14,7 @@ export default (search, gids, city) => {
                 <div className="offset-md-1 col-md-10 justify-center">
                     {gids && gids.length > 0
                         ? gids.map((info, i) => gidCard(info, i))
-                        : <h1>Гидов в текущем городе не найдено...</h1>
+                        : <h1>Вы можете стать тут первым</h1>
                     }
                 </div>
             </section>

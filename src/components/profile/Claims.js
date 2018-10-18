@@ -21,14 +21,14 @@ class Claim extends Component {
                     {this.props.isGid && claim.status === 0 && this.props.userId !== claim.sender.id
                         ? <div className='col-6 d-block d-sm-none' style={{ position: 'absolute', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}>
                             <div className="price-popup" style={{ position: 'relative', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}>
-                                <p onClick={() => this.props.acceptClaim(claim.id)} style={{ cursor: 'pointer', color: 'green' }} className="small">Одобрить</p>
+                                <p onClick={() => this.props.acceptClaim(claim.id)} style={{ cursor: 'pointer', color: 'white' }} className="small">Одобрить</p>
                             </div>
                             <div className="price-popup" style={{ position: 'relative', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}>
                                 <p onClick={() => this.props.declineClaim(claim.id)} style={{ cursor: 'pointer', color: 'red' }} className="small">Отклонить</p>
                             </div>
                         </div>
                         : <div className='col-6 d-block d-sm-none' style={{ position: 'absolute', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}><div className="price-popup" style={{ position: 'relative', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}>
-                            <p style={{ color: claim.status === 2 ? 'red' : claim.status === 1 ? 'green' : 'white' }} className="small">
+                            <p style={{ color: claim.status === 2 ? 'red' : claim.status === 1 ? 'white' : 'white' }} className="small">
                                 {this.statuses[claim.status]}
                             </p></div>
                             {
@@ -61,14 +61,14 @@ class Claim extends Component {
                     {this.props.isGid && claim.status === 0
                         ? <div className='col-6 d-none d-sm-block' >
                             <div className="price-popup" style={{ position: 'relative', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}>
-                                <p onClick={() => { this.props.acceptClaim(claim.id); this.props.onClaimList }} style={{ cursor: 'pointer', color: 'green' }} className="small">Одобрить</p>
+                                <p onClick={() => { this.props.acceptClaim(claim.id); this.props.onClaimList }} style={{ cursor: 'pointer', color: 'white' }} className="small">Одобрить</p>
                             </div>
                             <div className="price-popup" style={{ position: 'relative', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}>
                                 <p onClick={() => { this.props.declineClaim(claim.id); this.props.onClaimList }} style={{ cursor: 'pointer', color: 'red' }} className="small">Отклонить</p>
                             </div>
                         </div>
                         : <div className='col-6 d-none d-sm-block' style={{ position: 'relative', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}>
-                            <div className="price-popup" style={{ position: 'relative', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}><p style={{ color: claim.status === 2 ? 'red' : claim.status === 1 ? 'green' : 'white' }} className="small">
+                            <div className="price-popup" style={{ position: 'relative', textTransform: 'uppercase', top: 0, right: 0, zIndex: 10, opacity: 0.9, userSelect: 'none' }}><p style={{ color: claim.status === 2 ? 'red' : claim.status === 1 ? 'white' : 'white' }} className="small">
                                 {this.statuses[claim.status]}
                             </p></div>
                             {

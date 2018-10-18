@@ -22,7 +22,6 @@ import Navbar from '../containers/Navbar';
 
 import { getErrors, resetErrors, getMessages, resetMessages } from '../reducers';
 import { forceRefresh } from '../actions';
-import Acquiring from '../containers/Acquiring';
 
 class Layout extends Component {
 

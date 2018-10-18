@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router'
 import { Switch, Link, NavLink } from 'react-router-dom'
 
-export default (currentState, openNavHandler) => {
+export default (currentState, openNavHandler, user) => {
     return (
         <div className={`navbar navbar-${currentState} no-select`}>
             <div className="navbar-inner col-12">
@@ -47,7 +47,7 @@ export default (currentState, openNavHandler) => {
                             </li>
                             <li>
                                 <NavLink to="/profile" activeClassName="active-nav">
-                                    Личный кабинет
+                                    {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='25' height='25' style={{borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)'}} alt="userPic"/></div> : 'регистрация/вход'}
                             </NavLink>
                             </li>
                         </ul>
@@ -55,7 +55,7 @@ export default (currentState, openNavHandler) => {
                     <Switch>
                         <Route exact path="/" render={() => <div className="d-block d-lg-none offset-2 offset-md-6 col-md-3 col-6 row">
                             <NavLink to="/profile" activeClassName="active-nav">
-                                Личный кабинет
+                                {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='25' height='25' style={{borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)'}} alt="userPic"/></div> : 'регистрация/вход'}
                         </NavLink>
                         </div>} />
                         <Route render={() =>
@@ -110,7 +110,7 @@ export default (currentState, openNavHandler) => {
                     </li>
                     <li>
                         <NavLink to="/profile" activeClassName="active-nav">
-                            Личный кабинет
+                            {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='25' height='25' style={{borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)'}} alt="userPic"/></div> : 'регистрация/вход'}
                         </NavLink>
                     </li>
                 </ul>

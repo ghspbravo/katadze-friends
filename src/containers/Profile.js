@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { PURGE } from 'redux-persist';
+
 import edit from '../components/profile/edit'
 import applications from '../components/profile/applications'
 import tours from '../components/profile/tours'
@@ -339,7 +341,14 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	logout: () => dispatch(logout()),
+	logout: () => {
+		dispatch(logout())
+		dispatch({ 
+			type: PURGE,
+			key: "polls",    // Whatever you chose for the "key" value when initialising redux-persist in the **persistCombineReducers** method - e.g. "root"
+		   result: () => null              // Func expected on the submitted action. 
+		});
+	},
 	fetchUser: id => dispatch(userInfo(id)),
 
 	forceRefresh: () => {

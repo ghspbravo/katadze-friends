@@ -122,7 +122,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            desktopNavbar(this.props.navState, this.handleNavToggle)
+            desktopNavbar(this.props.navState, this.handleNavToggle, this.props.user)
         )
     }
 }
@@ -130,7 +130,7 @@ class Navbar extends Component {
 
 const mapStateToProps = state => ({
     navState: state.navbar.navType,
-    appState: state
+    user: state.auth.user && state.auth.user.username
 });
 
 const mapDispatchToProps = dispatch => ({
