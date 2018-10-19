@@ -21,7 +21,7 @@ export default (submitHandler, inputHandler, errors) => {
                     Войти через ВК
                 </a></button>
                 <div className="v-offset-small col-12"><p>Забыли пароль? <Link to='/reset-password' style={{ textDecoration: 'underline' }}>Восстановить</Link></p></div>
-                <div className="v-offset-small col-12"><p>Нет аккаунта? <Link to='/registration' style={{ textDecoration: 'underline' }}>Создать</Link> / <a style={{textDecoration: 'underline'}} href={vkAuthApp}>Зарегистрироваться через ВК</a></p></div>
+                <div className="v-offset-small col-12"><p>Нет аккаунта? <Link to='/registration' style={{ textDecoration: 'underline' }}>Создать</Link></p></div>
             </div>
         </div>
     )
