@@ -5,7 +5,6 @@ export default (user) => {
 		<form>
 			<section className="jumbotron">
 				<div className="row head">
-				{console.log(user)}
 					<p>Обязательная информация</p>
 				</div>
 				<div className="row content">
