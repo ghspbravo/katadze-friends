@@ -43,7 +43,7 @@ export const vkAuth = (code) => ({
     [RSAA]: {
         endpoint: `https://${server}/api/auth/social/`,
         method: 'POST',
-        body: JSON.stringify({ provider: 'vk-oauth', code }),
+        body: JSON.stringify({ provider: 'vk-oauth2', code }),
         headers: { 'Content-Type': 'application/json' },
         types: [
             VK_TOKEN_REQUEST, VK_TOKEN_RECEIVED, VK_TOKEN_FAILURE

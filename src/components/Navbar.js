@@ -46,12 +46,12 @@ export default (currentState, openNavHandler, user) => {
                                 </Switch>
                             </li>
                             <li>
-                                {/* <NavLink to="/profile" activeClassName="active-nav">
-                                    {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='25' height='25' style={{borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)'}} alt="userPic"/></div> : 'регистрация/вход'}
+                                {/* <NavLink to="/profile" style={{position: 'relative'}} activeClassName="active-nav">
+                                    {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='45' height='45' style={{borderRadius: '50%', marginLeft: '20px', objectFit: 'cover', position: 'absolute', top: '-45%', transform: 'translateX(125%)', right: 0,}} alt="userPic"/></div> : 'регистрация/вход'}
                             </NavLink> */}
                                 {user
-                                    ? <NavLink to="/profile" activeClassName="active-nav">
-                                        <div>Мой профиль<img src={user} width='25' height='25' style={{ borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)' }} alt="userPic" /></div>
+                                    ? <NavLink to="/profile" style={{position: 'relative'}} activeClassName="active-nav">
+                                        Мой профиль<img src={user} width='45' height='45' style={{ borderRadius: '50%', marginLeft: '20px', objectFit: 'cover', position: 'absolute', top: '-45%', transform: 'translateX(125%)', right: 0, }} alt="userPic" />
                                     </NavLink>
                                     : <NavLink to="/login" activeClassName="active-nav">регистрация/вход</NavLink>
 
@@ -61,12 +61,12 @@ export default (currentState, openNavHandler, user) => {
                     </div>
                     <Switch>
                         <Route exact path="/" render={() => <div className="d-block d-lg-none offset-2 offset-md-6 col-md-3 col-6 row">
-                            {/* <NavLink to="/profile" activeClassName="active-nav" style={{fontSize: '20px'}}>
-                                {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='25' height='25' style={{borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)'}} alt="userPic"/></div> : 'регистрация/вход'}
+                            {/* <NavLink to="/profile" style={{position: 'relative'}} activeClassName="active-nav" style={{fontSize: '20px'}}>
+                                {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='45' height='45' style={{borderRadius: '50%', marginLeft: '20px', objectFit: 'cover', position: 'absolute', top: '-45%', transform: 'translateX(125%)', right: 0,}} alt="userPic"/></div> : 'регистрация/вход'}
                         </NavLink> */}
                             {user
-                                ? <NavLink to="/profile" activeClassName="active-nav">
-                                    <div>Мой профиль<img src={user} width='25' height='25' style={{ borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)' }} alt="userPic" /></div>
+                                ? <NavLink to="/profile" style={{position: 'relative'}} activeClassName="active-nav">
+                                    Мой профиль<img src={user} width='45' height='45' style={{ borderRadius: '50%', marginLeft: '20px', objectFit: 'cover', position: 'absolute', top: '-45%', transform: 'translateX(125%)', right: 0, }} alt="userPic" />
                                 </NavLink>
                                 : <NavLink to="/login" activeClassName="active-nav">регистрация/вход</NavLink>
 
@@ -123,12 +123,12 @@ export default (currentState, openNavHandler, user) => {
                         </Switch>
                     </li>
                     <li>
-                        {/* <NavLink to="/profile" activeClassName="active-nav">
-                            {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='25' height='25' style={{borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)'}} alt="userPic"/></div> : 'регистрация/вход'}
+                        {/* <NavLink to="/profile" style={{position: 'relative'}} activeClassName="active-nav">
+                            {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='45' height='45' style={{borderRadius: '50%', marginLeft: '20px', objectFit: 'cover', position: 'absolute', top: '-45%', transform: 'translateX(125%)', right: 0,}} alt="userPic"/></div> : 'регистрация/вход'}
                         </NavLink> */}
                         {user
-                            ? <NavLink to="/profile" activeClassName="active-nav">
-                                <div>Мой профиль<img src={user} width='25' height='25' style={{ borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)' }} alt="userPic" /></div>
+                            ? <NavLink to="/profile" style={{position: 'relative'}} activeClassName="active-nav">
+                                Мой профиль<img src={user} width='45' height='45' style={{ borderRadius: '50%', marginLeft: '20px', objectFit: 'cover', position: 'absolute', top: '-45%', transform: 'translateX(125%)', right: 0, }} alt="userPic" />
                             </NavLink>
                             : <NavLink to="/login" activeClassName="active-nav">регистрация/вход</NavLink>
 
