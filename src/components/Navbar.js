@@ -46,17 +46,31 @@ export default (currentState, openNavHandler, user) => {
                                 </Switch>
                             </li>
                             <li>
-                                <NavLink to="/profile" activeClassName="active-nav">
+                                {/* <NavLink to="/profile" activeClassName="active-nav">
                                     {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='25' height='25' style={{borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)'}} alt="userPic"/></div> : 'регистрация/вход'}
-                            </NavLink>
+                            </NavLink> */}
+                                {user
+                                    ? <NavLink to="/profile" activeClassName="active-nav">
+                                        <div>Мой профиль<img src={user} width='25' height='25' style={{ borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)' }} alt="userPic" /></div>
+                                    </NavLink>
+                                    : <NavLink to="/login" activeClassName="active-nav">регистрация/вход</NavLink>
+
+                                }
                             </li>
                         </ul>
                     </div>
                     <Switch>
                         <Route exact path="/" render={() => <div className="d-block d-lg-none offset-2 offset-md-6 col-md-3 col-6 row">
-                            <NavLink to="/profile" activeClassName="active-nav">
+                            {/* <NavLink to="/profile" activeClassName="active-nav" style={{fontSize: '20px'}}>
                                 {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='25' height='25' style={{borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)'}} alt="userPic"/></div> : 'регистрация/вход'}
-                        </NavLink>
+                        </NavLink> */}
+                            {user
+                                ? <NavLink to="/profile" activeClassName="active-nav">
+                                    <div>Мой профиль<img src={user} width='25' height='25' style={{ borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)' }} alt="userPic" /></div>
+                                </NavLink>
+                                : <NavLink to="/login" activeClassName="active-nav">регистрация/вход</NavLink>
+
+                            }
                         </div>} />
                         <Route render={() =>
                             <div className="d-block d-lg-none offset-5 offset-md-8 col-1 row">
@@ -109,9 +123,16 @@ export default (currentState, openNavHandler, user) => {
                         </Switch>
                     </li>
                     <li>
-                        <NavLink to="/profile" activeClassName="active-nav">
+                        {/* <NavLink to="/profile" activeClassName="active-nav">
                             {user ? <div>Мой профиль<img src="http://via.placeholder.com/80x80" width='25' height='25' style={{borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)'}} alt="userPic"/></div> : 'регистрация/вход'}
-                        </NavLink>
+                        </NavLink> */}
+                        {user
+                            ? <NavLink to="/profile" activeClassName="active-nav">
+                                <div>Мой профиль<img src={user} width='25' height='25' style={{ borderRadius: '50%', marginLeft: '20px', transform: 'translateY(15%)' }} alt="userPic" /></div>
+                            </NavLink>
+                            : <NavLink to="/login" activeClassName="active-nav">регистрация/вход</NavLink>
+
+                        }
                     </li>
                 </ul>
             </div>

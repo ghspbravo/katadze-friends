@@ -20,7 +20,19 @@ export default (state = initialState, action) => {
                     token: action.payload.refresh,
                     ...jwtDecode(action.payload.refresh)
                 },
-                user: action.payload.user
+                user: action.payload.user.img_photo
+            }
+        case auth.VK_TOKEN_RECEIVED:
+            return {
+                access: {
+                    token: action.payload.access,
+                    ...jwtDecode(action.payload.access)
+                },
+                refresh: {
+                    token: action.payload.refresh,
+                    ...jwtDecode(action.payload.refresh)
+                },
+                user: action.payload.img_photo
             }
         case auth.TOKEN_RECEIVED:
             return {
@@ -32,6 +44,7 @@ export default (state = initialState, action) => {
             }
         case auth.LOGIN_FAILURE:
         case auth.TOKEN_FAILURE:
+        case auth.VK_TOKEN_FAILURE:
             return {
                 access: undefined,
                 refresh: undefined,

@@ -285,6 +285,13 @@ a {
 a:hover {
   color: #41bfef !important;
 }
+a.no_lead {
+  color: #fff !important;
+}
+a.no_lead:hover {
+  color: #fff !important;
+  text-decoration: underline;
+}
 li {
   font-family: OpenSans;
   font-weight: lighter;
@@ -748,6 +755,10 @@ label.file {
   top: 0;
   width: 100%;
   height: 100vh;
+}
+.homepage .price-popup:hover {
+  color: #fff !important;
+  text-decoration: underline;
 }
 .brand {
   font-family: OpenSans;

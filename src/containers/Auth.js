@@ -7,7 +7,7 @@ import {
     getFiledErrors,
     resetStatus
 } from '../reducers'
-import { login } from '../actions/auth'
+import { login, vkAuth } from '../actions/auth'
 import { registration, activate } from '../actions/registration'
 import { resetPassword, resetConfirm } from '../actions/resetPassword'
 import {
@@ -24,6 +24,7 @@ import resetConfirmComponent from '../components/auth/resetConfirm';
 import { forceRefresh, STATUS_SUCCESS } from '../actions'
 
 import { showSuccess } from '../functions'
+import { providers } from '../constants';
 
 
 class Login extends Component {
@@ -123,9 +124,13 @@ class Login extends Component {
                 ? <Redirect to='/profile' />
                 : <Switch>
                     {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ email: '', password: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
-                    <Route path='/login' render={() => LoginComponent(this.onSubmit,
+                    <Route exact path='/login' render={() => LoginComponent(this.onSubmit,
                         this.handleInputChange,
                         this.props.fieldErrors)} />
+                    <Route exact path='/login/vk' render={() => this.props.authErrors
+                        ? <Redirect to='/login' />
+                        : this.props.onSocial(providers.VK, this.props.location.search.split('=')[1])
+                    } />
                     <Route path='/reset-password' render={() => resetPasswordComponent(this.onSubmit,
                         this.handleInputChange,
                         this.props.fieldErrors,
@@ -157,13 +162,26 @@ const mapStateToProps = (state) => ({
     isRegistered: isRegistered(state),
     fieldErrors: getFiledErrors(state.registration),
     status: state.resetPassword.status,
-    resetStatus: () => resetStatus(state)
+    resetStatus: () => resetStatus(state),
+    authErrors: state.auth.errors
 });
 
 const mapDispatchToProps = (dispatch) => ({
     onLogin: (username, password, isRegistered = false) => {
         dispatch(login(username, password))
         if (isRegistered) setTimeout(() => dispatch(activate()), 5000)
+    },
+
+    onSocial: (provider, code) => {
+        switch (provider) {
+            case providers.VK:
+                dispatch(vkAuth(code))
+                break;
+
+            default:
+                break;
+        }
+        return null
     },
 
     onRegistration: (email, password, date_birth, gender, last_name, first_name, username, residence, phones, img_photo) => {

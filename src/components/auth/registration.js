@@ -47,7 +47,7 @@ export default (submitHandler, inputHandler, fileHandler, errors, changeValue, f
                 </form>
             </div>
             <div className="container">
-                <div className="v-offset-small col-12"><p>Уже есть аккаунт? <Link to='/login'>Войти</Link></p></div>
+                <div className="v-offset-small col-12"><p>Уже есть аккаунт? <Link to='/login' style={{textDecoration: 'underline'}}>Войти</Link></p></div>
             </div>
         </div>
     )

@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import errorMessage from '../errorMessage'
 
+import { vkAuthApp } from '../../constants'
+
 export default (submitHandler, inputHandler, errors) => {
     return (
         <div>
@@ -15,8 +17,11 @@ export default (submitHandler, inputHandler, errors) => {
                 </form>
             </div>
             <div className="container">
-                <div className="v-offset-small col-12"><p>Забыли пароль? <Link to='/reset-password'>Восстановить</Link></p></div>
-                <div className="v-offset-small col-12"><p>Нет аккаунта? <Link to='/registration'>Создать</Link></p></div>
+                <button className="lead col-12 col-lg-4"><a className='no_lead' href={vkAuthApp}>
+                    Войти через ВК
+                </a></button>
+                <div className="v-offset-small col-12"><p>Забыли пароль? <Link to='/reset-password' style={{ textDecoration: 'underline' }}>Восстановить</Link></p></div>
+                <div className="v-offset-small col-12"><p>Нет аккаунта? <Link to='/registration' style={{ textDecoration: 'underline' }}>Создать</Link> / <a style={{textDecoration: 'underline'}} href={vkAuthApp}>Зарегистрироваться через ВК</a></p></div>
             </div>
         </div>
     )

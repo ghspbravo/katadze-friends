@@ -75,6 +75,8 @@ class Layout extends Component {
 
                 <Route exact path='/profile/contacts' component={Events} />
 
+                <Route exact path='/login/vk' component={Auth} />
+
                 <Route exact path='/profile' component={Profile} />
                 <Route exact path='/profile/edit' component={Profile} />
                 <Route exact path='/profile/applications' component={Profile} />
