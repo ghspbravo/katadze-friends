@@ -207,6 +207,16 @@ button.more-button {
 .justify-text {
   text-align: justify;
 }
+.contact-link {
+  position: relative;
+}
+.contact-link:hover h1 {
+  color: #41bfef !important;
+}
+.contact-link:hover span {
+  color: #fb0 !important;
+  border: none;
+}
 .app-container {
   scroll-behavior: smooth;
 }
@@ -448,15 +458,18 @@ button.lead {
   line-height: 25px;
   color: #fff;
   background-color: #41bfef;
-  border-bottom: none;
+  border: 1px solid #41bfef;
   border-radius: 22.5px;
   padding: 10px;
   width: 100%;
   margin-top: 30px;
   margin-bottom: 30px;
+  transition: background-color 0.3s;
 }
-button.lead:hover {
-  color: #fff;
+button.lead:hover,
+button.lead:hover a {
+  background-color: #fff;
+  color: #000 !important;
 }
 .stars .star {
   float: left;
@@ -1460,7 +1473,7 @@ section.idSection .section-id {
 .gid-card {
   background-color: #fff;
   margin: 20px;
-  padding: 5px;
+  padding: 15px;
 }
 .gid-card div {
   padding-left: 0;

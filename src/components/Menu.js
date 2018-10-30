@@ -68,7 +68,7 @@ export default class Menu extends Component {
                             document.querySelector('.homepage-item-wrapper').classList.add('hidden-lines')
                         }
                         document.querySelector('.homepage-item-wrapper').onmouseleave = () => {
-                            document.querySelector('.homepage-item-wrapper').classList.remove('hidden-lines')
+                            if (document.querySelector('.homepage-item-wrapper')) document.querySelector('.homepage-item-wrapper').classList.remove('hidden-lines')
                         }
                     }
                 })

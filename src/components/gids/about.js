@@ -18,8 +18,8 @@ export default () => {
                     </div>
                 </div>
             </section>
-            <section id="aboutus" className="container">
-                <div className="row">
+            <section className="container">
+                <div id="aboutus" className="row">
                     <div className="col-lg-6 align-center">
                         <h1 className="upper">
                             KATADZE
@@ -52,7 +52,7 @@ export default () => {
                 <h1 className="upper text-center">Как это<span> работает </span>?</h1>
                 <div className="col-12 acsent-box v-offset-small">
                     <img src={how_to_become_gid} alt="how it work"/>
-                    <button style={{ backgroundColor: 'white' }} className="lead v-offset-small offset-lg-4 col-lg-4"><Link to='/guide' style={{ color: '#41BFEF' }}>Найти гида</Link></button>
+                    <button style={{ backgroundColor: 'white', marginBottom: 0 }} className="lead v-offset-small offset-lg-4 col-lg-4"><Link to='/guide' style={{ color: '#41BFEF' }}>Найти гида</Link></button>
                 </div>
 
                 {/* <div className="row">
@@ -144,7 +144,7 @@ export default () => {
                 </div>
             </section> */}
             <section id="social" className="container">
-                <div>
+                <div className="contact-link">
                     <Link to='contacts'>
                         <h1 className="secondary text-center">
                             <span className="lead">Хочу</span> пообщаться</h1>

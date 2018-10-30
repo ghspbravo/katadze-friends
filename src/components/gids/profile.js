@@ -62,7 +62,7 @@ export default (gid, handleInput, messageToGid, handleSubmit, claimStatus) => {
                                 <button onClick={() => showPopup()} className="offset-md-4 offset-2 v-offset-small col-8 col-md-4 lead">Забронировать</button>
                             </div>
                         </section>
-                        <img style={{ height: '450px', objectFit: 'cover' }} src={gid.img_photo} alt="avatar" />
+                        <img style={{ height: '450px', objectFit: 'cover' }} src={gid.avatar} alt="avatar" />
                         <section className="jumbotron v-offset-small">
                             <div className="head"><p className="small">Обо мне</p></div>
                             <div className="content no-padding">

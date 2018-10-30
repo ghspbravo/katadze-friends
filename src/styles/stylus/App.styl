@@ -179,14 +179,16 @@ button
         OpenH4()
         color white
         background-color acsent
-        border-bottom: none
+        border: 1px solid acsent
         border-radius: 22.5px
         padding: 10px
         width 100%
         margin-top: 30px
         margin-bottom: 30px
-        &:hover
-            color: white
+        transition: background-color 0.3s
+        &:hover, &:hover a
+            background-color: white
+            color: black !important
 
 
 .stars .star {

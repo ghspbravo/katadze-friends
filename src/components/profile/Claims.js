@@ -48,7 +48,7 @@ class Claim extends Component {
                         </div>}
                     <Link to={`/guide/id=${claim.receiver && claim.receiver.id}`} className="row">
                         <div className="col-6 col-md-12 no-padding profile-image-small justify-center">
-                            <img src={this.props.userId !== claim.sender.id ? claim.sender && claim.sender.img_photo : claim.receiver && claim.receiver.img_photo} alt="userImage" />
+                            <img src={this.props.userId !== claim.sender.id ? claim.sender && claim.sender.avatar : claim.receiver && claim.receiver.avatar} alt="userImage" />
                         </div>
                         <p className="secondary col-12 small v-offset-small">{this.props.isGid
                             ? claim.sender && claim.sender.name

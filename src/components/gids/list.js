@@ -33,17 +33,12 @@ export default (gids, inputHandler, searchHandler, loadMore, nextPage) => {
                     <div className="col-12 v-offset-small justify-center"><button onClick={nextPage !== null ? () => loadMore(nextPage) : null} style={nextPage === null ? {backgroundColor: 'lightgray'}: null} className="col-lg-3 lead">{`${nextPage !== null ? 'Показать еще' : 'Все гиды загружены'}`}</button></div>
                     <div id="become_gid" className="col-12 gid-card">
                         <div className="row v-offset-small justify-center">
-                            {/* <ul className="offset-sm-1 col-sm-10 col-12 todo-list">
-                                <li className="col-12">Создай профиль гида</li>
-                                <li className="col-12">Покажи места, которые знаешь</li>
-                                <li className="col-12">Заработай денег</li>
-                            </ul> */}
                             <img className="col-xl-10 col-12" src={howToBecomeGid} alt="instruction" style={{maxHeight: '50vw', objectFit: 'contain'}} />
                         </div>
                         <Link to='/profile/become-gid'><button className="offset-2 col-8 offset-lg-4 offset-xl-5 col-lg-4 col-xl-2 lead">Стать гидом</button></Link>
                     </div>
 
-                    <div className="col-12 gid-card v-offset-mid">
+                    <div className="col-12 gid-card v-offset-mid" style={{paddingBottom: '40px'}}>
                         <div className="offset-md-1 col-md-10">
                             <h1 style={{ textAlign: 'center' }}><span>Кatadze-guide</span> - покажи любимый город своими глазами.</h1>
                             <p className="v-offset-small" style={{maxHeight: '100vh', overflowY: 'auto'}}>

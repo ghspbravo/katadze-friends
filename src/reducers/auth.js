@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
                     token: action.payload.refresh,
                     ...jwtDecode(action.payload.refresh)
                 },
-                user: action.payload.img_photo
+                user: action.payload.avatar
             }
         case auth.VK_TOKEN_RECEIVED:
             return {
@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
                     token: action.payload.refresh,
                     ...jwtDecode(action.payload.refresh)
                 },
-                user: action.payload.img_photo
+                user: action.payload.avatar
             }
         case auth.TOKEN_RECEIVED:
             return {

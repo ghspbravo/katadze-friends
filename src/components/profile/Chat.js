@@ -103,7 +103,7 @@ class Chat extends Component {
             <div>
                 {this.props.colocutor && this.props.colocutor.first_name
                     ? <Link to={`/guide/id=${this.props.colocutor.id}`} className='row align-center' style={{ paddingBottom: '15px', cursor: 'pointer', borderBottom: '1px solid' }}>
-                        <img style={{ objectFit: 'cover', marginRight: '10px', width: '55px', height: '55px', borderRadius: '50%' }} src={this.props.colocutor.img_photo} alt="" />
+                        <img style={{ objectFit: 'cover', marginRight: '10px', width: '55px', height: '55px', borderRadius: '50%' }} src={this.props.colocutor.avatar} alt="" />
                         <p className="small">{this.props.colocutor.first_name} {this.props.colocutor.last_name}</p>
                     </Link>
                     : <div className='row align-center' style={{ paddingBottom: '15px', cursor: 'pointer', borderBottom: '1px solid' }}>
@@ -121,7 +121,7 @@ class Chat extends Component {
                         </div>
                         : <div key={i} className='row align-center' style={{ margin: '10px 0' }}>
                             <Link to={`/guide/id=${this.props.match.params.id}`}>
-                                <img style={{ objectFit: 'cover', marginRight: '10px', width: '55px', height: '55px', borderRadius: '50%' }} src={this.props.colocutor && this.props.colocutor.img_photo} alt="" />
+                                <img style={{ objectFit: 'cover', marginRight: '10px', width: '55px', height: '55px', borderRadius: '50%' }} src={this.props.colocutor && this.props.colocutor.avatar} alt="" />
                             </Link>
                             <p className="small col-6">{message.text}
                                 <span style={{ fontSize: '10px', color: 'black', marginLeft: '20px' }}>{message.time}</span></p>

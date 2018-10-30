@@ -5,6 +5,7 @@ import {
     Switch,
     withRouter
 } from 'react-router'
+import lazyload from 'lazy-cache'
 
 import '../bootstrap-grid.min.css';
 import '../reset.css';
@@ -27,6 +28,10 @@ class Layout extends Component {
 
     componentWillMount() {
         if (typeof sessionStorage.getItem('isFirstVisit') === 'undefined') sessionStorage.setItem('isFirstVisit', true);
+    }
+
+    componentWillReceiveProps() {
+        lazyload(document.querySelectorAll('img'));
     }
 
     render() {

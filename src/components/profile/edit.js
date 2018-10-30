@@ -57,7 +57,7 @@ export default (user) => {
 				<div className="row head"><p>Фото в профиле</p></div>
 				<div className="row content">
 					<div className="col-md-4 col-12 avatar-container justify-center">
-						<img src={user.img_photo ? user.img_photo : ''} alt="avatar-preview" />
+						<img src={user.avatar ? user.avatar : ''} alt="avatar-preview" />
 					</div>
 					<div className="col-md-8 col-12 align-center">
 						<p className="small">Важно, чтобы ваше лицо было отчетливо видно на фото.</p>

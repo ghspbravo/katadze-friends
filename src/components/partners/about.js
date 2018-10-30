@@ -122,7 +122,7 @@ export default () => {
             </section> */}
             <section id="social" className="container">
                 <div>
-                    <Link to='contacts'>
+                    <Link className='contact-link' to='contacts'>
                         <h1 className="secondary text-center">
                             <span className="lead">Хочу</span> пообщаться</h1>
                     </Link>

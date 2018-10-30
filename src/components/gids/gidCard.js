@@ -7,7 +7,7 @@ export default (gid, index) => {
         <div key={index} className="col-12 col-xl-5 gid-card">
             <Link to={`/guide/id=${gid.id}`}>
                 <div className="row">
-                    <div className="col-12 col-md-4" style={{height: '250px'}}><img style={{width: '100%', height: '250px', objectFit: window.innerWidth < 568 ? 'contain' : 'cover'}} src={gid.img_photo} alt="gidPhoto" /></div>
+                    <div className="col-12 col-md-4" style={{height: '250px'}}><img style={{width: '100%', height: '250px', objectFit: window.innerWidth < 568 ? 'contain' : 'cover'}} src={gid.avatar} alt="gidPhoto" /></div>
                     <div className="col-10 offset-1 col-md-6" style={{display: 'flex', flexDirection: 'column', paddingTop: '10px', paddingBottom: '10px', height: '250px'}}>
                         <div className="row align-center">
                             <div className="col-8">
