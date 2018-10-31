@@ -6,7 +6,7 @@ import Gallery from './Gallery';
 import Parser from 'html-react-parser';
 import tariffs from './tariffs';
 
-export default (event, currentTariff, handleTariffChange, handleAcquiring, handeInput, handleSubmit, errors, status, fields, handleValueChange) => {
+export default (event, currentTariff, handleTariffChange, handleAcquiring, handeInput, handleSubmit, errors, status, fields, handleValueChange, authorize) => {
     return (
         <div>
             {event && event.sections
@@ -112,7 +112,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                         : null
                     }
                     {event && event.tariffs[0]
-                        ? tariffs(event, handleAcquiring)
+                        ? tariffs(event, handleAcquiring, authorize)
                         : null
                     }
                     {/РКВ/.test(event.name)

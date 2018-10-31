@@ -14,7 +14,7 @@ import {
 
 import listEvents from '../components/events/list'
 import info from '../components/events/info';
-import { getFiledErrors, resetStatus } from '../reducers';
+import { getFiledErrors, resetStatus, isAuthenticated } from '../reducers';
 import { contact, rkv } from '../actions/ticket';
 import { forceRefresh, STATUS_SUCCESS } from '../actions';
 
@@ -105,6 +105,8 @@ class Events extends Component {
                     this.props.status,
                     this.state,
                     this.handleValueChange,
+
+                    this.props.isAuthenticated
                 )
                 } />
                 <Route exact path="/events/about" component={about} />
@@ -127,7 +129,8 @@ const mapStateToProps = state => ({
     payment: state.commerce,
     status: state.ticket.status,
     errors: getFiledErrors(state.ticket),
-    resetStatus: () => resetStatus(state)
+    resetStatus: () => resetStatus(state),
+    isAuthenticated: isAuthenticated(state),
 });
 
 const mapDispatchToProps = dispatch => ({

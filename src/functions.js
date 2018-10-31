@@ -110,6 +110,14 @@ export const showSuccess = (message = '', callback = null) => {
     </div>
 }
 
+export const showError = (message = '', callback = null) => {
+    if (callback !== null) setTimeout(callback, 3000)
+    return <div style={{ textAlign: 'center' }}>
+        <h1>Упс, что-то пошло не по плану...</h1>
+        <p>{message}</p>
+    </div>
+}
+
 export const showLoading = (message = 'Магия случится через 3..2..1...', callback = null) => {
     if (callback !== null) setTimeout(callback, 3000)
     return <div style={{ textAlign: 'center' }}>

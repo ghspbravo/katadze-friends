@@ -1,13 +1,18 @@
 import React from 'react'
 import Parser from 'html-react-parser';
+import { showError } from '../../functions';
 
-export default (event, handleAcquiring) => {
+import { Link } from 'react-router-dom'
+
+export default (event, handleAcquiring, authorize) => {
     return (
         <section id='tariffs'>
             <div className="offset-1">
                 <h1 className="super"><span>Пакеты</span></h1>
             </div>
             <div className="container">
+                { authorize ? null
+                : <p>Для покупки пакетов Вы должны быть авторизованы. <Link to='/login'>войти / зарегистрироваться</Link></p>}
                 <div className='row'>
                     {event.tariffs.map((tariff, i) => <div key={i} style={{ borderRadius: 0, border: '2px solid #41bfef', paddingBottom: '15px', marginTop: '15px', marginBottom: '15px' }} className='col-md-5 offset-md-1 row'>
                         <div style={{ alignSelf: 'flex-start' }}><p style={{ textTransform: 'uppercase', color: '#41bfef', textAlign: 'center' }}>{tariff.name}</p>
@@ -15,11 +20,11 @@ export default (event, handleAcquiring) => {
                                 {Parser(tariff.description)}
                             </div></div>
                         {tariff.parts[0] && tariff.parts[0].id
-                            ? <div style={{alignSelf: 'flex-end'}}>{tariff.parts.map(part => <div className='row col-12'>
-                            <div className="col-sm-6 col-12"><p className="small">
-                            {`${part.name} - ${part.price.split('.')[0]} руб.`}
-                            </p></div>
-                            <div className="col-sm-6 col-12"><button style={{ borderRadius: 0, height: '45px' }} onClick={() => handleAcquiring(tariff.id, part.id)} className="col-12 tarif-button"><p className="small">Оплатить</p></button></div>
+                            ? <div style={{ alignSelf: 'flex-end' }}>{tariff.parts.map(part => <div className='row col-12'>
+                                <div className="col-sm-6 col-12"><p className="small">
+                                    {`${part.name} - ${part.price.split('.')[0]} руб.`}
+                                </p></div>
+                                <div className="col-sm-6 col-12"><button style={{ borderRadius: 0, height: '45px' }} onClick={() => handleAcquiring(tariff.id, part.id)} className="col-12 tarif-button"><p className="small">Оплатить</p></button></div>
                             </div>)}</div>
                             : <div style={{ alignSelf: 'flex-end' }} className='col-12'>
                                 <div style={{ borderRadius: 0, height: '45px' }} className="col-12 text-center tarif-description v-offset-small"><p style={{ color: 'white' }} className="small">{tariff.price.split('.')[0]} руб.</p></div>
