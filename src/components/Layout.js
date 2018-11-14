@@ -5,7 +5,6 @@ import {
     Switch,
     withRouter
 } from 'react-router'
-import lazyload from 'lazy-cache'
 
 import '../bootstrap-grid.min.css';
 import '../reset.css';
@@ -30,10 +29,6 @@ class Layout extends Component {
         if (typeof sessionStorage.getItem('isFirstVisit') === 'undefined') sessionStorage.setItem('isFirstVisit', true);
     }
 
-    componentWillReceiveProps() {
-        lazyload(document.querySelectorAll('img'));
-    }
-
     render() {
         return (
             <div className="app-container">
@@ -54,7 +49,7 @@ class Layout extends Component {
                     </div>
                 </div>
                 <Switch>
-                    <Route exact path="/" component={window.innerWidth <= 992 ? Navbar : null} />
+                    <Route exact path="/" />
                     <Route component={Navbar} />
                 </Switch>
 
@@ -81,6 +76,7 @@ class Layout extends Component {
                 <Route exact path='/profile/contacts' component={Events} />
 
                 <Route exact path='/login/vk' component={Auth} />
+                <Route exact path='/login/facebook' component={Auth} />
 
                 <Route exact path='/profile' component={Profile} />
                 <Route exact path='/profile/edit' component={Profile} />

@@ -9,7 +9,7 @@ import list from '../components/gids/list'
 import profile from '../components/gids/profile';
 import search from '../components/gids/search';
 import tour from '../components/gids/tour';
-import { gidList, gidInfo, tourInfo, gidsFilter, getCity } from '../actions/gids';
+import { gidList, gidInfo, tourInfo, gidsFilter, getCity, getGidComments } from '../actions/gids';
 import faq from '../components/gids/faq';
 import about from '../components/gids/about';
 import contacts from '../components/gids/contacts';
@@ -17,6 +17,8 @@ import { contact } from '../actions/ticket';
 import { resetStatus, getFiledErrors } from '../reducers';
 import { forceRefresh, STATUS_SUCCESS } from '../actions';
 import { createGidClaim } from '../actions/claim';
+import Profile from '../components/gids/profile';
+import { getUserPhotos } from '../actions/profile';
 
 class Gids extends Component {
     constructor(props) {
@@ -71,6 +73,8 @@ class Gids extends Component {
 
             case '/guide/id=:id':
                 this.props.onFetchGid(this.props.match.params.id)
+                this.props.onGetGidComments(this.props.match.params.id)
+                this.props.onGetGidPhotos(this.props.match.params.id)
                 break;
 
             case '/guide/search=:search':
@@ -100,16 +104,16 @@ class Gids extends Component {
                         this.props.next
                     )
                 }} />
-                <Route exact path="/guide/id=:id" render={() => {
-                    document.body.style.backgroundColor = "white"
-                    return profile(
-                        this.props.gid,
-                        this.handleInputChange,
-                        this.state.message_to_gid,
-                        this.handleClaim,
-                        this.props.claimStatus
-                    )
-                }} />
+                <Route exact path="/guide/id=:id" render={() => <Profile
+                    gidInfo={this.props.gid}
+                    inputHandler={this.handleInputChange}
+                    messageToGid={this.state.message_to_gid}
+                    claimHandler={this.handleClaim}
+                    claimStatus={this.props.claimStatus}
+                    comments={this.props.comments}
+                    photos={this.props.gidPhotos}
+                />
+                } />
                 <Route exact path="/guide/search=:search" render={() => {
                     document.body.style.backgroundColor = "#E8EFFC"
                     return search(
@@ -148,7 +152,11 @@ const mapStateToProps = state => ({
     status: state.ticket.status,
     claimStatus: state.claim.status,
     errors: getFiledErrors(state.ticket),
-    resetStatus: () => resetStatus(state)
+    resetStatus: () => resetStatus(state),
+
+    comments: state.gids.comments,
+    gidPhotos: state.profile.list
+
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -165,6 +173,9 @@ const mapDispatchToProps = dispatch => ({
     forceRefresh: () => {
         dispatch(forceRefresh())
     },
+
+    onGetGidComments: id => dispatch(getGidComments(id)),
+    onGetGidPhotos: id => dispatch(getUserPhotos(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gids)

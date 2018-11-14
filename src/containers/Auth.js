@@ -7,7 +7,7 @@ import {
     getFiledErrors,
     resetStatus
 } from '../reducers'
-import { login, vkAuth } from '../actions/auth'
+import { login, vkAuth, fbAuth } from '../actions/auth'
 import { registration, activate } from '../actions/registration'
 import { resetPassword, resetConfirm } from '../actions/resetPassword'
 import {
@@ -18,7 +18,7 @@ import {
 
 import LoginComponent from '../components/auth/login'
 import resetPasswordComponent from '../components/auth/resetPassword'
-import registrationComponent from '../components/auth/registration'
+import RegistrationComponent from '../components/auth/registration'
 import resetConfirmComponent from '../components/auth/resetConfirm';
 
 import { forceRefresh, STATUS_SUCCESS } from '../actions'
@@ -71,18 +71,6 @@ class Login extends Component {
         fr.onloadend = info => {
             document.querySelector('.avatar-container img').src = info.target.result
             this.setState({ img_photo: info.target.result })
-
-            if (document.querySelector('.avatar-container .close-button') !== null) return
-            let closeButton = document.createElement('button')
-            closeButton.classList.add('close-button')
-            closeButton.innerHTML = "X"
-            closeButton.onclick = () => {
-                this.setState({ img_photo: '' })
-                document.querySelector('.avatar-container img').src = this.state.thumbnail
-                document.querySelector('.avatar-container').removeChild(closeButton)
-                input.value = null
-            }
-            document.querySelector('.avatar-container').appendChild(closeButton)
         }
         fr.readAsDataURL(file)
     }
@@ -100,6 +88,7 @@ class Login extends Component {
 
     onSubmit = (event) => {
         event.preventDefault()
+        event.target.querySelectorAll('input').forEach(input => input.dispatchEvent(new Event('focusout')))
         switch (this.props.match.path) {
             case '/login':
                 this.props.onLogin(this.state.username, this.state.password)
@@ -124,12 +113,18 @@ class Login extends Component {
                 ? <Redirect to='/profile' />
                 : <Switch>
                     {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ email: '', password: '' }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
-                    <Route exact path='/login' render={() => LoginComponent(this.onSubmit,
-                        this.handleInputChange,
-                        this.props.fieldErrors)} />
+                    <Route exact path='/login' render={() => <LoginComponent
+                        submitHandler={this.onSubmit}
+                        inputHandler={this.handleInputChange}
+                        errors={this.props.authFieldErrors}
+                    />} />
                     <Route exact path='/login/vk' render={() => this.props.authErrors
                         ? <Redirect to='/login' />
                         : this.props.onSocial(providers.VK, this.props.location.search.split('=')[1])
+                    } />
+                    <Route exact path='/login/facebook' render={() => this.props.authErrors
+                        ? <Redirect to='/login' />
+                        : this.props.onSocial(providers.FB, this.props.location.search.split('=')[1])
                     } />
                     <Route path='/reset-password' render={() => resetPasswordComponent(this.onSubmit,
                         this.handleInputChange,
@@ -141,12 +136,14 @@ class Login extends Component {
                         this.props.fieldErrors,
                         this.props.status
                     )} />
-                    <Route path='/registration' render={() => registrationComponent(this.onSubmit,
-                        this.handleInputChange,
-                        this.handleFileLoad,
-                        this.props.fieldErrors,
-                        this.handleValueChange,
-                        this.state)} />
+                    <Route path='/registration' render={() => <RegistrationComponent
+                        submitHandler={this.onSubmit}
+                        inputHandler={this.handleInputChange}
+                        fileHandler={this.handleFileLoad}
+                        errors={this.props.fieldErrors}
+                        changeValue={this.handleValueChange}
+                        fields={this.state}
+                    />} />
                     {this.props.isRegistered
                         ? showSuccess('Вы стали частью семьи Катадзе. Подготавливаем Ваш личный кабинет...', () => this.props.onLogin(this.state.username, this.state.password, this.props.isRegistered))
                         : null
@@ -161,6 +158,7 @@ const mapStateToProps = (state) => ({
     isAuthenticated: isAuthenticated(state),
     isRegistered: isRegistered(state),
     fieldErrors: getFiledErrors(state.registration),
+    authFieldErrors: getFiledErrors(state.auth),
     status: state.resetPassword.status,
     resetStatus: () => resetStatus(state),
     authErrors: state.auth.errors
@@ -176,6 +174,10 @@ const mapDispatchToProps = (dispatch) => ({
         switch (provider) {
             case providers.VK:
                 dispatch(vkAuth(code))
+                break;
+
+            case providers.FB:
+                dispatch(fbAuth(code))
                 break;
 
             default:

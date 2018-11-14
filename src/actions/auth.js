@@ -13,6 +13,10 @@ export const VK_TOKEN_REQUEST = '@@auth/VK_TOKEN_REQUEST';
 export const VK_TOKEN_RECEIVED = '@@auth/VK_TOKEN_RECEIVED';
 export const VK_TOKEN_FAILURE = '@@auth/VK_TOKEN_FAILURE';
 
+export const FB_TOKEN_REQUEST = '@@auth/FB_TOKEN_REQUEST';
+export const FB_TOKEN_RECEIVED = '@@auth/FB_TOKEN_RECEIVED';
+export const FB_TOKEN_FAILURE = '@@auth/FB_TOKEN_FAILURE';
+
 export const LOGOUT_SUCCESS = '@@auth/LOGOUT_SUCCESS';
 
 export const login = (identifier, password) => ({
@@ -47,6 +51,18 @@ export const vkAuth = (code) => ({
         headers: { 'Content-Type': 'application/json' },
         types: [
             VK_TOKEN_REQUEST, VK_TOKEN_RECEIVED, VK_TOKEN_FAILURE
+        ]
+    }
+});
+
+export const fbAuth = (code) => ({
+    [RSAA]: {
+        endpoint: `https://${server}/api/auth/social/`,
+        method: 'POST',
+        body: JSON.stringify({ provider: 'facebook', code }),
+        headers: { 'Content-Type': 'application/json' },
+        types: [
+            FB_TOKEN_REQUEST, FB_TOKEN_RECEIVED, FB_TOKEN_FAILURE
         ]
     }
 });

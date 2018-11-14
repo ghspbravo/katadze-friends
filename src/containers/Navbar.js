@@ -7,6 +7,8 @@ import TweenMax from 'gsap/TweenMax'
 import { Expo } from 'gsap/EasePack'
 
 import desktopNavbar from '../components/Navbar'
+import { userInfo } from '../actions/profile';
+import { userId } from '../reducers';
 
 class Navbar extends Component {
     constructor(props) {
@@ -35,9 +37,9 @@ class Navbar extends Component {
 
         let openScene = new TimeLineMax({ onComplete: () => this.setState({ isNavOpen: true, isDrawing: false }) })
         openScene.set('.mobile-nav', { display: 'block' })
-            .to('.mobile-nav', 1, { top: '70px', ease: Expo.easeOut })
+            .to('.mobile-nav', 0.25, { top: '70px', ease: Expo.easeOut })
 
-        document.querySelectorAll('.mobile-nav li').forEach(item => openScene.to(item, 0.1, { opacity: '1' }))
+        document.querySelectorAll('.mobile-nav li').forEach(item => openScene.to(item, 0.03, { opacity: '1' }))
     }
     handleNavClose = () => {
         TweenMax.to('#top-line', 0.5, { attr: { y2: '5' } })
@@ -46,8 +48,8 @@ class Navbar extends Component {
 
         let closeScene = new TimeLineMax({ onComplete: () => this.setState({ isNavOpen: false, isDrawing: false }) })
 
-        document.querySelectorAll('.mobile-nav li').forEach(item => closeScene.to(item, 0.1, { opacity: '0' }))
-        closeScene.to('.mobile-nav', 1, { top: '-300px' })
+        document.querySelectorAll('.mobile-nav li').forEach(item => closeScene.to(item, 0.03, { opacity: '0' }))
+        closeScene.to('.mobile-nav', 0.3, { top: '-300px' })
             .set('.mobile-nav', { display: 'none' })
     }
 
@@ -97,6 +99,8 @@ class Navbar extends Component {
     }
 
     componentDidMount() {
+
+        if (this.props.userId) this.props.getUserInfo(this.props.userId)
         if (window.outerWidth < 992) {
             this.props.changeNavType(NavbarTypes.MOBILE)
             document.querySelectorAll('.mobile-nav a').forEach(link => link.onclick = this.handleNavToggle)
@@ -122,7 +126,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            desktopNavbar(this.props.navState, this.handleNavToggle, this.props.user)
+            desktopNavbar(this.props.navState, this.handleNavToggle, this.props.userPic)
         )
     }
 }
@@ -130,11 +134,14 @@ class Navbar extends Component {
 
 const mapStateToProps = state => ({
     navState: state.navbar.navType,
-    user: state.auth.user
+    userPic: state.profile.avatar,
+    userId: userId(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-    changeNavType: navType => dispatch(changeNavType(navType))
+    changeNavType: navType => dispatch(changeNavType(navType)),
+
+    getUserInfo: id => dispatch(userInfo(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

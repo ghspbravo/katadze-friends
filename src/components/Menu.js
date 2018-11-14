@@ -50,7 +50,7 @@ export default class Menu extends Component {
                 document.querySelector('.homepage-item-wrapper').classList.add('hidden-lines')
             }
             document.querySelector('.homepage-item-wrapper').onmouseleave = () => {
-               if (document.querySelector('.homepage-item-wrapper')) document.querySelector('.homepage-item-wrapper').classList.remove('hidden-lines')
+                if (document.querySelector('.homepage-item-wrapper')) document.querySelector('.homepage-item-wrapper').classList.remove('hidden-lines')
             }
         }
         else {
@@ -128,7 +128,7 @@ export default class Menu extends Component {
                     </div>
                 </div>
                 <div className="d-none d-lg-block homepage">
-                    <Link to='/profile' className='price-popup' style={{position: 'absolute', top: '20px', right: 0, zIndex: 100, color: 'white', clipPath: 'polygon(5% 0%, 100% 0%, 105% 100%, 0% 100%)'}}>войти/зарегистрироваться</Link>
+                    <Link to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}>
                         <span className="credits">made by katadze digital studio
@@ -164,7 +164,7 @@ export default class Menu extends Component {
                                 <div className="homepage-item-inner-title">Гиды</div>
                                 <div className="homepage-item-inner-subtext">
                                     <div className="homepage-item-inner-subtext-subtitle">
-                                        <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!.</p>
+                                        <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!</p>
                                     </div>
                                     <Link className="homepage-item-inner-subtext-link" to="/guide">Перейти</Link>
                                 </div>
@@ -195,9 +195,11 @@ export default class Menu extends Component {
                     </div>
                 </div>
                 <div className="d-block d-lg-none mobile-homepage">
-                    <a href="#content" className="scroll-to"><span></span>SCROLL</a>
-                    <div className="brand">KATADZE</div>
-                    <div className="background" style={{ backgroundImage: `url(${main})` }}></div>
+                    <div className="background" style={{ backgroundImage: `url(${main})` }}>
+                        <Link to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>
+                        <a href="#content" className="scroll-to"><span></span>SCROLL</a>
+                        <div className="brand">KATADZE</div>
+                    </div>
                     <Link to='/events'>
                         <div id="content" className="homepage-item-inner">
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
@@ -206,7 +208,6 @@ export default class Menu extends Component {
                                 <div className="homepage-item-inner-subtext-subtitle">
                                     <p>Объединяя людей по всему миру, мы создаем уникальные проекты самой разной направленности. Присоединяйся: погнали Katadze</p>
                                 </div>
-                                {/* <Link className="homepage-item-inner-subtext-link" to="/events">Перейти</Link> */}
                             </div>
                             <div className="homepage-mask-wrapper">
                                 <svg width="100%" height="100%"> <defs> <mask id="knockout-text-6" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-6)"></rect> </svg>
@@ -219,12 +220,11 @@ export default class Menu extends Component {
                             <div className="homepage-item-inner-title">Гиды</div>
                             <div className="homepage-item-inner-subtext">
                                 <div className="homepage-item-inner-subtext-subtitle">
-                                    <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!.</p>
+                                    <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!</p>
                                 </div>
-                                {/* <Link className="homepage-item-inner-subtext-link" to="/guide">Перейти</Link> */}
                             </div>
                             <div className="homepage-mask-wrapper">
-                                <svg width="100%" height="100%"> <defs> <mask id="knockout-text-5" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle" style={{transformOrigin: 'center', transform: 'rotate(180deg)'}}>✼</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-5)"></rect> </svg>
+                                <svg width="100%" height="100%"> <defs> <mask id="knockout-text-5" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle" style={{ transformOrigin: 'center', transform: 'rotate(180deg)' }}>✼</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-5)"></rect> </svg>
                             </div>
                         </div>
                     </Link>
@@ -236,7 +236,6 @@ export default class Menu extends Component {
                                 <div className="homepage-item-inner-subtext-subtitle">
                                     <p>Создавать пространство для возможностей - наша цель. Добиваться её нам помогают наши партнеры: постоянные скидки и бонусы от Друзей Katadze.</p>
                                 </div>
-                                {/* <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link> */}
                             </div>
                             <div className="homepage-mask-wrapper">
                                 <svg width="100%" height="100%"> <defs> <mask id="knockout-text-4" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">%</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-4)"></rect> </svg>

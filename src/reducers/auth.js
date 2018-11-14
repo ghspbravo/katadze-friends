@@ -23,6 +23,7 @@ export default (state = initialState, action) => {
                 user: action.payload.avatar
             }
         case auth.VK_TOKEN_RECEIVED:
+        case auth.FB_TOKEN_RECEIVED:
             return {
                 access: {
                     token: action.payload.access,

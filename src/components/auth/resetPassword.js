@@ -9,11 +9,13 @@ export default (submitHandler, inputHandler, errors, status) => {
         case STATUS_PROCESSING: return showLoading()
 
         default: return (
-            <div className="container">
-                <form className='offset-xl-2 col-xl-8 col-12' action="POST" autoComplete="off" onSubmit={submitHandler}>
-                    <input name="email" autoComplete="email" type="email" placeholder='email' onChange={inputHandler} required />
+            <div className="auth-container">
+                <form className='auth-container-form form' action="POST" autoComplete="off" onSubmit={submitHandler}>
+                    <input name="email" autoComplete="email" type="email" placeholder='Email' onChange={inputHandler} required />
                     {errorMessage(errors, 'email')}
-                    <button type="submit">Сбросить пароль</button>
+                    <div class="row no-gutters">
+                        <button className="auth-container-form-submit" type="submit">Сбросить пароль</button>
+                    </div>
                 </form>
         </div>
         )

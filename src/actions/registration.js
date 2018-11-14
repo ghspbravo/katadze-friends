@@ -14,11 +14,11 @@ export const ACTIVATE_CONFIRM_REQUEST = '@@registration/ACTIVATE_CONFIRM_REQUEST
 export const ACTIVATE_CONFIRM_SUCCESS = '@@registration/ACTIVATE_CONFIRM_SUCCESS';
 export const ACTIVATE_CONFIRM_FAILURE = '@@registration/ACTIVATE_CONFIRM_FAILURE';
 
-export const registration = (email, password, date_birth, gender, last_name, first_name, username, residence, phone, img_photo) => ({
+export const registration = (email, password, date_birth, gender, last_name, first_name, username, residence, phone, avatar) => ({
     [RSAA]: {
         endpoint: `https://${server}/api/user/`,
         method: 'POST',
-        body: JSON.stringify({ email, password, date_birth, gender, last_name, first_name, username, residence, phones: [{ number: phone }], img_photo }),
+        body: JSON.stringify({ email, password, date_birth, gender, last_name, first_name, username, residence, phones: [{ number: phone }], avatar }),
         headers: { 'Content-Type': 'application/json' },
         types: [
             REGISTRATION_REQUEST, REGISTRATION_SUCCESS, REGISTRATION_FAILURE

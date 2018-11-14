@@ -31,6 +31,7 @@
     background-color: white;
     top: 0
     height 100px
+    box-shadow: 0 0 10px rgba(0,0,0,0.3)
     & > div
         padding-top: 30px
 .navbar-bg-small
@@ -47,10 +48,11 @@
     height 100px
     position: fixed;
     background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3)
     & > div
         padding-top: 30px
 .navbar-bg-small-sticky
-    padding: 60px 0
+    margin: 20px 0
     & a  
         color: black
     & .logo
@@ -62,6 +64,7 @@
 .navbar-bg-alt-small
     position: fixed;
     background-color: #E8EFFC;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3)
     & a  
         color: black
     & .logo
@@ -97,6 +100,7 @@
     position: fixed;
     background-color: white;
     z-index 5
+    box-shadow: 0 0 10px rgba(0,0,0,0.3)
 .navbar-mobile
     padding: 40px 0
     & a  
@@ -126,3 +130,17 @@ a.active-nav
     z-index 1
     & li  
         opacity 0
+
+.header-avatar 
+    position absolute
+    top: -45%
+    right 0
+    transform: translateX(125%)
+    width 45px
+    height 45px
+    overflow hidden
+    &-image
+        border-radius: 50%
+        width 100%
+        height auto
+        object-fit: cover
