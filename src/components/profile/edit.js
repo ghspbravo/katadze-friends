@@ -173,7 +173,7 @@ export default class Edit extends Component {
 									className={`col-12 ${this.state.isPhoneError ? 'form-input-error' : null}`}
 									id='phone'
 									type="tel"
-									defaultValue={this.props.user.phones && this.props.user.phones[0].number}
+									defaultValue={this.props.user.phones && this.props.user.phones[0] && this.props.user.phones[0].number}
 									onBlur={() => {
 										if (this.state.isPhoneError) this.setState({ isPhoneError: false })
 									}}
