@@ -12,7 +12,7 @@ export default (handeInput, handleSubmit, errors, status, fields) => {
     return (
         <form autoComplete="off" className="row" onSubmit={handleSubmit}>
             <div className="col-md-6">
-                <h1>Стать Другом Катадзе</h1>
+                <h1>Стать партнером Катадзе</h1>
                 <p className="secondary">Друзья.Katadze – это объединение компаний самого разного уровня и характера в одну единую сеть нашей бонусной программы. Наша клиентская база: более ____ тысяч активных, молодых и целеустремленных людей. Возможно, ваша компания нуждается в таких клиентах. Возможно, мы нуждаемся в Вас. Заполните заявку и давайте дружить продуктивно.</p>
                 <button className="d-none d-md-block" type="submit">Cтать партнером</button>
             </div>
