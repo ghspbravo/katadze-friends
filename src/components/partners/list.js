@@ -16,7 +16,11 @@ export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, h
                 }
             </section>
             <section className="container">
-                <p>Доступно членом клуба KATADZE</p>
+                <p style={{
+                    fontSize: '2rem',
+                    color: '#fb0',
+                    marginBottom: '50px'
+                }}>Доступно членам клуба KATADZE</p>
                 {
                     partners
                         ? partners.map(category =>
