@@ -142,6 +142,18 @@ export default class Menu extends Component {
                                 <br />На сайте используются cookies</span>
                             </div>
                             <div className="homepage-item-inner">
+                                <div className="homepage-item-inner-title">РКВ</div>
+                                <div className="homepage-item-inner-subtext">
+                                    <div className="homepage-item-inner-subtext-subtitle">
+                                        <p>Katadze РКВ – это самый успешный проект нашей команды. В 2019 году проект отметит свой первый юбилей, 5 лет. Надо ли говорить, что это будет ещё более грандиозно, чем когда-либо?</p>
+                                    </div>
+                                    <Link className="homepage-item-inner-subtext-link" to="/events/id=6">Перейти</Link>
+                                </div>
+                                <div className="homepage-mask-wrapper">
+                                    <svg width="100%" height="100%"> <defs> <mask id="knockout-text-3" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-3)"></rect> </svg>
+                                </div>
+                            </div>
+                            {/* <div className="homepage-item-inner">
                                 <div className="homepage-item-inner-title">События</div>
                                 <div className="homepage-item-inner-subtext">
                                     <div className="homepage-item-inner-subtext-subtitle">
@@ -152,7 +164,7 @@ export default class Menu extends Component {
                                 <div className="homepage-mask-wrapper">
                                     <svg width="100%" height="100%"> <defs> <mask id="knockout-text-3" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-3)"></rect> </svg>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div id="gids" className="homepage-item">
                             <div className="title">Гиды.</div>
@@ -200,7 +212,21 @@ export default class Menu extends Component {
                         <a href="#content" className="scroll-to"><span></span>SCROLL</a>
                         <div className="brand">KATADZE</div>
                     </div>
-                    <Link to='/events'>
+                    <Link to='/events/id=6'>
+                        <div id="content" className="homepage-item-inner">
+                            <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
+                            <div className="homepage-item-inner-title">РКВ</div>
+                            <div className="homepage-item-inner-subtext">
+                                <div className="homepage-item-inner-subtext-subtitle">
+                                    <p>Katadze РКВ – это самый успешный проект нашей команды. В 2019 году проект отметит свой первый юбилей, 5 лет. Надо ли говорить, что это будет ещё более грандиозно, чем когда-либо?</p>
+                                </div>
+                            </div>
+                            <div className="homepage-mask-wrapper">
+                                <svg width="100%" height="100%"> <defs> <mask id="knockout-text-6" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-6)"></rect> </svg>
+                            </div>
+                        </div>
+                    </Link>
+                    {/* <Link to='/events'>
                         <div id="content" className="homepage-item-inner">
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
                             <div className="homepage-item-inner-title">События</div>
@@ -213,7 +239,7 @@ export default class Menu extends Component {
                                 <svg width="100%" height="100%"> <defs> <mask id="knockout-text-6" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-6)"></rect> </svg>
                             </div>
                         </div>
-                    </Link>
+                    </Link> */}
                     <Link to='/guide'>
                         <div className="homepage-item-inner">
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${gids})` }}></div>
