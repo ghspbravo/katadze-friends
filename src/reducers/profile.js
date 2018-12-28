@@ -8,7 +8,7 @@ export default (state = {list: []}, action) => {
             return {
                 ...state,
                 ...action.payload,
-                avatar: action.payload.avatar
+                avatar: action.payload.img
             }
         case profile.CREATE_TOUR_SUCCESS:
         case profile.CREATE_GID_SUCCESS:

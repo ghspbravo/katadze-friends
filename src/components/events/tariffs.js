@@ -13,9 +13,9 @@ export default (event, handleAcquiring, authorize) => {
             <div className="container">
                 { authorize ? null
                 : <p>Для покупки пакетов Вы должны быть авторизованы. <Link to='/login'>войти / зарегистрироваться</Link></p>}
-                <div className='row'>
+                <div className='row justify-content-center no-gutters'>
                     {event.tariffs.map((tariff, i) => <div key={i} style={{ borderRadius: 0, border: '2px solid #41bfef', paddingBottom: '15px', marginTop: '15px', marginBottom: '15px' }} className='col-md-5 offset-md-1 row'>
-                        <div style={{ alignSelf: 'flex-start' }}><p style={{ textTransform: 'uppercase', color: '#41bfef', textAlign: 'center' }}>{tariff.name}</p>
+                        <div style={{ alignSelf: 'flex-start', padding: '5px' }}><p style={{ textTransform: 'uppercase', color: '#41bfef', textAlign: 'center' }}>{tariff.name}</p>
                             <div className='v-offset-small' style={{ maxHeight: window.innerHeight * 0.8, overflowY: 'auto' }}>
                                 {Parser(tariff.description)}
                             </div></div>

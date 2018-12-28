@@ -2,6 +2,8 @@ import React from 'react'
 import becomePartner from './becomePartner'
 import { Link } from 'react-router-dom'
 
+import instructionImage from './howTo.jpg'
+
 export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, handleSubmit, errors, status, fields) => {
     return (
         <div>
@@ -14,6 +16,15 @@ export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, h
                     ? becomePartner(handeInput, handleSubmit, errors, status, fields)
                     : <button onClick={() => showPartnerFormHandler()}><h1 className="upper underline"><span>Стать партнером KATADZE</span></h1></button>
                 }
+            </section>
+            <section className="container justify-center">
+                <div class="col-12">
+                    <img style={{
+                        height: 'auto',
+                        width: '100%',
+                        objectFit: 'contain',
+                    }} src={instructionImage} alt="instructions"/>
+                </div>
             </section>
             <section className="container">
                 <p style={{
@@ -31,7 +42,9 @@ export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, h
                                 {
                                     category.partners.map(partner =>
                                         <div key={partner.id} className="row list-card">
-                                            <div className="col-lg-6 order-fix">
+                                            <div style={{
+                                                padding: '0 25px'
+                                            }} className="col-lg-6 order-fix">
                                                 <h1>{partner.title}</h1>
                                                 <p className="secondary">{partner.description}</p>
                                                 <p className="secondary small v-offset-small">{partner.tags}</p>

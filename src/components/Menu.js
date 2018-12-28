@@ -8,7 +8,17 @@ import partners from '../resourses/Menu/partners.jpg'
 import gids from '../resourses/Menu/gids.jpg'
 import events from '../resourses/Menu/events.jpg'
 
+const mobileButtonStyle = {
+    position: 'absolute',
+    top: '20vh',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    opacity: 1,
+    zIndex: 10,
+}
+
 export default class Menu extends Component {
+
     handleItemHover = (target, scene) => {
         let id = target.id
 
@@ -215,6 +225,7 @@ export default class Menu extends Component {
                     <Link to='/events/id=6'>
                         <div id="content" className="homepage-item-inner">
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
+                            <div className="homepage-item-inner-subtext-link" style={mobileButtonStyle}>Перейти</div>
                             <div className="homepage-item-inner-title">РКВ</div>
                             <div className="homepage-item-inner-subtext">
                                 <div className="homepage-item-inner-subtext-subtitle">
@@ -243,6 +254,7 @@ export default class Menu extends Component {
                     <Link to='/guide'>
                         <div className="homepage-item-inner">
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${gids})` }}></div>
+                            <div className="homepage-item-inner-subtext-link" style={mobileButtonStyle}>Перейти</div>
                             <div className="homepage-item-inner-title">Гиды</div>
                             <div className="homepage-item-inner-subtext">
                                 <div className="homepage-item-inner-subtext-subtitle">
@@ -257,6 +269,7 @@ export default class Menu extends Component {
                     <Link to='/partners'>
                         <div className="homepage-item-inner">
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})`, backgroundPositionX: '25%' }}></div>
+                            <div className="homepage-item-inner-subtext-link" style={mobileButtonStyle}>Перейти</div>
                             <div className="homepage-item-inner-title">Друзья</div>
                             <div className="homepage-item-inner-subtext">
                                 <div className="homepage-item-inner-subtext-subtitle">

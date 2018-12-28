@@ -19,6 +19,7 @@ import { forceRefresh, STATUS_SUCCESS } from '../actions'
 import { getClaimList } from '../actions/claim';
 import Chat from '../components/profile/Chat';
 import Edit from '../components/profile/edit';
+import Membership from '../components/profile/Membership';
 
 class Profile extends Component {
 	constructor(props) {
@@ -270,6 +271,9 @@ class Profile extends Component {
 							<NavLink activeClassName='profile-current' to='/profile/create-tour' >Создать тур</NavLink>
 						</div>
 						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
+							<NavLink to='/profile/' >Членский статус</NavLink>
+						</div>
+						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<button onClick={this.props.logout}><Link to='/login' >Выйти</Link></button>
 						</div>
 					</div>
@@ -356,7 +360,11 @@ class Profile extends Component {
 									</div>
 								</div>
 							</section>
-							: <p className="small text-center">Добро пожаловать в личный кабинет</p>} />
+							: <div>
+								<p className="small text-center">Добро пожаловать в личный кабинет</p>
+								<Membership />
+							</div>
+						} />
 					</Switch>
 				</div>
 			</div>

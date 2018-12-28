@@ -17,12 +17,13 @@ import Gids from '../containers/Gids';
 import Profile from '../containers/Profile';
 import Auth from '../containers/Auth';
 import Events from '../containers/Events';
-import Partners from '../containers/Partners'
+import PartnersContainer from '../containers/Partners'
 import Navbar from '../containers/Navbar';
 
 import { getErrors, resetErrors, getMessages, resetMessages } from '../reducers';
 import { forceRefresh } from '../actions';
 import Acquiring from '../containers/Acquiring';
+import Partners from './partners';
 
 class Layout extends Component {
 
@@ -66,9 +67,9 @@ class Layout extends Component {
                 <Route exact path='/guide/about' component={Gids} />
                 <Route exact path='/guide/contacts' component={Gids} />
 
-                <Route exact path='/partners/faq' component={Partners} />
-                <Route exact path='/partners/about' component={Partners} />
-                <Route exact path='/partners/contacts' component={Partners} />
+                <Route exact path='/partners/faq' component={PartnersContainer} />
+                <Route exact path='/partners/about' component={PartnersContainer} />
+                <Route exact path='/partners/contacts' component={PartnersContainer} />
 
                 <Route exact path='/events/faq' component={Events} />
                 <Route exact path='/events/about' component={Events} />
@@ -87,7 +88,7 @@ class Layout extends Component {
                 <Route exact path='/profile/create-tour' component={Profile} />
                 <Route exact path='/profile/live/:uuid/:id' component={Profile} />
 
-                <Route exact path='/partners/id=:id' component={Partners} />
+                <Route exact path='/partners/id=:id' component={PartnersContainer} />
                 <Route exact path='/events/id=:id' component={Events} />
                 <Route exact path='/guide/id=:id' component={Gids} />
                 <Route exact path='/guide/search=:search' component={Gids} />

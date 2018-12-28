@@ -16,8 +16,9 @@ import contacts from '../components/partners/contacts'
 import { getFiledErrors, resetStatus } from '../reducers';
 import { contact, becomePartnerRequest } from '../actions/ticket';
 import { forceRefresh, STATUS_SUCCESS } from '../actions';
+import Info from '../components/partners/info';
 
-class Partners extends Component {
+class PartnersContainer extends Component {
     constructor(props) {
         super(props)
 
@@ -75,7 +76,7 @@ class Partners extends Component {
         return (
             <Switch>
                 {this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '', organization: '', comment: '', showPartnerForm: false }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
-                <Route exact path="/partners" render={() => listPartners(
+                {/* <Route exact path="/partners" render={() => listPartners(
                     this.props.partners,
                     this.state.showPartnerForm,
                     this.showPartnerFormHandler,
@@ -85,10 +86,10 @@ class Partners extends Component {
                     this.props.errors,
                     this.props.status,
                     this.state
-                )} />
-                <Route exact path="/partners/id=:id" render={() => info(
-                    this.props.partner
-                )} />
+                )} /> */}
+                <Route exact path="/partners/id=:id" render={() => <Info
+                    partner={this.props.partner}
+                />} />
                 <Route exact path="/partners/about" component={about} />
                 <Route exact path="/partners/faq" component={faq} />
                 <Route exact path="/partners/contacts" render={() => contacts(
@@ -123,4 +124,4 @@ const mapDispatchToProps = dispatch => ({
     },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Partners)
+export default connect(mapStateToProps, mapDispatchToProps)(PartnersContainer)
