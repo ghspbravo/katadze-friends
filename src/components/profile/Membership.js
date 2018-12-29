@@ -25,27 +25,28 @@ class Membership extends Component {
 		if (this.props.purchaseRedirect) window.location.href = this.props.purchaseRedirect
 	}
 
+	showMembershipDate() {
+		let membershipDateList = this.props.membership.match(/\d+-\d+-\d+/)[0].split('-')
+		return `${membershipDateList[2]}.${membershipDateList[1]}.${membershipDateList[0]}`
+	}
+
 	render() {
 		return (
 			<div>
 				{this.props.membership
-					? <p>Ваша подписка действительна до {this.props.membership}</p>
+					? <div class="row justify-center" style={{ marginTop: '50px' }}>
+						<div class="subscription-card">
+							<p className='subscription-card__message'>Ваша подписка действительна до {this.showMembershipDate()}</p>
+						</div>
+					</div>
 					: <div class="row justify-center" style={{ marginTop: '50px' }}>
-						<div className="subscription-card">
+						<div className="subscription-card subscription-card_inactive">
 							<p className="subscription-card__message">Подписка не оплачена...
 							<br />Станьте членом клуба KatadZe уже сегодня!</p>
 							<form onSubmit={this.purchaseSubscriptionHandler}>
 								<div className="row align-center">
 									<input checked className='col-1' type="radio" name="subscriptionType" id="type-1" value={1} />
-									<label className='col' htmlFor="type-1">Годовая подписка - 1000 рублей</label>
-								</div>
-								<div className="row align-center">
-									<input disabled className='col-1' type="radio" name="subscriptionType" id="type-2" value={2} />
-									<label className='col' htmlFor="type-2">Пока недоступная подписка</label>
-								</div>
-								<div className="row align-center">
-									<input disabled className='col-1' type="radio" name="subscriptionType" id="type-3" value={3} />
-									<label className='col' htmlFor="type-3">Пока недоступная подписка</label>
+									<label className='col' htmlFor="type-1">1 месяц - 123 рубля</label>
 								</div>
 								<div class="row justify-center">
 									<button
