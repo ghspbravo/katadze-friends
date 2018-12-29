@@ -31,14 +31,14 @@ class Partners extends Component {
 		}
 	}
 
-	componentDidMount() {
-		if (!(this.props.partners && this.props.partners[0])) this.props.fetchPartnerList()
-
-		if (!(this.props.coupons && this.props.coupons[0])) this.props.fetchCouponsList()
-
+	async componentDidMount() {
 		this.props.membership
 			? null
-			: this.props.fetchMembershipStatus()
+			: await this.props.fetchMembershipStatus()
+		if (!(this.props.partners && this.props.partners[0])) this.props.fetchPartnerList()
+
+		if (!(this.props.coupons && this.props.coupons[0]) && this.props.membership) this.props.fetchCouponsList()
+
 	}
 
 	handleActivatePartner = async (partnerId) => {
