@@ -48,13 +48,15 @@ class Partners extends Component {
 
 	showPartnerControls = (partnerId) => {
 		let coupon = this.props.coupons.filter(coupon => coupon.partner === partnerId)[0]
+		let couponDateList = coupon.expired_at.match(/\d+-\d+-\d+/)[0].split('-')
+		let couponDate = `${couponDateList[2]}.${couponDateList[1]}.${couponDateList[0]}`
 
 		if (coupon) return coupon.expired_at
 			? <div className="coupon-control">
 				<button
 					disabled
 					className='coupon-control__button coupon-control__button_activated'>Активировано</button>
-				<p className="coupon-control__expire-date">истекает {coupon.expired_at}</p>
+				<p className="coupon-control__expire-date">истекает {couponDate}</p>
 			</div>
 			: <div className="coupon-control">
 				<button

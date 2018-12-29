@@ -7,7 +7,7 @@ export default (state = {}, action) => {
 		case coupons.LIST_SUCCESS:
 			return {
 				...action.payload,
-				list: action.payload.results,
+				list: action.payload,
 				status: STATUS_SUCCESS,
 			}
 		case coupons.ACTIVATE_SUCCESS: 
