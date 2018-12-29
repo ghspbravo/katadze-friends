@@ -1393,6 +1393,11 @@ a.active-nav {
   border: 1px solid;
   user-select: none;
 }
+.coupon-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .coupon-control__button {
   font-family: OpenSans;
   font-weight: normal;
@@ -1405,6 +1410,13 @@ a.active-nav {
 }
 .coupon-control__button_activated {
   border-bottom-color: #a94442;
+}
+.coupon-control__expire-date {
+  font-size: 12px;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-top: 7px;
 }
 #events-header {
   background-image: url("../resourses/Events/header-image.jpg");

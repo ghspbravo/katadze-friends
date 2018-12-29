@@ -122,7 +122,6 @@ class Navbar extends Component {
     componentDidUpdate() {
         if (window.outerWidth < 992) return
         if (this.props.location.pathname !== this.state.prevLocation) this.selectNav(this.props.location.pathname)
-        console.log(this.props.temp)
     }
 
     render() {
@@ -136,7 +135,6 @@ class Navbar extends Component {
 const mapStateToProps = state => ({
     navState: state.navbar.navType,
     userPic: state.profile.avatar || state.profile.thumb,
-    temp: state.profile,
     userId: userId(state),
 });
 

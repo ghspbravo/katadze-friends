@@ -12,9 +12,9 @@ export const ACTIVATE_FAILURE = '@@coupon/ACTIVATE_FAILURE';
 
 export const getCouponsList = (page = 0) => ({
 	[RSAA]: {
-		endpoint: `https://${server}/api/coupons/?format=json`,
+		endpoint: `https://${server}/api/user/coupons/?format=json`,
 		method: 'GET',
-		headers: {},
+        headers: withAuth({ 'Content-Type': 'application/json' }),		
 		types: [
 			LIST_REQUEST, LIST_SUCCESS, LIST_FAILURE
 		]
@@ -25,7 +25,7 @@ export const activateCoupon = (partnerId) => ({
     [RSAA]: {
         endpoint: `https://${server}/api/user/coupon/?format=json`,
         method: 'POST',
-        body: JSON.stringify({ type: partnerId, activated_at: new Date().toLocaleString() }),
+        body: JSON.stringify({ type: partnerId }),
         headers: withAuth({ 'Content-Type': 'application/json' }),
         types: [
             ACTIVATE_REQUEST, ACTIVATE_SUCCESS, ACTIVATE_FAILURE

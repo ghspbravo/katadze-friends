@@ -29,6 +29,9 @@
     user-select none
 
 .coupon-control
+    display flex
+    flex-direction: column
+    align-items: center
     &__button
         OpenH4()
         text-transform uppercase
@@ -37,3 +40,9 @@
         padding-bottom 10px
         &_activated
             border-bottom-color: alert
+    &__expire-date
+        font-size 12px
+        text-align center
+        line-height: 1;
+        margin-bottom: 0;
+        margin-top: 7px;

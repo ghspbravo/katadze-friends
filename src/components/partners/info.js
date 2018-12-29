@@ -17,14 +17,14 @@ class Info extends Component {
     }
 
     showPartnerControls = (partnerId) => {
-        let coupon = this.props.coupons.filter(coupon => coupon.partner === partnerId)
+        let coupon = this.props.coupons.filter(coupon => coupon.partner === partnerId)[0]
 
-        if (coupon.length) return coupon.expired_at
+        if (coupon) return coupon.expired_at
             ? <div className="coupon-control">
                 <button
                     disabled
-                    className='coupon-control__button_activated'>Активировано</button>
-                <p className="coupon-control__expire-date">Истекает {coupon.expired_at}</p>
+                    className='coupon-control__button coupon-control__button_activated'>Активировано</button>
+                <p className="coupon-control__expire-date">истекает {coupon.expired_at}</p>
             </div>
             : <div className="coupon-control">
                 <button
@@ -34,20 +34,20 @@ class Info extends Component {
         return null
     }
 
-    componentDidMount() {
+    handleActivatePartner = async (partnerId) => {
+		await this.props.activateCoupon(partnerId)
+		this.props.fetchCouponsList()
+	}
+
+    async componentDidMount() {
+        this.props.membership
+            ? null
+            : await this.props.fetchMembershipStatus()
         if (this.props.isAuthenticated && this.props.membership) {
-            this.setState(() => ({ isMember: true }))
-            if (!this.props.coupons) {
-                this.props.fetchCouponsList()
-            }
+            this.props.fetchCouponsList()
         }
     }
 
-    componentDidUpdate() {
-        if (!this.state.isMember && this.props.isAuthenticated && this.props.membership) {
-            this.setState(() => ({ isMember: true }))
-        }
-    }
     render() {
         if (this.props.partner)
             return (
@@ -57,7 +57,7 @@ class Info extends Component {
                     <img className="col-12" src={this.props.partner.img} alt="partnerImg" />
                     <section>
                         <div class="row justify-center">
-                            {this.state.isMember && this.props.coupons
+                            {this.props.coupons
                                 ? this.showPartnerControls(this.props.partner.id)
                                 : null
                             }

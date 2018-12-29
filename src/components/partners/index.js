@@ -33,16 +33,13 @@ class Partners extends Component {
 
 	componentDidMount() {
 		if (!(this.props.partners && this.props.partners[0])) this.props.fetchPartnerList()
-		
-		if (this.props.isAuthenticated && this.props.membership) {
-            this.setState(() => ({ isMember: true }))
-		} if (!(this.props.coupons && this.props.coupons[0])) this.props.fetchCouponsList()
+
+		if (!(this.props.coupons && this.props.coupons[0])) this.props.fetchCouponsList()
+
+		this.props.membership
+			? null
+			: this.props.fetchMembershipStatus()
 	}
-	componentDidUpdate() {
-        if (!this.state.isMember && this.props.isAuthenticated && this.props.membership) {
-            this.setState(() => ({ isMember: true }))
-        }
-    }
 
 	handleActivatePartner = async (partnerId) => {
 		await this.props.activateCoupon(partnerId)
@@ -50,14 +47,14 @@ class Partners extends Component {
 	}
 
 	showPartnerControls = (partnerId) => {
-		let coupon = this.props.coupons.filter(coupon => coupon.partner === partnerId)
+		let coupon = this.props.coupons.filter(coupon => coupon.partner === partnerId)[0]
 
-		if (coupon.length) return coupon.expired_at
+		if (coupon) return coupon.expired_at
 			? <div className="coupon-control">
 				<button
 					disabled
-					className='coupon-control__button_activated'>Активировано</button>
-					<p className="coupon-control__expire-date">Истекает {coupon.expired_at}</p>
+					className='coupon-control__button coupon-control__button_activated'>Активировано</button>
+				<p className="coupon-control__expire-date">истекает {coupon.expired_at}</p>
 			</div>
 			: <div className="coupon-control">
 				<button
@@ -133,7 +130,7 @@ class Partners extends Component {
 													<p className="secondary small v-offset-small">{partner.tags}</p>
 													<div style={{ marginTop: '50px' }} className="row justify-space-between align-center no-gutters">
 														<button className="more-button"><Link to={`/partners/id=${partner.id}`}>Подробнее</Link></button>
-														{this.props.coupons && this.state.isMember
+														{this.props.coupons
 															? this.showPartnerControls(partner.id)
 															: null
 														}
@@ -162,14 +159,14 @@ const mapStateToProps = state => ({
 	errors: getFiledErrors(state.ticket),
 	resetStatus: () => resetStatus(state),
 	isAuthenticated: isAuthenticated(state),
-    membership: state.subscription.expired_at,
+	membership: state.subscription.expired_at,
 });
 
 const mapDispatchToProps = dispatch => ({
 	fetchCouponsList: () => dispatch(getCouponsList()),
 	activateCoupon: couponId => dispatch(activateCoupon(couponId)),
 	fetchPartnerList: page => dispatch(list(page)),
-    fetchMembershipStatus: () => dispatch(getMembershipStatus()),
+	fetchMembershipStatus: () => dispatch(getMembershipStatus()),
 	onBecomePartner: (organization, name, email, comment) => dispatch(becomePartnerRequest(organization, name, email, comment)),
 
 	forceRefresh: () => {

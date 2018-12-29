@@ -10,6 +10,10 @@ export const PURCHASE_REQUEST = '@@subscription/PURCHASE_REQUEST';
 export const PURCHASE_SUCCESS = '@@subscription/PURCHASE_SUCCESS';
 export const PURCHASE_FAILURE = '@@subscription/PURCHASE_FAILURE';
 
+export const CREATE_REQUEST = '@@subscription/CREATE_REQUEST';
+export const CREATE_SUCCESS = '@@subscription/CREATE_SUCCESS';
+export const CREATE_FAILURE = '@@subscription/CREATE_FAILURE';
+
 export const getMembershipStatus = () => ({
 	[RSAA]: {
 		endpoint: `https://${server}/api/subscription/?format=json`,
@@ -29,6 +33,18 @@ export const purchaseSubscription = (subscription_type) => ({
         headers: withAuth({ 'Content-Type': 'application/json' }),
         types: [
             PURCHASE_REQUEST, PURCHASE_SUCCESS, PURCHASE_FAILURE
+        ]
+    }
+});
+
+export const createSubscription = () => ({
+    [RSAA]: {
+        endpoint: `https://${server}/api/subscription/?format=json`,
+        method: 'POST',
+        body: JSON.stringify({  }),
+        headers: withAuth({ 'Content-Type': 'application/json' }),
+        types: [
+            CREATE_REQUEST, CREATE_SUCCESS, CREATE_FAILURE
         ]
     }
 });

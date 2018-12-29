@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getMembershipStatus, purchaseSubscription } from '../../actions/subscription';
+import { getMembershipStatus, purchaseSubscription, createSubscription } from '../../actions/subscription';
 import { getFiledErrors, resetStatus } from '../../reducers';
 
 class Membership extends Component {
@@ -18,6 +18,7 @@ class Membership extends Component {
 
 	purchaseSubscriptionHandler = (e) => {
 		e.preventDefault()
+		this.props.createSubscription()
 		this.props.purchaseSubscription(this.state.subscriptionType)
 	}
 	componentDidUpdate() {
@@ -69,6 +70,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+	createSubscription: () => dispatch(createSubscription()),
 	fetchMembershipStatus: () => dispatch(getMembershipStatus()),
 	purchaseSubscription: (subscription_type) => dispatch(purchaseSubscription(subscription_type)),
 })
