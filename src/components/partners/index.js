@@ -10,7 +10,7 @@ import { forceRefresh, STATUS_SUCCESS } from '../../actions';
 import becomePartner from './becomePartner'
 import { Link } from 'react-router-dom'
 
-import instructionImage from './howTo.jpg'
+import instructionImage from './howTo.png'
 import { getCouponsList, activateCoupon } from '../../actions/coupons';
 import { getMembershipStatus } from '../../actions/subscription';
 

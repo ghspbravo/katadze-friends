@@ -8,7 +8,7 @@ import {
 import { list } from '../actions/partner'
 import { partner } from '../actions/partner'
 
-import listPartners from '../components/partners/list';
+// import listPartners from '../components/partners/list';
 import info from '../components/partners/info';
 import about from '../components/partners/about';
 import faq from '../components/partners/faq';

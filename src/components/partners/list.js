@@ -2,7 +2,7 @@ import React from 'react'
 import becomePartner from './becomePartner'
 import { Link } from 'react-router-dom'
 
-import instructionImage from './howTo.jpg'
+import instructionImage from './howTo.png'
 
 export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, handleSubmit, errors, status, fields) => {
     return (
