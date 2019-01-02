@@ -22,6 +22,12 @@ export default (currentState, openNavHandler, user) => {
                                     <Route render={() => <NavLink to="/guide">Гиды</NavLink>} />
                                 </Switch>
                             </li>
+                            <Route path="/profile" render={() => <li>
+                                <NavLink to="/partners" activeClassName="active-nav">Партнеры</NavLink>
+                            </li>} />
+                            <Route path="/profile" render={() => <li>
+                                <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>
+                            </li>} />
                             <Switch>
                                 {/* <Route path="/partners" render={() => <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>} /> */}
                                 {/* <Route path="/events" render={() => <NavLink to="/events/about" activeClassName="active-nav">О нас</NavLink>} /> */}

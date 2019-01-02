@@ -32,11 +32,11 @@ class Partners extends Component {
 	}
 
 	async componentDidMount() {
+		if (!(this.props.partners && this.props.partners[0])) this.props.fetchPartnerList()
 		if (this.props.isAuthenticated) {
 			this.props.membership
 			? null
 			: await this.props.fetchMembershipStatus()
-			if (!(this.props.partners && this.props.partners[0])) this.props.fetchPartnerList()
 
 			if (!(this.props.coupons && this.props.coupons[0]) && this.props.membership) this.props.fetchCouponsList()
 		}
@@ -51,7 +51,7 @@ class Partners extends Component {
 		let coupon = this.props.coupons.filter(coupon => coupon.partner === partnerId)[0]
 
 		if (coupon) {
-			if (coupon.expired_at) {
+			if (coupon.expired_at && coupon.expired_at > new Date()) {
 				let couponDateList = coupon.expired_at.match(/\d+-\d+-\d+/)[0].split('-')
 				let couponDate = `${couponDateList[2]}.${couponDateList[1]}.${couponDateList[0]}`
 
@@ -114,9 +114,10 @@ class Partners extends Component {
 						fontSize: '2rem',
 						color: '#fb0',
 					}}>Доступно членам клуба KATADZE*</p>
+					<p className="small">*приобрести подписку KATADZE можно в личном кабинете</p>
 					<p className="small" style={{
 						marginBottom: '50px'
-					}}>*приобрести подписку KATADZE можно в личном кабинете</p>
+					}}>Воспользоваться скидками можно будет с 10.01.2019</p>
 					{
 						this.props.partners
 							? this.props.partners.map(category =>
@@ -133,8 +134,8 @@ class Partners extends Component {
 													<h1>{partner.title}</h1>
 													<p className="secondary">{partner.description}</p>
 													<p className="secondary small v-offset-small">{partner.tags}</p>
-													<div style={{ marginTop: '50px' }} className="row justify-space-between align-center no-gutters">
-														<button className="more-button"><Link to={`/partners/id=${partner.id}`}>Подробнее</Link></button>
+													<div style={{ marginTop: '50px', alignItems: 'start' }} className="row justify-space-between no-gutters">
+														<button className="more-button"><Link to={`/partners/id=${partner.id}`} style={{lineHeight: 1}}>Подробнее</Link></button>
 														{this.props.coupons
 															? this.showPartnerControls(partner.id)
 															: null

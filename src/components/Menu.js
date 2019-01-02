@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import TimelineMax from 'gsap/TimelineMax'
 import { Expo } from 'gsap/EasePack'
@@ -7,6 +8,7 @@ import main from '../resourses/Menu/main.jpg'
 import partners from '../resourses/Menu/partners.jpg'
 import gids from '../resourses/Menu/gids.jpg'
 import events from '../resourses/Menu/events.jpg'
+import { isAuthenticated } from '../reducers';
 
 const mobileButtonStyle = {
     position: 'absolute',
@@ -17,7 +19,7 @@ const mobileButtonStyle = {
     zIndex: 10,
 }
 
-export default class Menu extends Component {
+class Menu extends Component {
 
     handleItemHover = (target, scene) => {
         let id = target.id
@@ -138,7 +140,9 @@ export default class Menu extends Component {
                     </div>
                 </div>
                 <div className="d-none d-lg-block homepage">
-                    <Link to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>
+                    {this.props.isAuthenticated
+                        ? null
+                        : <Link to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}>
                         <span className="credits">made by katadze digital studio
@@ -218,7 +222,9 @@ export default class Menu extends Component {
                 </div>
                 <div className="d-block d-lg-none mobile-homepage">
                     <div className="background" style={{ backgroundImage: `url(${main})` }}>
-                        <Link to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>
+                        {this.props.isAuthenticated
+                            ? null
+                            : <Link to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
                         <a href="#content" className="scroll-to"><span></span>SCROLL</a>
                         <div className="brand">KATADZE</div>
                     </div>
@@ -286,3 +292,13 @@ export default class Menu extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    isAuthenticated: isAuthenticated(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu)

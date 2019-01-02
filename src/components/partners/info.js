@@ -20,7 +20,7 @@ class Info extends Component {
         let coupon = this.props.coupons.filter(coupon => coupon.partner === partnerId)[0]
 
         if (coupon) {
-            if (coupon.expired_at) {
+            if (coupon.expired_at && coupon.expired_at > new Date()) {
                 let couponDateList = coupon.expired_at.match(/\d+-\d+-\d+/)[0].split('-')
                 let couponDate = `${couponDateList[2]}.${couponDateList[1]}.${couponDateList[0]}`
 
