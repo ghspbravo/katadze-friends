@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import teamMember from '../../resourses/About/team-member.png'
 import achieveIcon from '../../resourses/LogoBlack.png'
 
 import how_to_become_gid from '../../resourses/About/how_to_become_gid.jpg'
@@ -18,6 +17,27 @@ export default () => {
                     </div>
                 </div>
             </section>
+            <div className="container">
+                <div className="col-12">
+                    <p className="small">
+                    KatadZe — это клуб активного образа жизни для молодежи Урала и России. Это удобная площадка для совершенствования, интеллектуального роста, путешествий и ярких впечатлений! А также официальный туроператор Единого федерального реестра.
+<br/><br/>
+Лови возможности:
+<br/>
+* Масштабные фестивали и лучшие горнолыжные курорты — <Link to='/events' className="small link">KatadZe.EVENTS</Link>
+<br/>
+* Активный отдых и lifestyle в любой сезон — <Link to='/partners' className="small link">
+    KatadZe.FRIENDS
+</Link>
+<br/>
+* Путешествия по миру с личным гидом — <Link to='/guide' className="small link">
+    KatadZe.GUIDE
+</Link>
+<br/>
+А также сотни единомышленников по России и не только!
+                    </p>
+                </div>
+            </div>
             <section className="container">
                 <div id="aboutus" className="row">
                     <div className="col-lg-6 align-center">
@@ -75,6 +95,21 @@ export default () => {
                     </div>
                 </div> */}
             </section>
+            <section className="container">
+                <div className="col-12">
+                    <p className="small">
+                    Объединяем путешественников по всему миру!
+<br/><br/>
+Надоели банальные туры по любимым городам и странам? Толпы людей и завышенные цены? Персональный экскурсовод от оператора рассказывает то же самое, что и группам?
+<br/><br/>
+Лучшее решение — местный гид. Он даст увидеть любой город глазами его жителей. Расскажет легенды и покажет места, каких нет в туристических буклетах. Познакомит с настоящей кухней и истинной культурой страны, став интересным собеседником или даже другом.
+<br/><br/>
+KatadZe.GUIDE — это уникальная безвозмездная платформа для путешествий, познания мира и новых знакомств. Теперь КАЖДЫЙ может найти местного гида в любой точке планеты или стать гидом сам по желаемой цене. Достаточно <Link to='/profile' className="small link">
+    зарегистрироваться
+</Link> на нашей платформе!
+                    </p>
+                </div>
+            </section>
             {/* <section id="achievments" className="container">
                 <h1 className="upper">
                     <span>Наши</span> достижения</h1>
@@ -102,47 +137,102 @@ export default () => {
                         <p>Мы сделали вот это</p>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <section id="team" className="container">
+            <h1 className="upper text-center">KatadZe.<span>TEAM</span></h1>
                 <div className="row">
                     <div className="member-card col-12 col-lg-6">
                         <div className="member-photo justify-center">
                             <div className="col-lg-8">
-                                <img src={teamMember} alt="member" />
+                                <img src='https://pp.userapi.com/c604831/v604831898/e566/WzwfENyAMPU.jpg' alt="member" />
                             </div>
                         </div>
-                        <div className="member-name"><h1>Имя Фамилия</h1></div>
-                        <div className="member-status"><p className="secondary small">должность, название</p></div>
+                        <div className="member-name"><h1>Аслан Кагиев</h1></div>
+                        <div className="member-status"><p className="secondary small">Вдохновляю</p></div>
                     </div>
                     <div className="member-card col-12 col-lg-6">
                         <div className="member-photo justify-center">
                             <div className="col-lg-8">
-                                <img src={teamMember} alt="member" />
+                                <img src='https://pp.userapi.com/c846416/v846416170/cb495/3qDkusXYp_c.jpg' alt="member" />
                             </div>
                         </div>
-                        <div className="member-name"><h1>Имя Фамилия</h1></div>
-                        <div className="member-status"><p className="secondary small">должность, название</p></div>
+                        <div className="member-name"><h1>Анастасия Преснякова</h1></div>
+                        <div className="member-status"><p className="secondary small">Руковожу</p></div>
                     </div>
                     <div className="member-card col-12 col-lg-6">
                         <div className="member-photo justify-center">
                             <div className="col-lg-8">
-                                <img src={teamMember} alt="member" />
+                                <img src="https://pp.userapi.com/c630530/v630530182/2aaee/z-_dCMQkoOw.jpg" alt="member" />
                             </div>
                         </div>
-                        <div className="member-name"><h1>Имя Фамилия</h1></div>
-                        <div className="member-status"><p className="secondary small">должность, название</p></div>
+                        <div className="member-name"><h1>Ойбек Партов</h1></div>
+                        <div className="member-status"><p className="secondary small">Креативлю</p></div>
                     </div>
                     <div className="member-card col-12 col-lg-6">
                         <div className="member-photo justify-center">
                             <div className="col-lg-8">
-                                <img src={teamMember} alt="member" />
+                                <img src="https://pp.userapi.com/c626324/v626324411/58f3a/fZLJRKMyf5M.jpg" alt="member" />
                             </div>
                         </div>
-                        <div className="member-name"><h1>Имя Фамилия</h1></div>
-                        <div className="member-status"><p className="secondary small">должность, название</p></div>
+                        <div className="member-name"><h1>Юлия Махрова</h1></div>
+                        <div className="member-status"><p className="secondary small">Руковожу проектами</p></div>
+                    </div>
+                    <div className="member-card col-12 col-lg-6">
+                        <div className="member-photo justify-center">
+                            <div className="col-lg-8">
+                                <img src="https://pp.userapi.com/c841033/v841033155/79853/WZfeNfVC89M.jpg" alt="member" />
+                            </div>
+                        </div>
+                        <div className="member-name"><h1>Михаил Кочнев</h1></div>
+                        <div className="member-status"><p className="secondary small">Нахожу друзей</p></div>
+                    </div>
+                    <div className="member-card col-12 col-lg-6">
+                        <div className="member-photo justify-center">
+                            <div className="col-lg-8">
+                                <img src="https://pp.userapi.com/c844320/v844320802/40493/ofkfp7zgMUw.jpg" alt="member" />
+                            </div>
+                        </div>
+                        <div className="member-name"><h1>Владислав Сафронов</h1></div>
+                        <div className="member-status"><p className="secondary small">Реализую партнерство</p></div>
+                    </div>
+                    <div className="member-card col-12 col-lg-6">
+                        <div className="member-photo justify-center">
+                            <div className="col-lg-8">
+                                <img src="https://pp.userapi.com/c848732/v848732033/c9aa1/7s4J0BnYmLs.jpg" alt="member" />
+                            </div>
+                        </div>
+                        <div className="member-name"><h1>Екатерина Витюк</h1></div>
+                        <div className="member-status"><p className="secondary small">Объединяю путешественников</p></div>
+                    </div>
+                    <div className="member-card col-12 col-lg-6">
+                        <div className="member-photo justify-center">
+                            <div className="col-lg-8">
+                                <img src="https://pp.userapi.com/c852124/v852124595/2d48d/25Qrgn8X9to.jpg" alt="member" />
+                            </div>
+                        </div>
+                        <div className="member-name"><h1>Екатерина Агафонова</h1></div>
+                        <div className="member-status"><p className="secondary small">Продвигаю возможности</p></div>
+                    </div>
+                    <div className="member-card col-12 col-lg-6">
+                        <div className="member-photo justify-center">
+                            <div className="col-lg-8">
+                                <img src="https://pp.userapi.com/c850336/v850336215/a64be/VyJqUwg2P3Q.jpg" alt="member" />
+                            </div>
+                        </div>
+                        <div className="member-name"><h1>Наталия Севостьянова</h1></div>
+                        <div className="member-status"><p className="secondary small">Создаю стиль</p></div>
+                    </div>
+                    <div className="member-card col-12 col-lg-6">
+                        <div className="member-photo justify-center">
+                            <div className="col-lg-8">
+                                <img src="https://pp.userapi.com/c631527/v631527804/3bfde/TBb3wrg6HJg.jpg" alt="member" />
+                            </div>
+                        </div>
+                        <div className="member-name"><h1>Никита Зотов</h1></div>
+                        <div className="member-status"><p className="secondary small">Развиваю digital</p></div>
                     </div>
                 </div>
-            </section> */}
+            </section>
             <section id="social" className="container">
                 <div className="contact-link">
                     <Link to='contacts'>

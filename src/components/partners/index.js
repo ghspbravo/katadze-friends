@@ -51,15 +51,17 @@ class Partners extends Component {
 		let coupon = this.props.coupons.filter(coupon => coupon.partner === partnerId)[0]
 
 		if (coupon) {
-			if (coupon.expired_at && coupon.expired_at > new Date()) {
+			if (coupon.expired_at && new Date(Date.parse(coupon.expired_at) + new Date().getTimezoneOffset() * 60000) > new Date()) {
 				let couponDateList = coupon.expired_at.match(/\d+-\d+-\d+/)[0].split('-')
+				let couponTimeList = coupon.expired_at.match(/\d+:\d+:\d+/)[0].split(':')
 				let couponDate = `${couponDateList[2]}.${couponDateList[1]}.${couponDateList[0]}`
+				let couponTime = `${couponTimeList[0]}:${couponTimeList[1]}`
 
 				return <div className="coupon-control">
 					<button
 						disabled
 						className='coupon-control__button coupon-control__button_activated'>Активировано</button>
-					<p className="coupon-control__expire-date">истекает {couponDate}</p>
+					<p className="coupon-control__expire-date">истекает {couponDate} {couponTime}</p>
 				</div>
 			} else return <div className="coupon-control">
 				<button
@@ -114,10 +116,7 @@ class Partners extends Component {
 						fontSize: '2rem',
 						color: '#fb0',
 					}}>Доступно членам клуба KATADZE*</p>
-					<p className="small">*приобрести подписку KATADZE можно в личном кабинете</p>
-					<p className="small" style={{
-						marginBottom: '50px'
-					}}>Воспользоваться скидками можно будет с 10.01.2019</p>
+					<p className="small" style={{marginBottom: '50px'}}>*приобрести подписку KATADZE можно в личном кабинете</p>
 					{
 						this.props.partners
 							? this.props.partners.map(category =>
