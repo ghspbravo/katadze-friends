@@ -94,15 +94,17 @@ class Partners extends Component {
 				{this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '', organization: '', comment: '', showPartnerForm: false }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
 				<section id="partners-header" className="vh-100 col-12 text-center">
 					<h2>Друзья.Katadze</h2>
-					<p>Дружба – это продуктивно.</p>
+					<p style={{textTransform: 'uppercase'}}>Дружба – это продуктивно.
+						<br/>ПОЛУЧАЙ СКИДКИ ОТ ПАРТНЕРОВ KATADZE
+					</p>
 				</section>
-				<section className="container justify-center">
+				<div className="container justify-center" style={{marginTop: '50px', marginBottom: '50px'}}>
 					{this.state.showPartnerForm
 						? becomePartner(this.handleInputChange, this.handleBecomePartner, this.props.errors, this.props.status, this.state)
 						: <button onClick={() => this.showPartnerFormHandler()}><h1 className="upper underline"><span>Стать партнером KATADZE</span></h1></button>
 					}
-				</section>
-				<section className="container justify-center">
+				</div>
+				<div className="container justify-center">
 					<div className="col-12">
 						<img style={{
 							height: 'auto',
@@ -110,12 +112,13 @@ class Partners extends Component {
 							objectFit: 'contain',
 						}} src={instructionImage} alt="instructions" />
 					</div>
-				</section>
+				</div>
 				<section className="container">
-					<p style={{
+					<Link to='/profile' style={{
 						fontSize: '2rem',
 						color: '#fb0',
-					}}>Доступно членам клуба KATADZE*</p>
+						textTransform: 'uppercase'
+					}}>Доступно членам клуба KATADZE*</Link>
 					<p className="small" style={{marginBottom: '50px'}}>*приобрести подписку KATADZE можно в личном кабинете</p>
 					{
 						this.props.partners
