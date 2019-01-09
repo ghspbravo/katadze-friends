@@ -11,26 +11,21 @@ export default (currentState, openNavHandler, user) => {
                     <div className="d-none d-lg-block col-lg-8">
                         <ul className="row justify-space-around">
                             <li>
-                                <Switch>
-                                    <Route path="/partners" render={() => <NavLink to="/partners" activeClassName="active-nav">Партнеры</NavLink>} />
-                                    <Route path="/guide" render={() => <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>} />
-                                    <Route path="/events" render={() => <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>} />
-                                    <Route path="/tours" render={() => <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>} />
-                                    <Route path="/profile" render={() => <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>} />
-
-
-                                    <Route render={() => <NavLink to="/guide">Гиды</NavLink>} />
-                                </Switch>
+                                <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>
                             </li>
-                            <Route path="/profile" render={() => <li>
+                            <li>
                                 <NavLink to="/partners" activeClassName="active-nav">Партнеры</NavLink>
-                            </li>} />
-                            <Route path="/profile" render={() => <li>
+                            </li>
+                            <li>
                                 <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>
-                            </li>} />
+                            </li>
                             <Switch>
-                                <Route path="/partners" render={() => <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>} />
-                                <Route path="/events" render={() => <NavLink to="/events/about" activeClassName="active-nav">О нас</NavLink>} />
+                                <Route path="/partners" render={() => <li>
+                                    <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>
+                                </li>} />
+                                <Route path="/events" render={() => <li>
+                                    <NavLink to="/events/about" activeClassName="active-nav">О нас</NavLink>
+                                </li>} />
                                 <Route render={() => <li>
                                     <NavLink to="/guide/about" activeClassName="active-nav">О нас</NavLink>
                                 </li>} />
@@ -92,16 +87,13 @@ export default (currentState, openNavHandler, user) => {
             <div className="d-lg-none navbar mobile-nav">
                 <ul className="row justify-space-around">
                     <li>
-                        <Switch>
-                            <Route path="/partners" render={() => <NavLink to="/partners" activeClassName="active-nav">Партнеры</NavLink>} />
-                            <Route path="/events" render={() => <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>} />
-                            <Route path="/guide" render={() => <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>} />
-                            <Route path="/tours" render={() => <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>} />
-                            <Route path="/profile" render={() => <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>} />
-
-
-                            <Route render={() => <NavLink to="/guide">Гиды</NavLink>} />
-                        </Switch>
+                        <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/partners" activeClassName="active-nav">Партнеры</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>
                     </li>
                     <Switch>
                         <Route path="/partners" render={() => <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>} />

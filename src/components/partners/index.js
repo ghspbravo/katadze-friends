@@ -114,12 +114,14 @@ class Partners extends Component {
 					</div>
 				</div>
 				<section className="container">
-					<Link to='/profile' style={{
+					<p to='/profile' style={{
 						fontSize: '2rem',
 						color: '#fb0',
 						textTransform: 'uppercase'
-					}}>Доступно членам клуба KATADZE*</Link>
-					<p className="small" style={{marginBottom: '50px'}}>*приобрести подписку KATADZE можно в личном кабинете</p>
+					}}>Доступно членам клуба KATADZE*</p>
+					<p className="small" style={{marginBottom: '50px', textTransform: 'uppercase'}}>*приобрести подписку KATADZE можно в <Link className="link small" to='/profile'>
+						личном кабинете
+					</Link></p>
 					{
 						this.props.partners
 							? this.props.partners.map(category =>
