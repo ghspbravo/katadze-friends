@@ -11,13 +11,13 @@ export default (currentState, openNavHandler, user) => {
                     <div className="d-none d-lg-block col-lg-8">
                         <ul className="row justify-space-around">
                             <li>
-                                <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>
+                                <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/partners" activeClassName="active-nav">Партнеры</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>
+                                <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>
                             </li>
                             <Switch>
                                 <Route path="/partners" render={() => <li>
@@ -87,13 +87,13 @@ export default (currentState, openNavHandler, user) => {
             <div className="d-lg-none navbar mobile-nav">
                 <ul className="row justify-space-around">
                     <li>
-                        <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>
+                        <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>
                     </li>
                     <li>
                         <NavLink to="/partners" activeClassName="active-nav">Партнеры</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/events" activeClassName="active-nav">Мероприятия</NavLink>
+                        <NavLink to="/guide" activeClassName="active-nav">Гиды</NavLink>
                     </li>
                     <Switch>
                         <Route path="/partners" render={() => <NavLink to="/partners/about" activeClassName="active-nav">О нас</NavLink>} />

@@ -8,8 +8,8 @@ export default () => {
         <div>
             <section id="about-main" className="row vh-50">
                 <div className="offset-lg-2 offset-1 col-lg-4">
-                    <h1 className="lead">KATADZE friends:</h1>
-                    <h1><span>Дружба - это продуктивно</span></h1>
+                    <h1 style={{textTransform: 'uppercase'}} className="lead">KATADZE friends:</h1>
+                    <h1><span style={{textTransform: 'uppercase'}}>Дружба - это продуктивно</span></h1>
                     <div className="read-more">
                         <a href="#aboutus">Читать дальше</a>
                     </div>

@@ -10,7 +10,7 @@ export default () => {
         <div>
             <section id="about-main" className="row vh-50">
                 <div className="offset-lg-2 offset-1 col-lg-4">
-                    <h1 className="lead">KATADZE guide:</h1>
+                    <h1 style={{textTransform: 'uppercase'}} className="lead">KATADZE guide:</h1>
                     <h1><span>СОЗДАЙ СВОЮ ИСТОРИЮ</span></h1>
                     <div className="read-more">
                         <a href="#aboutus">Читать дальше</a>

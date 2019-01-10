@@ -27,7 +27,7 @@ export default (handeInput, handleSubmit, errors, status, fields) => {
 				<div className="adress justify-center">
 					<h1 className="col-12">Екатеринбург</h1>
 					<p className="secondary">
-					ул. Ленина д. 66 (вход справа)<br />
+					ул. Софьи Ковалевской, 3, офис 424<br />
 						<span className="tel-number">+ 7 (966) 709-09-09</span>
 					</p>
 				</div>

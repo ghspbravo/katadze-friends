@@ -142,7 +142,7 @@ class Menu extends Component {
                 <div className="d-none d-lg-block homepage">
                     {this.props.isAuthenticated
                         ? null
-                        : <Link to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
+                        : <Link style={{textTransform: 'uppercase'}} to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}>
                         <span className="credits">made by katadze digital studio
@@ -224,7 +224,7 @@ class Menu extends Component {
                     <div className="background" style={{ backgroundImage: `url(${main})` }}>
                         {this.props.isAuthenticated
                             ? null
-                            : <Link to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
+                            : <Link style={{textTransform: 'uppercase'}} to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
                         <a href="#content" className="scroll-to"><span></span>SCROLL</a>
                         <div className="brand">KATADZE</div>
                     </div>
