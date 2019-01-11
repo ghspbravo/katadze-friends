@@ -46,7 +46,7 @@ class Membership extends Component {
 							<form onSubmit={this.purchaseSubscriptionHandler}>
 								<div className="row align-center">
 									<input checked className='col-1' type="radio" name="subscriptionType" id="type-1" value={1} />
-									<label className='col' htmlFor="type-1">1 месяц - 123 рубля</label>
+									<label className='col' htmlFor="type-1">1 месяц - 30 рублей</label>
 								</div>
 								<div class="row justify-center">
 									<button
