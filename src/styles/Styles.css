@@ -343,8 +343,8 @@ object {
 }
 section {
   position: relative;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 section[id$=header] {
   box-shadow: inset 0 1500px 0 rgba(0,0,0,0.3);
@@ -624,7 +624,7 @@ label.file {
   .order-fix {
     order: 2;
   }
-  p.small {
+  .small {
     font-size: 14px;
   }
   .preloader .logo span,
@@ -725,11 +725,12 @@ label.file {
   p,
   li,
   a {
-    font-size: 18px;
+    font-size: 14px;
+    line-height: 1.5;
   }
   section {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .secondary {
     color: #000;
@@ -1393,12 +1394,12 @@ a.active-nav {
 }
 .category-name p {
   text-transform: uppercase;
+  font-weight: 900;
 }
 .category-name :after {
   content: ' ';
   display: inline-block;
-  border: #9b9b9b 1px solid;
-  border-style: inset;
+  border: #fb0 1px solid;
   margin-left: 20px;
   width: 100%;
   position: absolute;
@@ -1438,6 +1439,41 @@ a.active-nav {
   line-height: 1;
   margin-bottom: 0;
   margin-top: 7px;
+}
+.membership-alert {
+  font-size: 24px;
+  color: #fb0;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+@media (max-width: 568px) {
+  .membership-alert {
+    font-size: 18px;
+  }
+}
+.membership-alert .note {
+  color: inherit;
+  font-size: 20px;
+  top: 0;
+}
+@media (max-width: 568px) {
+  .membership-note,
+  .membership-note * {
+    font-size: 12px;
+  }
+}
+.list-card {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.partner-item__description {
+  font-size: 21px;
+}
+@media (max-width: 568px) {
+  .partner-item__description {
+    font-size: 14px;
+    line-height: 1.3;
+  }
 }
 #events-header {
   background-image: url("../resourses/Events/header-image.jpg");
@@ -1740,7 +1776,6 @@ select.bordered::placeholder {
   border-color: #f00;
 }
 .subscription-card__message {
-  font-size: 18px;
   text-align: center;
 }
 .subscription-card__button {

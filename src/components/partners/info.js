@@ -73,7 +73,7 @@ class Info extends Component {
                     </section>
                     <section>
                         <h1 className="bold">Описание</h1>
-                        <div className="custom_text v-offset-small justify-text">{Parser(this.props.partner.content)}</div>
+                        <div className="custom_text v-offset-small">{Parser(this.props.partner.content)}</div>
                     </section>
                     {this.props.partner.services.length > 0
                         ? <section>
@@ -88,7 +88,7 @@ class Info extends Component {
                     {this.props.partner.conditions
                         ? <section>
                             <h1 className="bold">Условия</h1>
-                            <div className="custom_text justify-text v-offset-small">{Parser(this.props.partner.conditions)}</div>
+                            <div className="custom_text v-offset-small">{Parser(this.props.partner.conditions)}</div>
                         </section>
                         : null}
                     {this.props.partner.schedule

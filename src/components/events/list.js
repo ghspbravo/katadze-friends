@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 export default events => {
     return (
         <div>
-            <section id="events-header" className="vh-50 col-12 text-center">
-                <h2>Мероприятия</h2>
+            <section id="events-header" className="vh-100 col-12 text-center">
+                <h2>katadze.events</h2>
             </section>
             <section className="container">
                 {

@@ -93,7 +93,7 @@ class Partners extends Component {
 			<div>
 				{this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '', organization: '', comment: '', showPartnerForm: false }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
 				<section id="partners-header" className="vh-100 col-12 text-center">
-					<h2>Друзья.Katadze</h2>
+					<h2>Katadze.Friends</h2>
 					<p style={{textTransform: 'uppercase'}}>Дружба – это продуктивно.
 						<br/>ПОЛУЧАЙ СКИДКИ ОТ ПАРТНЕРОВ KATADZE
 					</p>
@@ -105,7 +105,7 @@ class Partners extends Component {
 					}
 				</div>
 				<div className="container justify-center">
-					<div className="col-12">
+					<div>
 						<img style={{
 							height: 'auto',
 							width: '100%',
@@ -114,12 +114,8 @@ class Partners extends Component {
 					</div>
 				</div>
 				<section className="container">
-					<p to='/profile' style={{
-						fontSize: '2rem',
-						color: '#fb0',
-						textTransform: 'uppercase'
-					}}>Доступно членам клуба KATADZE*</p>
-					<p className="small" style={{marginBottom: '50px', textTransform: 'uppercase'}}>*приобрести подписку KATADZE можно в <Link className="link small" to='/profile'>
+					<p className="membership-alert" to='/profile'>Доступно участникам клуба KATADZE<span className="note">*</span></p>
+					<p className="membership-note small" style={{marginBottom: '50px', textTransform: 'uppercase'}}>*приобрести подписку KATADZE можно в <Link className="link small" to='/profile'>
 						личном кабинете
 					</Link></p>
 					{
@@ -134,10 +130,10 @@ class Partners extends Component {
 											<div key={partner.id} className="row list-card">
 												<div style={{
 													padding: '0 25px'
-												}} className="col-lg-6 order-fix">
+												}} className="col-lg-6 partner-item order-fix">
 													<h1>{partner.title}</h1>
-													<p className="secondary">{partner.description}</p>
-													<p className="secondary small v-offset-small">{partner.tags}</p>
+													<p className="secondary partner-item__description">{partner.description}</p>
+													<p className="secondary small v-offset-small partner-item__tags">{partner.tags}</p>
 													<div style={{ marginTop: '50px', alignItems: 'start' }} className="row justify-space-between no-gutters">
 														<button className="more-button"><Link to={`/partners/id=${partner.id}`} style={{lineHeight: 1}}>Подробнее</Link></button>
 														{this.props.coupons

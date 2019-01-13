@@ -34,21 +34,59 @@ class Membership extends Component {
 		return (
 			<div>
 				{this.props.membership
-					? <div class="row justify-center" style={{ marginTop: '50px' }}>
-						<div class="subscription-card">
+					? <div className="row justify-center" style={{ marginTop: '50px' }}>
+						<div className="subscription-card">
 							<p className='subscription-card__message'>Ваша подписка действительна до {this.showMembershipDate()}</p>
 						</div>
 					</div>
-					: <div class="row justify-center" style={{ marginTop: '50px' }}>
+					: <div className="row justify-center" style={{ marginTop: '50px' }}>
 						<div className="subscription-card subscription-card_inactive">
-							<p className="subscription-card__message">Подписка не оплачена...
+							<p className="subscription-card__message upper small">Подписка не оплачена...
 							<br />Станьте членом клуба KatadZe уже сегодня!</p>
 							<form onSubmit={this.purchaseSubscriptionHandler}>
-								<div className="row align-center">
+								{/* <div className="row align-center">
 									<input checked className='col-1' type="radio" name="subscriptionType" id="type-1" value={1} />
 									<label className='col' htmlFor="type-1">1 месяц - 30 рублей</label>
+								</div> */}
+								<div style={{
+									width: '150px',
+									height: '150px',
+									borderRadius: '75px',
+									backgroundColor: '#fc0',
+									margin: '20px auto',
+									position: 'relative',
+								}}>
+									<div style={{
+										position: 'absolute',
+										top: '5px',
+										right: '-20px',
+										backgroundColor: '#41bfef',
+										fontFamily: 'BebasNeue',
+										padding: '7px 15px 5px 15px',
+										fontSize: '1.5rem',
+										color: 'white',
+										clipPath: 'polygon(0 0, 80% 2%, 100% 99%, 20% 100%)'
+									}}>75% OFF</div>
+									<div style={{
+										fontSize: '5rem',
+										fontFamily: 'BebasNeue',
+										fontWeight: '900',
+										paddingTop: '40px',
+										textAlign: 'center',
+										position: 'relative',
+									}}>
+										30
+										<div style={{
+											position: 'absolute',
+											bottom: '-20px',
+											left: '50%',
+											transform: 'translateX(-50%)',
+											fontSize: '2rem'
+										}}>рублей</div>
+									</div>
 								</div>
-								<div class="row justify-center">
+								<p style={{marginTop: '15px'}} className="small upper">Подписка действительна в течении месяца с момента оформления</p>
+								<div className="row justify-center">
 									<button
 										className="subscription-card__button">Оплатить подписку</button>
 								</div>
