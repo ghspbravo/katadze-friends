@@ -3,12 +3,15 @@ import { connect } from 'react-redux'
 import { getMembershipStatus, purchaseSubscription, createSubscription } from '../../actions/subscription';
 import { getFiledErrors, resetStatus } from '../../reducers';
 
+import loader from '../loader'
+
 class Membership extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
 			subscriptionType: 1,
+			isProcessing: false,
 		}
 	}
 
@@ -17,9 +20,16 @@ class Membership extends Component {
 	}
 
 	purchaseSubscriptionHandler = (e) => {
+		if (this.state.isProcessing) return 
 		e.preventDefault()
+		this.setState({
+			isProcessing: true,
+		})
 		this.props.createSubscription()
 		this.props.purchaseSubscription(this.state.subscriptionType)
+		this.setState({
+			isProcessing: false,
+		})
 	}
 	componentDidUpdate() {
 		if (this.props.purchaseRedirect) window.location.href = this.props.purchaseRedirect
@@ -87,8 +97,11 @@ class Membership extends Component {
 								</div>
 								<p style={{marginTop: '15px'}} className="small upper">Подписка действительна в течении месяца с момента оформления</p>
 								<div className="row justify-center">
-									<button
-										className="subscription-card__button">Оплатить подписку</button>
+									{this.state.isProcessing
+										? loader()
+										: <button
+											className="subscription-card__button">Оплатить подписку</button>
+									}
 								</div>
 							</form>
 						</div>
