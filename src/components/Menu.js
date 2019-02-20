@@ -155,7 +155,7 @@ class Menu extends Component {
                                 <span className="credits">made by katadze digital studio
                                 <br />На сайте используются cookies</span>
                             </div>
-                            <div className="homepage-item-inner">
+                            {/* <div className="homepage-item-inner">
                                 <div className="homepage-item-inner-title">РКВ</div>
                                 <div className="homepage-item-inner-subtext">
                                     <div className="homepage-item-inner-subtext-subtitle">
@@ -166,8 +166,8 @@ class Menu extends Component {
                                 <div className="homepage-mask-wrapper">
                                     <svg width="100%" height="100%"> <defs> <mask id="knockout-text-3" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-3)"></rect> </svg>
                                 </div>
-                            </div>
-                            {/* <div className="homepage-item-inner">
+                            </div> */}
+                            <div className="homepage-item-inner">
                                 <div className="homepage-item-inner-title">События</div>
                                 <div className="homepage-item-inner-subtext">
                                     <div className="homepage-item-inner-subtext-subtitle">
@@ -178,7 +178,7 @@ class Menu extends Component {
                                 <div className="homepage-mask-wrapper">
                                     <svg width="100%" height="100%"> <defs> <mask id="knockout-text-3" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-3)"></rect> </svg>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                         <div id="gids" className="homepage-item">
                             <div className="title">Гиды.</div>
