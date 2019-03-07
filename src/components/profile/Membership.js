@@ -106,7 +106,6 @@ class Membership extends Component {
 									</div>
 								</div> */}
 								<p style={{marginTop: '15px'}} className="small upper">Подписка действительна в течении месяца с момента оформления</p>
-								<p>Выбрана: {this.state.subscriptionType}</p>
 								<div className="row justify-center">
 									{this.state.isProcessing
 										? loader()
