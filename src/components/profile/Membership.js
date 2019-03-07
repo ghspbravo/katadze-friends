@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getMembershipStatus, purchaseSubscription, createSubscription } from '../../actions/subscription';
+import { getMembershipStatus, purchaseSubscription, createSubscription, getSubscriptionTypes } from '../../actions/subscription';
 import { getFiledErrors, resetStatus } from '../../reducers';
 
 import loader from '../loader'
@@ -10,13 +10,14 @@ class Membership extends Component {
 		super(props)
 
 		this.state = {
-			subscriptionType: 1,
+			subscriptionType: undefined,
 			isProcessing: false,
 		}
 	}
 
 	componentDidMount() {
 		this.props.fetchMembershipStatus()
+		this.props.fetchSubscriptionTypes()
 	}
 
 	purchaseSubscriptionHandler = (e) => {
@@ -40,6 +41,12 @@ class Membership extends Component {
 		return `${membershipDateList[2]}.${membershipDateList[1]}.${membershipDateList[0]}`
 	}
 
+	handleRadioChange = (e) => {
+		this.setState({
+			subscriptionType: e.target.value
+		})
+	}
+
 	render() {
 		return (
 			<div>
@@ -54,11 +61,14 @@ class Membership extends Component {
 							<p className="subscription-card__message upper small">Подписка не оплачена...
 							<br />Станьте членом клуба KatadZe уже сегодня!</p>
 							<form onSubmit={this.purchaseSubscriptionHandler}>
-								{/* <div className="row align-center">
-									<input checked className='col-1' type="radio" name="subscriptionType" id="type-1" value={1} />
-									<label className='col' htmlFor="type-1">1 месяц - 30 рублей</label>
-								</div> */}
-								<div style={{
+								{
+									this.props.subscriptionTypes
+									&& this.props.subscriptionTypes.map(type => <div key={type.id} className="row align-center">
+										<input onChange={this.handleRadioChange} className='col-1' type="radio" name="subscriptionType" id={`type-${type.id}`} value={type.id} />
+										<label className='col' htmlFor={`type-${type.id}`}>{`${type.name} – ${type.price.slice(0,-3)}`}</label>
+									</div> )
+								}
+								{/* <div style={{
 									width: '150px',
 									height: '150px',
 									borderRadius: '75px',
@@ -94,13 +104,14 @@ class Membership extends Component {
 											fontSize: '2rem'
 										}}>рублей</div>
 									</div>
-								</div>
+								</div> */}
 								<p style={{marginTop: '15px'}} className="small upper">Подписка действительна в течении месяца с момента оформления</p>
+								<p>Выбрана: {this.state.subscriptionType}</p>
 								<div className="row justify-center">
 									{this.state.isProcessing
 										? loader()
 										: <button
-											className="subscription-card__button">Оплатить подписку</button>
+											className="subscription-card__button" disabled={typeof(this.state.subscriptionType) == undefined}>Оплатить подписку</button>
 									}
 								</div>
 							</form>
@@ -119,11 +130,13 @@ const mapStateToProps = (state) => ({
 	errors: getFiledErrors(state.subscription),
 	status: state.subscription.status,
 	resetStatus: () => resetStatus(state),
+	subscriptionTypes: state.subscription.types
 });
 
 const mapDispatchToProps = dispatch => ({
 	createSubscription: () => dispatch(createSubscription()),
 	fetchMembershipStatus: () => dispatch(getMembershipStatus()),
+	fetchSubscriptionTypes: () => dispatch(getSubscriptionTypes()),
 	purchaseSubscription: (subscription_type) => dispatch(purchaseSubscription(subscription_type)),
 })
 

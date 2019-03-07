@@ -2,6 +2,10 @@ import { RSAA } from 'redux-api-middleware';
 import { server } from '.';
 import { withAuth } from '../reducers';
 
+export const SUBSCRIPTION_TYPES_REQUEST = '@@subscription/SUBSCRIPTION_TYPES_REQUEST';
+export const SUBSCRIPTION_TYPES_SUCCESS = '@@subscription/SUBSCRIPTION_TYPES_SUCCESS';
+export const SUBSCRIPTION_TYPES_FAILURE = '@@subscription/SUBSCRIPTION_TYPES_FAILURE';
+
 export const STATUS_REQUEST = '@@subscription/STATUS_REQUEST';
 export const STATUS_SUCCESS = '@@subscription/STATUS_SUCCESS';
 export const STATUS_FAILURE = '@@subscription/STATUS_FAILURE';
@@ -13,6 +17,17 @@ export const PURCHASE_FAILURE = '@@subscription/PURCHASE_FAILURE';
 export const CREATE_REQUEST = '@@subscription/CREATE_REQUEST';
 export const CREATE_SUCCESS = '@@subscription/CREATE_SUCCESS';
 export const CREATE_FAILURE = '@@subscription/CREATE_FAILURE';
+
+export const getSubscriptionTypes = () => ({
+	[RSAA]: {
+		endpoint: `https://${server}/api/subscription_types/?format=json`,
+		method: 'GET',
+		headers: withAuth({ 'Content-Type': 'application/json' }),
+		types: [
+			SUBSCRIPTION_TYPES_REQUEST, SUBSCRIPTION_TYPES_SUCCESS, SUBSCRIPTION_TYPES_FAILURE
+		]
+	}
+});
 
 export const getMembershipStatus = () => ({
 	[RSAA]: {
