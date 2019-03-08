@@ -105,7 +105,7 @@ class Membership extends Component {
 										}}>рублей</div>
 									</div>
 								</div> */}
-								<p style={{marginTop: '15px'}} className="small upper">Подписка действительна в течении месяца с момента оформления</p>
+								<p style={{marginTop: '15px'}} className="small upper">Подписка действительна в течение месяца с момента оформления</p>
 								<div className="row justify-center">
 									{this.state.isProcessing
 										? loader()
