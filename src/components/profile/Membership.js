@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getMembershipStatus, purchaseSubscription, createSubscription, getSubscriptionTypes } from '../../actions/subscription';
 import { getFiledErrors, resetStatus } from '../../reducers';
+import Parser from 'html-react-parser';
 
 import loader from '../loader'
 
@@ -21,7 +22,7 @@ class Membership extends Component {
 	}
 
 	purchaseSubscriptionHandler = (e) => {
-		if (this.state.isProcessing) return 
+		if (this.state.isProcessing) return
 		e.preventDefault()
 		this.setState({
 			isProcessing: true,
@@ -56,8 +57,76 @@ class Membership extends Component {
 							<p className='subscription-card__message'>Ваша подписка действительна до {this.showMembershipDate()}</p>
 						</div>
 					</div>
-					: <div className="row justify-center" style={{ marginTop: '50px' }}>
-						<div className="subscription-card subscription-card_inactive">
+					: <div style={{ marginTop: '50px' }}>
+						<p className="small text-center">Станьте членом клуба KatadZe уже сегодня!</p>
+
+						{ this.state.isProcessing
+							? loader()
+							: <div className="row" style={{marginTop: '30px'}}>
+							{
+								this.props.subscriptionTypes
+								&& this.props.subscriptionTypes.map(type => <div key={type.id} className="col-lg-6 col-12">
+									<div style={{
+									boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.25)',
+									marginBottom: '30px',
+									cursor: 'pointer',
+									}} onClick={(e) => {
+										this.setState({
+											subscriptionType: type.id
+										})
+										this.purchaseSubscriptionHandler(e)
+										}}>
+										<div style={{
+											height: '250px',
+											backgroundImage: `url(${type.img})`,
+											backgroundSize: 'cover',
+										}}></div>
+										<div style={{
+											padding: '20px 30px',
+											backgroundColor: 'white',
+										}}>
+											<p style={{
+												fontSize: '14px',
+												textTransform: 'uppercase',
+												fontWeight: 700,
+												lineHeight: 1,
+											}}>{type.name}</p>
+											<div style={{marginTop: '20px', fontSize: '14px', lineHeight: 1.2, color: '#B4B4B4'}}>
+												{type.description && Parser(type.description)}
+											</div>
+
+											<div style={{
+												marginTop: '30px',
+												textAlign: 'right',
+											}}>
+												<button style={{
+													padding: '10px 20px',
+													backgroundColor: '#E0DEDE',
+													color: 'white',
+													borderRadius: '10px',
+													marginRight: '15px'
+												}} disabled="disabled">{type.btn_text}</button>
+												<button style={{
+													padding: '10px 20px',
+													color: 'white',
+													borderRadius: '10px',
+													background: 'linear-gradient(180deg, #6F9BCF 0%, #66D2EA 100%)',
+												}}>{`${type.price.slice(0, -3)} руб`}</button>
+											</div>
+
+											<hr style={{margin: '15px -30px'}}/>
+											<p className="text-center" style={{fontSize: '12px',
+											textTransform: 'uppercase',
+											lineHeight: 1,
+											}}>приобрести подписку</p>
+										</div>
+									</div>
+								</div>)
+							}
+
+						</div>
+						}
+						{/* <div className="subscription-card subscription-card_inactive">
 							<p className="subscription-card__message upper small">Подписка не оплачена...
 							<br />Станьте членом клуба KatadZe уже сегодня!</p>
 							<form onSubmit={this.purchaseSubscriptionHandler}>
@@ -65,56 +134,19 @@ class Membership extends Component {
 									this.props.subscriptionTypes
 									&& this.props.subscriptionTypes.map(type => <div key={type.id} className="row align-center">
 										<input onChange={this.handleRadioChange} className='col-1' type="radio" name="subscriptionType" id={`type-${type.id}`} value={type.id} />
-										<label className='col' htmlFor={`type-${type.id}`}>{`${type.name} – ${type.price.slice(0,-3)}`}</label>
-									</div> )
+										<label className='col' htmlFor={`type-${type.id}`}>{`${type.name} – ${type.price.slice(0, -3)}`}</label>
+									</div>)
 								}
-								{/* <div style={{
-									width: '150px',
-									height: '150px',
-									borderRadius: '75px',
-									backgroundColor: '#fc0',
-									margin: '20px auto',
-									position: 'relative',
-								}}>
-									<div style={{
-										position: 'absolute',
-										top: '5px',
-										right: '-20px',
-										backgroundColor: '#41bfef',
-										fontFamily: 'BebasNeue',
-										padding: '7px 15px 5px 15px',
-										fontSize: '1.5rem',
-										color: 'white',
-										clipPath: 'polygon(0 0, 80% 2%, 100% 99%, 20% 100%)'
-									}}>75% OFF</div>
-									<div style={{
-										fontSize: '5rem',
-										fontFamily: 'BebasNeue',
-										fontWeight: '900',
-										paddingTop: '40px',
-										textAlign: 'center',
-										position: 'relative',
-									}}>
-										30
-										<div style={{
-											position: 'absolute',
-											bottom: '-20px',
-											left: '50%',
-											transform: 'translateX(-50%)',
-											fontSize: '2rem'
-										}}>рублей</div>
-									</div>
-								</div> */}
-								<p style={{marginTop: '15px'}} className="small upper">Подписка действительна в течение месяца с момента оформления</p>
+								<p style={{ marginTop: '15px' }} className="small upper">Подписка действительна в течение месяца с момента оформления</p>
 								<div className="row justify-center">
 									{this.state.isProcessing
 										? loader()
 										: <button
-											className="subscription-card__button" disabled={typeof(this.state.subscriptionType) == undefined}>Оплатить подписку</button>
+											className="subscription-card__button" disabled={typeof (this.state.subscriptionType) == undefined}>Оплатить подписку</button>
 									}
 								</div>
 							</form>
-						</div>
+						</div> */}
 					</div>
 				}
 			</div>

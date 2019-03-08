@@ -5,16 +5,18 @@ export default (state = {}, action) => {
 
 		case subscription.SUBSCRIPTION_TYPES_SUCCESS:
 			return {
-				...action.payload,
+				...state,
 				types: [...action.payload]
 			}
 
 		case subscription.STATUS_SUCCESS:
 			return {
+				...state,
 				...action.payload,
 			}
 		case subscription.PURCHASE_SUCCESS:
 			return {
+				...state,
 				...action.payload,
 			}
 		case subscription.STATUS_REQUEST: 
