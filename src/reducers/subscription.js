@@ -5,6 +5,7 @@ export default (state = {}, action) => {
 
 		case subscription.SUBSCRIPTION_TYPES_SUCCESS:
 			return {
+				...action.payload,
 				types: [...action.payload]
 			}
 
