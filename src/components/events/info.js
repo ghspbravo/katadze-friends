@@ -35,7 +35,7 @@ export default (event, currentTariff, handleTariffChange, handleAcquiring, hande
                                     return <section key={section.id} className="eventSection idSection one-page">
                                         {section.idx % 2 !== 0
                                             ? <div>
-                                                <div className="section-id">{`0${section.idx}`}</div>
+                                                {/* <div className="section-id">{`0${section.idx}`}</div> */}
                                                 <div className=" col-12 offset-lg-6 col-lg-5">
                                                     <h1>{section.title}</h1>
                                                     <div className="custom_text">

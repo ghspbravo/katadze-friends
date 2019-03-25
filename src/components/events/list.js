@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default events => {
     return (
         <div>
-            <section id="events-header" className="vh-100 col-12 text-center">
+            <section id="events-header" className="vh-100 col-12 text-center" style={{paddingTop: '20vh', paddingBottom: '20vh'}}>
                 <h2>katadze.events</h2>
             </section>
             <section className="container">

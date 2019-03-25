@@ -59,7 +59,7 @@ class Info extends Component {
     render() {
         if (this.props.partner)
             return (
-                <div className="container">
+                <div className="container" style={{marginTop: '50px'}}>
                     <h2 className="text-center">{this.props.partner.title}</h2>
                     <h1 className="text-center"><span>{this.props.partner.category.name}</span></h1>
                     <img className="col-12" src={this.props.partner.img} alt="partnerImg" />
@@ -91,7 +91,7 @@ class Info extends Component {
                             <div className="custom_text v-offset-small">{Parser(this.props.partner.conditions)}</div>
                         </section>
                         : null}
-                    {this.props.partner.schedule
+                    {/* {this.props.partner.schedule
                         ? <section>
                             <h1 className="bold">Расписание</h1>
                             <div className="custom_text v-offset-small">{Parser(this.props.partner.schedule)}</div>
@@ -105,7 +105,8 @@ class Info extends Component {
                                 <li style={{ backgroundColor: this.props.partner.schedule_weekdays.split(',').includes('7') ? 'lightgreen' : 'lightcoral' }}>ВС</li>
                             </ul>
                         </section>
-                        : null}
+                        : null} */}
+                    <h2 className="text-center">Живи активно. С KatadZe – выгодно.</h2>
                 </div>
             )
         else return (

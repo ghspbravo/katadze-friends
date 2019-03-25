@@ -22,4 +22,4 @@ export const STATUS_SUCCESS = 'success'
 export const STATUS_PROCESSING = 'processing'
 export const STATUS_ERROR = 'error'
 
-export const server = window.location.hostname === 'localhost' ? 'katadze.pythonanywhere.com/' : window.location.hostname
+export const server = window.location.hostname === 'localhost' ? 'katadze.ru/' : window.location.hostname

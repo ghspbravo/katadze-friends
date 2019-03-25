@@ -258,21 +258,30 @@ class Profile extends Component {
 						<div className=" col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/edit' >Редактировать профиль</NavLink>
 						</div>
-						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
+						<div className=" col-md-2 col-6 col-lg-12 v-offset-small">
+							<NavLink activeClassName='profile-current' to='/partners' >Воспользоваться партнерской программой</NavLink>
+						</div>
+						<div className=" col-md-2 col-6 col-lg-12 v-offset-small">
+							<NavLink activeClassName='profile-current' to='/events' >Участвовать в мероприятиях</NavLink>
+						</div>
+						<div className=" col-md-2 col-6 col-lg-12 v-offset-small">
+							<NavLink activeClassName='profile-current' to='/events/contacts' >Дать обратную связь</NavLink>
+						</div>
+						{/* <div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/applications'  >Заявки</NavLink>
-						</div>
-						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
+						</div> */}
+						{/* <div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/tours' >Мои туры</NavLink>
-						</div>
-						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
+						</div> */}
+						{/* <div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/become-gid' >Стать гидом</NavLink>
 						</div>
 						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink activeClassName='profile-current' to='/profile/create-tour' >Создать тур</NavLink>
-						</div>
-						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
+						</div> */}
+						{/* <div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<NavLink to='/profile/' >Членский статус</NavLink>
-						</div>
+						</div> */}
 						<div className="col-md-2 col-6 col-lg-12 v-offset-small">
 							<button onClick={this.props.logout}><Link to='/login' >Выйти</Link></button>
 						</div>
@@ -350,7 +359,7 @@ class Profile extends Component {
 							? <section className="jumbotron v-offset-small">
 								<div className="content">
 									<div className="v-offset-small text-center">
-										<p className="bold">Добро пожаловать в личный кабинет!.</p>
+										<p className="bold">Добро пожаловать в личный кабинет клуба Katadze!</p>
 									</div>
 									<div className="v-offset-small text-center">
 										<p>Для того, чтобы пользоваться личным кабинетом, Вам необходимо подтвердить аккаунт. Инструкции по подтверждению должны прийти на почту, которую Вы указали при регистрации.</p>
@@ -361,7 +370,7 @@ class Profile extends Component {
 								</div>
 							</section>
 							: <div>
-								<p className="small text-center">Добро пожаловать в личный кабинет</p>
+								<p className="text-center">Добро пожаловать в личный кабинет клуба Katadze!</p>
 								<Membership />
 							</div>
 						} />

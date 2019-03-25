@@ -92,10 +92,10 @@ class Partners extends Component {
 		return (
 			<div>
 				{this.props.status === STATUS_SUCCESS ? setTimeout(() => { this.setState({ name: '', title: '', question: '', email: '', organization: '', comment: '', showPartnerForm: false }); this.props.resetStatus(); this.props.forceRefresh() }, 3000) : null}
-				<section id="partners-header" className="vh-100 col-12 text-center">
+				<section id="partners-header" className="vh-100 col-12 text-center" style={{paddingTop: '20vh', paddingBottom: '20vh'}}>
 					<h2>Katadze.Friends</h2>
-					<p style={{textTransform: 'uppercase'}}>Дружба – это продуктивно.
-						<br/>ПОЛУЧАЙ СКИДКИ ОТ ПАРТНЕРОВ KATADZE
+					<p style={{textTransform: 'uppercase'}}>Живи активно. С KatadZe – выгодно.
+						<br/>ПОЛУЧАЙ СКИДКИ ОТ НАШИХ ПАРТНЕРОВ
 					</p>
 				</section>
 				<div className="container justify-center" style={{marginTop: '50px', marginBottom: '50px'}}>

@@ -13,7 +13,14 @@ export default (state = initialState, action) => {
         case registration.ACTIVATE_SUCCESS:
         case registration.ACTIVATE_CONFIRM_SUCCESS:
             return {
+                ...state,
                 message: action.payload.message
+            }
+
+        case registration.ACTIVATE_REQUEST:
+            return {
+                ...state,
+                isProcessing: true
             }
 
         case registration.ACTIVATE_CONFIRM_FAILURE:

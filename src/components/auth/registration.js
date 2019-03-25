@@ -90,7 +90,10 @@ export default class registration extends Component {
             case 3:
                 return (
                     <div className="auth-container">
-                        <form name="registration" className='auth-container-form form registration-form' action="POST" autoComplete="off" onSubmit={this.props.submitHandler}>
+                        <form name="registration" className='auth-container-form form registration-form' action="POST" autoComplete="off" onSubmit={(e) => {
+                            this.setState({currentStep: 1})
+                            this.props.submitHandler(e)
+                            }}>
                             <p className="small registration-form-steps">Шаг 3 из 3</p>
                             <div className="row no-gutters v-offset-small">
                                 <div id="avatar-container" className="col-12 avatar-container justify-center">
@@ -101,7 +104,7 @@ export default class registration extends Component {
                                 </div>
                                 <input id="reg-photo" className=" offset-md-2 col-md-6 col-12" name="img_photo" type="file" accept=".jpg, .jpeg, .png" onChange={this.props.fileHandler} />
                             </div>
-                            {errorMessage(this.props.errors, 'img_photo')}
+                            {errorMessage(this.props.errors, 'avatar')}
                             <div className="v-offset-small">
                                 <p className="small secondary registration-form-accept">Регистрируясь, Вы соглашаетесь на обработку Ваших персональных данных и подтверждаете, что Вам не менее 18 лет. </p>
                             </div>

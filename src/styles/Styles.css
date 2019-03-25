@@ -264,13 +264,11 @@ hr {
 }
 p {
   font-family: OpenSans;
-  /* font-weight: lighter; */
-  /* font-size: 25px; */
-  font-size: inherit;
-  /* line-height: 34px; */
+  font-weight: lighter;
+  font-size: 25px;
+  line-height: 34px;
   margin-bottom: 5px;
-  /* color: #000; */
-  color: inherit;
+  color: #000;
   white-space: pre-line;
 }
 p.lead {

@@ -142,13 +142,32 @@ class Menu extends Component {
                 <div className="d-none d-lg-block homepage">
                     {this.props.isAuthenticated
                         ? null
-                        : <Link style={{textTransform: 'uppercase'}} to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
+                        : <Link style={{ textTransform: 'uppercase' }} to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
                     <div className="brand">KATADZE</div>
                     <div className="background" style={{ backgroundImage: `url(${main})` }}>
                         <span className="credits">made by katadze digital studio
                         <br />На сайте используются cookies</span>
                     </div>
                     <div className="homepage-item-wrapper">
+                        <div id="partners" className="homepage-item">
+                            <div className="title">Друзья.</div>
+                            <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})` }}>
+                                <span className="credits">made by katadze digital studio
+                                <br />На сайте используются cookies</span>
+                            </div>
+                            <div className="homepage-item-inner">
+                                <div className="homepage-item-inner-title">Друзья</div>
+                                <div className="homepage-item-inner-subtext">
+                                    <div className="homepage-item-inner-subtext-subtitle">
+                                        <p>Создавать пространство для возможностей - наша цель. Добиваться её нам помогают наши партнеры: постоянные скидки и бонусы от Друзей Katadze.</p>
+                                    </div>
+                                    <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
+                                </div>
+                                <div className="homepage-mask-wrapper">
+                                    <svg width="100%" height="100%"> <defs> <mask id="knockout-text-0" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">%</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-0)"></rect> </svg>
+                                </div>
+                            </div>
+                        </div>
                         <div id="events" className="homepage-item">
                             <div className="title">События.</div>
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}>
@@ -192,29 +211,11 @@ class Menu extends Component {
                                     <div className="homepage-item-inner-subtext-subtitle">
                                         <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!</p>
                                     </div>
-                                    <Link className="homepage-item-inner-subtext-link" to="/guide">Перейти</Link>
+                                    {/* <Link className="homepage-item-inner-subtext-link" to="/guide">Перейти</Link> */}
+                                    <div className="homepage-item-inner-subtext-link">В разработке</div>
                                 </div>
                                 <div className="homepage-mask-wrapper">
                                     <svg width="100%" height="100%"> <defs> <mask id="knockout-text-1" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">❉</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-1)"></rect> </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="partners" className="homepage-item">
-                            <div className="title">Друзья.</div>
-                            <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})` }}>
-                                <span className="credits">made by katadze digital studio
-                                <br />На сайте используются cookies</span>
-                            </div>
-                            <div className="homepage-item-inner">
-                                <div className="homepage-item-inner-title">Друзья</div>
-                                <div className="homepage-item-inner-subtext">
-                                    <div className="homepage-item-inner-subtext-subtitle">
-                                        <p>Создавать пространство для возможностей - наша цель. Добиваться её нам помогают наши партнеры: постоянные скидки и бонусы от Друзей Katadze.</p>
-                                    </div>
-                                    <Link className="homepage-item-inner-subtext-link" to="/partners">Перейти</Link>
-                                </div>
-                                <div className="homepage-mask-wrapper">
-                                    <svg width="100%" height="100%"> <defs> <mask id="knockout-text-0" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">%</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y={`-${window.innerHeight}`} fillOpacity="0.5" mask="url(#knockout-text-0)"></rect> </svg>
                                 </div>
                             </div>
                         </div>
@@ -224,7 +225,7 @@ class Menu extends Component {
                     <div className="background" style={{ backgroundImage: `url(${main})` }}>
                         {this.props.isAuthenticated
                             ? null
-                            : <Link style={{textTransform: 'uppercase'}} to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
+                            : <Link style={{ textTransform: 'uppercase' }} to='/profile' className='enter-popup'>войти/зарегистрироваться</Link>}
                         <a href="#content" className="scroll-to"><span></span>SCROLL</a>
                         <div className="brand">KATADZE</div>
                     </div>
@@ -243,35 +244,6 @@ class Menu extends Component {
                             </div>
                         </div>
                     </Link> */}
-                    <Link to='/events'>
-                        <div id="content" className="homepage-item-inner">
-                            <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
-                            <div className="homepage-item-inner-title">События</div>
-                            <div className="homepage-item-inner-subtext">
-                                <div className="homepage-item-inner-subtext-subtitle">
-                                    <p>Объединяя людей по всему миру, мы создаем уникальные проекты самой разной направленности. Присоединяйся: погнали Katadze</p>
-                                </div>
-                            </div>
-                            <div className="homepage-mask-wrapper">
-                                <svg width="100%" height="100%"> <defs> <mask id="knockout-text-6" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-6)"></rect> </svg>
-                            </div>
-                        </div>
-                    </Link>
-                    <Link to='/guide'>
-                        <div className="homepage-item-inner">
-                            <div className="homepage-item-image" style={{ backgroundImage: `url(${gids})` }}></div>
-                            <div className="homepage-item-inner-subtext-link" style={mobileButtonStyle}>Перейти</div>
-                            <div className="homepage-item-inner-title">Гиды</div>
-                            <div className="homepage-item-inner-subtext">
-                                <div className="homepage-item-inner-subtext-subtitle">
-                                    <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!</p>
-                                </div>
-                            </div>
-                            <div className="homepage-mask-wrapper">
-                                <svg width="100%" height="100%"> <defs> <mask id="knockout-text-5" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle" style={{ transformOrigin: 'center', transform: 'rotate(180deg)' }}>✼</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-5)"></rect> </svg>
-                            </div>
-                        </div>
-                    </Link>
                     <Link to='/partners'>
                         <div className="homepage-item-inner">
                             <div className="homepage-item-image" style={{ backgroundImage: `url(${partners})`, backgroundPositionX: '25%' }}></div>
@@ -287,6 +259,36 @@ class Menu extends Component {
                             </div>
                         </div>
                     </Link>
+                    <Link to='/events'>
+                        <div id="content" className="homepage-item-inner">
+                            <div className="homepage-item-image" style={{ backgroundImage: `url(${events})` }}></div>
+                            <div className="homepage-item-inner-subtext-link" style={mobileButtonStyle}>Перейти</div>
+                            <div className="homepage-item-inner-title">События</div>
+                            <div className="homepage-item-inner-subtext">
+                                <div className="homepage-item-inner-subtext-subtitle">
+                                    <p>Объединяя людей по всему миру, мы создаем уникальные проекты самой разной направленности. Присоединяйся: погнали Katadze</p>
+                                </div>
+                            </div>
+                            <div className="homepage-mask-wrapper">
+                                <svg width="100%" height="100%"> <defs> <mask id="knockout-text-6" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle">✈</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-6)"></rect> </svg>
+                            </div>
+                        </div>
+                    </Link>
+                    {/* <Link to='/guide'> */}
+                        <div className="homepage-item-inner">
+                            <div className="homepage-item-image" style={{ backgroundImage: `url(${gids})` }}></div>
+                            <div className="homepage-item-inner-subtext-link" style={mobileButtonStyle}>В разработке</div>
+                            <div className="homepage-item-inner-title">Гиды</div>
+                            <div className="homepage-item-inner-subtext">
+                                <div className="homepage-item-inner-subtext-subtitle">
+                                    <p>Удобный и быстрый сервис для поиска гида и ярких впечатлений. Регистрируйся и наслаждайся!</p>
+                                </div>
+                            </div>
+                            <div className="homepage-mask-wrapper">
+                                <svg width="100%" height="100%"> <defs> <mask id="knockout-text-5" x="0" y="0" width="100%" height="100%"> <rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect> <text className="svg-text-home" dy=".25em" x="50%" y="50%" textAnchor="middle" style={{ transformOrigin: 'center', transform: 'rotate(180deg)' }}>✼</text> </mask> </defs> <rect className="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fillOpacity="0.5" mask="url(#knockout-text-5)"></rect> </svg>
+                            </div>
+                        </div>
+                    {/* </Link> */}
                 </div>
             </div>
         )

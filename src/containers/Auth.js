@@ -21,6 +21,8 @@ import resetPasswordComponent from '../components/auth/resetPassword'
 import RegistrationComponent from '../components/auth/registration'
 import resetConfirmComponent from '../components/auth/resetConfirm';
 
+import loader from '../components/loader'
+
 import { forceRefresh, STATUS_SUCCESS } from '../actions'
 
 import { showSuccess } from '../functions'
@@ -136,13 +138,17 @@ class Login extends Component {
                         this.props.fieldErrors,
                         this.props.status
                     )} />
-                    <Route path='/registration' render={() => <RegistrationComponent
+                    <Route path='/registration' render={() => 
+                    this.props.registrationProcessing
+                        ? loader()
+                        : <RegistrationComponent
                         submitHandler={this.onSubmit}
                         inputHandler={this.handleInputChange}
                         fileHandler={this.handleFileLoad}
                         errors={this.props.fieldErrors}
                         changeValue={this.handleValueChange}
                         fields={this.state}
+                    
                     />} />
                     {this.props.isRegistered
                         ? showSuccess('Вы стали частью семьи Катадзе. Подготавливаем Ваш личный кабинет...', () => this.props.onLogin(this.state.username, this.state.password, this.props.isRegistered))
@@ -161,7 +167,8 @@ const mapStateToProps = (state) => ({
     authFieldErrors: getFiledErrors(state.auth),
     status: state.resetPassword.status,
     resetStatus: () => resetStatus(state),
-    authErrors: state.auth.errors
+    authErrors: state.auth.errors,
+    registrationProcessing: state.registration.isProcessing
 });
 
 const mapDispatchToProps = (dispatch) => ({
