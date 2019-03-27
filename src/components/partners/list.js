@@ -35,8 +35,8 @@ export default (partners, showPartnerForm, showPartnerFormHandler, handeInput, h
                 {
                     partners
                         ? partners.map(category =>
-                            <div key={category.id} className="row">
-                                <div className="category-name col-12">
+                            <div key={category.id}>
+                                <div className="category-name">
                                     <p className="small">{category.name}</p>
                                 </div>
                                 {
